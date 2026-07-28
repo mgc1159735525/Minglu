@@ -1,0 +1,5 @@
+id,name,description,moodDelta,meritDelta,treasuryDelta,socialGain,trainingGain,axisId,axisDelta
+drill,兵棋推演,复盘本周课程，把阵型、兵种克制和补给路线写进演习档案。偏战斗与战功。,-3,6,0,0,12,,0
+salon,茶馆沙龙,请同窗到校外茶馆交换消息。偏好感与派系信息，能打开角色支线。,5,0,-6,4,0,,0
+lecture,时事讲座,听讲师解读朝局。偏立场变化，影响派系任务何时出现。,1,0,0,0,0,governance,6
+volunteer,边民救济,随医务处前往码头棚户区。偏边地见闻，能补足战略地图上的风险判断。,2,0,-10,2,0,nation,5

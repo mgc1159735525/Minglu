@@ -1,0 +1,6 @@
+id,label,stanceId,stanceValue,axisId,axisValue
+home_voyage,支持远航光复，同时追查海军旧档,home,8,region,-5
+army_reform,支持大陆军改革，要求公开演习编号,army,8,governance,-5
+native_co_rule,主张族群共治，保护边地商路证人,native,8,nation,6
+liberal_constitution,主张议会立宪，推动旧港账册公审,liberal,8,class,6
+legal_order,主张严法强国，要求按程序封存副册,legal,8,governance,-6

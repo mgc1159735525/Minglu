@@ -1,0 +1,9 @@
+id,name,category,rarity,slot,unlockKind,unlockTarget,unlockValue,description,attackPercent,defensePercent,hpPercent,moveBonus,moraleBonus,supplySavePercent,intelBonus,expBonusPercent
+field_sense,战场嗅觉,机动,普通,天赋,always,,0,攻击+5%，开局士气+1。,5,0,0,0,1,0,0,0
+iron_wall,铁壁之心,防御,普通,学识,trainingExp,,50,受到伤害-8%。,0,8,0,0,0,0,0,0
+forced_march,急掠如风,机动,普通,学识,logisticsExp,,50,战斗移动+1。,0,0,0,1,0,0,0,0
+veteran_drill,身经百战,指挥,精锐,经验,battleWins,,1,战斗经验+20%。,0,0,0,0,0,0,0,20
+supply_master,补给大师,生存,精锐,指挥,logisticsExp,,150,补给消耗-25%。,0,0,0,0,0,25,0,0
+precise_fire,精准打击,攻击,精锐,经验,artilleryExp,,150,攻击+12%。,12,0,0,0,0,0,0,0
+covert_network,暗线经营,情报,精锐,经验,intelligence,,30,情报收益+3。,0,0,0,0,0,0,3,0
+unyielding,众志成城,士气,传说,指挥,merit,,300,兵力+10%，士气+1。,0,0,10,0,1,0,0,0

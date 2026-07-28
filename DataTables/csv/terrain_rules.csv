@@ -1,0 +1,6 @@
+id,name,defenseInfantry,defenseCavalry,defenseArcher,moveInfantry,moveCavalry,moveArcher,color
+plain,原,0,0,0,1,1,1,#8e8a72
+mountain,山,0,5,5,2,3,2,#9a9890
+forest,林,0,0,5,1,2,1,#63794f
+river,河,0,0,0,2,3,2,#3e6e8a
+city,城,0,5,5,1,1,1,#a98b52

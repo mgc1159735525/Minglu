@@ -1,0 +1,15 @@
+attackerRole,defenderRole,modifier
+cavalry,archer,12
+archer,cavalry,-5
+infantry,cavalry,3
+heavy_cavalry,archer,14
+heavy_cavalry,heavy_archer,10
+heavy_spear,cavalry,14
+heavy_spear,heavy_cavalry,18
+musket,heavy_infantry,8
+musket,heavy_spear,8
+skirmisher,artillery,10
+artillery,heavy_infantry,12
+artillery,heavy_spear,12
+heavy_archer,brute,7
+heavy_archer,heavy_brute,5

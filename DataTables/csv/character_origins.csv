@@ -1,0 +1,7 @@
+id,name,subtitle,description,talentPool,clueId,clueName,infantryExp,cavalryExp,artilleryExp,managementExp,logisticsExp,trainingExp,nationAxis,classAxis,governanceAxis,regionAxis,stanceHome,stanceArmy,stanceNative,stanceLiberal,stanceLegal,relZhao,relLin,relYierde,relChen,relSu,relLi
+noble,勋贵之后,伯爵之子，门第深厚。,你的父亲是宁远伯爵，镇守西境多年。家族与返乡团关系密切，却也背负旧族的沉默。,noble;leader;strategy,father_silence,父亲的沉默,0,0,0,50,50,0,-3,-3,-5,-3,10,0,-8,-5,5,5,0,-5,0,-3,3
+scholar,书香门第,翰林之后，重文重法。,你出身南方文脉，家中藏书与辩论伴随童年。学院里的共和与法理，对你并不陌生。,scholar;strategy;social,,,0,0,0,0,0,50,5,3,5,0,-3,0,3,12,0,0,8,3,-5,5,0
+military,将门虎子,总兵之子，少年习武。,你熟悉军营号角，也熟悉军中对软弱的轻蔑。干城派看重你的血脉，文官则未必信任你。,military;leader;bravery,,,50,0,0,0,0,50,0,-3,-3,-3,0,12,0,-5,-5,5,-3,0,-5,-3,5
+border,边民出身,边陲小族，熟悉荒原。,你来自边境，见过贸易、冲突和饥荒。你比多数同窗更懂得地图边缘的人如何活下去。,border;bravery;resilience,,,0,50,0,0,50,0,5,3,0,3,-8,3,12,5,-5,-3,0,10,-8,3,0
+merchant,商贾之家,远洋巨商，消息灵通。,母族经营海贸，银钱与情报在你幼年便是同一种语言。你知道港口的风向，也知道宫廷的价码。,merchant;social;strategy,shen_ledger,沈家账册,0,0,0,50,50,0,0,0,0,0,3,-3,0,5,5,3,0,0,-3,3,0
+tribal,部落血裔,归化部落，双重身份。,你身上流着归化部落的血。有人把这当作污点，也有人把这视为新大陆未来的证明。,tribal;social;resilience,,,0,50,0,0,0,50,8,5,3,5,-10,0,15,3,-8,0,0,15,-10,5,0

@@ -1,0 +1,6 @@
+id,name,faction,provinceId,troops,maxTroops,move,maxMove,level,exp,attack,supply,maxSupply,aiProfile,intelLevel
+a1,第一军团,Player,xinjing,120,120,1,1,0,0,34,42,42,balanced,0
+a2,归化骑队,Player,hegu,82,82,1,1,0,0,28,42,42,balanced,0
+e1,禁卫前锋,Imperial,beiling,96,96,1,1,0,0,30,36,36,defensive,0
+e2,革故民兵,Reformist,shigu,104,104,1,1,0,0,27,36,36,tactical,0
+e3,西港殖民队,Foreign,xigang,118,118,1,1,0,0,32,36,36,aggressive,0

@@ -1,0 +1,11 @@
+id,name,category,tier,originTags,description,battleAttack,battleHp,battleMove,socialBonus,cultivationPercent,staminaSave,intelligenceBonus
+talent_old_blood,贵胄之姿,统率,1,noble,社交好感+2，养成进度+6%。,0,0,0,2,6,0,0
+talent_family_learning,家学渊源,谋略,1,noble;scholar,养成进度+10%。,0,0,0,0,10,0,0
+talent_argument,明辨章句,谋略,1,scholar,社交好感+1，养成进度+8%。,0,0,0,1,8,0,0
+talent_warborn,百战余习,武勇,1,military;border,攻击+3。,3,0,0,0,0,0,0
+talent_drillmaster,校场老手,统率,1,military,兵力+12，攻击+1。,1,12,0,0,0,0,0
+talent_frontier,荒原识途,坚韧,1,border;tribal,移动+1，体力消耗-1。,0,0,1,0,0,1,0
+talent_tradewind,海贸耳目,通达,1,merchant,情报+4，社交好感+1。,0,0,0,1,0,0,4
+talent_abacus,账册心算,谋略,1,merchant;scholar,养成进度+6%，体力消耗-1。,0,0,0,0,6,1,0
+talent_two_worlds,双界行者,通达,1,tribal;border,社交好感+3。,0,0,0,3,0,0,0
+talent_bloodfire,血性激昂,武勇,1,,攻击+2，兵力+8。,2,8,0,0,0,0,0

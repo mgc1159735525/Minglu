@@ -1,0 +1,8 @@
+id,category,name,description,conditionKind,conditionTarget,conditionValue,rewardTitle,rewardPoints,rarity
+B01,战斗,初试锋芒,赢得第一场战斗。,battleWins,,1,rookie,10,铜
+B02,战斗,连战连胜,累计赢得3场战斗。,battleWins,,3,veteran,30,银
+A01,养成,军校生涯,任意学科达到2级。,anyCourseLevel,,2,honor_student,10,铜
+S01,社交,朋友之证,任意角色好感达到50。,anyRelationship,,50,trusted_friend,20,铜
+I01,情报,暗线初成,间谍网络达到2。,spyNetwork,,2,shadow_listener,20,铜
+Q01,任务,有令必达,完成3个任务。,questsCompleted,,3,reliable_officer,20,银
+NG01,多周目,记忆回响,开启二周目。,newGamePlus,,1,echo_memory,50,金

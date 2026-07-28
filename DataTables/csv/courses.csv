@@ -1,0 +1,8 @@
+id,label,target
+infantry,枪阵课,infantryExp
+cavalry,骑训课,cavalryExp
+artillery,炮算课,artilleryExp
+management,军政课,managementExp
+logistics,补给课,logisticsExp
+training,体能课,trainingExp
+wander,校园闲逛,social

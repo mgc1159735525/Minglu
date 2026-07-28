@@ -1,0 +1,259 @@
+{
+  "generatedAt": "2026-07-27T18:30:29",
+  "style": "normal-proportion historical soldier squads; readable full-body troops, compact bases, banners, move/attack/hit sequence frames",
+  "units": [
+    {
+      "id": "swordsmen_volunteers",
+      "role": "infantry",
+      "roleDisplay": "infantry",
+      "family": "volunteer",
+      "asset": "Art/BattleUnits/swordsmen_volunteers",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "matchlock_volunteers",
+      "role": "musket",
+      "roleDisplay": "matchlock",
+      "family": "volunteer",
+      "asset": "Art/BattleUnits/matchlock_volunteers",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "militia_volunteers",
+      "role": "skirmisher",
+      "roleDisplay": "skirmisher",
+      "family": "volunteer",
+      "asset": "Art/BattleUnits/militia_volunteers",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "outlaw_skirmishers",
+      "role": "skirmisher",
+      "roleDisplay": "skirmisher",
+      "family": "outlaw",
+      "asset": "Art/BattleUnits/outlaw_skirmishers",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "imperial_halberdiers",
+      "role": "heavy_spear",
+      "roleDisplay": "heavy spear",
+      "family": "imperial",
+      "asset": "Art/BattleUnits/imperial_halberdiers",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "armored_iron_cavalry",
+      "role": "heavy_cavalry",
+      "roleDisplay": "heavy cavalry",
+      "family": "imperial",
+      "asset": "Art/BattleUnits/armored_iron_cavalry",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "steel_helmet_heavy_infantry",
+      "role": "heavy_infantry",
+      "roleDisplay": "heavy infantry",
+      "family": "volunteer",
+      "asset": "Art/BattleUnits/steel_helmet_heavy_infantry",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "imperial_longbowmen",
+      "role": "heavy_archer",
+      "roleDisplay": "heavy archer",
+      "family": "imperial",
+      "asset": "Art/BattleUnits/imperial_longbowmen",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "sword_guard_corps",
+      "role": "infantry",
+      "roleDisplay": "infantry",
+      "family": "volunteer",
+      "asset": "Art/BattleUnits/sword_guard_corps",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "imperial_axe_guard",
+      "role": "heavy_brute",
+      "roleDisplay": "heavy brute",
+      "family": "imperial",
+      "asset": "Art/BattleUnits/imperial_axe_guard",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "vanguard_cavalry",
+      "role": "cavalry",
+      "roleDisplay": "cavalry",
+      "family": "volunteer",
+      "asset": "Art/BattleUnits/vanguard_cavalry",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "solemn_guard_matchlocks",
+      "role": "musket",
+      "roleDisplay": "matchlock",
+      "family": "volunteer",
+      "asset": "Art/BattleUnits/solemn_guard_matchlocks",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "raiders",
+      "role": "skirmisher",
+      "roleDisplay": "skirmisher",
+      "family": "outlaw",
+      "asset": "Art/BattleUnits/raiders",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "imperial_heavy_guard",
+      "role": "heavy_infantry",
+      "roleDisplay": "heavy infantry",
+      "family": "imperial",
+      "asset": "Art/BattleUnits/imperial_heavy_guard",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "warhammer_volunteers",
+      "role": "heavy_brute",
+      "roleDisplay": "heavy brute",
+      "family": "volunteer",
+      "asset": "Art/BattleUnits/warhammer_volunteers",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "imperial_shenji_artillery",
+      "role": "artillery",
+      "roleDisplay": "artillery",
+      "family": "imperial",
+      "asset": "Art/BattleUnits/imperial_shenji_artillery",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "zealot_believers",
+      "role": "skirmisher",
+      "roleDisplay": "skirmisher",
+      "family": "believer",
+      "asset": "Art/BattleUnits/zealot_believers",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "zealot_mob",
+      "role": "brute",
+      "roleDisplay": "brute",
+      "family": "believer",
+      "asset": "Art/BattleUnits/zealot_mob",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "leader_guard",
+      "role": "heavy_infantry",
+      "roleDisplay": "heavy infantry",
+      "family": "believer",
+      "asset": "Art/BattleUnits/leader_guard",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "elite_archers",
+      "role": "archer",
+      "roleDisplay": "archer",
+      "family": "volunteer",
+      "asset": "Art/BattleUnits/elite_archers",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "bandits",
+      "role": "skirmisher",
+      "roleDisplay": "skirmisher",
+      "family": "outlaw",
+      "asset": "Art/BattleUnits/bandits",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "great_axe_warriors",
+      "role": "brute",
+      "roleDisplay": "brute",
+      "family": "volunteer",
+      "asset": "Art/BattleUnits/great_axe_warriors",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "believer_elites",
+      "role": "infantry",
+      "roleDisplay": "infantry",
+      "family": "believer",
+      "asset": "Art/BattleUnits/believer_elites",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+id,displayName,symbol,baseHp,move,range,attackBonus,formation
+infantry,步兵,步,100,2,1,0,3
+musket,火枪,铳,82,2,3,2,1
+skirmisher,散兵,散,72,3,2,-1,1
+heavy_spear,重枪,枪,128,2,1,4,4
+heavy_cavalry,重骑,骑,145,3,1,8,3
+heavy_infantry,重步,甲,135,2,1,3,4
+heavy_archer,重弓,弩,92,2,4,1,2
+heavy_brute,重猛,猛,130,2,1,7,3
+cavalry,骑兵,骑,115,3,1,6,2
+artillery,重器,器,105,1,4,10,1
+brute,猛士,斧,105,2,1,5,2
+archer,弓兵,弓,78,2,3,-3,1

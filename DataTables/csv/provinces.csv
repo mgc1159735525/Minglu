@@ -1,0 +1,10 @@
+id,name,owner,defense,income,x,y,roads,armyId
+xinjing,新京,Player,72,20,-325,175,linhai;hegu,
+linhai,临海,Player,55,14,-210,5,xinjing;beiling,
+hegu,河谷,Player,48,11,-95,190,xinjing;beiling;nanze,
+beiling,北岭,Imperial,62,13,95,105,linhai;hegu;songlin;shigu,
+songlin,松林,Native,44,9,250,215,beiling;xigang,
+shigu,石谷,Reformist,58,12,225,-40,beiling;xigang;hongyuan;nanze,
+xigang,西港,Foreign,68,18,410,60,songlin;shigu,
+hongyuan,红原,Neutral,40,8,405,-175,shigu,
+nanze,南泽,Player,50,10,-40,-145,hegu;shigu,

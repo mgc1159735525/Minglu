@@ -1,0 +1,9 @@
+id,name,aggression,caution,focusFire,retreatHpPercent,terrainPreference,objectiveBias,guardBias,flankBias,rangedSpacing,finishBias,avoidCounter
+balanced,均衡型,100,100,100,25,100,100,90,80,1,110,80
+aggressive,激进型,165,55,95,12,65,70,35,90,1,155,35
+tactical,智将型,115,105,165,24,135,105,75,110,2,145,115
+defensive,防守型,65,165,120,32,190,180,170,45,2,95,145
+mobile,机动型,130,85,105,20,100,120,65,180,2,125,75
+siege,攻坚型,120,115,135,22,120,190,105,70,3,135,95
+skirmish,游击型,105,135,120,35,130,85,85,170,3,115,160
+berserker,狂热型,190,30,70,5,45,55,15,120,1,180,15

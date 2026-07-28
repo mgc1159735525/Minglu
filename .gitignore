@@ -1,0 +1,40 @@
+# Unity generated folders
+Library/
+Temp/
+Obj/
+obj/
+Logs/
+UserSettings/
+
+# Build outputs and installer artifacts
+Build/
+Builds/
+*.apk
+*.aab
+*.ipa
+
+# Local previews, backups, and generated inspection dumps
+.codex-table-previews/
+ArtBackups/
+*.inspect.ndjson
+*.log
+*.err.log
+
+# IDE and generated project files
+.vs/
+.vscode/
+*.csproj
+*.sln
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+

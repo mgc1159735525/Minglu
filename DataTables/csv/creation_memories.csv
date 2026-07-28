@@ -1,0 +1,4 @@
+id,title,body,optionAId,optionAText,optionATraitId,optionANation,optionAClass,optionAGovernance,optionARegion,optionBId,optionBText,optionBTraitId,optionBNation,optionBClass,optionBGovernance,optionBRegion
+market,往事一：边境集市,老妇人递来一串祈福珠。你看见贫穷，也看见谎言。,market_doubt,拉住父亲，提醒这是骗局。,trait_cautious,-3,0,-2,0,market_mercy,把零花钱给她，愿她今日能饱腹。,trait_kind,4,2,0,0
+yard,往事二：演武场,同伴被高年级欺辱。你可以忍，也可以立刻冲上去。,yard_endure,先记下对方名字，等机会再还。,trait_stoic,0,0,-2,-1,yard_charge,冲上前，把人从泥地里拉起来。,trait_decisive,2,0,2,0
+book,往事三：禁书一页,你在书房里发现被撕下的海外手札。父亲沉默，烛火摇晃。,book_hide,藏起残页，等待能看懂它的一天。,trait_sensitive,0,3,2,0,book_ask,直接追问父亲，哪怕惹怒他。,trait_radical,4,3,3,0

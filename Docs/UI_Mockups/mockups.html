@@ -1,0 +1,1181 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>明路 UI 演示图</title>
+  <style>
+    :root {
+      --ink: #211917;
+      --muted: #715e52;
+      --paper: #efe1c6;
+      --paper-2: #dec79d;
+      --paper-3: #f7edd8;
+      --line: #9a703c;
+      --deep: #24151a;
+      --wine: #603044;
+      --wine-2: #7b4352;
+      --gold: #c69a4c;
+      --blue: #253f5f;
+      --blue-2: #355d7c;
+      --green: #315a47;
+      --red: #8e4138;
+      --shadow: rgba(33, 25, 23, 0.24);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #171313;
+      color: var(--ink);
+      font-family: "Microsoft YaHei", "Noto Sans CJK SC", "SimHei", Arial, sans-serif;
+    }
+
+    .mockup-stack {
+      display: grid;
+      gap: 32px;
+      padding: 32px;
+      width: fit-content;
+    }
+
+    .screen {
+      position: relative;
+      width: 1280px;
+      height: 720px;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(35, 23, 25, 0.85), rgba(57, 42, 35, 0.26) 35%, rgba(36, 21, 26, 0.84)),
+        radial-gradient(circle at 58% 46%, rgba(246, 224, 177, 0.28), transparent 38%),
+        linear-gradient(180deg, #39222b 0%, #65473b 48%, #24151a 100%);
+      border: 1px solid #5e4232;
+      box-shadow: 0 18px 52px rgba(0, 0, 0, 0.38);
+    }
+
+    .screen::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.18;
+      background-image:
+        linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px),
+        linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mix-blend-mode: screen;
+    }
+
+    .wall-trim {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 78px;
+      height: 12px;
+      background: linear-gradient(90deg, #221416, #c69a4c, #221416);
+      border-top: 2px solid rgba(255,255,255,0.18);
+      border-bottom: 2px solid rgba(0,0,0,0.35);
+    }
+
+    .floor {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 82px;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px),
+        linear-gradient(180deg, #4b3128, #251717);
+      background-size: 90px 100%, 100% 100%;
+    }
+
+    .topbar {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      top: 18px;
+      height: 56px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      padding: 0 18px;
+      color: var(--paper-3);
+      background: linear-gradient(180deg, #3b2029, #27171c);
+      border: 2px solid var(--gold);
+      box-shadow: 0 8px 20px var(--shadow);
+      z-index: 5;
+    }
+
+    .top-title {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      min-width: 0;
+    }
+
+    .top-title strong {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 27px;
+      font-weight: 700;
+      color: #f7e4b0;
+    }
+
+    .top-title span,
+    .top-meta span {
+      font-size: 16px;
+      color: #dfcda8;
+    }
+
+    .top-meta {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      white-space: nowrap;
+    }
+
+    .top-pill {
+      padding: 6px 10px;
+      border: 1px solid rgba(198, 154, 76, 0.72);
+      background: rgba(255,255,255,0.06);
+      color: #f0ddad;
+      font-size: 15px;
+    }
+
+    .panel {
+      position: absolute;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.28), rgba(255,255,255,0)),
+        var(--paper);
+      border: 2px solid var(--line);
+      box-shadow: 0 14px 28px var(--shadow);
+    }
+
+    .panel.inner {
+      border-width: 1px;
+      background: rgba(255, 248, 230, 0.84);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.35);
+    }
+
+    .panel-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      height: 36px;
+      padding: 0 12px;
+      color: #f8e7bc;
+      background: linear-gradient(180deg, var(--wine-2), var(--wine));
+      border-bottom: 2px solid var(--line);
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .section-label {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 0 12px;
+      color: #fff8df;
+      background: linear-gradient(180deg, #7c4654, #552938);
+      border: 1px solid #d2a962;
+      box-shadow: 0 3px 0 #321b21;
+      font-size: 17px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .btn.small {
+      min-height: 32px;
+      font-size: 14px;
+      padding: 0 9px;
+    }
+
+    .btn.green {
+      background: linear-gradient(180deg, #496f58, #2f4e3d);
+    }
+
+    .btn.blue {
+      background: linear-gradient(180deg, #42617f, #283f5e);
+    }
+
+    .btn.red {
+      background: linear-gradient(180deg, #9a5147, #73332f);
+    }
+
+    .btn.ghost {
+      color: var(--ink);
+      background: rgba(255,255,255,0.36);
+      border-color: rgba(154,112,60,0.62);
+      box-shadow: none;
+      font-weight: 600;
+    }
+
+    .close {
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      color: #f9e5b7;
+      background: #5b2630;
+      border: 1px solid var(--gold);
+      font-size: 17px;
+      line-height: 1;
+    }
+
+    .status-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+
+    .stat {
+      min-height: 42px;
+      padding: 7px 9px;
+      background: rgba(255,255,255,0.42);
+      border: 1px solid rgba(154,112,60,0.45);
+    }
+
+    .stat b {
+      display: block;
+      margin-bottom: 3px;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .stat span {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .bar {
+      position: relative;
+      height: 12px;
+      overflow: hidden;
+      background: #9b7c5b;
+      border: 1px solid rgba(56, 35, 27, 0.5);
+      margin-top: 5px;
+    }
+
+    .bar i {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, #9a4545, #e2b55b);
+    }
+
+    .bar.blue i {
+      background: linear-gradient(90deg, #30587d, #82a9bd);
+    }
+
+    .bar.green i {
+      background: linear-gradient(90deg, #2e6d55, #a3be72);
+    }
+
+    .portrait-zone {
+      position: absolute;
+      left: 452px;
+      top: 96px;
+      width: 374px;
+      height: 532px;
+      background:
+        linear-gradient(180deg, rgba(245, 225, 185, 0.28), rgba(0, 0, 0, 0.12)),
+        linear-gradient(90deg, rgba(32,22,22,0.36) 1px, transparent 1px),
+        linear-gradient(#725047, #342124);
+      background-size: 100% 100%, 44px 44px, 100% 100%;
+      border: 3px solid #c69a4c;
+      box-shadow: 0 12px 36px rgba(0,0,0,0.34);
+    }
+
+    .window-card {
+      position: absolute;
+      left: 22px;
+      top: 22px;
+      width: 330px;
+      height: 190px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.26), rgba(255,255,255,0.02)),
+        linear-gradient(120deg, #455d70 0%, #8194a1 52%, #dbc98f 53%, #b5764d 100%);
+      border: 2px solid #312026;
+      box-shadow: inset 0 0 0 4px rgba(245,227,179,0.18);
+    }
+
+    .portrait {
+      position: absolute;
+      left: 78px;
+      bottom: 0;
+      width: 220px;
+      height: 392px;
+    }
+
+    .portrait .head {
+      position: absolute;
+      left: 56px;
+      top: 18px;
+      width: 108px;
+      height: 124px;
+      border-radius: 48% 48% 46% 46%;
+      background: #f4d8c5;
+      border: 3px solid #2a1d1b;
+      z-index: 3;
+    }
+
+    .portrait .hair {
+      position: absolute;
+      left: 36px;
+      top: 0;
+      width: 146px;
+      height: 154px;
+      border-radius: 50% 50% 40% 42%;
+      background: #352326;
+      border: 3px solid #211414;
+      z-index: 2;
+    }
+
+    .portrait .hair::after {
+      content: "";
+      position: absolute;
+      left: 20px;
+      top: 18px;
+      width: 102px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.07);
+    }
+
+    .portrait .face-line {
+      position: absolute;
+      left: 82px;
+      top: 76px;
+      width: 56px;
+      height: 18px;
+      border-bottom: 3px solid #5f342e;
+      z-index: 4;
+    }
+
+    .portrait .body {
+      position: absolute;
+      left: 36px;
+      top: 130px;
+      width: 150px;
+      height: 250px;
+      background: linear-gradient(180deg, #2c405a 0%, #24354a 45%, #1c293a 100%);
+      border: 3px solid #1b1720;
+      border-radius: 56px 56px 18px 18px;
+      z-index: 1;
+    }
+
+    .portrait .body::before {
+      content: "";
+      position: absolute;
+      left: 54px;
+      top: 0;
+      width: 42px;
+      height: 70px;
+      background: #f4d8c5;
+      border: 2px solid #1b1720;
+    }
+
+    .portrait .sash {
+      position: absolute;
+      left: 40px;
+      top: 196px;
+      width: 142px;
+      height: 22px;
+      background: #c69a4c;
+      border: 2px solid #201614;
+      transform: rotate(-6deg);
+      z-index: 4;
+    }
+
+    .dialogue {
+      position: absolute;
+      left: 60px;
+      right: 60px;
+      bottom: 28px;
+      min-height: 84px;
+      padding: 16px 20px;
+      background: rgba(38, 22, 25, 0.94);
+      border: 2px solid var(--gold);
+      color: #f7e7c7;
+      font-size: 19px;
+      line-height: 1.52;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.38);
+    }
+
+    .title-mark {
+      position: absolute;
+      left: 100px;
+      top: 112px;
+      color: #f8e7bc;
+    }
+
+    .title-mark h1 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 88px;
+      line-height: 1;
+      font-weight: 700;
+      text-shadow: 0 5px 0 rgba(0,0,0,0.38);
+    }
+
+    .title-mark p {
+      margin: 18px 0 0;
+      width: 480px;
+      color: #e4c894;
+      font-size: 21px;
+      line-height: 1.55;
+    }
+
+    .main-menu {
+      position: absolute;
+      right: 104px;
+      top: 145px;
+      width: 280px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .version-note {
+      position: absolute;
+      left: 104px;
+      bottom: 106px;
+      color: #d4bc8f;
+      font-size: 15px;
+    }
+
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 3px;
+      margin-top: 8px;
+    }
+
+    .calendar span {
+      display: grid;
+      place-items: center;
+      height: 30px;
+      background: rgba(255,255,255,0.36);
+      border: 1px solid rgba(154,112,60,0.34);
+      font-size: 14px;
+    }
+
+    .calendar .active {
+      color: #fff5d8;
+      background: var(--wine);
+      border-color: var(--gold);
+      font-weight: 700;
+    }
+
+    .trait-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .trait-card {
+      min-height: 86px;
+      padding: 12px;
+      background: rgba(255,255,255,0.42);
+      border: 1px solid rgba(154,112,60,0.55);
+    }
+
+    .trait-card.selected {
+      color: #fff8e6;
+      background: linear-gradient(180deg, #42617f, #293f5b);
+      border-color: var(--gold);
+    }
+
+    .trait-card b {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .trait-card span {
+      display: block;
+      font-size: 14px;
+      line-height: 1.48;
+      color: inherit;
+      opacity: 0.86;
+    }
+
+    .academy-actions {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .minor-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .relationship-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .rel-card {
+      min-height: 50px;
+      padding: 8px 10px;
+      border: 1px solid rgba(154,112,60,0.52);
+      background: rgba(255,255,255,0.36);
+    }
+
+    .rel-card b {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 3px;
+    }
+
+    .rel-card span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .modal-shade {
+      position: absolute;
+      inset: 0;
+      background: rgba(20, 13, 15, 0.55);
+      z-index: 20;
+    }
+
+    .modal {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 760px;
+      min-height: 430px;
+      transform: translate(-50%, -50%);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.34), rgba(255,255,255,0)),
+        var(--paper);
+      border: 2px solid var(--gold);
+      box-shadow: 0 24px 70px rgba(0,0,0,0.48);
+      z-index: 21;
+    }
+
+    .modal-header {
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 14px 0 18px;
+      color: #f9e5b7;
+      background: linear-gradient(180deg, #3c2029, #25161b);
+      border-bottom: 2px solid var(--gold);
+    }
+
+    .modal-header h2 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .modal-body {
+      padding: 18px 22px 20px;
+    }
+
+    .choice-stack {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .choice {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      align-items: center;
+      min-height: 64px;
+      padding: 10px 12px 10px 16px;
+      background: rgba(255,255,255,0.43);
+      border: 1px solid rgba(154,112,60,0.55);
+    }
+
+    .choice b {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+
+    .choice span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .tab {
+      padding: 8px 14px;
+      background: rgba(255,255,255,0.32);
+      border: 1px solid rgba(154,112,60,0.48);
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .tab.active {
+      color: #fff8e6;
+      background: var(--blue);
+      border-color: var(--gold);
+    }
+
+    .ideology-row {
+      display: grid;
+      grid-template-columns: 86px 1fr 86px;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 13px;
+      font-size: 15px;
+    }
+
+    .axis {
+      position: relative;
+      height: 16px;
+      background: linear-gradient(90deg, var(--blue), #b9a15d 50%, var(--red));
+      border: 1px solid rgba(56,35,27,0.55);
+    }
+
+    .axis::after {
+      content: "";
+      position: absolute;
+      left: var(--pos, 50%);
+      top: -5px;
+      width: 6px;
+      height: 24px;
+      background: #211917;
+      border: 1px solid #f2ddb0;
+    }
+
+    .newspaper {
+      background:
+        linear-gradient(90deg, rgba(20,20,20,0.06) 1px, transparent 1px),
+        var(--paper-3);
+      background-size: 26px 100%;
+      border: 1px solid rgba(154,112,60,0.6);
+      padding: 18px;
+      min-height: 258px;
+    }
+
+    .newspaper h3 {
+      margin: 0 0 10px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 32px;
+      color: var(--ink);
+    }
+
+    .newspaper p {
+      margin: 0;
+      column-count: 2;
+      column-gap: 22px;
+      font-size: 15px;
+      line-height: 1.62;
+      color: #3c302c;
+    }
+
+    .map-panel {
+      position: absolute;
+      left: 54px;
+      top: 96px;
+      width: 760px;
+      height: 498px;
+      background:
+        linear-gradient(90deg, rgba(37,63,95,0.12) 1px, transparent 1px),
+        linear-gradient(rgba(37,63,95,0.12) 1px, transparent 1px),
+        #d9c28f;
+      background-size: 64px 64px;
+      border: 3px solid var(--gold);
+      box-shadow: 0 14px 38px rgba(0,0,0,0.32);
+    }
+
+    .river {
+      position: absolute;
+      left: 150px;
+      top: 80px;
+      width: 520px;
+      height: 110px;
+      border-radius: 50%;
+      border-bottom: 28px solid rgba(67, 123, 150, 0.55);
+      transform: rotate(-18deg);
+    }
+
+    .province {
+      position: absolute;
+      width: 98px;
+      height: 56px;
+      display: grid;
+      place-items: center;
+      color: #fff7dc;
+      background: var(--green);
+      border: 2px solid #f1d58a;
+      box-shadow: 0 5px 0 rgba(35,22,20,0.36);
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .province.enemy {
+      background: var(--red);
+    }
+
+    .province.neutral {
+      background: var(--blue);
+    }
+
+    .army-token {
+      position: absolute;
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      color: #fff8df;
+      background: #31212a;
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .hex-grid {
+      position: absolute;
+      left: 42px;
+      top: 98px;
+      width: 720px;
+      height: 500px;
+    }
+
+    .hex {
+      position: absolute;
+      width: 82px;
+      height: 72px;
+      clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+      background: #b9a06d;
+      border: 2px solid rgba(43, 29, 24, 0.3);
+      display: grid;
+      place-items: center;
+      color: rgba(33,25,23,0.46);
+      font-size: 12px;
+    }
+
+    .hex.forest {
+      background: #5e7b55;
+    }
+
+    .hex.city {
+      background: #86715d;
+    }
+
+    .hex.riverhex {
+      background: #4b87a1;
+    }
+
+    .unit {
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      color: #fff8df;
+      background: #253f5f;
+      border: 2px solid #f1d58a;
+      border-radius: 50%;
+      font-weight: 700;
+      box-shadow: 0 6px 0 rgba(35,22,20,0.36);
+    }
+
+    .unit.red {
+      background: #8e4138;
+    }
+
+    .side-dock {
+      position: absolute;
+      right: 54px;
+      top: 96px;
+      width: 360px;
+      height: 498px;
+      padding: 16px;
+      background: var(--paper);
+      border: 2px solid var(--gold);
+      box-shadow: 0 14px 38px rgba(0,0,0,0.32);
+    }
+
+    .unit-card {
+      padding: 12px;
+      margin-bottom: 12px;
+      background: rgba(255,255,255,0.38);
+      border: 1px solid rgba(154,112,60,0.55);
+    }
+
+    .unit-card b {
+      font-size: 18px;
+    }
+
+    .unit-card p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      line-height: 1.45;
+      font-size: 14px;
+    }
+
+    .footer-buttons {
+      position: absolute;
+      left: 54px;
+      right: 54px;
+      bottom: 24px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+  </style>
+</head>
+<body>
+  <main class="mockup-stack">
+    <section class="screen" id="title" data-shot="01_title">
+      <div class="wall-trim"></div>
+      <div class="floor"></div>
+      <div class="portrait-zone" style="left:618px; top:88px; width:330px; height:512px;">
+        <div class="window-card"></div>
+        <div class="portrait" style="left:56px; transform:scale(1.04); transform-origin:bottom center;">
+          <div class="hair"></div>
+          <div class="head"></div>
+          <div class="face-line"></div>
+          <div class="body"></div>
+          <div class="sash"></div>
+        </div>
+      </div>
+      <div class="title-mark">
+        <h1>明路</h1>
+        <p>军校、同窗、立场与战争共同推进。主界面保留养成游戏的亲密感，但按钮和信息按“今日能做什么”来分区。</p>
+      </div>
+      <div class="main-menu">
+        <div class="btn green">新的传奇</div>
+        <div class="btn blue">继续征途</div>
+        <div class="btn">剧情回顾</div>
+        <div class="btn ghost">设置</div>
+        <div class="btn red">退出</div>
+      </div>
+      <div class="version-note">UI Draft 01 / 参考养成模拟经典布局，未使用原作素材</div>
+    </section>
+
+    <section class="screen" id="create" data-shot="02_create_character">
+      <div class="topbar">
+        <div class="top-title"><strong>创建角色</strong><span>选择性格与三项开局特性</span></div>
+        <div class="top-meta"><span class="top-pill">16 岁</span><span class="top-pill">新京军事学院</span></div>
+      </div>
+      <div class="portrait-zone" style="left:58px; top:96px; width:350px; height:526px;">
+        <div class="window-card"></div>
+        <div class="portrait" style="left:66px;">
+          <div class="hair"></div>
+          <div class="head"></div>
+          <div class="face-line"></div>
+          <div class="body"></div>
+          <div class="sash"></div>
+        </div>
+      </div>
+      <div class="panel" style="left:438px; top:96px; width:790px; height:526px;">
+        <div class="panel-title"><span>开局设定</span><span>已选 2/3</span></div>
+        <div style="padding:18px;">
+          <div class="section-label">性格决定对话倾向，特性提供战斗、社交、养成增益。</div>
+          <div class="tabs">
+            <div class="tab active">ENTJ 指挥者</div>
+            <div class="tab">INFJ 顾问</div>
+            <div class="tab">ESTP 行动派</div>
+            <div class="tab">更多</div>
+          </div>
+          <div class="trait-list">
+            <div class="trait-card selected"><b>将门耳濡</b><span>战斗：指挥检定 +1；战略：军令冷却降低。</span></div>
+            <div class="trait-card selected"><b>藏书成癖</b><span>养成：读报与自习额外经验；剧情解锁提示。</span></div>
+            <div class="trait-card"><b>边地骑术</b><span>战棋：骑兵移动 +1；体力消耗略增。</span></div>
+            <div class="trait-card"><b>善辩</b><span>社交：说服选项成功率提升；部分人物好感收益增加。</span></div>
+            <div class="trait-card"><b>沉稳</b><span>心态：低落时学习下限提高；战斗受挫降士气减少。</span></div>
+            <div class="trait-card"><b>急先锋</b><span>战斗：首回合伤害提高；失败时压力提升。</span></div>
+          </div>
+          <div class="footer-buttons" style="left:18px; right:18px; bottom:18px;">
+            <div class="btn ghost">返回</div>
+            <div class="btn ghost">重置</div>
+            <div class="btn green">确认入学</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="academy" data-shot="03_academy_home">
+      <div class="topbar">
+        <div class="top-title"><strong>学院养成</strong><span>1760 年 第 12 周 / 春</span></div>
+        <div class="top-meta"><span class="top-pill">心态：平稳</span><span class="top-pill">体力 74</span><span class="top-pill">军衔 士</span></div>
+      </div>
+      <div class="panel" style="left:40px; top:96px; width:356px; height:496px;">
+        <div class="panel-title"><span>本周状态</span><span>3 月</span></div>
+        <div style="padding:14px;">
+          <div class="status-grid">
+            <div class="stat"><b>步兵</b><span>Lv.2</span><div class="bar"><i style="width:64%"></i></div></div>
+            <div class="stat"><b>骑兵</b><span>Lv.1</span><div class="bar blue"><i style="width:46%"></i></div></div>
+            <div class="stat"><b>炮兵</b><span>Lv.1</span><div class="bar"><i style="width:38%"></i></div></div>
+            <div class="stat"><b>后勤</b><span>Lv.2</span><div class="bar green"><i style="width:71%"></i></div></div>
+          </div>
+          <div class="calendar">
+            <span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span>
+            <span>8</span><span>9</span><span class="active">10</span><span>11</span><span>12</span><span>13</span><span>14</span>
+          </div>
+          <div class="section-label" style="margin-top:14px;">同窗关系</div>
+          <div class="relationship-grid">
+            <div class="rel-card"><b>赵伯衡</b><span>熟人 / 将门</span></div>
+            <div class="rel-card"><b>林素心</b><span>友好 / 图书馆</span></div>
+            <div class="rel-card"><b>伊尔德</b><span>熟人 / 边地</span></div>
+            <div class="rel-card"><b>李婉清</b><span>陌生 / 南方</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="portrait-zone">
+        <div class="window-card"></div>
+        <div class="portrait">
+          <div class="hair"></div>
+          <div class="head"></div>
+          <div class="face-line"></div>
+          <div class="body"></div>
+          <div class="sash"></div>
+        </div>
+      </div>
+      <div class="panel" style="right:40px; top:96px; width:386px; height:496px;">
+        <div class="panel-title"><span>行动</span><span>今日可安排</span></div>
+        <div style="padding:16px;">
+          <div class="section-label">课程</div>
+          <div class="academy-actions">
+            <div class="btn">步兵课</div>
+            <div class="btn">骑兵课</div>
+            <div class="btn">炮兵课</div>
+            <div class="btn">后勤课</div>
+            <div class="btn">管理课</div>
+            <div class="btn">训练课</div>
+          </div>
+          <div class="section-label" style="margin-top:16px;">周末</div>
+          <div class="academy-actions">
+            <div class="btn green">休息</div>
+            <div class="btn green">自习</div>
+            <div class="btn blue">邀约</div>
+            <div class="btn blue">活动</div>
+          </div>
+          <div class="minor-actions">
+            <div class="btn small ghost">报纸</div>
+            <div class="btn small ghost">立场</div>
+            <div class="btn small ghost">档案</div>
+            <div class="btn small ghost">战略</div>
+          </div>
+        </div>
+      </div>
+      <div class="dialogue">最近消息：林素心借来一本边防地理，建议你在周末前读完。下一次校考还有 2 周。</div>
+    </section>
+
+    <section class="screen" id="event" data-shot="04_event_choice_popup">
+      <div class="topbar">
+        <div class="top-title"><strong>学院养成</strong><span>事件弹窗必须由玩家选择</span></div>
+        <div class="top-meta"><span class="top-pill">周末</span><span class="top-pill">体力 61</span></div>
+      </div>
+      <div class="portrait-zone">
+        <div class="window-card"></div>
+        <div class="portrait">
+          <div class="hair"></div>
+          <div class="head"></div>
+          <div class="face-line"></div>
+          <div class="body"></div>
+          <div class="sash"></div>
+        </div>
+      </div>
+      <div class="modal-shade"></div>
+      <div class="modal">
+        <div class="modal-header"><h2>课后争论</h2><div class="close">×</div></div>
+        <div class="modal-body">
+          <p style="margin:0; font-size:18px; line-height:1.65;">炮兵教室里，几名同窗正在争论边军是否应该获得更大的自治权。教授没有打断，只把目光投向你。</p>
+          <div class="choice-stack">
+            <div class="choice"><div><b>主张军令统一</b><span>治国轴偏向集中；赵伯衡好感上升。</span></div><div class="btn small">选择</div></div>
+            <div class="choice"><div><b>支持边地弹性</b><span>地域轴偏向自治；伊尔德好感上升。</span></div><div class="btn small">选择</div></div>
+            <div class="choice"><div><b>转向实际补给问题</b><span>后勤经验增加；争论热度下降。</span></div><div class="btn small">选择</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="relationship" data-shot="05_relationship_personality_popup">
+      <div class="topbar">
+        <div class="top-title"><strong>角色面板</strong><span>属性、心态、特质、性格集中在一个按钮弹窗</span></div>
+        <div class="top-meta"><span class="top-pill">ENTJ</span><span class="top-pill">将门耳濡</span></div>
+      </div>
+      <div class="portrait-zone" style="left:74px; top:112px; width:330px; height:480px;">
+        <div class="window-card"></div>
+        <div class="portrait" style="left:58px; bottom:-6px;">
+          <div class="hair"></div>
+          <div class="head"></div>
+          <div class="face-line"></div>
+          <div class="body"></div>
+          <div class="sash"></div>
+        </div>
+      </div>
+      <div class="modal-shade"></div>
+      <div class="modal" style="width:810px;">
+        <div class="modal-header"><h2>夏邑 / 角色档案</h2><div class="close">×</div></div>
+        <div class="modal-body">
+          <div class="tabs">
+            <div class="tab active">属性</div>
+            <div class="tab">心态</div>
+            <div class="tab">性格</div>
+            <div class="tab">特质</div>
+            <div class="tab">关系</div>
+          </div>
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:14px;">
+            <div class="panel inner" style="position:relative; left:auto; top:auto; width:auto; height:262px; padding:14px;">
+              <div class="section-label">六项能力</div>
+              <div class="stat"><b>步兵 Lv.2</b><span>距离升级 36%</span><div class="bar"><i style="width:64%"></i></div></div>
+              <div class="stat" style="margin-top:8px;"><b>后勤 Lv.2</b><span>距离升级 29%</span><div class="bar green"><i style="width:71%"></i></div></div>
+              <div class="stat" style="margin-top:8px;"><b>管理 Lv.1</b><span>距离升级 58%</span><div class="bar blue"><i style="width:42%"></i></div></div>
+            </div>
+            <div class="panel inner" style="position:relative; left:auto; top:auto; width:auto; height:262px; padding:14px;">
+              <div class="section-label">性格与特质增益</div>
+              <div class="trait-card selected"><b>ENTJ 指挥者</b><span>战斗：部队士气恢复 +1；社交：强势说服成功率提高。</span></div>
+              <div class="trait-card" style="margin-top:10px;"><b>藏书成癖</b><span>养成：自习经验 +15%；报纸可提示立场变化。</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="newspaper" data-shot="06_newspaper_stance">
+      <div class="topbar">
+        <div class="top-title"><strong>报纸与立场</strong><span>读报进入弹窗，选择影响政治轴</span></div>
+        <div class="top-meta"><span class="top-pill">新京公报</span><span class="top-pill">第 12 周</span></div>
+      </div>
+      <div class="panel" style="left:66px; top:106px; width:700px; height:488px;">
+        <div class="panel-title"><span>今日报纸</span><span>可读 2 篇</span></div>
+        <div style="padding:18px;">
+          <div class="newspaper">
+            <h3>边防军费再议</h3>
+            <p>议会席间对北境军费产生分歧。主张统一调拨者认为边军须服从全局；地方代表则强调粮道、马政与居民负担。学院教授要求学生在下周提交短评，说明自己的判断。</p>
+          </div>
+          <div class="choice-stack" style="grid-template-columns:1fr 1fr; margin-top:14px;">
+            <div class="choice"><div><b>写统一论短评</b><span>统一倾向 +5</span></div><div class="btn small">选择</div></div>
+            <div class="choice"><div><b>写地方论短评</b><span>自治倾向 +5</span></div><div class="btn small">选择</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="panel" style="right:66px; top:106px; width:390px; height:488px;">
+        <div class="panel-title"><span>政治立场</span><span>信念：坚定</span></div>
+        <div style="padding:18px;">
+          <div class="ideology-row"><span>皇汉</span><div class="axis" style="--pos:38%"></div><span>共治</span></div>
+          <div class="ideology-row"><span>君主</span><div class="axis" style="--pos:44%"></div><span>民主</span></div>
+          <div class="ideology-row"><span>独裁</span><div class="axis" style="--pos:31%"></div><span>共和</span></div>
+          <div class="ideology-row"><span>统一</span><div class="axis" style="--pos:28%"></div><span>自治</span></div>
+          <div class="panel inner" style="position:relative; left:auto; top:auto; width:auto; height:176px; padding:14px; margin-top:22px;">
+            <div class="section-label">界面原则</div>
+            <p style="margin:0; font-size:15px; line-height:1.55;">主界面不展示完整表格。复杂数据只在玩家点开时出现，并把每次变化写成一句清楚的反馈。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="strategy" data-shot="07_strategy_map">
+      <div class="topbar">
+        <div class="top-title"><strong>战略地图</strong><span>军令、战区、剧情入口保持小按钮分组</span></div>
+        <div class="top-meta"><span class="top-pill">军衔 少校</span><span class="top-pill">军令 2/3</span></div>
+      </div>
+      <div class="map-panel">
+        <div class="river"></div>
+        <div class="province" style="left:84px; top:86px;">新京</div>
+        <div class="province neutral" style="left:290px; top:150px;">河湾</div>
+        <div class="province enemy" style="left:506px; top:112px;">北垒</div>
+        <div class="province" style="left:206px; top:310px;">粮道</div>
+        <div class="province enemy" style="left:468px; top:326px;">关隘</div>
+        <div class="army-token" style="left:174px; top:154px;">一</div>
+        <div class="army-token" style="left:382px; top:236px;">二</div>
+        <div class="army-token" style="left:560px; top:240px; background:#8e4138;">敌</div>
+      </div>
+      <div class="side-dock">
+        <div class="panel-title" style="margin:-16px -16px 14px;"><span>军令简报</span><span>本回合</span></div>
+        <div class="unit-card"><b>当前目标</b><p>保护粮道并侦察北垒。若主动进攻，进入六边形战棋。</p></div>
+        <div class="unit-card"><b>选中部队：第一营</b><p>士气 8 / 体力 71 / 阵型：横队。优势：步兵训练高。</p></div>
+        <div class="unit-card"><b>地形情报</b><p>河湾移动消耗高，城市提供防御。骑兵在山地受限。</p></div>
+        <div class="minor-actions">
+          <div class="btn small green">出击</div>
+          <div class="btn small blue">调动</div>
+          <div class="btn small ghost">剧情</div>
+          <div class="btn small ghost">保存</div>
+        </div>
+      </div>
+      <div class="footer-buttons">
+        <div class="btn ghost">学院回顾</div>
+        <div class="btn ghost">军令</div>
+        <div class="btn green">结束回合</div>
+      </div>
+    </section>
+
+    <section class="screen" id="battle" data-shot="08_battle_confirm">
+      <div class="topbar">
+        <div class="top-title"><strong>战棋战斗</strong><span>点击攻击后先弹确认，不直接结算</span></div>
+        <div class="top-meta"><span class="top-pill">第 3 回合</span><span class="top-pill">蓝方行动</span></div>
+      </div>
+      <div class="hex-grid">
+        <div class="hex forest" style="left:0; top:0;">林</div>
+        <div class="hex" style="left:68px; top:38px;"></div>
+        <div class="hex city" style="left:136px; top:0;">城</div>
+        <div class="hex" style="left:204px; top:38px;"></div>
+        <div class="hex riverhex" style="left:272px; top:0;">河</div>
+        <div class="hex" style="left:340px; top:38px;"></div>
+        <div class="hex forest" style="left:408px; top:0;">林</div>
+        <div class="hex" style="left:68px; top:114px;"></div>
+        <div class="hex" style="left:136px; top:76px;"></div>
+        <div class="hex city" style="left:204px; top:114px;">据</div>
+        <div class="hex" style="left:272px; top:76px;"></div>
+        <div class="hex riverhex" style="left:340px; top:114px;">河</div>
+        <div class="hex" style="left:408px; top:76px;"></div>
+        <div class="hex forest" style="left:476px; top:114px;">林</div>
+        <div class="hex" style="left:136px; top:190px;"></div>
+        <div class="hex" style="left:204px; top:152px;"></div>
+        <div class="hex" style="left:272px; top:190px;"></div>
+        <div class="hex city" style="left:340px; top:152px;">城</div>
+        <div class="hex" style="left:408px; top:190px;"></div>
+        <div class="hex" style="left:476px; top:152px;"></div>
+        <div class="unit" style="left:222px; top:162px;">步</div>
+        <div class="unit" style="left:152px; top:240px;">骑</div>
+        <div class="unit red" style="left:356px; top:162px;">敌</div>
+        <div class="unit red" style="left:496px; top:242px;">弓</div>
+      </div>
+      <div class="side-dock">
+        <div class="panel-title" style="margin:-16px -16px 14px;"><span>单位状态</span><span>蓝方</span></div>
+        <div class="unit-card"><b>第一营 步兵</b><p>生命 82 / 士气 高 / 阵型 横队 / 地形 城市防御。</p><div class="bar green"><i style="width:82%"></i></div></div>
+        <div class="unit-card"><b>敌军 弓兵</b><p>生命 46 / 士气 动摇 / 弱点：近战压制。</p><div class="bar"><i style="width:46%"></i></div></div>
+        <div class="unit-card"><b>结算预览</b><p>伤害由 OVR、阵型、士气、体力、地形、防守方状态与随机种子共同决定。</p></div>
+      </div>
+      <div class="modal-shade"></div>
+      <div class="modal" style="width:560px; min-height:308px;">
+        <div class="modal-header"><h2>确认攻击</h2><div class="close">×</div></div>
+        <div class="modal-body">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+            <div class="unit-card"><b>第一营 步兵</b><p>预计造成 18-26 伤害<br>命中后士气 +1</p></div>
+            <div class="unit-card"><b>北垒弓兵</b><p>预计反击 4-8 伤害<br>城市防御 -15%</p></div>
+          </div>
+          <div class="choice-stack" style="grid-template-columns:1fr 1fr; margin-top:10px;">
+            <div class="btn green">确认攻击</div>
+            <div class="btn ghost">取消</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

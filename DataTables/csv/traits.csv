@@ -1,0 +1,15 @@
+id,name,description,battleAttack,battleHp,battleMove,socialBonus,cultivationPercent,staminaSave
+trait_cautious,审慎,战斗：兵力 +8；养成：体力消耗 -1。,0,8,0,0,0,1
+trait_kind,仁厚,社交：好感收益 +3。,0,0,0,3,0,0
+trait_decisive,果决,战斗：攻击 +2。,2,0,0,0,0,0
+trait_sensitive,善感,社交：好感 +1；养成进度 +8%。,0,0,0,1,8,0
+trait_stoic,隐忍,战斗：兵力 +12；体力消耗 -1。,0,12,0,0,0,1
+trait_radical,激进,战斗：攻击 +3；养成进度 -5%。,3,0,0,0,-5,0
+field_commander,阵前直觉,战斗：全军攻击 +3。,3,0,0,0,0,0
+iron_body,坚韧体魄,战斗：兵力 +15；养成：体力消耗 -2。,0,15,0,0,0,2
+wild_runner,野外行军,战斗：移动 +1。,0,0,1,0,0,0
+honor_student,军校优等生,养成：课程进度 +20%。,0,0,0,0,20,0
+methodical,勤勉自律,养成：课程进度 +12%，体力消耗 -1。,0,0,0,0,12,1
+silver_tongue,辩才无碍,社交：好感收益 +3。,0,0,0,3,0,0
+noble_manners,名门礼仪,社交：好感收益 +2；养成 +8%。,0,0,0,2,8,0
+balanced,文武兼修,战斗：攻击 +1；社交 +1；养成 +8%。,1,0,0,1,8,0

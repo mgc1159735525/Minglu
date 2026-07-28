@@ -1,0 +1,7 @@
+id,name,target,description,expGain
+infantry,步兵,infantryExp,近战、长枪、重步基础。,50
+cavalry,骑兵,cavalryExp,骑兵冲击和战场机动。,50
+artillery,炮兵,artilleryExp,火枪、弓兵和重器输出。,50
+management,管理,managementExp,政务、国库和任务效率。,50
+logistics,后勤,logisticsExp,补给、行军和消耗控制。,50
+training,训练,trainingExp,演训、情报和综合准备。,50

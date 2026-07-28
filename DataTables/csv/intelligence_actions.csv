@@ -1,0 +1,5 @@
+id,name,type,description,cost,successRate,risk,intelGain,spyNetworkGain,enemyTroopDamage,enemySupplyDamage,targetFaction
+scout,刺探军情,侦察,派人查学院与前线传闻，获得密档线索并确认敌军兵力。,8,78,10,10,1,0,0,
+sabotage_supply,破坏补给,破坏,切断敌方补给记录，顺手追查旧港军需流向。,14,62,22,5,1,4,10,
+rumor,散布谣言,扰乱,放出真假参半的消息，试探哪一方急着掩盖旧档。,10,70,18,6,1,0,4,
+counter_spy,反间清查,反间,清理身边眼线，稳固情报网，避免调查过早暴露。,6,84,6,4,2,0,0,

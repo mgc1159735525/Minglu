@@ -1,0 +1,5 @@
+id,label,negativeLabel,positiveLabel
+nation,民族,皇汉,共治
+class,阶级,君主,民主
+governance,治国,独裁,共和
+region,地域,统一,分裂

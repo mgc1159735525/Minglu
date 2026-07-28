@@ -1,0 +1,639 @@
+key,value,note
+game.title,明路,标题界面主标题
+title.subtitle,1760，新京军事学院。你的道路，将通向王朝、共和、边疆，或未曾设想的远方。,标题副标题
+top.hint,鼠标/触摸点击优先，键盘仅作备用,顶部提示
+button.new_game,新的传奇,标题按钮
+button.strategy,进入战略地图,标题按钮
+button.continue,继续征途,标题按钮
+button.credits,开发团队,标题按钮
+button.exit,退出,标题按钮
+button.back_title,返回标题,通用按钮
+character_create.title,创建角色,创角标题
+character_create.description,选择你的开局特性。它们会在战斗、社交和养成中持续生效。,创角说明
+character_create.message,选择 1-3 个特性，确认后进入新京军事学院。,创角默认提示
+academy.title,新京军事学院,学院标题
+credits.body,"《明路》Unity 原型
+设计来源：明路第一版文档
+实现：运行时 UI / 学院养成 / 战略地图 / 六边形战棋
+素材：项目内可配置美术资源。",制作组文案
+story.missing,未找到剧情事件：,剧情缺失提示
+battle.message.start,选择蓝方军团开始行动。拖动地图可以调整视野。,战斗初始提示
+log.game_start,1760年，你抵达新京军事学院。,界面文案
+button.close_short,X,界面文案
+story.choice_label,选择：,界面文案
+hud.week,周,界面文案
+hud.mood,心情,界面文案
+hud.stamina,体力,界面文案
+hud.merit,战功,界面文案
+hud.treasury,国库,界面文案
+button.settings_short,设置,界面文案
+character_create.step_title,建立角色  {0}/6,模板文案
+character_create.section_profile,身份,界面文案
+character_create.section_summary,确认,界面文案
+button.details,查看完整明细,界面文案
+button.random_all,全部随机,界面文案
+button.prev_step,上一步,界面文案
+button.confirm_school,确认入学,界面文案
+button.next_step,下一步,界面文案
+character_create.profile_card,"{0}
+新京军事学院预备生
+特性会影响战斗、社交与养成。",模板文案
+common.none,无,界面文案
+character_create.step_profile,命名与定容,界面文案
+character_create.step_origin,家世出身,界面文案
+character_create.step_memory,少年往事,界面文案
+character_create.step_talent,天赋觉醒,界面文案
+character_create.step_subject,学科倾向,界面文案
+character_create.step_confirm,总览确认,界面文案
+character_create.profile_hint,姓名可自由填写；不填则使用默认名。字号为可选项，会出现在正式场合。,界面文案
+character_create.name_label,姓名,界面文案
+character_create.name_placeholder,默认：{0},模板文案
+button.random_name,随机姓名,界面文案
+character_create.courtesy_label,字号,界面文案
+character_create.courtesy_placeholder,可不填,界面文案
+character_create.profile_plain_note,外貌自定义暂不开放。当前立绘只代表主角默认形象，避免出现选了外貌但画面不变化的假功能。,界面文案
+character_create.origin_hint,选择一个家世。出身会影响初始学科、派系关系、立场和可选天赋池。,界面文案
+character_create.origin_selected,已选择出身：{0}。,模板文案
+character_create.origin_none,尚未选择出身。,界面文案
+button.origin_detail,查看出身影响,界面文案
+character_create.memory_hint,三段往事会形成你的性格特质，并轻微影响初始立场。,界面文案
+character_create.talent_hint,从当前出身的天赋池中选择 2 个初始天赋。天赋会在战斗、社交和养成中长期生效。,界面文案
+character_create.talent_default_category,天赋,界面文案
+character_create.subject_hint,选择 2 个学科倾向。每个倾向会获得一段初始进度，方便你在入学后更快升级。,界面文案
+character_create.confirm_hint,确认后进入序章。姓名、出身、往事与初始天赋会写入存档。,界面文案
+character_create.edit_profile,改姓名,界面文案
+character_create.edit_origin,改出身,界面文案
+character_create.edit_memory,改往事,界面文案
+character_create.edit_talent,改天赋,界面文案
+character_create.edit_subject,改学科,界面文案
+character_create.memory_selected,{0}已记录。,模板文案
+character_create.talent_removed,已移除天赋。,界面文案
+character_create.talent_max,初始天赋最多选择 2 个。,界面文案
+character_create.talent_count,已选择 {0}/2 个天赋。,模板文案
+character_create.subject_removed,已移除学科倾向。,界面文案
+character_create.subject_max,学科倾向最多选择 2 个。,界面文案
+character_create.subject_count,已选择 {0}/2 个学科倾向。,模板文案
+character_create.message_continue,继续完成下一项登记。,界面文案
+character_create.need_origin,请选择一个家世出身。,界面文案
+character_create.need_memory,请完成三段少年往事。,界面文案
+character_create.need_talent,请选择 2 个初始天赋。,界面文案
+character_create.need_subject,请选择 2 个学科倾向。,界面文案
+character_create.random_name_done,姓名已随机生成。,界面文案
+character_create.random_all_done,已随机生成完整创建方案。,界面文案
+character_create.detail_title,创建明细,界面文案
+log.character_create,入学登记：选择特性 - {0}。,模板文案
+common.unknown,未知,界面文案
+character_create.summary_name,姓名：{0},模板文案
+character_create.summary_courtesy,字号：{0},模板文案
+character_create.summary_origin,出身：{0},模板文案
+common.none_selected,未选择,界面文案
+character_create.summary_personality,性格：{0},模板文案
+character_create.summary_talents,天赋：{0},模板文案
+character_create.summary_subjects,学科：{0},模板文案
+character_create.summary_effect_title,开局影响,界面文案
+character_create.effect_academy,学科：{0},模板文案
+character_create.effect_stance,派系：{0},模板文案
+character_create.effect_axis,立场轴：{0},模板文案
+character_create.effect_clue,密档线索：{0},模板文案
+character_create.effect_subjects,学科倾向：{0},模板文案
+common.list_separator,、,界面文案
+character_create.effect_memory,往事性格：{0},模板文案
+attribute_gain.infantry,步兵+{0},模板文案
+attribute_gain.cavalry,骑兵+{0},模板文案
+attribute_gain.artillery,炮兵+{0},模板文案
+attribute_gain.management,管理+{0},模板文案
+attribute_gain.logistics,后勤+{0},模板文案
+attribute_gain.training,训练+{0},模板文案
+character_create.bonus_none,加成：未选择,界面文案
+character_create.bonus_attack,攻击 +{0},模板文案
+character_create.bonus_hp,兵力 +{0},模板文案
+character_create.bonus_move,移动 +{0},模板文案
+character_create.bonus_battle,战斗：{0},模板文案
+character_create.bonus_social,社交：好感 +{0},模板文案
+character_create.bonus_cultivate,进度 +{0}%,模板文案
+character_create.bonus_stamina,体力消耗 -{0},模板文案
+character_create.bonus_academy,养成：{0},模板文案
+character_create.bonus_no_numeric,加成：暂无数值变化,界面文案
+character_create.bonus_header,加成：,界面文案
+log.skill_unlock,解锁被动技能：{0}。,模板文案
+skill.body,"被动槽位：{0}/{1}
+已装备：{2}
+
+已解锁：
+{3}",模板文案
+skill.none,暂无。通过课程、战斗、情报和战功解锁。,界面文案
+skill.equip,装备 {0},模板文案
+skill.unequip,卸下 {0},模板文案
+skill.title,被动技能,界面文案
+log.skill_equip,已装备被动：{0}。,模板文案
+log.quest_unlock,新任务：{0}。,模板文案
+log.quest_complete,任务完成：{0}。,模板文案
+quest.no_active,暂无进行中的任务。,界面文案
+quest.line,"· [{0}] {1}  {2}/{3}
+  {4}",模板文案
+quest.body,"任务追踪
+{0}
+
+已完成：{1}",模板文案
+quest.claim,领取 {0},模板文案
+quest.title,任务日志,界面文案
+log.achievement_unlock,成就解锁：{0}。,模板文案
+achievement.none,暂无成就。,界面文案
+achievement.body,"成就点：{0}
+已解锁：{1}/{2}
+当前称号：{3}
+
+成就：
+{4}
+
+可用称号：{5}",模板文案
+title.equip,装备称号 {0},模板文案
+achievement.title,成就与称号,界面文案
+intel.body,"情报值：{0}  间谍网络：{1}
+训练等级会提高行动成功率；失败会损失心情或国库。
+
+敌情摘要：
+{2}",模板文案
+intel.no_enemy,暂无敌情。,界面文案
+intel.action_button,{0} - 花费{1},模板文案
+intel.title,情报与间谍,界面文案
+intel.army_unknown,{0}方向有不明敌影,模板文案
+intel.army_rough,{0}：{1}，兵力约略可见,模板文案
+intel.army_clear,{0}：{1}  兵力{2}  攻击{3},模板文案
+intel.army_full,{0}：{1}  兵力{2}/{3}  攻击{4}  补给{5}/{6}  AI:{7},模板文案
+log.intel_no_money,情报行动「{0}」资金不足。,模板文案
+log.intel_success,情报行动「{0}」成功，情报 +{1}。,模板文案
+log.intel_fail,情报行动「{0}」失败，心情 -{1}。,模板文案
+save.body,"多槽位存档
+自动存档：每周推进、战斗开始、战斗结算时写入。
+当前周目：{0}
+成就点：{1}
+已解锁结局：{2}
+
+选择槽位进行保存或读取。",模板文案
+save.manual_save,保存到手动槽 {0},模板文案
+save.manual_load,读取手动槽 {0},模板文案
+save.new_game_plus,开启新周目,界面文案
+save.title,存档与多周目,界面文案
+system.body,"系统
+当前界面：{0}
+自动存档：每周、剧情、战斗关键节点
+手动槽：3 个
+
+存档读档、标题界面和成就称号都收在这里。",模板文案
+button.save_system,存档,界面文案
+button.achievements,成就,界面文案
+button.battle_lab,战棋工坊,界面文案
+button.story_menu,剧情目录,界面文案
+system.title,设置,界面文案
+mode.strategy,战略地图,界面文案
+mode.battle,战斗,界面文案
+mode.battle_lab,战棋工坊,界面文案
+mode.academy,学院,界面文案
+formation.army_line,{0}  Lv.{1}  兵力{2}/{3}  攻击{4}  补给{5},模板文案
+formation.no_army,暂无可编队军团。,界面文案
+formation.unit_line,{0}｜{1}｜{2},模板文案
+formation.body,"直属军团
+{0}
+
+常见单位
+{1}
+
+军团数值来自战略军团表，棋子序列帧来自常见单位表。",模板文案
+button.strategy_short,战略,界面文案
+button.mission,军令,界面文案
+formation.title,编队,界面文案
+character_status.body,"{0}
+
+属性等级
+{1}
+
+心态与性格
+心情：{2}（{3}）  体力：{4}
+特性：{5}
+
+立场
+{6}",模板文案
+button.attribute_guide,属性说明,界面文案
+button.character_archive,角色档案,界面文案
+character_status.title,角色状态,界面文案
+attribute.infantry,步兵,界面文案
+attribute.cavalry,骑兵,界面文案
+attribute.artillery,炮兵,界面文案
+attribute.management,管理,界面文案
+attribute.logistics,后勤,界面文案
+attribute.training,训练,界面文案
+diplomacy.no_stance,暂无派系接触。,界面文案
+diplomacy.stance_line,{0}  倾向{1},模板文案
+diplomacy.body,"派系倾向
+{0}
+
+警觉
+{1}
+
+意识形态
+{2}",模板文案
+ideology.option_politics,参加时事讲座,界面文案
+button.intelligence,情报,界面文案
+button.newspaper,报纸,界面文案
+diplomacy.title,外交与立场,界面文案
+diplomacy.alert_line,{0}  警觉{1},模板文案
+diplomacy.no_alert,暂无明显警觉。,界面文案
+dossier.summary_full,当前目标：终盘整备完成，等待关键战棋结果。,模板文案
+dossier.summary_mid,当前目标：战棋与情报已经接上，准备下一次出阵。,模板文案
+dossier.summary_low,当前目标：线索已成形，继续补足主线触发条件。,模板文案
+dossier.summary_none,当前目标：先看任务板，补课程、好感、情报或战棋条件。,模板文案
+supply.empty,断补,界面文案
+supply.low,缺补,界面文案
+supply.good,充足,界面文案
+supply.status,{0}/{1}（{2}）,模板文案
+newspaper.title,报纸刊物,界面文案
+newspaper.body,按日期解锁的短文章。不同刊物有自己的立场，读完不会直接给出标准答案。,界面文案
+newspaper.empty,暂无可读刊物,界面文案
+newspaper.article_body,"{0}
+
+立场倾向：{1}
+
+{2}",模板文案
+newspaper.option_clip,记入摘录,界面文案
+log.newspaper_clip,摘录：{0}。,模板文案
+newspaper.option_continue,继续读报,界面文案
+campus_activity.title,周末活动,界面文案
+campus_activity.body,周末能听到课堂之外的声音。靶场、茶馆、讲座、救济棚，各有各的门。,界面文案
+log.activity_training,{0}：训练修习进度 +{1}。,模板文案
+log.activity_social,{0}：朋友圈好感 +{1}。,模板文案
+ideology.title,立场偏向,界面文案
+ideology.strength_hint,绝对值代表信念强度：{0}。,模板文案
+relationship.locked_note,了解尚浅。继续邀约或共同活动可解锁更多词条。,界面文案
+relationship.battle_support_high,战场：作为友军时会优先支援主角。,界面文案
+relationship.battle_support_mid,战场：作为友军时更愿意靠近主角。,界面文案
+relationship.battle_enemy,战场：作为敌军时更可能追击主角。,界面文案
+relationship.battle_none,战场：暂无特殊倾向。,界面文案
+relationship.detail_body,"朋友圈：{0}
+立场：{1}
+好感：{2}（{3}）
+
+{4}
+
+{5}",模板文案
+relationship.no_circle,未加入,界面文案
+relationship.option_invite,邀约,界面文案
+log.invite_one,你邀约了{0}，好感 +{1}。,模板文案
+academy.section_schedule,本周安排,界面文案
+button.rest,休息,界面文案
+button.study,自习,界面文案
+button.invite,邀约同窗,界面文案
+button.campus_activity,周末活动,界面文案
+label.log,日志：,界面文案
+academy.section_events,事件入口,界面文案
+button.ideology,立场,界面文案
+button.main_story,主线,界面文案
+goal.current_title,当前目标,界面文案
+goal.no_active,暂无明确目标。先翻阅剧情，或用一周安排补齐东渡密档线索。,界面文案
+goal.quest_progress,{0}：{1}  {2}/{3},模板文案
+quest.type_default,任务,界面文案
+goal.recommend_rest,推荐：体力偏低，先休息。休息也可能整理出旧线索。,界面文案
+goal.recommend_story,推荐：继续剧情；若线索不足，就先安排课程、邀约或情报行动。,界面文案
+goal.recommend_strategy,推荐：进入战略地图，把学院训练转化为战场结果。,界面文案
+goal.recommend_relationship,推荐：邀约同窗。关系越近，越容易问到派系背后的真话。,界面文案
+goal.recommend_ideology,推荐：参加时事讲座。立场变化会影响你能听见哪类消息。,界面文案
+goal.recommend_intel,推荐：打开情报入口，先用低风险侦察补齐旧港线索。,界面文案
+goal.recommend_course,推荐：安排「{0}」，训练后可能听见相关见闻。,模板文案
+goal.recommend_general,推荐：完成一周安排。课堂、同窗和休整都可能留下可追的线头。,界面文案
+academy.summary,"姓名：{0}  年龄：{1}  {2}
+{3}  称号：{4}
+心情：{5}({6})  体力：{7}  战功：{8}
+军衔：{9}  国库：{10}
+特性：{11}",模板文案
+button.map_tab,地图,界面文案
+button.formation,编队,界面文案
+button.character,角色,界面文案
+button.skills,技能,界面文案
+button.quests,任务,界面文案
+button.diplomacy,外交,界面文案
+button.settings,设置,界面文案
+label.relationships,同窗关系,界面文案
+relationship.button_label,"{0}  {1}
+{2}  好感 {3}",模板文案
+relationship.more_hint,更多人物可在角色档案中查看。,界面文案
+attribute_guide.body,"步兵：提升步兵、长枪、重步等近战单位的伤害稳定性。
+骑兵：提升骑兵、重骑的冲击伤害和机动价值。
+炮兵：提升火枪、弓兵、火炮等远程单位的输出。
+管理：影响国库、任务处理和学院评价。
+后勤：影响补给恢复、行军续航和缺补给惩罚。
+训练：影响情报行动成功率与综合战斗准备。",界面文案
+attribute_guide.title,属性影响说明,界面文案
+calendar.exam_week,校考周,界面文案
+calendar.holiday,假期,界面文案
+calendar.normal,校历,界面文案
+relationship.level_default,冷漠,界面文案
+log.relationship_unlock,{0}解锁了新的角色词条。,模板文案
+log.relationship_decay,久未联络：{0}的好感略有下降。,模板文案
+common.neutral,中立,界面文案
+ideology.axis_label,{0} {1}（{2}）,模板文案
+label.character_attributes,角色属性,界面文案
+log.campus_wander_empty,校园闲逛：今日无人同行。,界面文案
+log.campus_wander,校园闲逛：与{0}同行，好感 +{1}。,模板文案
+log.course_gain,{0}：修习进度 +{1}。,模板文案
+log.sunday_rest,周日休息：心情和体力恢复。,界面文案
+course.training_fallback,训练课程,界面文案
+log.sunday_study,周日自习：{0}修习进度 +{1}。,模板文案
+invite.title,邀约同窗,界面文案
+invite.body,你准备邀同窗共度周日。一次私谈能问出真话，朋友聚会则能听见更多流言。,界面文案
+invite.option_person,邀约 {0},模板文案
+invite.option_group,朋友圈聚会,界面文案
+log.invite_group,你组织了一次朋友圈聚会，全员好感 +{0}。,模板文案
+politics.title,时事讲座,界面文案
+politics.body,讲座围绕王朝改革、军权、旧港与族群议题展开。你说出口的立场，会决定哪些人愿意继续与你交换消息。,界面文案
+log.politics_stance,你在讲座中靠近了{0}。,模板文案
+title.graduate_officer,毕业军官,界面文案
+title.academy_student,新京军事学院生,界面文案
+log.new_school_year,新学年开始。,界面文案
+log.low_stamina,体力透支影响了心情。,界面文案
+log.exam_result,校考结算：{0}分，战功 +{1}，国库 +{2}。,模板文案
+log.holiday_apply,假期：课程暂停，心情与体力恢复。,界面文案
+holiday.title,假期,界面文案
+holiday.body,本周是假期。课程暂停，但你仍可休整、读报，或整理最近写进密档的线索。,界面文案
+holiday.option_rest,休整,界面文案
+holiday.option_newspaper,读报,界面文案
+button.back,返回,界面文案
+log.story_missing,剧情：未找到事件 {0}。,模板文案
+story.locked_body,"触发条件：{0}
+
+先完成对应的养成、情报、任务或战棋目标，再回来推进。",模板文案
+log.story_locked,剧情未触发：{0}。,模板文案
+story.locked_title,剧情未触发,界面文案
+story.unlock.unknown,条件未配置,界面文案
+story.unlock.ready,已满足，点击继续主线即可推进。,界面文案
+story.unlock.quest,完成任务：{0},模板文案
+story.unlock.story,完成剧情：{0},模板文案
+story.unlock.battle_wins,战棋胜利 {0}/{1},模板文案
+story.unlock.battles,完成战棋 {0}/{1},模板文案
+story.unlock.enemies,击溃敌方单位 {0}/{1},模板文案
+story.unlock.any_course_exp,任意课程进度 {0}/{1},模板文案
+story.unlock.any_course_level,任意课程等级 Lv.{0}/Lv.{1},模板文案
+story.unlock.any_relationship,任意同窗好感 {0}/{1},模板文案
+story.unlock.relationship,{0}好感 {1}/{2},模板文案
+story.unlock.intelligence,情报值 {0}/{1},模板文案
+story.unlock.spy_network,情报网 Lv.{0}/Lv.{1},模板文案
+story.unlock.merit,战功 {0}/{1},模板文案
+story.unlock.progress,{0} {1}/{2},模板文案
+story.missing_title,剧情缺失,界面文案
+story.page_progress,第 {0}/{1} 页,模板文案
+story.click_to_continue,点击任意处继续,界面文案
+story.empty_text,（暂无剧情文本）,界面文案
+log.story_choice,剧情选择：{0}。,模板文案
+stance.unknown,未知立场,界面文案
+stance.alias_home,返乡,界面文案
+stance.alias_army,干城派,界面文案
+relationship.story_character,剧情人物,界面文案
+relationship.story_character_note,剧情中结识的人物。,界面文案
+narrative.default_title,本周余波,界面文案
+narrative.choice_pursue,追问到底,界面文案
+narrative.choice_record,先记在密档,界面文案
+log.narrative_fragment,周记：{0}（{1}）。,模板文案
+narrative.pursued,追问,界面文案
+narrative.recorded,记录,界面文案
+story_menu.title,剧情目录,界面文案
+story_menu.main_ready,已满足，点击继续主线。,界面文案
+story_menu.summary,"当前主线：{0}
+推进条件：{1}
+支线会随主线、好感和任务进度开放。",模板文案
+button.continue_main_story,继续主线,界面文案
+story_menu.unlocked_side,已解锁支线,界面文案
+story_menu.no_side,支线不会一次性堆出来。先完成主线闸门、提高好感或完成任务。,界面文案
+character_archive.title,角色档案,界面文案
+character_archive.page,角色 {0}/{1} 页,模板文案
+character_archive.card,"{0}｜{1}
+{2}
+性格：{3}
+{4}",模板文案
+button.prev_page,上一页,界面文案
+button.next_page,下一页,界面文案
+strategy.title,战略地图  {0}年  第{1}回合,模板文案
+button.academy_review,学院回顾,界面文案
+button.system,系统,界面文案
+button.end_turn,结束回合,界面文案
+strategy.province_text,"省份：{0}
+势力：{1}
+城防：{2}
+收入：{3}
+驻军：{4}
+道路：{5}",模板文案
+strategy.command_text,"军衔：{0}  指挥上限：{1}
+{2}",模板文案
+strategy.army_text,"军团：{0}
+兵力：{1}/{2}
+等级：{3}
+经验：{4}
+攻击：{5}
+行军力：{6}/{7}",模板文案
+strategy.no_army_hint,"点击有我方军团的省份可选择军团。
+点击相邻己方省份行军。
+点击相邻敌方省份发起六边形战棋。",界面文案
+strategy.army_extra_text_v2,"补给：{0}
+战术：{1}
+情报：{2}",模板文案
+label.recent_news,最近消息：,界面文案
+mission.locked,军令：指挥权暂停 {0} 回合,模板文案
+mission.capture_enemy,军令：夺取相邻敌省,界面文案
+mission.supply_line,军令：稳固防线并补给,界面文案
+mission.scout_neutral,军令：侦察中立地带,界面文案
+mission.title,上级军令,界面文案
+mission.body,"当前军衔：{0}
+可指挥直属部队：{1}
+
+{2}
+
+攻占敌方据点会获得战功。未达成命令或战败时，会短暂失去直接指挥权。",模板文案
+mission.option_strategy,查看战略地图,界面文案
+log.cancel_army_selection,取消军团选择。,界面文案
+log.command_locked,你暂时被解除指挥权，还需等待 {0} 回合。,模板文案
+log.army_not_adjacent,军团只能沿道路进入相邻省份。,界面文案
+log.army_no_move,该军团本回合已经用尽行军力。,界面文案
+log.army_selected,选中{0}。,模板文案
+log.no_local_army,这座省份没有可指挥的我方军团。,界面文案
+log.army_moved,{0}沿道路进驻{1}。,模板文案
+battle_lab.title,战棋工坊,界面文案
+battle_lab.default_name,工坊测试关,界面文案
+battle.objective,据点,界面文案
+battle_lab.body,"当前工具：{0}
+地形：{1}
+兵种：{2}
+蓝方/红方：{3}/{4}
+据点：{5},{6}
+
+点击棋盘即可落子或修改格子。测试战斗不会写入正式战绩。",模板文案
+battle_lab.brush_terrain,地形,界面文案
+battle_lab.brush_player,蓝方,界面文案
+battle_lab.brush_enemy,红方,界面文案
+battle_lab.brush_objective,据点,界面文案
+battle_lab.brush_erase,擦除,界面文案
+battle_lab.prev_terrain,上一地形,界面文案
+battle_lab.next_terrain,下一地形,界面文案
+battle_lab.prev_role,上一兵种,界面文案
+battle_lab.next_role,下一兵种,界面文案
+battle_lab.message_default,建议：先保证双方至少各有1个单位，再测试。,界面文案
+battle_lab.test,开始测试,界面文案
+battle_lab.save,保存草稿,界面文案
+battle_lab.load,载入草稿,界面文案
+battle_lab.reset,重置,界面文案
+button.back_strategy,返回战略地图,界面文案
+battle_lab.msg_terrain,已设置地形：{0}。,模板文案
+battle_lab.msg_player,已放置蓝方：{0}。,模板文案
+battle_lab.msg_enemy,已放置红方：{0}。,模板文案
+battle_lab.msg_objective,已移动中央据点。,界面文案
+battle_lab.msg_erase,已擦除该格单位；无单位时会还原为平原。,界面文案
+battle_lab.enemy_unit_suffix,红方部队,界面文案
+battle_lab.player_unit_suffix,蓝方部队,界面文案
+battle_lab.saved,关卡草稿已保存。,界面文案
+battle_lab.no_save,还没有保存过关卡草稿。,界面文案
+battle_lab.loaded,关卡草稿已载入。,界面文案
+battle_lab.reset_done,已恢复默认演习关卡。,界面文案
+battle_lab.need_both_sides,测试前需要至少1个蓝方单位和1个红方单位。,界面文案
+battle_lab.player_army,蓝方测试军,界面文案
+battle_lab.enemy_army,红方测试军,界面文案
+battle_lab.test_start,工坊测试开始。选择蓝方单位行动，胜负不会写入正式存档。,界面文案
+battle_lab.test_return,已返回工坊，可继续调整并再次测试。,界面文案
+log.unoccupied_capture,目标无驻军，{0}接管了{1}。,模板文案
+battle_lab.test_battle_name,工坊测试关,界面文案
+battle.title,边境军令：{0}  第{1}回合  当前：{2},模板文案
+battle.command_hint_select,选择蓝方单位，随后在棋盘上移动或攻击。,界面文案
+battle.command_hint_ready,绿色格可移动，红色格可攻击；右侧可防御或待命。,界面文案
+button.cancel_selection,取消选择,界面文案
+battle.objective_contested,争夺中,界面文案
+battle.unit_text,"{0}
+兵种：{1}  编队：{2}
+兵力：{3}/{4}
+等级：{5}
+经验：{6}
+攻击：{7}
+士气：{8}
+移动：{9}  射程：{10}
+状态：{11}",模板文案
+battle.empty_hint,"点击蓝方军团选择。
+绿色格：可移动。
+红色格：可攻击。
+拖动战场可移动视野。
+步兵均衡，骑兵克弓兵，弓兵射程远。",界面文案
+battle.objective_panel,"中央据点：{0}
+我方据点进度：{1}/{2}
+敌方据点进度：{3}/{4}",模板文案
+battle.unit_supply,补给：{0},模板文案
+button.guard,防御,界面文案
+button.wait,待命,界面文案
+battle.log_panel,"军令：
+{0}
+
+战场日志：
+{1}",模板文案
+battle.status_guarding,防御中,界面文案
+battle.status_acted,已攻击,界面文案
+battle.status_moved,已移动，可攻击,界面文案
+battle.status_ready,可移动/攻击,界面文案
+battle.target_preview_acted,攻击预览：本回合已完成攻击。,界面文案
+battle.target_preview_none,攻击预览：当前射程内没有敌军。,界面文案
+battle.target_preview_title,攻击预览：,界面文案
+battle.target_preview_row,{0}  伤害{1}{2},模板文案
+battle.target_preview_counter, / 反击{0},模板文案
+battle.msg.guard,{0}就地防御，本回合减伤提高。,模板文案
+battle.msg.wait,{0}待命，保留阵型。,模板文案
+battle.outcome_victory,战役胜利,界面文案
+battle.outcome_defeat,战役失败,界面文案
+battle.outcome_victory_body,敌军已被击溃，或中央据点已被我方巩固。,界面文案
+battle.outcome_defeat_body,我方军团被迫撤退，或中央据点落入敌方掌控。,界面文案
+button.back_battle_lab,返回工坊,界面文案
+battle.msg.enemy_turn,现在是敌方回合，无法下令。,界面文案
+battle.msg.cancel_unit,取消选择部队。,界面文案
+battle.msg.unit_done,{0}已经行动完毕。,模板文案
+battle.msg.unit_selected,选中{0}，绿色可移动，红色可攻击。,模板文案
+battle.msg.enemy_info,敌军：{0}，HP {1}。,模板文案
+battle.msg.select_first,请先选择蓝方军团。,界面文案
+battle.msg.already_attacked,{0}本回合已经攻击。,模板文案
+battle.msg.out_of_range,目标不在攻击范围内。,界面文案
+battle.msg.cannot_move_after_attack,{0}已经攻击，不能再移动。,模板文案
+battle.msg.already_moved,{0}本回合已经移动。,模板文案
+battle.msg.invalid_move,目标格超出移动范围，或被地形/单位阻挡。,界面文案
+battle.msg.moved_to,{0}移动至第{1}行第{2}列，可继续攻击。,模板文案
+battle.attack_confirm_body,"{0}
+-> {1}
+
+预计伤害：{2}{3}
+地形：{4}  抗性：{5}%
+士气：{6} / {7}",模板文案
+battle.counter_preview,"
+预计反击：{0}",模板文案
+battle.no_counter,"
+目标无法反击",界面文案
+battle.attack_confirm_title,确认攻击,界面文案
+button.attack,开战,界面文案
+button.cancel,取消,界面文案
+battle.breakdown_supply_bad,补给：短缺会压低输出或防御。,界面文案
+battle.breakdown_supply_good,补给：正常。,界面文案
+battle.damage_breakdown,"影响：兵种克制 {0:+#;-#;0} / 熟练 +{1} / 士气 {2:+#;-#;0} / 敌等级 -{3} / 地形减伤 {4}%
+{5}",模板文案
+battle.msg.attack_damage,{0}攻击{1}，造成{2}伤害。,模板文案
+battle.msg.routed,{0}溃散。,模板文案
+battle.msg.counter_damage,{0}反击，造成{1}伤害。,模板文案
+morale.high,高昂,界面文案
+morale.up,上升,界面文案
+morale.low,低落,界面文案
+morale.chaos,混乱,界面文案
+morale.normal,正常,界面文案
+log.unit_level_up,{0}升至{1}级。,模板文案
+battle.msg.enemy_turn_end,敌方行动结束，进入我方回合。,界面文案
+battle.msg.enemy_ai,敌军正在调动部队。,界面文案
+battle.msg.enemy_retreat,{0}收缩阵线。,模板文案
+battle.msg.enemy_advance,{0}向我方推进。,模板文案
+battle.msg.enemy_guard,{0}固守阵地。,模板文案
+battle.msg.enemy_wait,{0}待命观察。,模板文案
+battle_lab.test_victory,测试胜利。结果只用于验证关卡节奏，不会写入正式战绩。,界面文案
+battle_lab.test_defeat,测试失败。关卡可以继续调整后重测。,界面文案
+battle.msg.victory_capture,战斗胜利，{0}归入我方。,模板文案
+battle.prisoner_name,{0}将领,模板文案
+log.prisoner_captured,{0}将领被活捉。,模板文案
+log.merit_reward,军令奖励：战功 +{0}。,模板文案
+battle.msg.defeat,战斗失败，军团被迫撤退。,界面文案
+log.command_removed,上级暂时解除你的指挥权。,界面文案
+log.army_level_up,{0}升至{1}级。,模板文案
+log.strategy_turn_end,回合结束：收入 {0}，军团恢复行军力并获得补给。,模板文案
+log.enemy_capture,{0}攻陷{1}。,模板文案
+log.enemy_attack_failed,{0}进攻{1}失败。,模板文案
+log.enemy_occupy,{0}占据了{1}。,模板文案
+log.player_objective_hold,我方正在巩固中央据点：{0}/{1}。,模板文案
+log.enemy_objective_hold,敌方正在巩固中央据点：{0}/{1}。,模板文案
+log.save_success_slot,系统：已保存到 {0}。,模板文案
+log.save_missing,没有找到存档。,界面文案
+log.load_success_slot,系统：已读取 {0}。,模板文案
+log.new_game_plus,第 {0} 周目开始，记忆回响已保留。,模板文案
+character_create.selected,"已选：{0}
+{1}",模板文案
+button.clear_selection,清空选择,界面文案
+character_create.message_cleared,已清空。选择 1-3 个特性后确认。,界面文案
+character_create.section_traits,选择特性,界面文案
+character_create.message_removed,已移除特性。,界面文案
+character_create.message_max,最多选择 3 个特性。,界面文案
+character_create.message_selected_count,已选择 {0}/3 个特性。,模板文案
+character_create.message_min,至少选择 1 个特性。,界面文案
+character_create.bonus_summary,加成：战斗 攻击 +{0} / 兵力 +{1} / 移动 +{2}    社交 好感 +{3}    养成 进度 +{4}% / 体力消耗 -{5},模板文案
+story.choice_effect_more,另有{0}项影响,模板文案
+story.effect_target_world,局势,界面文案
+story.effect_label,{0}{1}{2},模板文案
+story.effect_kind_value,数值,界面文案
+log.story_choice_effects,选择后果：{0},模板文案
+story.choice_with_effects,{0}  |  {1},模板文案
+strategy.army_extra_text,"补给：{0}
+战术：{1}
+情报：{2}",模板文案
+academy.schedule_hint,课程与周末活动集中在这里，先选行动，再看右侧人物与事件。,界面文案
+button.save,保存,界面文案
+log.save_success,系统：已保存。,界面文案
+log.load_success,系统：已读取存档。,界面文案
+story.side_text,"类型：{0}
+触发：{1}
+进度：{2}/{3}
+已完成主线：{4}
+当前主线：{5}
+
+提示：剧情选项会改变立场与人物好感。",模板文案
+story.free_trigger,自由触发,界面文案

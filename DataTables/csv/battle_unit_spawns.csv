@@ -1,0 +1,11 @@
+side,suffix,role,q,r,attackBonus,troopDivisor
+attacker,剑士队,infantry,1,6,0,4
+attacker,火绳枪队,musket,3,6,2,5
+attacker,先锋骑军,cavalry,5,6,4,5
+attacker,精锐弓兵队,archer,2,5,1,5
+attacker,钢盔军,heavy_infantry,4,5,2,4
+defender,禁卫长戟队,heavy_spear,7,0,2,4
+defender,具装铁骑军,heavy_cavalry,5,1,6,5
+defender,禁军长弓兵,heavy_archer,3,0,2,5
+defender,重甲禁卫军,heavy_infantry,6,1,4,4
+defender,禁军神机队,artillery,2,1,5,6

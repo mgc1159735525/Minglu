@@ -1,0 +1,553 @@
+{
+  "generatedAt": "2026-07-24T16:56:22",
+  "style": "古典军政油画肖像；深色明暗、长发束髻/高髻、中式立领、云纹、盘扣、甲片、绶带、玉带与勋章的架空郑明风格",
+  "ui": {
+    "button_idle": "Art/UI/button_idle",
+    "button_primary": "Art/UI/button_primary",
+    "button_secondary": "Art/UI/button_secondary",
+    "button_danger": "Art/UI/button_danger",
+    "panel_paper": "Art/UI/panel_paper",
+    "topbar_wine": "Art/UI/topbar_wine"
+  },
+  "scenes": {
+    "title": "Art/Scenes/scene_title",
+    "academy": "Art/Scenes/scene_academy",
+    "library": "Art/Scenes/scene_library",
+    "palace": "Art/Scenes/scene_palace",
+    "council": "Art/Scenes/scene_council",
+    "strategy": "Art/Scenes/scene_strategy",
+    "battlefield": "Art/Scenes/scene_battlefield",
+    "frontier": "Art/Scenes/scene_frontier",
+    "harbor": "Art/Scenes/scene_harbor",
+    "street": "Art/Scenes/scene_street"
+  },
+  "portraits": {
+    "player": "Art/Portraits/portrait_player_mo_mingyuan",
+    "characters": [
+      {
+        "name": "郑怀远",
+        "faction": "返乡团",
+        "identity": "返乡团创始人之一，海军老将",
+        "resource": "Art/Portraits/portrait_001"
+      },
+      {
+        "name": "赵夫人",
+        "faction": "返乡团",
+        "identity": "赵将军之妻，京城贵妇圈核心人物",
+        "resource": "Art/Portraits/portrait_002"
+      },
+      {
+        "name": "钱尚书",
+        "faction": "返乡团",
+        "identity": "兵部尚书，返乡团政治核心",
+        "resource": "Art/Portraits/portrait_003"
+      },
+      {
+        "name": "孙伯昌",
+        "faction": "返乡团",
+        "identity": "退役老兵，方孝先旧部，学院杂役",
+        "resource": "Art/Portraits/portrait_004"
+      },
+      {
+        "name": "沈沧海",
+        "faction": "返乡团",
+        "identity": "海军副将，主导战舰研发",
+        "resource": "Art/Portraits/portrait_005"
+      },
+      {
+        "name": "韩忠义",
+        "faction": "返乡团",
+        "identity": "后勤总管，管理军需物资",
+        "resource": "Art/Portraits/portrait_006"
+      },
+      {
+        "name": "郑明宗",
+        "faction": "返乡团",
+        "identity": "宗人府宗令，皇族代表",
+        "resource": "Art/Portraits/portrait_007"
+      },
+      {
+        "name": "冯铁山",
+        "faction": "返乡团",
+        "identity": "边境将军，镇守西部边疆",
+        "resource": "Art/Portraits/portrait_008"
+      },
+      {
+        "name": "马千户",
+        "faction": "返乡团",
+        "identity": "归化印第安人军官，返乡团中的异类",
+        "resource": "Art/Portraits/portrait_009"
+      },
+      {
+        "name": "顾老太爷",
+        "faction": "返乡团",
+        "identity": "前朝遗老，衣冠东渡亲历者后代",
+        "resource": "Art/Portraits/portrait_010"
+      },
+      {
+        "name": "赵伯衡",
+        "faction": "返乡团",
+        "identity": "同窗好友/室友，赵将军之子",
+        "resource": "Art/Portraits/portrait_011"
+      },
+      {
+        "name": "钱若愚",
+        "faction": "返乡团",
+        "identity": "钱尚书之孙，憨厚老实",
+        "resource": "Art/Portraits/portrait_012"
+      },
+      {
+        "name": "冯英杰",
+        "faction": "返乡团",
+        "identity": "冯铁山之女，女扮男装入学",
+        "resource": "Art/Portraits/portrait_013"
+      },
+      {
+        "name": "沈天佑",
+        "faction": "返乡团",
+        "identity": "沈沧海之子，热血但冒失",
+        "resource": "Art/Portraits/portrait_014"
+      },
+      {
+        "name": "顾承恩",
+        "faction": "返乡团",
+        "identity": "顾老太爷曾孙，文弱书生型",
+        "resource": "Art/Portraits/portrait_015"
+      },
+      {
+        "name": "李承恩",
+        "faction": "陆军青壮派",
+        "identity": "陆军中将，李婉清之父，干城派核心",
+        "resource": "Art/Portraits/portrait_016"
+      },
+      {
+        "name": "王铁柱",
+        "faction": "陆军青壮派",
+        "identity": "西部边防将领，实战派",
+        "resource": "Art/Portraits/portrait_017"
+      },
+      {
+        "name": "张猛",
+        "faction": "陆军青壮派",
+        "identity": "前线步兵军官，百战老兵",
+        "resource": "Art/Portraits/portrait_018"
+      },
+      {
+        "name": "刘炮生",
+        "faction": "陆军青壮派",
+        "identity": "炮兵指挥官，技术狂人",
+        "resource": "Art/Portraits/portrait_019"
+      },
+      {
+        "name": "陈骑风",
+        "faction": "陆军青壮派",
+        "identity": "骑兵军官，速度战术信仰者",
+        "resource": "Art/Portraits/portrait_020"
+      },
+      {
+        "name": "杨守边",
+        "faction": "陆军青壮派",
+        "identity": "边防军需官，务实派",
+        "resource": "Art/Portraits/portrait_021"
+      },
+      {
+        "name": "许医官",
+        "faction": "陆军青壮派",
+        "identity": "军医主管，悲天悯人",
+        "resource": "Art/Portraits/portrait_022"
+      },
+      {
+        "name": "魏连长",
+        "faction": "陆军青壮派",
+        "identity": "模范连长，底层军官代表",
+        "resource": "Art/Portraits/portrait_023"
+      },
+      {
+        "name": "秦百总",
+        "faction": "陆军青壮派",
+        "identity": "老兵油子，经验丰富",
+        "resource": "Art/Portraits/portrait_024"
+      },
+      {
+        "name": "高文举",
+        "faction": "陆军青壮派",
+        "identity": "军事记者，鼓吹大陆军主义",
+        "resource": "Art/Portraits/portrait_025"
+      },
+      {
+        "name": "李婉清",
+        "faction": "陆军青壮派",
+        "identity": "二年级学姐，李将军之女",
+        "resource": "Art/Portraits/portrait_026"
+      },
+      {
+        "name": "王大胆",
+        "faction": "陆军青壮派",
+        "identity": "老兵之子，性格鲁莽",
+        "resource": "Art/Portraits/portrait_027"
+      },
+      {
+        "name": "张弓",
+        "faction": "陆军青壮派",
+        "identity": "猎户出身，弓术精湛",
+        "resource": "Art/Portraits/portrait_028"
+      },
+      {
+        "name": "刘小炮",
+        "faction": "陆军青壮派",
+        "identity": "刘炮生之女，炮术天才",
+        "resource": "Art/Portraits/portrait_029"
+      },
+      {
+        "name": "杨石头",
+        "faction": "陆军青壮派",
+        "identity": "矿工之子，力大无穷",
+        "resource": "Art/Portraits/portrait_030"
+      },
+      {
+        "name": "阿黑·雷鸟",
+        "faction": "印第安乡党",
+        "identity": "最大部落联盟酋长，伊尔德之父",
+        "resource": "Art/Portraits/portrait_031"
+      },
+      {
+        "name": "白羽·鹿灵",
+        "faction": "印第安乡党",
+        "identity": "部落大祭司，精神领袖",
+        "resource": "Art/Portraits/portrait_032"
+      },
+      {
+        "name": "金鹿·商路",
+        "faction": "印第安乡党",
+        "identity": "印第安商人领袖，跨族贸易网",
+        "resource": "Art/Portraits/portrait_033"
+      },
+      {
+        "name": "灰鹰·草灵",
+        "faction": "印第安乡党",
+        "identity": "印第安传统医师，中西医学融合",
+        "resource": "Art/Portraits/portrait_034"
+      },
+      {
+        "name": "红狐·追风",
+        "faction": "印第安乡党",
+        "identity": "猎人大师，荒野生存专家",
+        "resource": "Art/Portraits/portrait_035"
+      },
+      {
+        "name": "月影·水灵",
+        "faction": "印第安乡党",
+        "identity": "女酋长，主张和平共存",
+        "resource": "Art/Portraits/portrait_036"
+      },
+      {
+        "name": "黑熊·地灵",
+        "faction": "印第安乡党",
+        "identity": "部落长老会议主席，保守派",
+        "resource": "Art/Portraits/portrait_037"
+      },
+      {
+        "name": "铜皮·双血",
+        "faction": "印第安乡党",
+        "identity": "混血商人，连接两个世界",
+        "resource": "Art/Portraits/portrait_038"
+      },
+      {
+        "name": "蛇语·风灵",
+        "faction": "印第安乡党",
+        "identity": "部落通译，语言天才",
+        "resource": "Art/Portraits/portrait_039"
+      },
+      {
+        "name": "独眼·鹰扬",
+        "faction": "印第安乡党",
+        "identity": "走私贩，地下势力首领",
+        "resource": "Art/Portraits/portrait_040"
+      },
+      {
+        "name": "伊尔德·云石",
+        "faction": "印第安乡党",
+        "identity": "同窗，部落首领之子",
+        "resource": "Art/Portraits/portrait_041"
+      },
+      {
+        "name": "花·鹿灵",
+        "faction": "印第安乡党",
+        "identity": "白羽祭司之女，温柔聪慧",
+        "resource": "Art/Portraits/portrait_042"
+      },
+      {
+        "name": "鹰·雷鸟",
+        "faction": "印第安乡党",
+        "identity": "阿黑酋长侄子，激进派青年",
+        "resource": "Art/Portraits/portrait_043"
+      },
+      {
+        "name": "石·地灵",
+        "faction": "印第安乡党",
+        "identity": "黑熊长老之孙，沉默寡言的防御型",
+        "resource": "Art/Portraits/portrait_044"
+      },
+      {
+        "name": "溪·水灵",
+        "faction": "印第安乡党",
+        "identity": "月影酋长之女，活泼开朗",
+        "resource": "Art/Portraits/portrait_045"
+      },
+      {
+        "name": "黄道周",
+        "faction": "自由派",
+        "identity": "新科大学院长，启蒙思想传播者",
+        "resource": "Art/Portraits/portrait_046"
+      },
+      {
+        "name": "陆启明",
+        "faction": "自由派",
+        "identity": "启蒙思想家，著书立说",
+        "resource": "Art/Portraits/portrait_047"
+      },
+      {
+        "name": "白铁笔",
+        "faction": "自由派",
+        "identity": "报纸主编，舆论之王",
+        "resource": "Art/Portraits/portrait_048"
+      },
+      {
+        "name": "孟立新",
+        "faction": "自由派",
+        "identity": "议会运动支持者，演讲家",
+        "resource": "Art/Portraits/portrait_049"
+      },
+      {
+        "name": "何清风",
+        "faction": "自由派",
+        "identity": "寒门出身的县令，亲民官",
+        "resource": "Art/Portraits/portrait_050"
+      },
+      {
+        "name": "叶秋霜",
+        "faction": "自由派",
+        "identity": "女权先驱，主张男女平等",
+        "resource": "Art/Portraits/portrait_051"
+      },
+      {
+        "name": "贾善贾",
+        "faction": "自由派",
+        "identity": "商人领袖，自由派金主",
+        "resource": "Art/Portraits/portrait_052"
+      },
+      {
+        "name": "宋公道",
+        "faction": "自由派",
+        "identity": "民间律师，为平民辩护",
+        "resource": "Art/Portraits/portrait_053"
+      },
+      {
+        "name": "温改良",
+        "faction": "自由派",
+        "identity": "工技派，主张技术救国",
+        "resource": "Art/Portraits/portrait_054"
+      },
+      {
+        "name": "丁新学",
+        "faction": "自由派",
+        "identity": "年轻学者，激进革故派",
+        "resource": "Art/Portraits/portrait_055"
+      },
+      {
+        "name": "林素心",
+        "faction": "自由派",
+        "identity": "同窗，图书馆常客，学者之女",
+        "resource": "Art/Portraits/portrait_056"
+      },
+      {
+        "name": "苏明诚",
+        "faction": "自由派",
+        "identity": "同窗，平民出身激进派",
+        "resource": "Art/Portraits/portrait_057"
+      },
+      {
+        "name": "何小满",
+        "faction": "自由派",
+        "identity": "何清风之女，正义感强",
+        "resource": "Art/Portraits/portrait_058"
+      },
+      {
+        "name": "丁新芽",
+        "faction": "自由派",
+        "identity": "丁新学之妹，思想激进",
+        "resource": "Art/Portraits/portrait_059"
+      },
+      {
+        "name": "叶半亩",
+        "faction": "自由派",
+        "identity": "叶秋霜侄女，文艺少女",
+        "resource": "Art/Portraits/portrait_060"
+      },
+      {
+        "name": "吴存道",
+        "faction": "法治派",
+        "identity": "教授，法治派精神领袖",
+        "resource": "Art/Portraits/portrait_061"
+      },
+      {
+        "name": "陈父",
+        "faction": "法治派",
+        "identity": "大理寺卿，法治派政治核心",
+        "resource": "Art/Portraits/portrait_062"
+      },
+      {
+        "name": "徐法官",
+        "faction": "法治派",
+        "identity": "最高法院大法官",
+        "resource": "Art/Portraits/portrait_063"
+      },
+      {
+        "name": "田万亩",
+        "faction": "法治派",
+        "identity": "大地主，法治派经济后盾",
+        "resource": "Art/Portraits/portrait_064"
+      },
+      {
+        "name": "程夫子",
+        "faction": "法治派",
+        "identity": "法家学者，书院山长",
+        "resource": "Art/Portraits/portrait_065"
+      },
+      {
+        "name": "蒋军法",
+        "faction": "法治派",
+        "identity": "军法处长官，铁面无私",
+        "resource": "Art/Portraits/portrait_066"
+      },
+      {
+        "name": "庄不群",
+        "faction": "法治派",
+        "identity": "法治派谋士，深藏不露",
+        "resource": "Art/Portraits/portrait_067"
+      },
+      {
+        "name": "赵世家",
+        "faction": "法治派",
+        "identity": "赵姓大族族长，传统贵族",
+        "resource": "Art/Portraits/portrait_068"
+      },
+      {
+        "name": "严御史",
+        "faction": "法治派",
+        "identity": "都察院御史，弹劾专家",
+        "resource": "Art/Portraits/portrait_069"
+      },
+      {
+        "name": "许书院",
+        "faction": "法治派",
+        "identity": "法学院教授，吴存道弟子",
+        "resource": "Art/Portraits/portrait_070"
+      },
+      {
+        "name": "陈敬之",
+        "faction": "法治派",
+        "identity": "竞争对手/宿敌，世家子弟",
+        "resource": "Art/Portraits/portrait_071"
+      },
+      {
+        "name": "徐小法",
+        "faction": "法治派",
+        "identity": "徐法官之子，刻板严谨",
+        "resource": "Art/Portraits/portrait_072"
+      },
+      {
+        "name": "庄谋",
+        "faction": "法治派",
+        "identity": "庄不群之子，阴沉多计",
+        "resource": "Art/Portraits/portrait_073"
+      },
+      {
+        "name": "田金",
+        "faction": "法治派",
+        "identity": "田万亩之孙，纨绔子弟",
+        "resource": "Art/Portraits/portrait_074"
+      },
+      {
+        "name": "严正",
+        "faction": "法治派",
+        "identity": "严御史之子，正义但迂腐",
+        "resource": "Art/Portraits/portrait_075"
+      },
+      {
+        "name": "郑明皇帝",
+        "faction": "重要NPC（跨派系）",
+        "identity": "年迈天子，内心矛盾",
+        "resource": "Art/Portraits/portrait_076"
+      },
+      {
+        "name": "太子郑承乾",
+        "faction": "重要NPC（跨派系）",
+        "identity": "改革派皇储，暗中倾向自由派",
+        "resource": "Art/Portraits/portrait_077"
+      },
+      {
+        "name": "太后",
+        "faction": "重要NPC（跨派系）",
+        "identity": "保守势力代表，维护旧制",
+        "resource": "Art/Portraits/portrait_078"
+      },
+      {
+        "name": "主角母亲",
+        "faction": "重要NPC（跨派系）",
+        "identity": "汉民商帮之女，智慧隐忍",
+        "resource": "Art/Portraits/portrait_079"
+      },
+      {
+        "name": "西班牙总督",
+        "faction": "重要NPC（跨派系）",
+        "identity": "新西班牙（墨西哥）殖民总督",
+        "resource": "Art/Portraits/portrait_080"
+      },
+      {
+        "name": "英国大使",
+        "faction": "重要NPC（跨派系）",
+        "identity": "大英帝国驻郑明使节",
+        "resource": "Art/Portraits/portrait_081"
+      },
+      {
+        "name": "沈万金",
+        "faction": "重要NPC（跨派系）",
+        "identity": "跨派系神秘巨商",
+        "resource": "Art/Portraits/portrait_082"
+      },
+      {
+        "name": "法国传教士",
+        "faction": "重要NPC（跨派系）",
+        "identity": "天主教会代表，文化传播者",
+        "resource": "Art/Portraits/portrait_083"
+      },
+      {
+        "name": "独臂老海盗",
+        "faction": "重要NPC（跨派系）",
+        "identity": "活跃在太平洋的海盗王",
+        "resource": "Art/Portraits/portrait_084"
+      },
+      {
+        "name": "流浪剑客",
+        "faction": "重要NPC（跨派系）",
+        "identity": "江湖游侠，不属于任何势力",
+        "resource": "Art/Portraits/portrait_085"
+      }
+    ]
+  },
+  "portraitPolicy": {
+    "hair": "所有中式角色避免剪发；男性长发束髻或冠髻，女性高髻或发髻。",
+    "clothing": "军官、军校生穿中式军政礼服；女角色如果不是军官，则穿同时代中式常服、书院服、商家服或宫廷礼服。",
+    "rendering": "写实油画半身肖像，低饱和深背景，强明暗，不使用Q版或卡通比例。"
+  },
+  "sourceSheets": {
+    "returning_royalists": "Assets/ArtSource/OilPortraitSheets/returning_royalists.png",
+    "young_army": "Assets/ArtSource/OilPortraitSheets/young_army.png",
+    "native_frontier": "Assets/ArtSource/OilPortraitSheets/native_frontier.png",
+    "liberals": "Assets/ArtSource/OilPortraitSheets/liberals.png",
+    "legalists": "Assets/ArtSource/OilPortraitSheets/legalists.png",
+    "cross_faction_npc": "Assets/ArtSource/OilPortraitSheets/cross_faction_npc.png",
+    "player_mo_mingyuan_master": "Assets/ArtSource/OilPortraitSheets/player_mo_mingyuan_master.png"
+  }
+}

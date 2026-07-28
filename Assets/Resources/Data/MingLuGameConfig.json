@@ -1,0 +1,6513 @@
+{
+  "version": "1.0.0",
+  "uiTexts": [
+    {
+      "key": "game.title",
+      "value": "明路",
+      "note": "标题界面主标题"
+    },
+    {
+      "key": "title.subtitle",
+      "value": "1760，新京军事学院。你的道路，将通向王朝、共和、边疆，或未曾设想的远方。",
+      "note": "标题副标题"
+    },
+    {
+      "key": "top.hint",
+      "value": "鼠标/触摸点击优先，键盘仅作备用",
+      "note": "顶部提示"
+    },
+    {
+      "key": "button.new_game",
+      "value": "新的传奇",
+      "note": "标题按钮"
+    },
+    {
+      "key": "button.strategy",
+      "value": "进入战略地图",
+      "note": "标题按钮"
+    },
+    {
+      "key": "button.continue",
+      "value": "继续征途",
+      "note": "标题按钮"
+    },
+    {
+      "key": "button.credits",
+      "value": "开发团队",
+      "note": "标题按钮"
+    },
+    {
+      "key": "button.exit",
+      "value": "退出",
+      "note": "标题按钮"
+    },
+    {
+      "key": "button.back_title",
+      "value": "返回标题",
+      "note": "通用按钮"
+    },
+    {
+      "key": "character_create.title",
+      "value": "创建角色",
+      "note": "创角标题"
+    },
+    {
+      "key": "character_create.description",
+      "value": "选择你的开局特性。它们会在战斗、社交和养成中持续生效。",
+      "note": "创角说明"
+    },
+    {
+      "key": "character_create.message",
+      "value": "选择 1-3 个特性，确认后进入新京军事学院。",
+      "note": "创角默认提示"
+    },
+    {
+      "key": "academy.title",
+      "value": "新京军事学院",
+      "note": "学院标题"
+    },
+    {
+      "key": "credits.body",
+      "value": "《明路》Unity 原型\n设计来源：明路第一版文档\n实现：运行时 UI / 学院养成 / 战略地图 / 六边形战棋\n素材：项目内可配置美术资源。",
+      "note": "制作组文案"
+    },
+    {
+      "key": "story.missing",
+      "value": "未找到剧情事件：",
+      "note": "剧情缺失提示"
+    },
+    {
+      "key": "battle.message.start",
+      "value": "选择蓝方军团开始行动。拖动地图可以调整视野。",
+      "note": "战斗初始提示"
+    },
+    {
+      "key": "log.game_start",
+      "value": "1760年，你抵达新京军事学院。",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.close_short",
+      "value": "X",
+      "note": "界面文案"
+    },
+    {
+      "key": "story.choice_label",
+      "value": "选择：",
+      "note": "界面文案"
+    },
+    {
+      "key": "hud.week",
+      "value": "周",
+      "note": "界面文案"
+    },
+    {
+      "key": "hud.mood",
+      "value": "心情",
+      "note": "界面文案"
+    },
+    {
+      "key": "hud.stamina",
+      "value": "体力",
+      "note": "界面文案"
+    },
+    {
+      "key": "hud.merit",
+      "value": "战功",
+      "note": "界面文案"
+    },
+    {
+      "key": "hud.treasury",
+      "value": "国库",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.settings_short",
+      "value": "设置",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.step_title",
+      "value": "建立角色  {0}/6",
+      "note": "模板文案"
+    },
+    {
+      "key": "character_create.section_profile",
+      "value": "身份",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.section_summary",
+      "value": "确认",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.details",
+      "value": "查看完整明细",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.random_all",
+      "value": "全部随机",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.prev_step",
+      "value": "上一步",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.confirm_school",
+      "value": "确认入学",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.next_step",
+      "value": "下一步",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.profile_card",
+      "value": "{0}\n新京军事学院预备生\n特性会影响战斗、社交与养成。",
+      "note": "模板文案"
+    },
+    {
+      "key": "common.none",
+      "value": "无",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.step_profile",
+      "value": "命名与定容",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.step_origin",
+      "value": "家世出身",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.step_memory",
+      "value": "少年往事",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.step_talent",
+      "value": "天赋觉醒",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.step_subject",
+      "value": "学科倾向",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.step_confirm",
+      "value": "总览确认",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.profile_hint",
+      "value": "姓名可自由填写；不填则使用默认名。字号为可选项，会出现在正式场合。",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.name_label",
+      "value": "姓名",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.name_placeholder",
+      "value": "默认：{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "button.random_name",
+      "value": "随机姓名",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.courtesy_label",
+      "value": "字号",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.courtesy_placeholder",
+      "value": "可不填",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.profile_plain_note",
+      "value": "外貌自定义暂不开放。当前立绘只代表主角默认形象，避免出现选了外貌但画面不变化的假功能。",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.origin_hint",
+      "value": "选择一个家世。出身会影响初始学科、派系关系、立场和可选天赋池。",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.origin_selected",
+      "value": "已选择出身：{0}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "character_create.origin_none",
+      "value": "尚未选择出身。",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.origin_detail",
+      "value": "查看出身影响",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.memory_hint",
+      "value": "三段往事会形成你的性格特质，并轻微影响初始立场。",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.talent_hint",
+      "value": "从当前出身的天赋池中选择 2 个初始天赋。天赋会在战斗、社交和养成中长期生效。",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.talent_default_category",
+      "value": "天赋",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.subject_hint",
+      "value": "选择 2 个学科倾向。每个倾向会获得一段初始进度，方便你在入学后更快升级。",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.confirm_hint",
+      "value": "确认后进入序章。姓名、出身、往事与初始天赋会写入存档。",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.edit_profile",
+      "value": "改姓名",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.edit_origin",
+      "value": "改出身",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.edit_memory",
+      "value": "改往事",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.edit_talent",
+      "value": "改天赋",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.edit_subject",
+      "value": "改学科",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.memory_selected",
+      "value": "{0}已记录。",
+      "note": "模板文案"
+    },
+    {
+      "key": "character_create.talent_removed",
+      "value": "已移除天赋。",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.talent_max",
+      "value": "初始天赋最多选择 2 个。",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.talent_count",
+      "value": "已选择 {0}/2 个天赋。",
+      "note": "模板文案"
+    },
+    {
+      "key": "character_create.subject_removed",
+      "value": "已移除学科倾向。",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.subject_max",
+      "value": "学科倾向最多选择 2 个。",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.subject_count",
+      "value": "已选择 {0}/2 个学科倾向。",
+      "note": "模板文案"
+    },
+    {
+      "key": "character_create.message_continue",
+      "value": "继续完成下一项登记。",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.need_origin",
+      "value": "请选择一个家世出身。",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.need_memory",
+      "value": "请完成三段少年往事。",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.need_talent",
+      "value": "请选择 2 个初始天赋。",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.need_subject",
+      "value": "请选择 2 个学科倾向。",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.random_name_done",
+      "value": "姓名已随机生成。",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.random_all_done",
+      "value": "已随机生成完整创建方案。",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.detail_title",
+      "value": "创建明细",
+      "note": "界面文案"
+    },
+    {
+      "key": "log.character_create",
+      "value": "入学登记：选择特性 - {0}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "common.unknown",
+      "value": "未知",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.summary_name",
+      "value": "姓名：{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "character_create.summary_courtesy",
+      "value": "字号：{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "character_create.summary_origin",
+      "value": "出身：{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "common.none_selected",
+      "value": "未选择",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.summary_personality",
+      "value": "性格：{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "character_create.summary_talents",
+      "value": "天赋：{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "character_create.summary_subjects",
+      "value": "学科：{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "character_create.summary_effect_title",
+      "value": "开局影响",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.effect_academy",
+      "value": "学科：{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "character_create.effect_stance",
+      "value": "派系：{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "character_create.effect_axis",
+      "value": "立场轴：{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "character_create.effect_clue",
+      "value": "密档线索：{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "character_create.effect_subjects",
+      "value": "学科倾向：{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "common.list_separator",
+      "value": "、",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.effect_memory",
+      "value": "往事性格：{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "attribute_gain.infantry",
+      "value": "步兵+{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "attribute_gain.cavalry",
+      "value": "骑兵+{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "attribute_gain.artillery",
+      "value": "炮兵+{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "attribute_gain.management",
+      "value": "管理+{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "attribute_gain.logistics",
+      "value": "后勤+{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "attribute_gain.training",
+      "value": "训练+{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "character_create.bonus_none",
+      "value": "加成：未选择",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.bonus_attack",
+      "value": "攻击 +{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "character_create.bonus_hp",
+      "value": "兵力 +{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "character_create.bonus_move",
+      "value": "移动 +{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "character_create.bonus_battle",
+      "value": "战斗：{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "character_create.bonus_social",
+      "value": "社交：好感 +{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "character_create.bonus_cultivate",
+      "value": "进度 +{0}%",
+      "note": "模板文案"
+    },
+    {
+      "key": "character_create.bonus_stamina",
+      "value": "体力消耗 -{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "character_create.bonus_academy",
+      "value": "养成：{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "character_create.bonus_no_numeric",
+      "value": "加成：暂无数值变化",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.bonus_header",
+      "value": "加成：",
+      "note": "界面文案"
+    },
+    {
+      "key": "log.skill_unlock",
+      "value": "解锁被动技能：{0}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "skill.body",
+      "value": "被动槽位：{0}/{1}\n已装备：{2}\n\n已解锁：\n{3}",
+      "note": "模板文案"
+    },
+    {
+      "key": "skill.none",
+      "value": "暂无。通过课程、战斗、情报和战功解锁。",
+      "note": "界面文案"
+    },
+    {
+      "key": "skill.equip",
+      "value": "装备 {0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "skill.unequip",
+      "value": "卸下 {0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "skill.title",
+      "value": "被动技能",
+      "note": "界面文案"
+    },
+    {
+      "key": "log.skill_equip",
+      "value": "已装备被动：{0}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "log.quest_unlock",
+      "value": "新任务：{0}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "log.quest_complete",
+      "value": "任务完成：{0}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "quest.no_active",
+      "value": "暂无进行中的任务。",
+      "note": "界面文案"
+    },
+    {
+      "key": "quest.line",
+      "value": "· [{0}] {1}  {2}/{3}\n  {4}",
+      "note": "模板文案"
+    },
+    {
+      "key": "quest.body",
+      "value": "任务追踪\n{0}\n\n已完成：{1}",
+      "note": "模板文案"
+    },
+    {
+      "key": "quest.claim",
+      "value": "领取 {0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "quest.title",
+      "value": "任务日志",
+      "note": "界面文案"
+    },
+    {
+      "key": "log.achievement_unlock",
+      "value": "成就解锁：{0}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "achievement.none",
+      "value": "暂无成就。",
+      "note": "界面文案"
+    },
+    {
+      "key": "achievement.body",
+      "value": "成就点：{0}\n已解锁：{1}/{2}\n当前称号：{3}\n\n成就：\n{4}\n\n可用称号：{5}",
+      "note": "模板文案"
+    },
+    {
+      "key": "title.equip",
+      "value": "装备称号 {0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "achievement.title",
+      "value": "成就与称号",
+      "note": "界面文案"
+    },
+    {
+      "key": "intel.body",
+      "value": "情报值：{0}  间谍网络：{1}\n训练等级会提高行动成功率；失败会损失心情或国库。\n\n敌情摘要：\n{2}",
+      "note": "模板文案"
+    },
+    {
+      "key": "intel.no_enemy",
+      "value": "暂无敌情。",
+      "note": "界面文案"
+    },
+    {
+      "key": "intel.action_button",
+      "value": "{0} - 花费{1}",
+      "note": "模板文案"
+    },
+    {
+      "key": "intel.title",
+      "value": "情报与间谍",
+      "note": "界面文案"
+    },
+    {
+      "key": "intel.army_unknown",
+      "value": "{0}方向有不明敌影",
+      "note": "模板文案"
+    },
+    {
+      "key": "intel.army_rough",
+      "value": "{0}：{1}，兵力约略可见",
+      "note": "模板文案"
+    },
+    {
+      "key": "intel.army_clear",
+      "value": "{0}：{1}  兵力{2}  攻击{3}",
+      "note": "模板文案"
+    },
+    {
+      "key": "intel.army_full",
+      "value": "{0}：{1}  兵力{2}/{3}  攻击{4}  补给{5}/{6}  AI:{7}",
+      "note": "模板文案"
+    },
+    {
+      "key": "log.intel_no_money",
+      "value": "情报行动「{0}」资金不足。",
+      "note": "模板文案"
+    },
+    {
+      "key": "log.intel_success",
+      "value": "情报行动「{0}」成功，情报 +{1}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "log.intel_fail",
+      "value": "情报行动「{0}」失败，心情 -{1}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "save.body",
+      "value": "多槽位存档\n自动存档：每周推进、战斗开始、战斗结算时写入。\n当前周目：{0}\n成就点：{1}\n已解锁结局：{2}\n\n选择槽位进行保存或读取。",
+      "note": "模板文案"
+    },
+    {
+      "key": "save.manual_save",
+      "value": "保存到手动槽 {0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "save.manual_load",
+      "value": "读取手动槽 {0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "save.new_game_plus",
+      "value": "开启新周目",
+      "note": "界面文案"
+    },
+    {
+      "key": "save.title",
+      "value": "存档与多周目",
+      "note": "界面文案"
+    },
+    {
+      "key": "system.body",
+      "value": "系统\n当前界面：{0}\n自动存档：每周、剧情、战斗关键节点\n手动槽：3 个\n\n存档读档、标题界面和成就称号都收在这里。",
+      "note": "模板文案"
+    },
+    {
+      "key": "button.save_system",
+      "value": "存档",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.achievements",
+      "value": "成就",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.battle_lab",
+      "value": "战棋工坊",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.story_menu",
+      "value": "剧情目录",
+      "note": "界面文案"
+    },
+    {
+      "key": "system.title",
+      "value": "设置",
+      "note": "界面文案"
+    },
+    {
+      "key": "mode.strategy",
+      "value": "战略地图",
+      "note": "界面文案"
+    },
+    {
+      "key": "mode.battle",
+      "value": "战斗",
+      "note": "界面文案"
+    },
+    {
+      "key": "mode.battle_lab",
+      "value": "战棋工坊",
+      "note": "界面文案"
+    },
+    {
+      "key": "mode.academy",
+      "value": "学院",
+      "note": "界面文案"
+    },
+    {
+      "key": "formation.army_line",
+      "value": "{0}  Lv.{1}  兵力{2}/{3}  攻击{4}  补给{5}",
+      "note": "模板文案"
+    },
+    {
+      "key": "formation.no_army",
+      "value": "暂无可编队军团。",
+      "note": "界面文案"
+    },
+    {
+      "key": "formation.unit_line",
+      "value": "{0}｜{1}｜{2}",
+      "note": "模板文案"
+    },
+    {
+      "key": "formation.body",
+      "value": "直属军团\n{0}\n\n常见单位\n{1}\n\n军团数值来自战略军团表，棋子序列帧来自常见单位表。",
+      "note": "模板文案"
+    },
+    {
+      "key": "button.strategy_short",
+      "value": "战略",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.mission",
+      "value": "军令",
+      "note": "界面文案"
+    },
+    {
+      "key": "formation.title",
+      "value": "编队",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_status.body",
+      "value": "{0}\n\n属性等级\n{1}\n\n心态与性格\n心情：{2}（{3}）  体力：{4}\n特性：{5}\n\n立场\n{6}",
+      "note": "模板文案"
+    },
+    {
+      "key": "button.attribute_guide",
+      "value": "属性说明",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.character_archive",
+      "value": "角色档案",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_status.title",
+      "value": "角色状态",
+      "note": "界面文案"
+    },
+    {
+      "key": "attribute.infantry",
+      "value": "步兵",
+      "note": "界面文案"
+    },
+    {
+      "key": "attribute.cavalry",
+      "value": "骑兵",
+      "note": "界面文案"
+    },
+    {
+      "key": "attribute.artillery",
+      "value": "炮兵",
+      "note": "界面文案"
+    },
+    {
+      "key": "attribute.management",
+      "value": "管理",
+      "note": "界面文案"
+    },
+    {
+      "key": "attribute.logistics",
+      "value": "后勤",
+      "note": "界面文案"
+    },
+    {
+      "key": "attribute.training",
+      "value": "训练",
+      "note": "界面文案"
+    },
+    {
+      "key": "diplomacy.no_stance",
+      "value": "暂无派系接触。",
+      "note": "界面文案"
+    },
+    {
+      "key": "diplomacy.stance_line",
+      "value": "{0}  倾向{1}",
+      "note": "模板文案"
+    },
+    {
+      "key": "diplomacy.body",
+      "value": "派系倾向\n{0}\n\n警觉\n{1}\n\n意识形态\n{2}",
+      "note": "模板文案"
+    },
+    {
+      "key": "ideology.option_politics",
+      "value": "参加时事讲座",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.intelligence",
+      "value": "情报",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.newspaper",
+      "value": "报纸",
+      "note": "界面文案"
+    },
+    {
+      "key": "diplomacy.title",
+      "value": "外交与立场",
+      "note": "界面文案"
+    },
+    {
+      "key": "diplomacy.alert_line",
+      "value": "{0}  警觉{1}",
+      "note": "模板文案"
+    },
+    {
+      "key": "diplomacy.no_alert",
+      "value": "暂无明显警觉。",
+      "note": "界面文案"
+    },
+    {
+      "key": "dossier.summary_full",
+      "value": "当前目标：终盘整备完成，等待关键战棋结果。",
+      "note": "模板文案"
+    },
+    {
+      "key": "dossier.summary_mid",
+      "value": "当前目标：战棋与情报已经接上，准备下一次出阵。",
+      "note": "模板文案"
+    },
+    {
+      "key": "dossier.summary_low",
+      "value": "当前目标：线索已成形，继续补足主线触发条件。",
+      "note": "模板文案"
+    },
+    {
+      "key": "dossier.summary_none",
+      "value": "当前目标：先看任务板，补课程、好感、情报或战棋条件。",
+      "note": "模板文案"
+    },
+    {
+      "key": "supply.empty",
+      "value": "断补",
+      "note": "界面文案"
+    },
+    {
+      "key": "supply.low",
+      "value": "缺补",
+      "note": "界面文案"
+    },
+    {
+      "key": "supply.good",
+      "value": "充足",
+      "note": "界面文案"
+    },
+    {
+      "key": "supply.status",
+      "value": "{0}/{1}（{2}）",
+      "note": "模板文案"
+    },
+    {
+      "key": "newspaper.title",
+      "value": "报纸刊物",
+      "note": "界面文案"
+    },
+    {
+      "key": "newspaper.body",
+      "value": "按日期解锁的短文章。不同刊物有自己的立场，读完不会直接给出标准答案。",
+      "note": "界面文案"
+    },
+    {
+      "key": "newspaper.empty",
+      "value": "暂无可读刊物",
+      "note": "界面文案"
+    },
+    {
+      "key": "newspaper.article_body",
+      "value": "{0}\n\n立场倾向：{1}\n\n{2}",
+      "note": "模板文案"
+    },
+    {
+      "key": "newspaper.option_clip",
+      "value": "记入摘录",
+      "note": "界面文案"
+    },
+    {
+      "key": "log.newspaper_clip",
+      "value": "摘录：{0}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "newspaper.option_continue",
+      "value": "继续读报",
+      "note": "界面文案"
+    },
+    {
+      "key": "campus_activity.title",
+      "value": "周末活动",
+      "note": "界面文案"
+    },
+    {
+      "key": "campus_activity.body",
+      "value": "周末能听到课堂之外的声音。靶场、茶馆、讲座、救济棚，各有各的门。",
+      "note": "界面文案"
+    },
+    {
+      "key": "log.activity_training",
+      "value": "{0}：训练修习进度 +{1}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "log.activity_social",
+      "value": "{0}：朋友圈好感 +{1}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "ideology.title",
+      "value": "立场偏向",
+      "note": "界面文案"
+    },
+    {
+      "key": "ideology.strength_hint",
+      "value": "绝对值代表信念强度：{0}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "relationship.locked_note",
+      "value": "了解尚浅。继续邀约或共同活动可解锁更多词条。",
+      "note": "界面文案"
+    },
+    {
+      "key": "relationship.battle_support_high",
+      "value": "战场：作为友军时会优先支援主角。",
+      "note": "界面文案"
+    },
+    {
+      "key": "relationship.battle_support_mid",
+      "value": "战场：作为友军时更愿意靠近主角。",
+      "note": "界面文案"
+    },
+    {
+      "key": "relationship.battle_enemy",
+      "value": "战场：作为敌军时更可能追击主角。",
+      "note": "界面文案"
+    },
+    {
+      "key": "relationship.battle_none",
+      "value": "战场：暂无特殊倾向。",
+      "note": "界面文案"
+    },
+    {
+      "key": "relationship.detail_body",
+      "value": "朋友圈：{0}\n立场：{1}\n好感：{2}（{3}）\n\n{4}\n\n{5}",
+      "note": "模板文案"
+    },
+    {
+      "key": "relationship.no_circle",
+      "value": "未加入",
+      "note": "界面文案"
+    },
+    {
+      "key": "relationship.option_invite",
+      "value": "邀约",
+      "note": "界面文案"
+    },
+    {
+      "key": "log.invite_one",
+      "value": "你邀约了{0}，好感 +{1}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "academy.section_schedule",
+      "value": "本周安排",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.rest",
+      "value": "休息",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.study",
+      "value": "自习",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.invite",
+      "value": "邀约同窗",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.campus_activity",
+      "value": "周末活动",
+      "note": "界面文案"
+    },
+    {
+      "key": "label.log",
+      "value": "日志：",
+      "note": "界面文案"
+    },
+    {
+      "key": "academy.section_events",
+      "value": "事件入口",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.ideology",
+      "value": "立场",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.main_story",
+      "value": "主线",
+      "note": "界面文案"
+    },
+    {
+      "key": "goal.current_title",
+      "value": "当前目标",
+      "note": "界面文案"
+    },
+    {
+      "key": "goal.no_active",
+      "value": "暂无明确目标。先翻阅剧情，或用一周安排补齐东渡密档线索。",
+      "note": "界面文案"
+    },
+    {
+      "key": "goal.quest_progress",
+      "value": "{0}：{1}  {2}/{3}",
+      "note": "模板文案"
+    },
+    {
+      "key": "quest.type_default",
+      "value": "任务",
+      "note": "界面文案"
+    },
+    {
+      "key": "goal.recommend_rest",
+      "value": "推荐：体力偏低，先休息。休息也可能整理出旧线索。",
+      "note": "界面文案"
+    },
+    {
+      "key": "goal.recommend_story",
+      "value": "推荐：继续剧情；若线索不足，就先安排课程、邀约或情报行动。",
+      "note": "界面文案"
+    },
+    {
+      "key": "goal.recommend_strategy",
+      "value": "推荐：进入战略地图，把学院训练转化为战场结果。",
+      "note": "界面文案"
+    },
+    {
+      "key": "goal.recommend_relationship",
+      "value": "推荐：邀约同窗。关系越近，越容易问到派系背后的真话。",
+      "note": "界面文案"
+    },
+    {
+      "key": "goal.recommend_ideology",
+      "value": "推荐：参加时事讲座。立场变化会影响你能听见哪类消息。",
+      "note": "界面文案"
+    },
+    {
+      "key": "goal.recommend_intel",
+      "value": "推荐：打开情报入口，先用低风险侦察补齐旧港线索。",
+      "note": "界面文案"
+    },
+    {
+      "key": "goal.recommend_course",
+      "value": "推荐：安排「{0}」，训练后可能听见相关见闻。",
+      "note": "模板文案"
+    },
+    {
+      "key": "goal.recommend_general",
+      "value": "推荐：完成一周安排。课堂、同窗和休整都可能留下可追的线头。",
+      "note": "界面文案"
+    },
+    {
+      "key": "academy.summary",
+      "value": "姓名：{0}  年龄：{1}  {2}\n{3}  称号：{4}\n心情：{5}({6})  体力：{7}  战功：{8}\n军衔：{9}  国库：{10}\n特性：{11}",
+      "note": "模板文案"
+    },
+    {
+      "key": "button.map_tab",
+      "value": "地图",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.formation",
+      "value": "编队",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.character",
+      "value": "角色",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.skills",
+      "value": "技能",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.quests",
+      "value": "任务",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.diplomacy",
+      "value": "外交",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.settings",
+      "value": "设置",
+      "note": "界面文案"
+    },
+    {
+      "key": "label.relationships",
+      "value": "同窗关系",
+      "note": "界面文案"
+    },
+    {
+      "key": "relationship.button_label",
+      "value": "{0}  {1}\n{2}  好感 {3}",
+      "note": "模板文案"
+    },
+    {
+      "key": "relationship.more_hint",
+      "value": "更多人物可在角色档案中查看。",
+      "note": "界面文案"
+    },
+    {
+      "key": "attribute_guide.body",
+      "value": "步兵：提升步兵、长枪、重步等近战单位的伤害稳定性。\n骑兵：提升骑兵、重骑的冲击伤害和机动价值。\n炮兵：提升火枪、弓兵、火炮等远程单位的输出。\n管理：影响国库、任务处理和学院评价。\n后勤：影响补给恢复、行军续航和缺补给惩罚。\n训练：影响情报行动成功率与综合战斗准备。",
+      "note": "界面文案"
+    },
+    {
+      "key": "attribute_guide.title",
+      "value": "属性影响说明",
+      "note": "界面文案"
+    },
+    {
+      "key": "calendar.exam_week",
+      "value": "校考周",
+      "note": "界面文案"
+    },
+    {
+      "key": "calendar.holiday",
+      "value": "假期",
+      "note": "界面文案"
+    },
+    {
+      "key": "calendar.normal",
+      "value": "校历",
+      "note": "界面文案"
+    },
+    {
+      "key": "relationship.level_default",
+      "value": "冷漠",
+      "note": "界面文案"
+    },
+    {
+      "key": "log.relationship_unlock",
+      "value": "{0}解锁了新的角色词条。",
+      "note": "模板文案"
+    },
+    {
+      "key": "log.relationship_decay",
+      "value": "久未联络：{0}的好感略有下降。",
+      "note": "模板文案"
+    },
+    {
+      "key": "common.neutral",
+      "value": "中立",
+      "note": "界面文案"
+    },
+    {
+      "key": "ideology.axis_label",
+      "value": "{0} {1}（{2}）",
+      "note": "模板文案"
+    },
+    {
+      "key": "label.character_attributes",
+      "value": "角色属性",
+      "note": "界面文案"
+    },
+    {
+      "key": "log.campus_wander_empty",
+      "value": "校园闲逛：今日无人同行。",
+      "note": "界面文案"
+    },
+    {
+      "key": "log.campus_wander",
+      "value": "校园闲逛：与{0}同行，好感 +{1}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "log.course_gain",
+      "value": "{0}：修习进度 +{1}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "log.sunday_rest",
+      "value": "周日休息：心情和体力恢复。",
+      "note": "界面文案"
+    },
+    {
+      "key": "course.training_fallback",
+      "value": "训练课程",
+      "note": "界面文案"
+    },
+    {
+      "key": "log.sunday_study",
+      "value": "周日自习：{0}修习进度 +{1}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "invite.title",
+      "value": "邀约同窗",
+      "note": "界面文案"
+    },
+    {
+      "key": "invite.body",
+      "value": "你准备邀同窗共度周日。一次私谈能问出真话，朋友聚会则能听见更多流言。",
+      "note": "界面文案"
+    },
+    {
+      "key": "invite.option_person",
+      "value": "邀约 {0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "invite.option_group",
+      "value": "朋友圈聚会",
+      "note": "界面文案"
+    },
+    {
+      "key": "log.invite_group",
+      "value": "你组织了一次朋友圈聚会，全员好感 +{0}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "politics.title",
+      "value": "时事讲座",
+      "note": "界面文案"
+    },
+    {
+      "key": "politics.body",
+      "value": "讲座围绕王朝改革、军权、旧港与族群议题展开。你说出口的立场，会决定哪些人愿意继续与你交换消息。",
+      "note": "界面文案"
+    },
+    {
+      "key": "log.politics_stance",
+      "value": "你在讲座中靠近了{0}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "title.graduate_officer",
+      "value": "毕业军官",
+      "note": "界面文案"
+    },
+    {
+      "key": "title.academy_student",
+      "value": "新京军事学院生",
+      "note": "界面文案"
+    },
+    {
+      "key": "log.new_school_year",
+      "value": "新学年开始。",
+      "note": "界面文案"
+    },
+    {
+      "key": "log.low_stamina",
+      "value": "体力透支影响了心情。",
+      "note": "界面文案"
+    },
+    {
+      "key": "log.exam_result",
+      "value": "校考结算：{0}分，战功 +{1}，国库 +{2}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "log.holiday_apply",
+      "value": "假期：课程暂停，心情与体力恢复。",
+      "note": "界面文案"
+    },
+    {
+      "key": "holiday.title",
+      "value": "假期",
+      "note": "界面文案"
+    },
+    {
+      "key": "holiday.body",
+      "value": "本周是假期。课程暂停，但你仍可休整、读报，或整理最近写进密档的线索。",
+      "note": "界面文案"
+    },
+    {
+      "key": "holiday.option_rest",
+      "value": "休整",
+      "note": "界面文案"
+    },
+    {
+      "key": "holiday.option_newspaper",
+      "value": "读报",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.back",
+      "value": "返回",
+      "note": "界面文案"
+    },
+    {
+      "key": "log.story_missing",
+      "value": "剧情：未找到事件 {0}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "story.locked_body",
+      "value": "触发条件：{0}\n\n先完成对应的养成、情报、任务或战棋目标，再回来推进。",
+      "note": "模板文案"
+    },
+    {
+      "key": "log.story_locked",
+      "value": "剧情未触发：{0}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "story.locked_title",
+      "value": "剧情未触发",
+      "note": "界面文案"
+    },
+    {
+      "key": "story.unlock.unknown",
+      "value": "条件未配置",
+      "note": "界面文案"
+    },
+    {
+      "key": "story.unlock.ready",
+      "value": "已满足，点击继续主线即可推进。",
+      "note": "界面文案"
+    },
+    {
+      "key": "story.unlock.quest",
+      "value": "完成任务：{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "story.unlock.story",
+      "value": "完成剧情：{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "story.unlock.battle_wins",
+      "value": "战棋胜利 {0}/{1}",
+      "note": "模板文案"
+    },
+    {
+      "key": "story.unlock.battles",
+      "value": "完成战棋 {0}/{1}",
+      "note": "模板文案"
+    },
+    {
+      "key": "story.unlock.enemies",
+      "value": "击溃敌方单位 {0}/{1}",
+      "note": "模板文案"
+    },
+    {
+      "key": "story.unlock.any_course_exp",
+      "value": "任意课程进度 {0}/{1}",
+      "note": "模板文案"
+    },
+    {
+      "key": "story.unlock.any_course_level",
+      "value": "任意课程等级 Lv.{0}/Lv.{1}",
+      "note": "模板文案"
+    },
+    {
+      "key": "story.unlock.any_relationship",
+      "value": "任意同窗好感 {0}/{1}",
+      "note": "模板文案"
+    },
+    {
+      "key": "story.unlock.relationship",
+      "value": "{0}好感 {1}/{2}",
+      "note": "模板文案"
+    },
+    {
+      "key": "story.unlock.intelligence",
+      "value": "情报值 {0}/{1}",
+      "note": "模板文案"
+    },
+    {
+      "key": "story.unlock.spy_network",
+      "value": "情报网 Lv.{0}/Lv.{1}",
+      "note": "模板文案"
+    },
+    {
+      "key": "story.unlock.merit",
+      "value": "战功 {0}/{1}",
+      "note": "模板文案"
+    },
+    {
+      "key": "story.unlock.progress",
+      "value": "{0} {1}/{2}",
+      "note": "模板文案"
+    },
+    {
+      "key": "story.missing_title",
+      "value": "剧情缺失",
+      "note": "界面文案"
+    },
+    {
+      "key": "story.page_progress",
+      "value": "第 {0}/{1} 页",
+      "note": "模板文案"
+    },
+    {
+      "key": "story.click_to_continue",
+      "value": "点击任意处继续",
+      "note": "界面文案"
+    },
+    {
+      "key": "story.empty_text",
+      "value": "（暂无剧情文本）",
+      "note": "界面文案"
+    },
+    {
+      "key": "log.story_choice",
+      "value": "剧情选择：{0}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "stance.unknown",
+      "value": "未知立场",
+      "note": "界面文案"
+    },
+    {
+      "key": "stance.alias_home",
+      "value": "返乡",
+      "note": "界面文案"
+    },
+    {
+      "key": "stance.alias_army",
+      "value": "干城派",
+      "note": "界面文案"
+    },
+    {
+      "key": "relationship.story_character",
+      "value": "剧情人物",
+      "note": "界面文案"
+    },
+    {
+      "key": "relationship.story_character_note",
+      "value": "剧情中结识的人物。",
+      "note": "界面文案"
+    },
+    {
+      "key": "narrative.default_title",
+      "value": "本周余波",
+      "note": "界面文案"
+    },
+    {
+      "key": "narrative.choice_pursue",
+      "value": "追问到底",
+      "note": "界面文案"
+    },
+    {
+      "key": "narrative.choice_record",
+      "value": "先记在密档",
+      "note": "界面文案"
+    },
+    {
+      "key": "log.narrative_fragment",
+      "value": "周记：{0}（{1}）。",
+      "note": "模板文案"
+    },
+    {
+      "key": "narrative.pursued",
+      "value": "追问",
+      "note": "界面文案"
+    },
+    {
+      "key": "narrative.recorded",
+      "value": "记录",
+      "note": "界面文案"
+    },
+    {
+      "key": "story_menu.title",
+      "value": "剧情目录",
+      "note": "界面文案"
+    },
+    {
+      "key": "story_menu.main_ready",
+      "value": "已满足，点击继续主线。",
+      "note": "界面文案"
+    },
+    {
+      "key": "story_menu.summary",
+      "value": "当前主线：{0}\n推进条件：{1}\n支线会随主线、好感和任务进度开放。",
+      "note": "模板文案"
+    },
+    {
+      "key": "button.continue_main_story",
+      "value": "继续主线",
+      "note": "界面文案"
+    },
+    {
+      "key": "story_menu.unlocked_side",
+      "value": "已解锁支线",
+      "note": "界面文案"
+    },
+    {
+      "key": "story_menu.no_side",
+      "value": "支线不会一次性堆出来。先完成主线闸门、提高好感或完成任务。",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_archive.title",
+      "value": "角色档案",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_archive.page",
+      "value": "角色 {0}/{1} 页",
+      "note": "模板文案"
+    },
+    {
+      "key": "character_archive.card",
+      "value": "{0}｜{1}\n{2}\n性格：{3}\n{4}",
+      "note": "模板文案"
+    },
+    {
+      "key": "button.prev_page",
+      "value": "上一页",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.next_page",
+      "value": "下一页",
+      "note": "界面文案"
+    },
+    {
+      "key": "strategy.title",
+      "value": "战略地图  {0}年  第{1}回合",
+      "note": "模板文案"
+    },
+    {
+      "key": "button.academy_review",
+      "value": "学院回顾",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.system",
+      "value": "系统",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.end_turn",
+      "value": "结束回合",
+      "note": "界面文案"
+    },
+    {
+      "key": "strategy.province_text",
+      "value": "省份：{0}\n势力：{1}\n城防：{2}\n收入：{3}\n驻军：{4}\n道路：{5}",
+      "note": "模板文案"
+    },
+    {
+      "key": "strategy.command_text",
+      "value": "军衔：{0}  指挥上限：{1}\n{2}",
+      "note": "模板文案"
+    },
+    {
+      "key": "strategy.army_text",
+      "value": "军团：{0}\n兵力：{1}/{2}\n等级：{3}\n经验：{4}\n攻击：{5}\n行军力：{6}/{7}",
+      "note": "模板文案"
+    },
+    {
+      "key": "strategy.no_army_hint",
+      "value": "点击有我方军团的省份可选择军团。\n点击相邻己方省份行军。\n点击相邻敌方省份发起六边形战棋。",
+      "note": "界面文案"
+    },
+    {
+      "key": "strategy.army_extra_text_v2",
+      "value": "补给：{0}\n战术：{1}\n情报：{2}",
+      "note": "模板文案"
+    },
+    {
+      "key": "label.recent_news",
+      "value": "最近消息：",
+      "note": "界面文案"
+    },
+    {
+      "key": "mission.locked",
+      "value": "军令：指挥权暂停 {0} 回合",
+      "note": "模板文案"
+    },
+    {
+      "key": "mission.capture_enemy",
+      "value": "军令：夺取相邻敌省",
+      "note": "界面文案"
+    },
+    {
+      "key": "mission.supply_line",
+      "value": "军令：稳固防线并补给",
+      "note": "界面文案"
+    },
+    {
+      "key": "mission.scout_neutral",
+      "value": "军令：侦察中立地带",
+      "note": "界面文案"
+    },
+    {
+      "key": "mission.title",
+      "value": "上级军令",
+      "note": "界面文案"
+    },
+    {
+      "key": "mission.body",
+      "value": "当前军衔：{0}\n可指挥直属部队：{1}\n\n{2}\n\n攻占敌方据点会获得战功。未达成命令或战败时，会短暂失去直接指挥权。",
+      "note": "模板文案"
+    },
+    {
+      "key": "mission.option_strategy",
+      "value": "查看战略地图",
+      "note": "界面文案"
+    },
+    {
+      "key": "log.cancel_army_selection",
+      "value": "取消军团选择。",
+      "note": "界面文案"
+    },
+    {
+      "key": "log.command_locked",
+      "value": "你暂时被解除指挥权，还需等待 {0} 回合。",
+      "note": "模板文案"
+    },
+    {
+      "key": "log.army_not_adjacent",
+      "value": "军团只能沿道路进入相邻省份。",
+      "note": "界面文案"
+    },
+    {
+      "key": "log.army_no_move",
+      "value": "该军团本回合已经用尽行军力。",
+      "note": "界面文案"
+    },
+    {
+      "key": "log.army_selected",
+      "value": "选中{0}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "log.no_local_army",
+      "value": "这座省份没有可指挥的我方军团。",
+      "note": "界面文案"
+    },
+    {
+      "key": "log.army_moved",
+      "value": "{0}沿道路进驻{1}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.title",
+      "value": "战棋工坊",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.default_name",
+      "value": "工坊测试关",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle.objective",
+      "value": "据点",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.body",
+      "value": "当前工具：{0}\n地形：{1}\n兵种：{2}\n蓝方/红方：{3}/{4}\n据点：{5},{6}\n\n点击棋盘即可落子或修改格子。测试战斗不会写入正式战绩。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.brush_terrain",
+      "value": "地形",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.brush_player",
+      "value": "蓝方",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.brush_enemy",
+      "value": "红方",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.brush_objective",
+      "value": "据点",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.brush_erase",
+      "value": "擦除",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.prev_terrain",
+      "value": "上一地形",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.next_terrain",
+      "value": "下一地形",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.prev_role",
+      "value": "上一兵种",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.next_role",
+      "value": "下一兵种",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.message_default",
+      "value": "建议：先保证双方至少各有1个单位，再测试。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.test",
+      "value": "开始测试",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.save",
+      "value": "保存草稿",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.load",
+      "value": "载入草稿",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.reset",
+      "value": "重置",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.back_strategy",
+      "value": "返回战略地图",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.msg_terrain",
+      "value": "已设置地形：{0}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.msg_player",
+      "value": "已放置蓝方：{0}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.msg_enemy",
+      "value": "已放置红方：{0}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.msg_objective",
+      "value": "已移动中央据点。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.msg_erase",
+      "value": "已擦除该格单位；无单位时会还原为平原。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.enemy_unit_suffix",
+      "value": "红方部队",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.player_unit_suffix",
+      "value": "蓝方部队",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.saved",
+      "value": "关卡草稿已保存。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.no_save",
+      "value": "还没有保存过关卡草稿。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.loaded",
+      "value": "关卡草稿已载入。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.reset_done",
+      "value": "已恢复默认演习关卡。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.need_both_sides",
+      "value": "测试前需要至少1个蓝方单位和1个红方单位。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.player_army",
+      "value": "蓝方测试军",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.enemy_army",
+      "value": "红方测试军",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.test_start",
+      "value": "工坊测试开始。选择蓝方单位行动，胜负不会写入正式存档。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.test_return",
+      "value": "已返回工坊，可继续调整并再次测试。",
+      "note": "界面文案"
+    },
+    {
+      "key": "log.unoccupied_capture",
+      "value": "目标无驻军，{0}接管了{1}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.test_battle_name",
+      "value": "工坊测试关",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle.title",
+      "value": "边境军令：{0}  第{1}回合  当前：{2}",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle.command_hint_select",
+      "value": "选择蓝方单位，随后在棋盘上移动或攻击。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle.command_hint_ready",
+      "value": "绿色格可移动，红色格可攻击；右侧可防御或待命。",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.cancel_selection",
+      "value": "取消选择",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle.objective_contested",
+      "value": "争夺中",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle.unit_text",
+      "value": "{0}\n兵种：{1}  编队：{2}\n兵力：{3}/{4}\n等级：{5}\n经验：{6}\n攻击：{7}\n士气：{8}\n移动：{9}  射程：{10}\n状态：{11}",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle.empty_hint",
+      "value": "点击蓝方军团选择。\n绿色格：可移动。\n红色格：可攻击。\n拖动战场可移动视野。\n步兵均衡，骑兵克弓兵，弓兵射程远。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle.objective_panel",
+      "value": "中央据点：{0}\n我方据点进度：{1}/{2}\n敌方据点进度：{3}/{4}",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle.unit_supply",
+      "value": "补给：{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "button.guard",
+      "value": "防御",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.wait",
+      "value": "待命",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle.log_panel",
+      "value": "军令：\n{0}\n\n战场日志：\n{1}",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle.status_guarding",
+      "value": "防御中",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle.status_acted",
+      "value": "已攻击",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle.status_moved",
+      "value": "已移动，可攻击",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle.status_ready",
+      "value": "可移动/攻击",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle.target_preview_acted",
+      "value": "攻击预览：本回合已完成攻击。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle.target_preview_none",
+      "value": "攻击预览：当前射程内没有敌军。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle.target_preview_title",
+      "value": "攻击预览：",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle.target_preview_row",
+      "value": "{0}  伤害{1}{2}",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle.target_preview_counter",
+      "value": " / 反击{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle.msg.guard",
+      "value": "{0}就地防御，本回合减伤提高。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle.msg.wait",
+      "value": "{0}待命，保留阵型。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle.outcome_victory",
+      "value": "战役胜利",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle.outcome_defeat",
+      "value": "战役失败",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle.outcome_victory_body",
+      "value": "敌军已被击溃，或中央据点已被我方巩固。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle.outcome_defeat_body",
+      "value": "我方军团被迫撤退，或中央据点落入敌方掌控。",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.back_battle_lab",
+      "value": "返回工坊",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle.msg.enemy_turn",
+      "value": "现在是敌方回合，无法下令。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle.msg.cancel_unit",
+      "value": "取消选择部队。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle.msg.unit_done",
+      "value": "{0}已经行动完毕。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle.msg.unit_selected",
+      "value": "选中{0}，绿色可移动，红色可攻击。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle.msg.enemy_info",
+      "value": "敌军：{0}，HP {1}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle.msg.select_first",
+      "value": "请先选择蓝方军团。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle.msg.already_attacked",
+      "value": "{0}本回合已经攻击。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle.msg.out_of_range",
+      "value": "目标不在攻击范围内。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle.msg.cannot_move_after_attack",
+      "value": "{0}已经攻击，不能再移动。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle.msg.already_moved",
+      "value": "{0}本回合已经移动。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle.msg.invalid_move",
+      "value": "目标格超出移动范围，或被地形/单位阻挡。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle.msg.moved_to",
+      "value": "{0}移动至第{1}行第{2}列，可继续攻击。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle.attack_confirm_body",
+      "value": "{0}\n-> {1}\n\n预计伤害：{2}{3}\n地形：{4}  抗性：{5}%\n士气：{6} / {7}",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle.counter_preview",
+      "value": "\n预计反击：{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle.no_counter",
+      "value": "\n目标无法反击",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle.attack_confirm_title",
+      "value": "确认攻击",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.attack",
+      "value": "开战",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.cancel",
+      "value": "取消",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle.breakdown_supply_bad",
+      "value": "补给：短缺会压低输出或防御。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle.breakdown_supply_good",
+      "value": "补给：正常。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle.damage_breakdown",
+      "value": "影响：兵种克制 {0:+#;-#;0} / 熟练 +{1} / 士气 {2:+#;-#;0} / 敌等级 -{3} / 地形减伤 {4}%\n{5}",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle.msg.attack_damage",
+      "value": "{0}攻击{1}，造成{2}伤害。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle.msg.routed",
+      "value": "{0}溃散。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle.msg.counter_damage",
+      "value": "{0}反击，造成{1}伤害。",
+      "note": "模板文案"
+    },
+    {
+      "key": "morale.high",
+      "value": "高昂",
+      "note": "界面文案"
+    },
+    {
+      "key": "morale.up",
+      "value": "上升",
+      "note": "界面文案"
+    },
+    {
+      "key": "morale.low",
+      "value": "低落",
+      "note": "界面文案"
+    },
+    {
+      "key": "morale.chaos",
+      "value": "混乱",
+      "note": "界面文案"
+    },
+    {
+      "key": "morale.normal",
+      "value": "正常",
+      "note": "界面文案"
+    },
+    {
+      "key": "log.unit_level_up",
+      "value": "{0}升至{1}级。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle.msg.enemy_turn_end",
+      "value": "敌方行动结束，进入我方回合。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle.msg.enemy_ai",
+      "value": "敌军正在调动部队。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle.msg.enemy_retreat",
+      "value": "{0}收缩阵线。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle.msg.enemy_advance",
+      "value": "{0}向我方推进。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle.msg.enemy_guard",
+      "value": "{0}固守阵地。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle.msg.enemy_wait",
+      "value": "{0}待命观察。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.test_victory",
+      "value": "测试胜利。结果只用于验证关卡节奏，不会写入正式战绩。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.test_defeat",
+      "value": "测试失败。关卡可以继续调整后重测。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle.msg.victory_capture",
+      "value": "战斗胜利，{0}归入我方。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle.prisoner_name",
+      "value": "{0}将领",
+      "note": "模板文案"
+    },
+    {
+      "key": "log.prisoner_captured",
+      "value": "{0}将领被活捉。",
+      "note": "模板文案"
+    },
+    {
+      "key": "log.merit_reward",
+      "value": "军令奖励：战功 +{0}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle.msg.defeat",
+      "value": "战斗失败，军团被迫撤退。",
+      "note": "界面文案"
+    },
+    {
+      "key": "log.command_removed",
+      "value": "上级暂时解除你的指挥权。",
+      "note": "界面文案"
+    },
+    {
+      "key": "log.army_level_up",
+      "value": "{0}升至{1}级。",
+      "note": "模板文案"
+    },
+    {
+      "key": "log.strategy_turn_end",
+      "value": "回合结束：收入 {0}，军团恢复行军力并获得补给。",
+      "note": "模板文案"
+    },
+    {
+      "key": "log.enemy_capture",
+      "value": "{0}攻陷{1}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "log.enemy_attack_failed",
+      "value": "{0}进攻{1}失败。",
+      "note": "模板文案"
+    },
+    {
+      "key": "log.enemy_occupy",
+      "value": "{0}占据了{1}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "log.player_objective_hold",
+      "value": "我方正在巩固中央据点：{0}/{1}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "log.enemy_objective_hold",
+      "value": "敌方正在巩固中央据点：{0}/{1}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "log.save_success_slot",
+      "value": "系统：已保存到 {0}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "log.save_missing",
+      "value": "没有找到存档。",
+      "note": "界面文案"
+    },
+    {
+      "key": "log.load_success_slot",
+      "value": "系统：已读取 {0}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "log.new_game_plus",
+      "value": "第 {0} 周目开始，记忆回响已保留。",
+      "note": "模板文案"
+    },
+    {
+      "key": "character_create.selected",
+      "value": "已选：{0}\n{1}",
+      "note": "模板文案"
+    },
+    {
+      "key": "button.clear_selection",
+      "value": "清空选择",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.message_cleared",
+      "value": "已清空。选择 1-3 个特性后确认。",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.section_traits",
+      "value": "选择特性",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.message_removed",
+      "value": "已移除特性。",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.message_max",
+      "value": "最多选择 3 个特性。",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.message_selected_count",
+      "value": "已选择 {0}/3 个特性。",
+      "note": "模板文案"
+    },
+    {
+      "key": "character_create.message_min",
+      "value": "至少选择 1 个特性。",
+      "note": "界面文案"
+    },
+    {
+      "key": "character_create.bonus_summary",
+      "value": "加成：战斗 攻击 +{0} / 兵力 +{1} / 移动 +{2}    社交 好感 +{3}    养成 进度 +{4}% / 体力消耗 -{5}",
+      "note": "模板文案"
+    },
+    {
+      "key": "story.choice_effect_more",
+      "value": "另有{0}项影响",
+      "note": "模板文案"
+    },
+    {
+      "key": "story.effect_target_world",
+      "value": "局势",
+      "note": "界面文案"
+    },
+    {
+      "key": "story.effect_label",
+      "value": "{0}{1}{2}",
+      "note": "模板文案"
+    },
+    {
+      "key": "story.effect_kind_value",
+      "value": "数值",
+      "note": "界面文案"
+    },
+    {
+      "key": "log.story_choice_effects",
+      "value": "选择后果：{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "story.choice_with_effects",
+      "value": "{0}  |  {1}",
+      "note": "模板文案"
+    },
+    {
+      "key": "strategy.army_extra_text",
+      "value": "补给：{0}\n战术：{1}\n情报：{2}",
+      "note": "模板文案"
+    },
+    {
+      "key": "academy.schedule_hint",
+      "value": "课程与周末活动集中在这里，先选行动，再看右侧人物与事件。",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.save",
+      "value": "保存",
+      "note": "界面文案"
+    },
+    {
+      "key": "log.save_success",
+      "value": "系统：已保存。",
+      "note": "界面文案"
+    },
+    {
+      "key": "log.load_success",
+      "value": "系统：已读取存档。",
+      "note": "界面文案"
+    },
+    {
+      "key": "story.side_text",
+      "value": "类型：{0}\n触发：{1}\n进度：{2}/{3}\n已完成主线：{4}\n当前主线：{5}\n\n提示：剧情选项会改变立场与人物好感。",
+      "note": "模板文案"
+    },
+    {
+      "key": "story.free_trigger",
+      "value": "自由触发",
+      "note": "界面文案"
+    }
+  ],
+  "playerDefaults": {
+    "name": "夏邑",
+    "age": 16,
+    "year": 1,
+    "week": 1,
+    "mood": 50,
+    "stamina": 80,
+    "merit": 0,
+    "treasury": 120,
+    "infantryExp": 0,
+    "cavalryExp": 0,
+    "artilleryExp": 0,
+    "managementExp": 0,
+    "logisticsExp": 0,
+    "trainingExp": 0,
+    "title": "新京军事学院生",
+    "courtesyName": "",
+    "originId": "",
+    "personalityId": "",
+    "traits": [],
+    "creationMemoryChoices": [],
+    "subjectFocusIds": [],
+    "lastCourse": "",
+    "lastExamScore": 0,
+    "nationAxis": 0,
+    "classAxis": 0,
+    "governanceAxis": 0,
+    "regionAxis": 0,
+    "commandLockTurns": 0,
+    "prisoners": [],
+    "intelligence": 12,
+    "spyNetwork": 0,
+    "newGamePlus": 0,
+    "achievementPoints": 0,
+    "battlesFought": 0,
+    "battleWins": 0,
+    "battleLosses": 0,
+    "enemiesDefeated": 0,
+    "questsCompleted": 0,
+    "spySuccesses": 0,
+    "supplyBreaks": 0,
+    "equippedTitle": "",
+    "unlockedSkills": [],
+    "equippedSkills": [],
+    "activeQuests": [],
+    "completedQuests": [],
+    "unlockedAchievements": [],
+    "unlockedTitles": [],
+    "unlockedEndings": [],
+    "eventReview": []
+  },
+  "calendar": {
+    "examWeeks": "25;50",
+    "holidayWeeks": "26;27;51;52",
+    "maxWeek": 52,
+    "maxYear": 4
+  },
+  "traits": [
+    {
+      "id": "trait_cautious",
+      "name": "审慎",
+      "description": "战斗：兵力 +8；养成：体力消耗 -1。",
+      "battleAttack": 0,
+      "battleHp": 8,
+      "battleMove": 0,
+      "socialBonus": 0,
+      "cultivationPercent": 0,
+      "staminaSave": 1
+    },
+    {
+      "id": "trait_kind",
+      "name": "仁厚",
+      "description": "社交：好感收益 +3。",
+      "battleAttack": 0,
+      "battleHp": 0,
+      "battleMove": 0,
+      "socialBonus": 3,
+      "cultivationPercent": 0,
+      "staminaSave": 0
+    },
+    {
+      "id": "trait_decisive",
+      "name": "果决",
+      "description": "战斗：攻击 +2。",
+      "battleAttack": 2,
+      "battleHp": 0,
+      "battleMove": 0,
+      "socialBonus": 0,
+      "cultivationPercent": 0,
+      "staminaSave": 0
+    },
+    {
+      "id": "trait_sensitive",
+      "name": "善感",
+      "description": "社交：好感 +1；养成进度 +8%。",
+      "battleAttack": 0,
+      "battleHp": 0,
+      "battleMove": 0,
+      "socialBonus": 1,
+      "cultivationPercent": 8,
+      "staminaSave": 0
+    },
+    {
+      "id": "trait_stoic",
+      "name": "隐忍",
+      "description": "战斗：兵力 +12；体力消耗 -1。",
+      "battleAttack": 0,
+      "battleHp": 12,
+      "battleMove": 0,
+      "socialBonus": 0,
+      "cultivationPercent": 0,
+      "staminaSave": 1
+    },
+    {
+      "id": "trait_radical",
+      "name": "激进",
+      "description": "战斗：攻击 +3；养成进度 -5%。",
+      "battleAttack": 3,
+      "battleHp": 0,
+      "battleMove": 0,
+      "socialBonus": 0,
+      "cultivationPercent": -5,
+      "staminaSave": 0
+    },
+    {
+      "id": "field_commander",
+      "name": "阵前直觉",
+      "description": "战斗：全军攻击 +3。",
+      "battleAttack": 3,
+      "battleHp": 0,
+      "battleMove": 0,
+      "socialBonus": 0,
+      "cultivationPercent": 0,
+      "staminaSave": 0
+    },
+    {
+      "id": "iron_body",
+      "name": "坚韧体魄",
+      "description": "战斗：兵力 +15；养成：体力消耗 -2。",
+      "battleAttack": 0,
+      "battleHp": 15,
+      "battleMove": 0,
+      "socialBonus": 0,
+      "cultivationPercent": 0,
+      "staminaSave": 2
+    },
+    {
+      "id": "wild_runner",
+      "name": "野外行军",
+      "description": "战斗：移动 +1。",
+      "battleAttack": 0,
+      "battleHp": 0,
+      "battleMove": 1,
+      "socialBonus": 0,
+      "cultivationPercent": 0,
+      "staminaSave": 0
+    },
+    {
+      "id": "honor_student",
+      "name": "军校优等生",
+      "description": "养成：课程进度 +20%。",
+      "battleAttack": 0,
+      "battleHp": 0,
+      "battleMove": 0,
+      "socialBonus": 0,
+      "cultivationPercent": 20,
+      "staminaSave": 0
+    },
+    {
+      "id": "methodical",
+      "name": "勤勉自律",
+      "description": "养成：课程进度 +12%，体力消耗 -1。",
+      "battleAttack": 0,
+      "battleHp": 0,
+      "battleMove": 0,
+      "socialBonus": 0,
+      "cultivationPercent": 12,
+      "staminaSave": 1
+    },
+    {
+      "id": "silver_tongue",
+      "name": "辩才无碍",
+      "description": "社交：好感收益 +3。",
+      "battleAttack": 0,
+      "battleHp": 0,
+      "battleMove": 0,
+      "socialBonus": 3,
+      "cultivationPercent": 0,
+      "staminaSave": 0
+    },
+    {
+      "id": "noble_manners",
+      "name": "名门礼仪",
+      "description": "社交：好感收益 +2；养成 +8%。",
+      "battleAttack": 0,
+      "battleHp": 0,
+      "battleMove": 0,
+      "socialBonus": 2,
+      "cultivationPercent": 8,
+      "staminaSave": 0
+    },
+    {
+      "id": "balanced",
+      "name": "文武兼修",
+      "description": "战斗：攻击 +1；社交 +1；养成 +8%。",
+      "battleAttack": 1,
+      "battleHp": 0,
+      "battleMove": 0,
+      "socialBonus": 1,
+      "cultivationPercent": 8,
+      "staminaSave": 0
+    }
+  ],
+  "characterOrigins": [
+    {
+      "id": "noble",
+      "name": "勋贵之后",
+      "subtitle": "伯爵之子，门第深厚。",
+      "description": "你的父亲是宁远伯爵，镇守西境多年。家族与返乡团关系密切，却也背负旧族的沉默。",
+      "talentPool": "noble;leader;strategy",
+      "clueId": "father_silence",
+      "clueName": "父亲的沉默",
+      "infantryExp": 0,
+      "cavalryExp": 0,
+      "artilleryExp": 0,
+      "managementExp": 50,
+      "logisticsExp": 50,
+      "trainingExp": 0,
+      "nationAxis": -3,
+      "classAxis": -3,
+      "governanceAxis": -5,
+      "regionAxis": -3,
+      "stanceHome": 10,
+      "stanceArmy": 0,
+      "stanceNative": -8,
+      "stanceLiberal": -5,
+      "stanceLegal": 5,
+      "relZhao": 5,
+      "relLin": 0,
+      "relYierde": -5,
+      "relChen": 0,
+      "relSu": -3,
+      "relLi": 3
+    },
+    {
+      "id": "scholar",
+      "name": "书香门第",
+      "subtitle": "翰林之后，重文重法。",
+      "description": "你出身南方文脉，家中藏书与辩论伴随童年。学院里的共和与法理，对你并不陌生。",
+      "talentPool": "scholar;strategy;social",
+      "clueId": "",
+      "clueName": "",
+      "infantryExp": 0,
+      "cavalryExp": 0,
+      "artilleryExp": 0,
+      "managementExp": 0,
+      "logisticsExp": 0,
+      "trainingExp": 50,
+      "nationAxis": 5,
+      "classAxis": 3,
+      "governanceAxis": 5,
+      "regionAxis": 0,
+      "stanceHome": -3,
+      "stanceArmy": 0,
+      "stanceNative": 3,
+      "stanceLiberal": 12,
+      "stanceLegal": 0,
+      "relZhao": 0,
+      "relLin": 8,
+      "relYierde": 3,
+      "relChen": -5,
+      "relSu": 5,
+      "relLi": 0
+    },
+    {
+      "id": "military",
+      "name": "将门虎子",
+      "subtitle": "总兵之子，少年习武。",
+      "description": "你熟悉军营号角，也熟悉军中对软弱的轻蔑。干城派看重你的血脉，文官则未必信任你。",
+      "talentPool": "military;leader;bravery",
+      "clueId": "",
+      "clueName": "",
+      "infantryExp": 50,
+      "cavalryExp": 0,
+      "artilleryExp": 0,
+      "managementExp": 0,
+      "logisticsExp": 0,
+      "trainingExp": 50,
+      "nationAxis": 0,
+      "classAxis": -3,
+      "governanceAxis": -3,
+      "regionAxis": -3,
+      "stanceHome": 0,
+      "stanceArmy": 12,
+      "stanceNative": 0,
+      "stanceLiberal": -5,
+      "stanceLegal": -5,
+      "relZhao": 5,
+      "relLin": -3,
+      "relYierde": 0,
+      "relChen": -5,
+      "relSu": -3,
+      "relLi": 5
+    },
+    {
+      "id": "border",
+      "name": "边民出身",
+      "subtitle": "边陲小族，熟悉荒原。",
+      "description": "你来自边境，见过贸易、冲突和饥荒。你比多数同窗更懂得地图边缘的人如何活下去。",
+      "talentPool": "border;bravery;resilience",
+      "clueId": "",
+      "clueName": "",
+      "infantryExp": 0,
+      "cavalryExp": 50,
+      "artilleryExp": 0,
+      "managementExp": 0,
+      "logisticsExp": 50,
+      "trainingExp": 0,
+      "nationAxis": 5,
+      "classAxis": 3,
+      "governanceAxis": 0,
+      "regionAxis": 3,
+      "stanceHome": -8,
+      "stanceArmy": 3,
+      "stanceNative": 12,
+      "stanceLiberal": 5,
+      "stanceLegal": -5,
+      "relZhao": -3,
+      "relLin": 0,
+      "relYierde": 10,
+      "relChen": -8,
+      "relSu": 3,
+      "relLi": 0
+    },
+    {
+      "id": "merchant",
+      "name": "商贾之家",
+      "subtitle": "远洋巨商，消息灵通。",
+      "description": "母族经营海贸，银钱与情报在你幼年便是同一种语言。你知道港口的风向，也知道宫廷的价码。",
+      "talentPool": "merchant;social;strategy",
+      "clueId": "shen_ledger",
+      "clueName": "沈家账册",
+      "infantryExp": 0,
+      "cavalryExp": 0,
+      "artilleryExp": 0,
+      "managementExp": 50,
+      "logisticsExp": 50,
+      "trainingExp": 0,
+      "nationAxis": 0,
+      "classAxis": 0,
+      "governanceAxis": 0,
+      "regionAxis": 0,
+      "stanceHome": 3,
+      "stanceArmy": -3,
+      "stanceNative": 0,
+      "stanceLiberal": 5,
+      "stanceLegal": 5,
+      "relZhao": 3,
+      "relLin": 0,
+      "relYierde": 0,
+      "relChen": -3,
+      "relSu": 3,
+      "relLi": 0
+    },
+    {
+      "id": "tribal",
+      "name": "部落血裔",
+      "subtitle": "归化部落，双重身份。",
+      "description": "你身上流着归化部落的血。有人把这当作污点，也有人把这视为新大陆未来的证明。",
+      "talentPool": "tribal;social;resilience",
+      "clueId": "",
+      "clueName": "",
+      "infantryExp": 0,
+      "cavalryExp": 50,
+      "artilleryExp": 0,
+      "managementExp": 0,
+      "logisticsExp": 0,
+      "trainingExp": 50,
+      "nationAxis": 8,
+      "classAxis": 5,
+      "governanceAxis": 3,
+      "regionAxis": 5,
+      "stanceHome": -10,
+      "stanceArmy": 0,
+      "stanceNative": 15,
+      "stanceLiberal": 3,
+      "stanceLegal": -8,
+      "relZhao": 0,
+      "relLin": 0,
+      "relYierde": 15,
+      "relChen": -10,
+      "relSu": 5,
+      "relLi": 0
+    }
+  ],
+  "creationMemories": [
+    {
+      "id": "market",
+      "title": "往事一：边境集市",
+      "body": "老妇人递来一串祈福珠。你看见贫穷，也看见谎言。",
+      "optionAId": "market_doubt",
+      "optionAText": "拉住父亲，提醒这是骗局。",
+      "optionATraitId": "trait_cautious",
+      "optionANation": -3,
+      "optionAClass": 0,
+      "optionAGovernance": -2,
+      "optionARegion": 0,
+      "optionBId": "market_mercy",
+      "optionBText": "把零花钱给她，愿她今日能饱腹。",
+      "optionBTraitId": "trait_kind",
+      "optionBNation": 4,
+      "optionBClass": 2,
+      "optionBGovernance": 0,
+      "optionBRegion": 0
+    },
+    {
+      "id": "yard",
+      "title": "往事二：演武场",
+      "body": "同伴被高年级欺辱。你可以忍，也可以立刻冲上去。",
+      "optionAId": "yard_endure",
+      "optionAText": "先记下对方名字，等机会再还。",
+      "optionATraitId": "trait_stoic",
+      "optionANation": 0,
+      "optionAClass": 0,
+      "optionAGovernance": -2,
+      "optionARegion": -1,
+      "optionBId": "yard_charge",
+      "optionBText": "冲上前，把人从泥地里拉起来。",
+      "optionBTraitId": "trait_decisive",
+      "optionBNation": 2,
+      "optionBClass": 0,
+      "optionBGovernance": 2,
+      "optionBRegion": 0
+    },
+    {
+      "id": "book",
+      "title": "往事三：禁书一页",
+      "body": "你在书房里发现被撕下的海外手札。父亲沉默，烛火摇晃。",
+      "optionAId": "book_hide",
+      "optionAText": "藏起残页，等待能看懂它的一天。",
+      "optionATraitId": "trait_sensitive",
+      "optionANation": 0,
+      "optionAClass": 3,
+      "optionAGovernance": 2,
+      "optionARegion": 0,
+      "optionBId": "book_ask",
+      "optionBText": "直接追问父亲，哪怕惹怒他。",
+      "optionBTraitId": "trait_radical",
+      "optionBNation": 4,
+      "optionBClass": 3,
+      "optionBGovernance": 3,
+      "optionBRegion": 0
+    }
+  ],
+  "creationTalents": [
+    {
+      "id": "talent_old_blood",
+      "name": "贵胄之姿",
+      "category": "统率",
+      "tier": 1,
+      "originTags": "noble",
+      "description": "社交好感+2，养成进度+6%。",
+      "battleAttack": 0,
+      "battleHp": 0,
+      "battleMove": 0,
+      "socialBonus": 2,
+      "cultivationPercent": 6,
+      "staminaSave": 0,
+      "intelligenceBonus": 0
+    },
+    {
+      "id": "talent_family_learning",
+      "name": "家学渊源",
+      "category": "谋略",
+      "tier": 1,
+      "originTags": "noble;scholar",
+      "description": "养成进度+10%。",
+      "battleAttack": 0,
+      "battleHp": 0,
+      "battleMove": 0,
+      "socialBonus": 0,
+      "cultivationPercent": 10,
+      "staminaSave": 0,
+      "intelligenceBonus": 0
+    },
+    {
+      "id": "talent_argument",
+      "name": "明辨章句",
+      "category": "谋略",
+      "tier": 1,
+      "originTags": "scholar",
+      "description": "社交好感+1，养成进度+8%。",
+      "battleAttack": 0,
+      "battleHp": 0,
+      "battleMove": 0,
+      "socialBonus": 1,
+      "cultivationPercent": 8,
+      "staminaSave": 0,
+      "intelligenceBonus": 0
+    },
+    {
+      "id": "talent_warborn",
+      "name": "百战余习",
+      "category": "武勇",
+      "tier": 1,
+      "originTags": "military;border",
+      "description": "攻击+3。",
+      "battleAttack": 3,
+      "battleHp": 0,
+      "battleMove": 0,
+      "socialBonus": 0,
+      "cultivationPercent": 0,
+      "staminaSave": 0,
+      "intelligenceBonus": 0
+    },
+    {
+      "id": "talent_drillmaster",
+      "name": "校场老手",
+      "category": "统率",
+      "tier": 1,
+      "originTags": "military",
+      "description": "兵力+12，攻击+1。",
+      "battleAttack": 1,
+      "battleHp": 12,
+      "battleMove": 0,
+      "socialBonus": 0,
+      "cultivationPercent": 0,
+      "staminaSave": 0,
+      "intelligenceBonus": 0
+    },
+    {
+      "id": "talent_frontier",
+      "name": "荒原识途",
+      "category": "坚韧",
+      "tier": 1,
+      "originTags": "border;tribal",
+      "description": "移动+1，体力消耗-1。",
+      "battleAttack": 0,
+      "battleHp": 0,
+      "battleMove": 1,
+      "socialBonus": 0,
+      "cultivationPercent": 0,
+      "staminaSave": 1,
+      "intelligenceBonus": 0
+    },
+    {
+      "id": "talent_tradewind",
+      "name": "海贸耳目",
+      "category": "通达",
+      "tier": 1,
+      "originTags": "merchant",
+      "description": "情报+4，社交好感+1。",
+      "battleAttack": 0,
+      "battleHp": 0,
+      "battleMove": 0,
+      "socialBonus": 1,
+      "cultivationPercent": 0,
+      "staminaSave": 0,
+      "intelligenceBonus": 4
+    },
+    {
+      "id": "talent_abacus",
+      "name": "账册心算",
+      "category": "谋略",
+      "tier": 1,
+      "originTags": "merchant;scholar",
+      "description": "养成进度+6%，体力消耗-1。",
+      "battleAttack": 0,
+      "battleHp": 0,
+      "battleMove": 0,
+      "socialBonus": 0,
+      "cultivationPercent": 6,
+      "staminaSave": 1,
+      "intelligenceBonus": 0
+    },
+    {
+      "id": "talent_two_worlds",
+      "name": "双界行者",
+      "category": "通达",
+      "tier": 1,
+      "originTags": "tribal;border",
+      "description": "社交好感+3。",
+      "battleAttack": 0,
+      "battleHp": 0,
+      "battleMove": 0,
+      "socialBonus": 3,
+      "cultivationPercent": 0,
+      "staminaSave": 0,
+      "intelligenceBonus": 0
+    },
+    {
+      "id": "talent_bloodfire",
+      "name": "血性激昂",
+      "category": "武勇",
+      "tier": 1,
+      "originTags": "",
+      "description": "攻击+2，兵力+8。",
+      "battleAttack": 2,
+      "battleHp": 8,
+      "battleMove": 0,
+      "socialBonus": 0,
+      "cultivationPercent": 0,
+      "staminaSave": 0,
+      "intelligenceBonus": 0
+    }
+  ],
+  "creationSubjects": [
+    {
+      "id": "infantry",
+      "name": "步兵",
+      "target": "infantryExp",
+      "description": "近战、长枪、重步基础。",
+      "expGain": 50
+    },
+    {
+      "id": "cavalry",
+      "name": "骑兵",
+      "target": "cavalryExp",
+      "description": "骑兵冲击和战场机动。",
+      "expGain": 50
+    },
+    {
+      "id": "artillery",
+      "name": "炮兵",
+      "target": "artilleryExp",
+      "description": "火枪、弓兵和重器输出。",
+      "expGain": 50
+    },
+    {
+      "id": "management",
+      "name": "管理",
+      "target": "managementExp",
+      "description": "政务、国库和任务效率。",
+      "expGain": 50
+    },
+    {
+      "id": "logistics",
+      "name": "后勤",
+      "target": "logisticsExp",
+      "description": "补给、行军和消耗控制。",
+      "expGain": 50
+    },
+    {
+      "id": "training",
+      "name": "训练",
+      "target": "trainingExp",
+      "description": "演训、情报和综合准备。",
+      "expGain": 50
+    }
+  ],
+  "news": [
+    {
+      "id": "N001",
+      "unlockWeek": 1,
+      "title": "新京学报：新生周记入档",
+      "source": "新京学报",
+      "stanceHint": "温和官报",
+      "body": "学院宣布新生每周札记将并入学籍副册。教务处称，此举为考察军官是否具备观察力与判断力。"
+    },
+    {
+      "id": "N002",
+      "unlockWeek": 4,
+      "title": "海潮报：旧港仓库封存",
+      "source": "海潮报",
+      "stanceHint": "返乡团",
+      "body": "旧港三号仓库因军需审计暂时封门。返乡团人士称其中只是远航旧账，反对派则质疑有军费去向不明。"
+    },
+    {
+      "id": "N003",
+      "unlockWeek": 8,
+      "title": "民声小报：副册名单争议",
+      "source": "民声小报",
+      "stanceHint": "自由派",
+      "body": "有学生匿名投书，称学籍副册对平民、归化部落与贵族子弟记录标准不一，要求学院公开审查规则。"
+    },
+    {
+      "id": "N004",
+      "unlockWeek": 13,
+      "title": "红林周刊：边地商路被查",
+      "source": "红林周刊",
+      "stanceHint": "印第安乡党",
+      "body": "归化部落商队在旧港附近遭反复盘问。部落长老认为，朝廷正在借走私名义清理某条旧运输线。"
+    },
+    {
+      "id": "N005",
+      "unlockWeek": 20,
+      "title": "律令汇编：档案不得私阅",
+      "source": "律令汇编",
+      "stanceHint": "法治派",
+      "body": "法治派官员要求学院重整档案制度，未经授权翻阅旧档者视同扰乱军政秩序。"
+    },
+    {
+      "id": "N006",
+      "unlockWeek": 28,
+      "title": "前线简讯：演习编号异常",
+      "source": "前线简讯",
+      "stanceHint": "陆军青壮派",
+      "body": "夏季大演习公布初版编制表，其中一个预备席位被临时抹去。军中有人称，这是旧部队代号。"
+    },
+    {
+      "id": "N007",
+      "unlockWeek": 36,
+      "title": "港务录：失踪粮船重现",
+      "source": "港务录",
+      "stanceHint": "商路消息",
+      "body": "三年前失踪的粮船编号出现在新近补给单中，收货章属于学院军需处。"
+    },
+    {
+      "id": "N008",
+      "unlockWeek": 44,
+      "title": "新京晨报：学生不得议政",
+      "source": "新京晨报",
+      "stanceHint": "保守舆论",
+      "body": "朝中保守派批评军校学生干涉政务。文章未点名，却连续提到旧港、副册与边地三案。"
+    }
+  ],
+  "campusActivities": [
+    {
+      "id": "drill",
+      "name": "兵棋推演",
+      "description": "复盘本周课程，把阵型、兵种克制和补给路线写进演习档案。偏战斗与战功。",
+      "moodDelta": -3,
+      "meritDelta": 6,
+      "treasuryDelta": 0,
+      "socialGain": 0,
+      "trainingGain": 12,
+      "axisId": "",
+      "axisDelta": 0
+    },
+    {
+      "id": "salon",
+      "name": "茶馆沙龙",
+      "description": "请同窗到校外茶馆交换消息。偏好感与派系信息，能打开角色支线。",
+      "moodDelta": 5,
+      "meritDelta": 0,
+      "treasuryDelta": -6,
+      "socialGain": 4,
+      "trainingGain": 0,
+      "axisId": "",
+      "axisDelta": 0
+    },
+    {
+      "id": "lecture",
+      "name": "时事讲座",
+      "description": "听讲师解读朝局。偏立场变化，影响派系任务何时出现。",
+      "moodDelta": 1,
+      "meritDelta": 0,
+      "treasuryDelta": 0,
+      "socialGain": 0,
+      "trainingGain": 0,
+      "axisId": "governance",
+      "axisDelta": 6
+    },
+    {
+      "id": "volunteer",
+      "name": "边民救济",
+      "description": "随医务处前往码头棚户区。偏边地见闻，能补足战略地图上的风险判断。",
+      "moodDelta": 2,
+      "meritDelta": 0,
+      "treasuryDelta": -10,
+      "socialGain": 2,
+      "trainingGain": 0,
+      "axisId": "nation",
+      "axisDelta": 5
+    }
+  ],
+  "courses": [
+    {
+      "id": "infantry",
+      "label": "枪阵课",
+      "target": "infantryExp"
+    },
+    {
+      "id": "cavalry",
+      "label": "骑训课",
+      "target": "cavalryExp"
+    },
+    {
+      "id": "artillery",
+      "label": "炮算课",
+      "target": "artilleryExp"
+    },
+    {
+      "id": "management",
+      "label": "军政课",
+      "target": "managementExp"
+    },
+    {
+      "id": "logistics",
+      "label": "补给课",
+      "target": "logisticsExp"
+    },
+    {
+      "id": "training",
+      "label": "体能课",
+      "target": "trainingExp"
+    },
+    {
+      "id": "wander",
+      "label": "校园闲逛",
+      "target": "social"
+    }
+  ],
+  "moodRules": [
+    {
+      "minMood": 90,
+      "maxMood": 100,
+      "label": "超好",
+      "studyMin": 3,
+      "studyMax": 5
+    },
+    {
+      "minMood": 75,
+      "maxMood": 89,
+      "label": "好",
+      "studyMin": 2,
+      "studyMax": 5
+    },
+    {
+      "minMood": 50,
+      "maxMood": 74,
+      "label": "一般",
+      "studyMin": 2,
+      "studyMax": 4
+    },
+    {
+      "minMood": 30,
+      "maxMood": 49,
+      "label": "低落",
+      "studyMin": 1,
+      "studyMax": 4
+    },
+    {
+      "minMood": 15,
+      "maxMood": 29,
+      "label": "难过",
+      "studyMin": 1,
+      "studyMax": 3
+    },
+    {
+      "minMood": 0,
+      "maxMood": 14,
+      "label": "痛苦",
+      "studyMin": 1,
+      "studyMax": 2
+    }
+  ],
+  "academyLevels": [
+    {
+      "level": 1,
+      "floorExp": 0,
+      "nextExp": 50
+    },
+    {
+      "level": 2,
+      "floorExp": 50,
+      "nextExp": 150
+    },
+    {
+      "level": 3,
+      "floorExp": 150,
+      "nextExp": 400
+    },
+    {
+      "level": 4,
+      "floorExp": 400,
+      "nextExp": 1000
+    },
+    {
+      "level": 5,
+      "floorExp": 1000,
+      "nextExp": 2000
+    },
+    {
+      "level": 6,
+      "floorExp": 2000,
+      "nextExp": -1
+    }
+  ],
+  "ranks": [
+    {
+      "minMerit": 10000,
+      "name": "元帅",
+      "commandLimit": 4
+    },
+    {
+      "minMerit": 5000,
+      "name": "上将",
+      "commandLimit": 6
+    },
+    {
+      "minMerit": 2500,
+      "name": "中将",
+      "commandLimit": 5
+    },
+    {
+      "minMerit": 1500,
+      "name": "少将",
+      "commandLimit": 4
+    },
+    {
+      "minMerit": 1000,
+      "name": "上校",
+      "commandLimit": 6
+    },
+    {
+      "minMerit": 600,
+      "name": "中校",
+      "commandLimit": 5
+    },
+    {
+      "minMerit": 300,
+      "name": "少校",
+      "commandLimit": 4
+    },
+    {
+      "minMerit": 0,
+      "name": "士",
+      "commandLimit": 2
+    }
+  ],
+  "relationships": [
+    {
+      "id": "zhao",
+      "name": "赵伯衡",
+      "stance": "返乡团",
+      "affection": 10,
+      "circle": "将门子弟",
+      "knownLevel": 1,
+      "lastInteractionWeek": 1,
+      "note": "将门子弟，熟悉旧军口令与营中流言。亲近他，容易接近军演和父辈名单。"
+    },
+    {
+      "id": "lin",
+      "name": "林素心",
+      "stance": "自由派",
+      "affection": 10,
+      "circle": "图书馆",
+      "knownLevel": 1,
+      "lastInteractionWeek": 1,
+      "note": "常驻图书馆的自由派学生，擅长查账册、索引和报刊。她会把零散线索整理成可追查的脉络。"
+    },
+    {
+      "id": "yierde",
+      "name": "伊尔德",
+      "stance": "印第安乡党",
+      "affection": 10,
+      "circle": "归化部落",
+      "knownLevel": 1,
+      "lastInteractionWeek": 1,
+      "note": "归化部落首领之子，熟悉边地商路与部落旧歌。他能看懂许多朝廷档案里没有写明的道路。"
+    },
+    {
+      "id": "chen",
+      "name": "陈敬之",
+      "stance": "法治派",
+      "affection": 10,
+      "circle": "世家子弟",
+      "knownLevel": 1,
+      "lastInteractionWeek": 1,
+      "note": "法治派世家子弟，傲慢而谨慎。若能让他开口，你会知道哪些档案被谁封存。"
+    },
+    {
+      "id": "li",
+      "name": "李婉清",
+      "stance": "陆军青壮派",
+      "affection": 10,
+      "circle": "南方军校生",
+      "knownLevel": 1,
+      "lastInteractionWeek": 1,
+      "note": "南方转学生，重视实证和战场结果。她能把炮尺、海图和演习编号连成一张军事地图。"
+    }
+  ],
+  "stances": [
+    {
+      "id": "home",
+      "name": "返乡团",
+      "value": 20
+    },
+    {
+      "id": "army",
+      "name": "陆军青壮派",
+      "value": 20
+    },
+    {
+      "id": "native",
+      "name": "印第安乡党",
+      "value": 20
+    },
+    {
+      "id": "liberal",
+      "name": "自由派",
+      "value": 20
+    },
+    {
+      "id": "legal",
+      "name": "法治派",
+      "value": 20
+    }
+  ],
+  "provinces": [
+    {
+      "id": "xinjing",
+      "name": "新京",
+      "owner": "Player",
+      "defense": 72,
+      "income": 20,
+      "x": -325,
+      "y": 175,
+      "roads": "linhai;hegu",
+      "armyId": ""
+    },
+    {
+      "id": "linhai",
+      "name": "临海",
+      "owner": "Player",
+      "defense": 55,
+      "income": 14,
+      "x": -210,
+      "y": 5,
+      "roads": "xinjing;beiling",
+      "armyId": ""
+    },
+    {
+      "id": "hegu",
+      "name": "河谷",
+      "owner": "Player",
+      "defense": 48,
+      "income": 11,
+      "x": -95,
+      "y": 190,
+      "roads": "xinjing;beiling;nanze",
+      "armyId": ""
+    },
+    {
+      "id": "beiling",
+      "name": "北岭",
+      "owner": "Imperial",
+      "defense": 62,
+      "income": 13,
+      "x": 95,
+      "y": 105,
+      "roads": "linhai;hegu;songlin;shigu",
+      "armyId": ""
+    },
+    {
+      "id": "songlin",
+      "name": "松林",
+      "owner": "Native",
+      "defense": 44,
+      "income": 9,
+      "x": 250,
+      "y": 215,
+      "roads": "beiling;xigang",
+      "armyId": ""
+    },
+    {
+      "id": "shigu",
+      "name": "石谷",
+      "owner": "Reformist",
+      "defense": 58,
+      "income": 12,
+      "x": 225,
+      "y": -40,
+      "roads": "beiling;xigang;hongyuan;nanze",
+      "armyId": ""
+    },
+    {
+      "id": "xigang",
+      "name": "西港",
+      "owner": "Foreign",
+      "defense": 68,
+      "income": 18,
+      "x": 410,
+      "y": 60,
+      "roads": "songlin;shigu",
+      "armyId": ""
+    },
+    {
+      "id": "hongyuan",
+      "name": "红原",
+      "owner": "Neutral",
+      "defense": 40,
+      "income": 8,
+      "x": 405,
+      "y": -175,
+      "roads": "shigu",
+      "armyId": ""
+    },
+    {
+      "id": "nanze",
+      "name": "南泽",
+      "owner": "Player",
+      "defense": 50,
+      "income": 10,
+      "x": -40,
+      "y": -145,
+      "roads": "hegu;shigu",
+      "armyId": ""
+    }
+  ],
+  "armies": [
+    {
+      "id": "a1",
+      "name": "第一军团",
+      "faction": "Player",
+      "provinceId": "xinjing",
+      "troops": 120,
+      "maxTroops": 120,
+      "move": 1,
+      "maxMove": 1,
+      "level": 0,
+      "exp": 0,
+      "attack": 34,
+      "supply": 42,
+      "maxSupply": 42,
+      "aiProfile": "balanced",
+      "intelLevel": 0
+    },
+    {
+      "id": "a2",
+      "name": "归化骑队",
+      "faction": "Player",
+      "provinceId": "hegu",
+      "troops": 82,
+      "maxTroops": 82,
+      "move": 1,
+      "maxMove": 1,
+      "level": 0,
+      "exp": 0,
+      "attack": 28,
+      "supply": 42,
+      "maxSupply": 42,
+      "aiProfile": "balanced",
+      "intelLevel": 0
+    },
+    {
+      "id": "e1",
+      "name": "禁卫前锋",
+      "faction": "Imperial",
+      "provinceId": "beiling",
+      "troops": 96,
+      "maxTroops": 96,
+      "move": 1,
+      "maxMove": 1,
+      "level": 0,
+      "exp": 0,
+      "attack": 30,
+      "supply": 36,
+      "maxSupply": 36,
+      "aiProfile": "defensive",
+      "intelLevel": 0
+    },
+    {
+      "id": "e2",
+      "name": "革故民兵",
+      "faction": "Reformist",
+      "provinceId": "shigu",
+      "troops": 104,
+      "maxTroops": 104,
+      "move": 1,
+      "maxMove": 1,
+      "level": 0,
+      "exp": 0,
+      "attack": 27,
+      "supply": 36,
+      "maxSupply": 36,
+      "aiProfile": "tactical",
+      "intelLevel": 0
+    },
+    {
+      "id": "e3",
+      "name": "西港殖民队",
+      "faction": "Foreign",
+      "provinceId": "xigang",
+      "troops": 118,
+      "maxTroops": 118,
+      "move": 1,
+      "maxMove": 1,
+      "level": 0,
+      "exp": 0,
+      "attack": 32,
+      "supply": 36,
+      "maxSupply": 36,
+      "aiProfile": "aggressive",
+      "intelLevel": 0
+    }
+  ],
+  "battleRoles": [
+    {
+      "id": "infantry",
+      "displayName": "步兵",
+      "symbol": "步",
+      "baseHp": 100,
+      "move": 2,
+      "range": 1,
+      "attackBonus": 0,
+      "formation": 3
+    },
+    {
+      "id": "musket",
+      "displayName": "火枪",
+      "symbol": "铳",
+      "baseHp": 82,
+      "move": 2,
+      "range": 3,
+      "attackBonus": 2,
+      "formation": 1
+    },
+    {
+      "id": "skirmisher",
+      "displayName": "散兵",
+      "symbol": "散",
+      "baseHp": 72,
+      "move": 3,
+      "range": 2,
+      "attackBonus": -1,
+      "formation": 1
+    },
+    {
+      "id": "heavy_spear",
+      "displayName": "重枪",
+      "symbol": "枪",
+      "baseHp": 128,
+      "move": 2,
+      "range": 1,
+      "attackBonus": 4,
+      "formation": 4
+    },
+    {
+      "id": "heavy_cavalry",
+      "displayName": "重骑",
+      "symbol": "骑",
+      "baseHp": 145,
+      "move": 3,
+      "range": 1,
+      "attackBonus": 8,
+      "formation": 3
+    },
+    {
+      "id": "heavy_infantry",
+      "displayName": "重步",
+      "symbol": "甲",
+      "baseHp": 135,
+      "move": 2,
+      "range": 1,
+      "attackBonus": 3,
+      "formation": 4
+    },
+    {
+      "id": "heavy_archer",
+      "displayName": "重弓",
+      "symbol": "弩",
+      "baseHp": 92,
+      "move": 2,
+      "range": 4,
+      "attackBonus": 1,
+      "formation": 2
+    },
+    {
+      "id": "heavy_brute",
+      "displayName": "重猛",
+      "symbol": "猛",
+      "baseHp": 130,
+      "move": 2,
+      "range": 1,
+      "attackBonus": 7,
+      "formation": 3
+    },
+    {
+      "id": "cavalry",
+      "displayName": "骑兵",
+      "symbol": "骑",
+      "baseHp": 115,
+      "move": 3,
+      "range": 1,
+      "attackBonus": 6,
+      "formation": 2
+    },
+    {
+      "id": "artillery",
+      "displayName": "重器",
+      "symbol": "器",
+      "baseHp": 105,
+      "move": 1,
+      "range": 4,
+      "attackBonus": 10,
+      "formation": 1
+    },
+    {
+      "id": "brute",
+      "displayName": "猛士",
+      "symbol": "斧",
+      "baseHp": 105,
+      "move": 2,
+      "range": 1,
+      "attackBonus": 5,
+      "formation": 2
+    },
+    {
+      "id": "archer",
+      "displayName": "弓兵",
+      "symbol": "弓",
+      "baseHp": 78,
+      "move": 2,
+      "range": 3,
+      "attackBonus": -3,
+      "formation": 1
+    }
+  ],
+  "commonUnits": [
+    {
+      "id": "swordsmen_volunteers",
+      "name": "剑士队",
+      "keyword": "义勇军",
+      "role": "infantry",
+      "asset": "Art/BattleUnits/swordsmen_volunteers",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "matchlock_volunteers",
+      "name": "火绳枪队",
+      "keyword": "义勇军",
+      "role": "musket",
+      "asset": "Art/BattleUnits/matchlock_volunteers",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "militia_volunteers",
+      "name": "民兵团",
+      "keyword": "义勇军",
+      "role": "skirmisher",
+      "asset": "Art/BattleUnits/militia_volunteers",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "outlaw_skirmishers",
+      "name": "亡徒军",
+      "keyword": "贼徒",
+      "role": "skirmisher",
+      "asset": "Art/BattleUnits/outlaw_skirmishers",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "imperial_halberdiers",
+      "name": "禁卫长戟队",
+      "keyword": "禁军",
+      "role": "heavy_spear",
+      "asset": "Art/BattleUnits/imperial_halberdiers",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "armored_iron_cavalry",
+      "name": "具装铁骑军",
+      "keyword": "禁军",
+      "role": "heavy_cavalry",
+      "asset": "Art/BattleUnits/armored_iron_cavalry",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "steel_helmet_heavy_infantry",
+      "name": "钢盔军",
+      "keyword": "义勇军",
+      "role": "heavy_infantry",
+      "asset": "Art/BattleUnits/steel_helmet_heavy_infantry",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "imperial_longbowmen",
+      "name": "禁军长弓兵",
+      "keyword": "禁军",
+      "role": "heavy_archer",
+      "asset": "Art/BattleUnits/imperial_longbowmen",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "sword_guard_corps",
+      "name": "剑卫军团",
+      "keyword": "义勇军",
+      "role": "infantry",
+      "asset": "Art/BattleUnits/sword_guard_corps",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "imperial_axe_guard",
+      "name": "禁军斧卫",
+      "keyword": "禁军",
+      "role": "heavy_brute",
+      "asset": "Art/BattleUnits/imperial_axe_guard",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "vanguard_cavalry",
+      "name": "先锋骑军",
+      "keyword": "义勇军",
+      "role": "cavalry",
+      "asset": "Art/BattleUnits/vanguard_cavalry",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "solemn_guard_matchlocks",
+      "name": "肃卫火枪队",
+      "keyword": "义勇军",
+      "role": "musket",
+      "asset": "Art/BattleUnits/solemn_guard_matchlocks",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "raiders",
+      "name": "掠杀军",
+      "keyword": "贼徒",
+      "role": "skirmisher",
+      "asset": "Art/BattleUnits/raiders",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "imperial_heavy_guard",
+      "name": "重甲禁卫军",
+      "keyword": "禁军",
+      "role": "heavy_infantry",
+      "asset": "Art/BattleUnits/imperial_heavy_guard",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "warhammer_volunteers",
+      "name": "重锤军",
+      "keyword": "义勇军",
+      "role": "heavy_brute",
+      "asset": "Art/BattleUnits/warhammer_volunteers",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "imperial_shenji_artillery",
+      "name": "禁军神机队",
+      "keyword": "禁军",
+      "role": "artillery",
+      "asset": "Art/BattleUnits/imperial_shenji_artillery",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "zealot_believers",
+      "name": "狂热信众",
+      "keyword": "信徒",
+      "role": "skirmisher",
+      "asset": "Art/BattleUnits/zealot_believers",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "zealot_mob",
+      "name": "狂热暴徒",
+      "keyword": "信徒",
+      "role": "brute",
+      "asset": "Art/BattleUnits/zealot_mob",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "leader_guard",
+      "name": "领袖卫队",
+      "keyword": "信徒",
+      "role": "heavy_infantry",
+      "asset": "Art/BattleUnits/leader_guard",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "elite_archers",
+      "name": "精锐弓兵队",
+      "keyword": "义勇军",
+      "role": "archer",
+      "asset": "Art/BattleUnits/elite_archers",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "bandits",
+      "name": "土匪",
+      "keyword": "贼徒",
+      "role": "skirmisher",
+      "asset": "Art/BattleUnits/bandits",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "great_axe_warriors",
+      "name": "巨斧军",
+      "keyword": "义勇军",
+      "role": "brute",
+      "asset": "Art/BattleUnits/great_axe_warriors",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    },
+    {
+      "id": "believer_elites",
+      "name": "信徒精锐",
+      "keyword": "信徒",
+      "role": "infantry",
+      "asset": "Art/BattleUnits/believer_elites",
+      "idleFrames": 2,
+      "moveFrames": 4,
+      "attackFrames": 4,
+      "hitFrames": 4
+    }
+  ],
+  "terrainRules": [
+    {
+      "id": "plain",
+      "name": "原",
+      "defenseInfantry": 0,
+      "defenseCavalry": 0,
+      "defenseArcher": 0,
+      "moveInfantry": 1,
+      "moveCavalry": 1,
+      "moveArcher": 1,
+      "color": "#8e8a72"
+    },
+    {
+      "id": "mountain",
+      "name": "山",
+      "defenseInfantry": 0,
+      "defenseCavalry": 5,
+      "defenseArcher": 5,
+      "moveInfantry": 2,
+      "moveCavalry": 3,
+      "moveArcher": 2,
+      "color": "#9a9890"
+    },
+    {
+      "id": "forest",
+      "name": "林",
+      "defenseInfantry": 0,
+      "defenseCavalry": 0,
+      "defenseArcher": 5,
+      "moveInfantry": 1,
+      "moveCavalry": 2,
+      "moveArcher": 1,
+      "color": "#63794f"
+    },
+    {
+      "id": "river",
+      "name": "河",
+      "defenseInfantry": 0,
+      "defenseCavalry": 0,
+      "defenseArcher": 0,
+      "moveInfantry": 2,
+      "moveCavalry": 3,
+      "moveArcher": 2,
+      "color": "#3e6e8a"
+    },
+    {
+      "id": "city",
+      "name": "城",
+      "defenseInfantry": 0,
+      "defenseCavalry": 5,
+      "defenseArcher": 5,
+      "moveInfantry": 1,
+      "moveCavalry": 1,
+      "moveArcher": 1,
+      "color": "#a98b52"
+    }
+  ],
+  "battleCore": {
+    "hexCols": 9,
+    "hexRows": 7,
+    "objectiveQ": 4,
+    "objectiveR": 3,
+    "objectiveDefenseBonusPercent": 5,
+    "playerObjectiveRequiredTurns": 2,
+    "enemyObjectiveRequiredTurns": 2,
+    "playerStartMorale": 1,
+    "enemyStartMorale": 0,
+    "battleRandomMin": -4,
+    "battleRandomMaxExclusive": 7,
+    "aptitudeDamagePerLevel": 5,
+    "defenderLevelDamagePenalty": 2,
+    "counterDamagePercent": 55,
+    "minDamage": 4,
+    "minCounterDamage": 3,
+    "lowMoraleHpPercent": 30,
+    "minMorale": -2,
+    "maxMorale": 2,
+    "unitLevelMax": 5,
+    "unitLevelExpStep": 50,
+    "unitLevelAttackGain": 2,
+    "unitLevelHpGain": 8,
+    "battleExpHit": 12,
+    "battleExpKill": 24,
+    "armyLevelMax": 5,
+    "armyLevelExpStep": 50,
+    "armyLevelAttackGain": 3,
+    "armyLevelMaxTroopsGain": 15,
+    "armyLevelTroopsGain": 10,
+    "attackerArmyLevelHpPerLevel": 8,
+    "attackerArmyLevelAttackPerLevel": 2,
+    "attackerArmyLevelMoveBonusEveryLevels": 3,
+    "attackerArmyMaxMoveLevelBonusCap": 1,
+    "victoryArmyExp": 35,
+    "minTroopsAfterBattle": 20,
+    "defeatTroopDivisor": 2,
+    "victoryHighDefenseMerit": 50,
+    "victoryMidDefenseMerit": 24,
+    "victoryLowDefenseMerit": 15,
+    "defeatCommandLockTurns": 2,
+    "captureChancePercent": 5,
+    "strategySeasonTurnModulo": 4,
+    "strategyMissionCycleLength": 3,
+    "baseSupply": 8,
+    "supplyPerLogisticsLevel": 2,
+    "supplyTreasuryDivisor": 2,
+    "enemyPowerAttackMultiplier": 2,
+    "defenderPowerAttackMultiplier": 2,
+    "enemyPowerRandomMin": 0,
+    "enemyPowerRandomMaxExclusive": 35,
+    "enemyDefeatMinTroops": 12,
+    "enemyDefeatTroopLoss": 18,
+    "defenderVictoryTroopLoss": 12,
+    "formationDefaultCoefficient": 5,
+    "formationTwoCoefficient": 6,
+    "formationThreeCoefficient": 7
+  },
+  "academyCore": {
+    "studyDays": 6,
+    "studyLowDailyMoodThreshold": 2,
+    "studyLowDailyMoodDelta": 1,
+    "campusWanderMinGain": 2,
+    "campusWanderMaxExclusive": 8,
+    "campusWanderMoodGain": 4,
+    "courseStaminaLossMin": 4,
+    "courseStaminaLossMaxExclusive": 10,
+    "courseMinStaminaLoss": 1,
+    "sundayRestMoodGain": 8,
+    "sundayRestStaminaGain": 18,
+    "sundayStudyBaseGain": 5,
+    "sundayStudyMoodDelta": -2,
+    "inviteGain": 8,
+    "inviteMoodGain": 2,
+    "friendGatheringGain": 3,
+    "friendGatheringTreasuryCost": 8,
+    "politicsMoodGain": 1,
+    "lowStaminaThreshold": 15,
+    "lowStaminaMoodPenalty": 5,
+    "holidayMoodGain": 5,
+    "holidayStaminaGain": 12,
+    "examWrittenMin": 24,
+    "examWrittenMaxExclusive": 61,
+    "examCourseScoreMultiplier": 5.5,
+    "examHighMoodThreshold": 75,
+    "examHighMoodBonus": 6,
+    "examLowMoodThreshold": 30,
+    "examLowMoodPenalty": -6
+  },
+  "examRewards": [
+    {
+      "minScore": 85,
+      "merit": 24,
+      "treasury": 35
+    },
+    {
+      "minScore": 70,
+      "merit": 16,
+      "treasury": 22
+    },
+    {
+      "minScore": 50,
+      "merit": 8,
+      "treasury": 10
+    },
+    {
+      "minScore": 0,
+      "merit": 2,
+      "treasury": 0
+    }
+  ],
+  "relationshipLevels": [
+    {
+      "minAffection": 90,
+      "label": "莫逆",
+      "knownLevel": 4
+    },
+    {
+      "minAffection": 75,
+      "label": "亲密",
+      "knownLevel": 3
+    },
+    {
+      "minAffection": 50,
+      "label": "朋友",
+      "knownLevel": 2
+    },
+    {
+      "minAffection": 10,
+      "label": "熟人",
+      "knownLevel": 1
+    },
+    {
+      "minAffection": -30,
+      "label": "冷漠",
+      "knownLevel": 1
+    },
+    {
+      "minAffection": -70,
+      "label": "敌对",
+      "knownLevel": 1
+    },
+    {
+      "minAffection": -90,
+      "label": "仇视",
+      "knownLevel": 1
+    },
+    {
+      "minAffection": -100,
+      "label": "死敌",
+      "knownLevel": 1
+    }
+  ],
+  "beliefLevels": [
+    {
+      "minAbsValue": 80,
+      "label": "狂热"
+    },
+    {
+      "minAbsValue": 60,
+      "label": "忠诚"
+    },
+    {
+      "minAbsValue": 40,
+      "label": "坚定"
+    },
+    {
+      "minAbsValue": 20,
+      "label": "倾向"
+    },
+    {
+      "minAbsValue": 1,
+      "label": "认可"
+    },
+    {
+      "minAbsValue": 0,
+      "label": "中立"
+    }
+  ],
+  "factions": [
+    {
+      "id": "Player",
+      "displayName": "我方"
+    },
+    {
+      "id": "Imperial",
+      "displayName": "返乡团/朝廷"
+    },
+    {
+      "id": "Reformist",
+      "displayName": "革故派"
+    },
+    {
+      "id": "Native",
+      "displayName": "印第安乡党"
+    },
+    {
+      "id": "Foreign",
+      "displayName": "外邦势力"
+    },
+    {
+      "id": "Neutral",
+      "displayName": "中立"
+    }
+  ],
+  "ideologyAxes": [
+    {
+      "id": "nation",
+      "label": "民族",
+      "negativeLabel": "皇汉",
+      "positiveLabel": "共治"
+    },
+    {
+      "id": "class",
+      "label": "阶级",
+      "negativeLabel": "君主",
+      "positiveLabel": "民主"
+    },
+    {
+      "id": "governance",
+      "label": "治国",
+      "negativeLabel": "独裁",
+      "positiveLabel": "共和"
+    },
+    {
+      "id": "region",
+      "label": "地域",
+      "negativeLabel": "统一",
+      "positiveLabel": "分裂"
+    }
+  ],
+  "politicsOptions": [
+    {
+      "id": "home_voyage",
+      "label": "支持远航光复，同时追查海军旧档",
+      "stanceId": "home",
+      "stanceValue": 8,
+      "axisId": "region",
+      "axisValue": -5
+    },
+    {
+      "id": "army_reform",
+      "label": "支持大陆军改革，要求公开演习编号",
+      "stanceId": "army",
+      "stanceValue": 8,
+      "axisId": "governance",
+      "axisValue": -5
+    },
+    {
+      "id": "native_co_rule",
+      "label": "主张族群共治，保护边地商路证人",
+      "stanceId": "native",
+      "stanceValue": 8,
+      "axisId": "nation",
+      "axisValue": 6
+    },
+    {
+      "id": "liberal_constitution",
+      "label": "主张议会立宪，推动旧港账册公审",
+      "stanceId": "liberal",
+      "stanceValue": 8,
+      "axisId": "class",
+      "axisValue": 6
+    },
+    {
+      "id": "legal_order",
+      "label": "主张严法强国，要求按程序封存副册",
+      "stanceId": "legal",
+      "stanceValue": 8,
+      "axisId": "governance",
+      "axisValue": -6
+    }
+  ],
+  "battleUnitSpawns": [
+    {
+      "side": "attacker",
+      "suffix": "剑士队",
+      "role": "infantry",
+      "q": 1,
+      "r": 6,
+      "attackBonus": 0,
+      "troopDivisor": 4
+    },
+    {
+      "side": "attacker",
+      "suffix": "火绳枪队",
+      "role": "musket",
+      "q": 3,
+      "r": 6,
+      "attackBonus": 2,
+      "troopDivisor": 5
+    },
+    {
+      "side": "attacker",
+      "suffix": "先锋骑军",
+      "role": "cavalry",
+      "q": 5,
+      "r": 6,
+      "attackBonus": 4,
+      "troopDivisor": 5
+    },
+    {
+      "side": "attacker",
+      "suffix": "精锐弓兵队",
+      "role": "archer",
+      "q": 2,
+      "r": 5,
+      "attackBonus": 1,
+      "troopDivisor": 5
+    },
+    {
+      "side": "attacker",
+      "suffix": "钢盔军",
+      "role": "heavy_infantry",
+      "q": 4,
+      "r": 5,
+      "attackBonus": 2,
+      "troopDivisor": 4
+    },
+    {
+      "side": "defender",
+      "suffix": "禁卫长戟队",
+      "role": "heavy_spear",
+      "q": 7,
+      "r": 0,
+      "attackBonus": 2,
+      "troopDivisor": 4
+    },
+    {
+      "side": "defender",
+      "suffix": "具装铁骑军",
+      "role": "heavy_cavalry",
+      "q": 5,
+      "r": 1,
+      "attackBonus": 6,
+      "troopDivisor": 5
+    },
+    {
+      "side": "defender",
+      "suffix": "禁军长弓兵",
+      "role": "heavy_archer",
+      "q": 3,
+      "r": 0,
+      "attackBonus": 2,
+      "troopDivisor": 5
+    },
+    {
+      "side": "defender",
+      "suffix": "重甲禁卫军",
+      "role": "heavy_infantry",
+      "q": 6,
+      "r": 1,
+      "attackBonus": 4,
+      "troopDivisor": 4
+    },
+    {
+      "side": "defender",
+      "suffix": "禁军神机队",
+      "role": "artillery",
+      "q": 2,
+      "r": 1,
+      "attackBonus": 5,
+      "troopDivisor": 6
+    }
+  ],
+  "battleTerrainTiles": [
+    {
+      "q": 0,
+      "r": 0,
+      "terrain": "forest"
+    },
+    {
+      "q": 1,
+      "r": 0,
+      "terrain": "plain"
+    },
+    {
+      "q": 2,
+      "r": 0,
+      "terrain": "plain"
+    },
+    {
+      "q": 3,
+      "r": 0,
+      "terrain": "plain"
+    },
+    {
+      "q": 4,
+      "r": 0,
+      "terrain": "plain"
+    },
+    {
+      "q": 5,
+      "r": 0,
+      "terrain": "forest"
+    },
+    {
+      "q": 6,
+      "r": 0,
+      "terrain": "plain"
+    },
+    {
+      "q": 7,
+      "r": 0,
+      "terrain": "plain"
+    },
+    {
+      "q": 8,
+      "r": 0,
+      "terrain": "plain"
+    },
+    {
+      "q": 0,
+      "r": 1,
+      "terrain": "plain"
+    },
+    {
+      "q": 1,
+      "r": 1,
+      "terrain": "plain"
+    },
+    {
+      "q": 2,
+      "r": 1,
+      "terrain": "mountain"
+    },
+    {
+      "q": 3,
+      "r": 1,
+      "terrain": "plain"
+    },
+    {
+      "q": 4,
+      "r": 1,
+      "terrain": "forest"
+    },
+    {
+      "q": 5,
+      "r": 1,
+      "terrain": "plain"
+    },
+    {
+      "q": 6,
+      "r": 1,
+      "terrain": "plain"
+    },
+    {
+      "q": 7,
+      "r": 1,
+      "terrain": "plain"
+    },
+    {
+      "q": 8,
+      "r": 1,
+      "terrain": "plain"
+    },
+    {
+      "q": 0,
+      "r": 2,
+      "terrain": "plain"
+    },
+    {
+      "q": 1,
+      "r": 2,
+      "terrain": "plain"
+    },
+    {
+      "q": 2,
+      "r": 2,
+      "terrain": "plain"
+    },
+    {
+      "q": 3,
+      "r": 2,
+      "terrain": "forest"
+    },
+    {
+      "q": 4,
+      "r": 2,
+      "terrain": "plain"
+    },
+    {
+      "q": 5,
+      "r": 2,
+      "terrain": "forest"
+    },
+    {
+      "q": 6,
+      "r": 2,
+      "terrain": "plain"
+    },
+    {
+      "q": 7,
+      "r": 2,
+      "terrain": "mountain"
+    },
+    {
+      "q": 8,
+      "r": 2,
+      "terrain": "forest"
+    },
+    {
+      "q": 0,
+      "r": 3,
+      "terrain": "plain"
+    },
+    {
+      "q": 1,
+      "r": 3,
+      "terrain": "plain"
+    },
+    {
+      "q": 2,
+      "r": 3,
+      "terrain": "forest"
+    },
+    {
+      "q": 3,
+      "r": 3,
+      "terrain": "river"
+    },
+    {
+      "q": 4,
+      "r": 3,
+      "terrain": "city"
+    },
+    {
+      "q": 5,
+      "r": 3,
+      "terrain": "plain"
+    },
+    {
+      "q": 6,
+      "r": 3,
+      "terrain": "plain"
+    },
+    {
+      "q": 7,
+      "r": 3,
+      "terrain": "forest"
+    },
+    {
+      "q": 8,
+      "r": 3,
+      "terrain": "plain"
+    },
+    {
+      "q": 0,
+      "r": 4,
+      "terrain": "plain"
+    },
+    {
+      "q": 1,
+      "r": 4,
+      "terrain": "forest"
+    },
+    {
+      "q": 2,
+      "r": 4,
+      "terrain": "plain"
+    },
+    {
+      "q": 3,
+      "r": 4,
+      "terrain": "plain"
+    },
+    {
+      "q": 4,
+      "r": 4,
+      "terrain": "plain"
+    },
+    {
+      "q": 5,
+      "r": 4,
+      "terrain": "plain"
+    },
+    {
+      "q": 6,
+      "r": 4,
+      "terrain": "mountain"
+    },
+    {
+      "q": 7,
+      "r": 4,
+      "terrain": "plain"
+    },
+    {
+      "q": 8,
+      "r": 4,
+      "terrain": "plain"
+    },
+    {
+      "q": 0,
+      "r": 5,
+      "terrain": "forest"
+    },
+    {
+      "q": 1,
+      "r": 5,
+      "terrain": "plain"
+    },
+    {
+      "q": 2,
+      "r": 5,
+      "terrain": "river"
+    },
+    {
+      "q": 3,
+      "r": 5,
+      "terrain": "river"
+    },
+    {
+      "q": 4,
+      "r": 5,
+      "terrain": "river"
+    },
+    {
+      "q": 5,
+      "r": 5,
+      "terrain": "forest"
+    },
+    {
+      "q": 6,
+      "r": 5,
+      "terrain": "river"
+    },
+    {
+      "q": 7,
+      "r": 5,
+      "terrain": "river"
+    },
+    {
+      "q": 8,
+      "r": 5,
+      "terrain": "plain"
+    },
+    {
+      "q": 0,
+      "r": 6,
+      "terrain": "plain"
+    },
+    {
+      "q": 1,
+      "r": 6,
+      "terrain": "plain"
+    },
+    {
+      "q": 2,
+      "r": 6,
+      "terrain": "plain"
+    },
+    {
+      "q": 3,
+      "r": 6,
+      "terrain": "plain"
+    },
+    {
+      "q": 4,
+      "r": 6,
+      "terrain": "forest"
+    },
+    {
+      "q": 5,
+      "r": 6,
+      "terrain": "plain"
+    },
+    {
+      "q": 6,
+      "r": 6,
+      "terrain": "plain"
+    },
+    {
+      "q": 7,
+      "r": 6,
+      "terrain": "plain"
+    },
+    {
+      "q": 8,
+      "r": 6,
+      "terrain": "plain"
+    }
+  ],
+  "battleRoleDamageRules": [
+    {
+      "attackerRole": "cavalry",
+      "defenderRole": "archer",
+      "modifier": 12
+    },
+    {
+      "attackerRole": "archer",
+      "defenderRole": "cavalry",
+      "modifier": -5
+    },
+    {
+      "attackerRole": "infantry",
+      "defenderRole": "cavalry",
+      "modifier": 3
+    },
+    {
+      "attackerRole": "heavy_cavalry",
+      "defenderRole": "archer",
+      "modifier": 14
+    },
+    {
+      "attackerRole": "heavy_cavalry",
+      "defenderRole": "heavy_archer",
+      "modifier": 10
+    },
+    {
+      "attackerRole": "heavy_spear",
+      "defenderRole": "cavalry",
+      "modifier": 14
+    },
+    {
+      "attackerRole": "heavy_spear",
+      "defenderRole": "heavy_cavalry",
+      "modifier": 18
+    },
+    {
+      "attackerRole": "musket",
+      "defenderRole": "heavy_infantry",
+      "modifier": 8
+    },
+    {
+      "attackerRole": "musket",
+      "defenderRole": "heavy_spear",
+      "modifier": 8
+    },
+    {
+      "attackerRole": "skirmisher",
+      "defenderRole": "artillery",
+      "modifier": 10
+    },
+    {
+      "attackerRole": "artillery",
+      "defenderRole": "heavy_infantry",
+      "modifier": 12
+    },
+    {
+      "attackerRole": "artillery",
+      "defenderRole": "heavy_spear",
+      "modifier": 12
+    },
+    {
+      "attackerRole": "heavy_archer",
+      "defenderRole": "brute",
+      "modifier": 7
+    },
+    {
+      "attackerRole": "heavy_archer",
+      "defenderRole": "heavy_brute",
+      "modifier": 5
+    }
+  ],
+  "healthFactors": [
+    {
+      "minFormation": 3,
+      "maxFormation": 99,
+      "minHpPercent": 80,
+      "numerator": 7,
+      "denominator": 7
+    },
+    {
+      "minFormation": 3,
+      "maxFormation": 99,
+      "minHpPercent": 65,
+      "numerator": 6,
+      "denominator": 7
+    },
+    {
+      "minFormation": 3,
+      "maxFormation": 99,
+      "minHpPercent": 50,
+      "numerator": 5,
+      "denominator": 7
+    },
+    {
+      "minFormation": 3,
+      "maxFormation": 99,
+      "minHpPercent": 30,
+      "numerator": 4,
+      "denominator": 7
+    },
+    {
+      "minFormation": 3,
+      "maxFormation": 99,
+      "minHpPercent": 15,
+      "numerator": 3,
+      "denominator": 7
+    },
+    {
+      "minFormation": 3,
+      "maxFormation": 99,
+      "minHpPercent": 5,
+      "numerator": 2,
+      "denominator": 7
+    },
+    {
+      "minFormation": 3,
+      "maxFormation": 99,
+      "minHpPercent": 0,
+      "numerator": 1,
+      "denominator": 7
+    },
+    {
+      "minFormation": 2,
+      "maxFormation": 2,
+      "minHpPercent": 65,
+      "numerator": 6,
+      "denominator": 6
+    },
+    {
+      "minFormation": 2,
+      "maxFormation": 2,
+      "minHpPercent": 50,
+      "numerator": 5,
+      "denominator": 6
+    },
+    {
+      "minFormation": 2,
+      "maxFormation": 2,
+      "minHpPercent": 30,
+      "numerator": 4,
+      "denominator": 6
+    },
+    {
+      "minFormation": 2,
+      "maxFormation": 2,
+      "minHpPercent": 15,
+      "numerator": 3,
+      "denominator": 6
+    },
+    {
+      "minFormation": 2,
+      "maxFormation": 2,
+      "minHpPercent": 5,
+      "numerator": 2,
+      "denominator": 6
+    },
+    {
+      "minFormation": 2,
+      "maxFormation": 2,
+      "minHpPercent": 0,
+      "numerator": 1,
+      "denominator": 6
+    },
+    {
+      "minFormation": 0,
+      "maxFormation": 1,
+      "minHpPercent": 50,
+      "numerator": 5,
+      "denominator": 5
+    },
+    {
+      "minFormation": 0,
+      "maxFormation": 1,
+      "minHpPercent": 30,
+      "numerator": 4,
+      "denominator": 5
+    },
+    {
+      "minFormation": 0,
+      "maxFormation": 1,
+      "minHpPercent": 15,
+      "numerator": 3,
+      "denominator": 5
+    },
+    {
+      "minFormation": 0,
+      "maxFormation": 1,
+      "minHpPercent": 5,
+      "numerator": 2,
+      "denominator": 5
+    },
+    {
+      "minFormation": 0,
+      "maxFormation": 1,
+      "minHpPercent": 0,
+      "numerator": 1,
+      "denominator": 5
+    }
+  ],
+  "passiveSkills": [
+    {
+      "id": "field_sense",
+      "name": "战场嗅觉",
+      "category": "机动",
+      "rarity": "普通",
+      "slot": "天赋",
+      "unlockKind": "always",
+      "unlockTarget": "",
+      "unlockValue": 0,
+      "description": "攻击+5%，开局士气+1。",
+      "attackPercent": 5,
+      "defensePercent": 0,
+      "hpPercent": 0,
+      "moveBonus": 0,
+      "moraleBonus": 1,
+      "supplySavePercent": 0,
+      "intelBonus": 0,
+      "expBonusPercent": 0
+    },
+    {
+      "id": "iron_wall",
+      "name": "铁壁之心",
+      "category": "防御",
+      "rarity": "普通",
+      "slot": "学识",
+      "unlockKind": "trainingExp",
+      "unlockTarget": "",
+      "unlockValue": 50,
+      "description": "受到伤害-8%。",
+      "attackPercent": 0,
+      "defensePercent": 8,
+      "hpPercent": 0,
+      "moveBonus": 0,
+      "moraleBonus": 0,
+      "supplySavePercent": 0,
+      "intelBonus": 0,
+      "expBonusPercent": 0
+    },
+    {
+      "id": "forced_march",
+      "name": "急掠如风",
+      "category": "机动",
+      "rarity": "普通",
+      "slot": "学识",
+      "unlockKind": "logisticsExp",
+      "unlockTarget": "",
+      "unlockValue": 50,
+      "description": "战斗移动+1。",
+      "attackPercent": 0,
+      "defensePercent": 0,
+      "hpPercent": 0,
+      "moveBonus": 1,
+      "moraleBonus": 0,
+      "supplySavePercent": 0,
+      "intelBonus": 0,
+      "expBonusPercent": 0
+    },
+    {
+      "id": "veteran_drill",
+      "name": "身经百战",
+      "category": "指挥",
+      "rarity": "精锐",
+      "slot": "经验",
+      "unlockKind": "battleWins",
+      "unlockTarget": "",
+      "unlockValue": 1,
+      "description": "战斗经验+20%。",
+      "attackPercent": 0,
+      "defensePercent": 0,
+      "hpPercent": 0,
+      "moveBonus": 0,
+      "moraleBonus": 0,
+      "supplySavePercent": 0,
+      "intelBonus": 0,
+      "expBonusPercent": 20
+    },
+    {
+      "id": "supply_master",
+      "name": "补给大师",
+      "category": "生存",
+      "rarity": "精锐",
+      "slot": "指挥",
+      "unlockKind": "logisticsExp",
+      "unlockTarget": "",
+      "unlockValue": 150,
+      "description": "补给消耗-25%。",
+      "attackPercent": 0,
+      "defensePercent": 0,
+      "hpPercent": 0,
+      "moveBonus": 0,
+      "moraleBonus": 0,
+      "supplySavePercent": 25,
+      "intelBonus": 0,
+      "expBonusPercent": 0
+    },
+    {
+      "id": "precise_fire",
+      "name": "精准打击",
+      "category": "攻击",
+      "rarity": "精锐",
+      "slot": "经验",
+      "unlockKind": "artilleryExp",
+      "unlockTarget": "",
+      "unlockValue": 150,
+      "description": "攻击+12%。",
+      "attackPercent": 12,
+      "defensePercent": 0,
+      "hpPercent": 0,
+      "moveBonus": 0,
+      "moraleBonus": 0,
+      "supplySavePercent": 0,
+      "intelBonus": 0,
+      "expBonusPercent": 0
+    },
+    {
+      "id": "covert_network",
+      "name": "暗线经营",
+      "category": "情报",
+      "rarity": "精锐",
+      "slot": "经验",
+      "unlockKind": "intelligence",
+      "unlockTarget": "",
+      "unlockValue": 30,
+      "description": "情报收益+3。",
+      "attackPercent": 0,
+      "defensePercent": 0,
+      "hpPercent": 0,
+      "moveBonus": 0,
+      "moraleBonus": 0,
+      "supplySavePercent": 0,
+      "intelBonus": 3,
+      "expBonusPercent": 0
+    },
+    {
+      "id": "unyielding",
+      "name": "众志成城",
+      "category": "士气",
+      "rarity": "传说",
+      "slot": "指挥",
+      "unlockKind": "merit",
+      "unlockTarget": "",
+      "unlockValue": 300,
+      "description": "兵力+10%，士气+1。",
+      "attackPercent": 0,
+      "defensePercent": 0,
+      "hpPercent": 10,
+      "moveBonus": 0,
+      "moraleBonus": 1,
+      "supplySavePercent": 0,
+      "intelBonus": 0,
+      "expBonusPercent": 0
+    }
+  ],
+  "quests": [
+    {
+      "unlockTarget": "",
+      "unlockValue": 0,
+      "targetId": "",
+      "rewardMerit": 8,
+      "rewardTreasury": 20,
+      "rewardExpTarget": "trainingExp",
+      "rewardExp": 12,
+      "rewardAffectionTarget": "",
+      "rewardAffection": 0,
+      "rewardAchievement": "A01",
+      "nextQuestId": "main_02",
+      "id": "main_01",
+      "type": "主线",
+      "name": "第一周整训",
+      "description": "完成任意课程。剧情不再自动往前推，先让角色在养成中拿到第一份训练记录。",
+      "unlockKind": "always",
+      "targetKind": "anyCourseExp",
+      "targetValue": 25
+    },
+    {
+      "unlockTarget": "main_01",
+      "unlockValue": 1,
+      "targetId": "",
+      "rewardMerit": 8,
+      "rewardTreasury": 10,
+      "rewardExpTarget": "managementExp",
+      "rewardExp": 12,
+      "rewardAffectionTarget": "",
+      "rewardAffection": 0,
+      "rewardAchievement": "",
+      "nextQuestId": "main_03",
+      "id": "main_02",
+      "type": "主线",
+      "name": "训练搭档",
+      "description": "任意同窗好感达到30。战棋前需要可靠搭档，日常社交会直接打开后续剧情。",
+      "unlockKind": "quest",
+      "targetKind": "anyRelationship",
+      "targetValue": 30
+    },
+    {
+      "unlockTarget": "main_02",
+      "unlockValue": 1,
+      "targetId": "",
+      "rewardMerit": 12,
+      "rewardTreasury": 18,
+      "rewardExpTarget": "trainingExp",
+      "rewardExp": 12,
+      "rewardAffectionTarget": "",
+      "rewardAffection": 0,
+      "rewardAchievement": "",
+      "nextQuestId": "main_04",
+      "id": "main_03",
+      "type": "主线",
+      "name": "兵棋资格",
+      "description": "任意课程达到2级。课程等级代表角色能读懂阵型、补给和兵种克制。",
+      "unlockKind": "quest",
+      "targetKind": "anyCourseLevel",
+      "targetValue": 2
+    },
+    {
+      "unlockTarget": "main_03",
+      "unlockValue": 1,
+      "targetId": "",
+      "rewardMerit": 10,
+      "rewardTreasury": 12,
+      "rewardExpTarget": "logisticsExp",
+      "rewardExp": 12,
+      "rewardAffectionTarget": "",
+      "rewardAffection": 0,
+      "rewardAchievement": "",
+      "nextQuestId": "main_05",
+      "id": "main_04",
+      "type": "主线",
+      "name": "战前侦察",
+      "description": "情报值达到20。侦察结果会解释敌军配置，也决定剧情里哪些风险会提前暴露。",
+      "unlockKind": "quest",
+      "targetKind": "intelligence",
+      "targetValue": 20
+    },
+    {
+      "unlockTarget": "main_04",
+      "unlockValue": 1,
+      "targetId": "",
+      "rewardMerit": 12,
+      "rewardTreasury": 16,
+      "rewardExpTarget": "logisticsExp",
+      "rewardExp": 14,
+      "rewardAffectionTarget": "",
+      "rewardAffection": 0,
+      "rewardAchievement": "I01",
+      "nextQuestId": "main_06",
+      "id": "main_05",
+      "type": "主线",
+      "name": "情报网成形",
+      "description": "情报网达到2级。后续主线会把战棋、派系压力和日常消息串在一起。",
+      "unlockKind": "quest",
+      "targetKind": "spyNetwork",
+      "targetValue": 2
+    },
+    {
+      "unlockTarget": "main_05",
+      "unlockValue": 1,
+      "targetId": "",
+      "rewardMerit": 20,
+      "rewardTreasury": 30,
+      "rewardExpTarget": "managementExp",
+      "rewardExp": 16,
+      "rewardAffectionTarget": "",
+      "rewardAffection": 0,
+      "rewardAchievement": "B01",
+      "nextQuestId": "main_07",
+      "id": "main_06",
+      "type": "主线",
+      "name": "首次军演胜利",
+      "description": "赢得一场战棋战斗。主线只承认玩家在棋盘上打出来的结果。",
+      "unlockKind": "quest",
+      "targetKind": "battleWins",
+      "targetValue": 1
+    },
+    {
+      "unlockTarget": "main_06",
+      "unlockValue": 1,
+      "targetId": "",
+      "rewardMerit": 16,
+      "rewardTreasury": 24,
+      "rewardExpTarget": "infantryExp",
+      "rewardExp": 12,
+      "rewardAffectionTarget": "",
+      "rewardAffection": 0,
+      "rewardAchievement": "",
+      "nextQuestId": "main_08",
+      "id": "main_07",
+      "type": "主线",
+      "name": "连续出阵",
+      "description": "累计完成2场战棋。胜败都会留下战报，但胜利会让后续评价更高。",
+      "unlockKind": "quest",
+      "targetKind": "battlesFought",
+      "targetValue": 2
+    },
+    {
+      "unlockTarget": "main_07",
+      "unlockValue": 1,
+      "targetId": "",
+      "rewardMerit": 20,
+      "rewardTreasury": 30,
+      "rewardExpTarget": "logisticsExp",
+      "rewardExp": 18,
+      "rewardAffectionTarget": "",
+      "rewardAffection": 0,
+      "rewardAchievement": "",
+      "nextQuestId": "",
+      "id": "main_08",
+      "type": "主线",
+      "name": "毕业前整备",
+      "description": "情报值达到45。终盘前先把敌情、补给和同盟线收束清楚。",
+      "unlockKind": "quest",
+      "targetKind": "intelligence",
+      "targetValue": 45
+    },
+    {
+      "unlockTarget": "EV006",
+      "unlockValue": 1,
+      "targetId": "zhao",
+      "rewardMerit": 10,
+      "rewardTreasury": 0,
+      "rewardExpTarget": "infantryExp",
+      "rewardExp": 12,
+      "rewardAffectionTarget": "zhao",
+      "rewardAffection": 8,
+      "rewardAchievement": "",
+      "nextQuestId": "",
+      "id": "rel_zhao_01",
+      "type": "角色支线",
+      "name": "枪阵搭档",
+      "description": "与赵伯衡好感达到45。他会在步兵与重步阵型上给出额外战棋建议。",
+      "unlockKind": "story",
+      "targetKind": "relationship",
+      "targetValue": 45
+    },
+    {
+      "unlockTarget": "EV009",
+      "unlockValue": 1,
+      "targetId": "lin",
+      "rewardMerit": 8,
+      "rewardTreasury": 6,
+      "rewardExpTarget": "managementExp",
+      "rewardExp": 12,
+      "rewardAffectionTarget": "lin",
+      "rewardAffection": 8,
+      "rewardAchievement": "",
+      "nextQuestId": "",
+      "id": "rel_lin_01",
+      "type": "角色支线",
+      "name": "军政记录员",
+      "description": "与林素心好感达到45。她会帮你把课程、任务和战报整理成可用情报。",
+      "unlockKind": "story",
+      "targetKind": "relationship",
+      "targetValue": 45
+    },
+    {
+      "unlockTarget": "EV008",
+      "unlockValue": 1,
+      "targetId": "yierde",
+      "rewardMerit": 8,
+      "rewardTreasury": 0,
+      "rewardExpTarget": "cavalryExp",
+      "rewardExp": 12,
+      "rewardAffectionTarget": "yierde",
+      "rewardAffection": 8,
+      "rewardAchievement": "",
+      "nextQuestId": "",
+      "id": "rel_yierde_01",
+      "type": "角色支线",
+      "name": "边地向导",
+      "description": "与伊尔德好感达到45。边地路线会影响战略地图上的侦察与行军判断。",
+      "unlockKind": "story",
+      "targetKind": "relationship",
+      "targetValue": 45
+    },
+    {
+      "unlockTarget": "EV008",
+      "unlockValue": 1,
+      "targetId": "chen",
+      "rewardMerit": 8,
+      "rewardTreasury": 8,
+      "rewardExpTarget": "managementExp",
+      "rewardExp": 10,
+      "rewardAffectionTarget": "chen",
+      "rewardAffection": 8,
+      "rewardAchievement": "",
+      "nextQuestId": "",
+      "id": "rel_chen_01",
+      "type": "角色支线",
+      "name": "军法边界",
+      "description": "与陈敬之好感达到45。他会提醒你哪些战术胜利会引发派系反弹。",
+      "unlockKind": "story",
+      "targetKind": "relationship",
+      "targetValue": 45
+    },
+    {
+      "unlockTarget": "EV031",
+      "unlockValue": 1,
+      "targetId": "li",
+      "rewardMerit": 10,
+      "rewardTreasury": 0,
+      "rewardExpTarget": "artilleryExp",
+      "rewardExp": 12,
+      "rewardAffectionTarget": "li",
+      "rewardAffection": 8,
+      "rewardAchievement": "",
+      "nextQuestId": "",
+      "id": "rel_li_01",
+      "type": "角色支线",
+      "name": "炮算校准",
+      "description": "与李婉清好感达到45。炮兵与重器单位的伤害预判会更可靠。",
+      "unlockKind": "story",
+      "targetKind": "relationship",
+      "targetValue": 45
+    },
+    {
+      "unlockTarget": "main_04",
+      "unlockValue": 1,
+      "targetId": "",
+      "rewardMerit": 8,
+      "rewardTreasury": 0,
+      "rewardExpTarget": "logisticsExp",
+      "rewardExp": 8,
+      "rewardAffectionTarget": "",
+      "rewardAffection": 0,
+      "rewardAchievement": "",
+      "nextQuestId": "",
+      "id": "intel_scout_01",
+      "type": "情报",
+      "name": "战前耳目",
+      "description": "情报网达到2级。情报任务服务战棋，帮助玩家看清敌军和补给。",
+      "unlockKind": "quest",
+      "targetKind": "spyNetwork",
+      "targetValue": 2
+    },
+    {
+      "unlockTarget": "EV014",
+      "unlockValue": 1,
+      "targetId": "liberal",
+      "rewardMerit": 12,
+      "rewardTreasury": 8,
+      "rewardExpTarget": "managementExp",
+      "rewardExp": 10,
+      "rewardAffectionTarget": "",
+      "rewardAffection": 0,
+      "rewardAchievement": "",
+      "nextQuestId": "",
+      "id": "faction_liberal_01",
+      "type": "派系任务",
+      "name": "议会观察",
+      "description": "自由派立场达到40。派系任务只在玩家日常选择已经形成倾向后出现。",
+      "unlockKind": "story",
+      "targetKind": "stance",
+      "targetValue": 40
+    },
+    {
+      "unlockTarget": "",
+      "unlockValue": 0,
+      "targetId": "",
+      "rewardMerit": 6,
+      "rewardTreasury": 0,
+      "rewardExpTarget": "infantryExp",
+      "rewardExp": 8,
+      "rewardAffectionTarget": "",
+      "rewardAffection": 0,
+      "rewardAchievement": "",
+      "nextQuestId": "",
+      "id": "daily_drill",
+      "type": "日常",
+      "name": "晨练操典",
+      "description": "训练进度达到50。日常任务不推主线，只给玩家稳定成长目标。",
+      "unlockKind": "always",
+      "targetKind": "trainingExp",
+      "targetValue": 50
+    }
+  ],
+  "achievements": [
+    {
+      "id": "B01",
+      "category": "战斗",
+      "name": "初试锋芒",
+      "description": "赢得第一场战斗。",
+      "conditionKind": "battleWins",
+      "conditionTarget": "",
+      "conditionValue": 1,
+      "rewardTitle": "rookie",
+      "rewardPoints": 10,
+      "rarity": "铜"
+    },
+    {
+      "id": "B02",
+      "category": "战斗",
+      "name": "连战连胜",
+      "description": "累计赢得3场战斗。",
+      "conditionKind": "battleWins",
+      "conditionTarget": "",
+      "conditionValue": 3,
+      "rewardTitle": "veteran",
+      "rewardPoints": 30,
+      "rarity": "银"
+    },
+    {
+      "id": "A01",
+      "category": "养成",
+      "name": "军校生涯",
+      "description": "任意学科达到2级。",
+      "conditionKind": "anyCourseLevel",
+      "conditionTarget": "",
+      "conditionValue": 2,
+      "rewardTitle": "honor_student",
+      "rewardPoints": 10,
+      "rarity": "铜"
+    },
+    {
+      "id": "S01",
+      "category": "社交",
+      "name": "朋友之证",
+      "description": "任意角色好感达到50。",
+      "conditionKind": "anyRelationship",
+      "conditionTarget": "",
+      "conditionValue": 50,
+      "rewardTitle": "trusted_friend",
+      "rewardPoints": 20,
+      "rarity": "铜"
+    },
+    {
+      "id": "I01",
+      "category": "情报",
+      "name": "暗线初成",
+      "description": "间谍网络达到2。",
+      "conditionKind": "spyNetwork",
+      "conditionTarget": "",
+      "conditionValue": 2,
+      "rewardTitle": "shadow_listener",
+      "rewardPoints": 20,
+      "rarity": "铜"
+    },
+    {
+      "id": "Q01",
+      "category": "任务",
+      "name": "有令必达",
+      "description": "完成3个任务。",
+      "conditionKind": "questsCompleted",
+      "conditionTarget": "",
+      "conditionValue": 3,
+      "rewardTitle": "reliable_officer",
+      "rewardPoints": 20,
+      "rarity": "银"
+    },
+    {
+      "id": "NG01",
+      "category": "多周目",
+      "name": "记忆回响",
+      "description": "开启二周目。",
+      "conditionKind": "newGamePlus",
+      "conditionTarget": "",
+      "conditionValue": 1,
+      "rewardTitle": "echo_memory",
+      "rewardPoints": 50,
+      "rarity": "金"
+    }
+  ],
+  "titles": [
+    {
+      "id": "rookie",
+      "name": "新兵",
+      "category": "军事",
+      "description": "第一次胜利的纪念。",
+      "attackBonus": 1,
+      "hpBonus": 0,
+      "socialBonus": 0,
+      "cultivationBonus": 0,
+      "intelligenceBonus": 0,
+      "supplyBonus": 0
+    },
+    {
+      "id": "veteran",
+      "name": "老兵",
+      "category": "军事",
+      "description": "战斗经验带来的沉稳。",
+      "attackBonus": 2,
+      "hpBonus": 5,
+      "socialBonus": 0,
+      "cultivationBonus": 0,
+      "intelligenceBonus": 0,
+      "supplyBonus": 0
+    },
+    {
+      "id": "honor_student",
+      "name": "优等生",
+      "category": "学术",
+      "description": "课程成长更快。",
+      "attackBonus": 0,
+      "hpBonus": 0,
+      "socialBonus": 0,
+      "cultivationBonus": 5,
+      "intelligenceBonus": 0,
+      "supplyBonus": 0
+    },
+    {
+      "id": "trusted_friend",
+      "name": "挚友",
+      "category": "社交",
+      "description": "更容易获得信任。",
+      "attackBonus": 0,
+      "hpBonus": 0,
+      "socialBonus": 2,
+      "cultivationBonus": 0,
+      "intelligenceBonus": 0,
+      "supplyBonus": 0
+    },
+    {
+      "id": "shadow_listener",
+      "name": "听影者",
+      "category": "情报",
+      "description": "情报收益提升。",
+      "attackBonus": 0,
+      "hpBonus": 0,
+      "socialBonus": 0,
+      "cultivationBonus": 0,
+      "intelligenceBonus": 2,
+      "supplyBonus": 0
+    },
+    {
+      "id": "reliable_officer",
+      "name": "可靠军官",
+      "category": "任务",
+      "description": "补给上限提升。",
+      "attackBonus": 0,
+      "hpBonus": 0,
+      "socialBonus": 0,
+      "cultivationBonus": 0,
+      "intelligenceBonus": 0,
+      "supplyBonus": 4
+    },
+    {
+      "id": "echo_memory",
+      "name": "记忆回响",
+      "category": "多周目",
+      "description": "保留另一条道路的余温。",
+      "attackBonus": 1,
+      "hpBonus": 4,
+      "socialBonus": 1,
+      "cultivationBonus": 3,
+      "intelligenceBonus": 1,
+      "supplyBonus": 2
+    }
+  ],
+  "intelligenceActions": [
+    {
+      "id": "scout",
+      "name": "刺探军情",
+      "type": "侦察",
+      "description": "派人查学院与前线传闻，获得密档线索并确认敌军兵力。",
+      "cost": 8,
+      "successRate": 78,
+      "risk": 10,
+      "intelGain": 10,
+      "spyNetworkGain": 1,
+      "enemyTroopDamage": 0,
+      "enemySupplyDamage": 0,
+      "targetFaction": ""
+    },
+    {
+      "id": "sabotage_supply",
+      "name": "破坏补给",
+      "type": "破坏",
+      "description": "切断敌方补给记录，顺手追查旧港军需流向。",
+      "cost": 14,
+      "successRate": 62,
+      "risk": 22,
+      "intelGain": 5,
+      "spyNetworkGain": 1,
+      "enemyTroopDamage": 4,
+      "enemySupplyDamage": 10,
+      "targetFaction": ""
+    },
+    {
+      "id": "rumor",
+      "name": "散布谣言",
+      "type": "扰乱",
+      "description": "放出真假参半的消息，试探哪一方急着掩盖旧档。",
+      "cost": 10,
+      "successRate": 70,
+      "risk": 18,
+      "intelGain": 6,
+      "spyNetworkGain": 1,
+      "enemyTroopDamage": 0,
+      "enemySupplyDamage": 4,
+      "targetFaction": ""
+    },
+    {
+      "id": "counter_spy",
+      "name": "反间清查",
+      "type": "反间",
+      "description": "清理身边眼线，稳固情报网，避免调查过早暴露。",
+      "cost": 6,
+      "successRate": 84,
+      "risk": 6,
+      "intelGain": 4,
+      "spyNetworkGain": 2,
+      "enemyTroopDamage": 0,
+      "enemySupplyDamage": 0,
+      "targetFaction": ""
+    }
+  ],
+  "aiProfiles": [
+    {
+      "id": "balanced",
+      "name": "均衡型",
+      "aggression": 100,
+      "caution": 100,
+      "focusFire": 100,
+      "retreatHpPercent": 25,
+      "terrainPreference": 100,
+      "objectiveBias": 100,
+      "guardBias": 90,
+      "flankBias": 80,
+      "rangedSpacing": 1,
+      "finishBias": 110,
+      "avoidCounter": 80
+    },
+    {
+      "id": "aggressive",
+      "name": "激进型",
+      "aggression": 165,
+      "caution": 55,
+      "focusFire": 95,
+      "retreatHpPercent": 12,
+      "terrainPreference": 65,
+      "objectiveBias": 70,
+      "guardBias": 35,
+      "flankBias": 90,
+      "rangedSpacing": 1,
+      "finishBias": 155,
+      "avoidCounter": 35
+    },
+    {
+      "id": "tactical",
+      "name": "智将型",
+      "aggression": 115,
+      "caution": 105,
+      "focusFire": 165,
+      "retreatHpPercent": 24,
+      "terrainPreference": 135,
+      "objectiveBias": 105,
+      "guardBias": 75,
+      "flankBias": 110,
+      "rangedSpacing": 2,
+      "finishBias": 145,
+      "avoidCounter": 115
+    },
+    {
+      "id": "defensive",
+      "name": "防守型",
+      "aggression": 65,
+      "caution": 165,
+      "focusFire": 120,
+      "retreatHpPercent": 32,
+      "terrainPreference": 190,
+      "objectiveBias": 180,
+      "guardBias": 170,
+      "flankBias": 45,
+      "rangedSpacing": 2,
+      "finishBias": 95,
+      "avoidCounter": 145
+    },
+    {
+      "id": "mobile",
+      "name": "机动型",
+      "aggression": 130,
+      "caution": 85,
+      "focusFire": 105,
+      "retreatHpPercent": 20,
+      "terrainPreference": 100,
+      "objectiveBias": 120,
+      "guardBias": 65,
+      "flankBias": 180,
+      "rangedSpacing": 2,
+      "finishBias": 125,
+      "avoidCounter": 75
+    },
+    {
+      "id": "siege",
+      "name": "攻坚型",
+      "aggression": 120,
+      "caution": 115,
+      "focusFire": 135,
+      "retreatHpPercent": 22,
+      "terrainPreference": 120,
+      "objectiveBias": 190,
+      "guardBias": 105,
+      "flankBias": 70,
+      "rangedSpacing": 3,
+      "finishBias": 135,
+      "avoidCounter": 95
+    },
+    {
+      "id": "skirmish",
+      "name": "游击型",
+      "aggression": 105,
+      "caution": 135,
+      "focusFire": 120,
+      "retreatHpPercent": 35,
+      "terrainPreference": 130,
+      "objectiveBias": 85,
+      "guardBias": 85,
+      "flankBias": 170,
+      "rangedSpacing": 3,
+      "finishBias": 115,
+      "avoidCounter": 160
+    },
+    {
+      "id": "berserker",
+      "name": "狂热型",
+      "aggression": 190,
+      "caution": 30,
+      "focusFire": 70,
+      "retreatHpPercent": 5,
+      "terrainPreference": 45,
+      "objectiveBias": 55,
+      "guardBias": 15,
+      "flankBias": 120,
+      "rangedSpacing": 1,
+      "finishBias": 180,
+      "avoidCounter": 15
+    }
+  ],
+  "supplyRules": [
+    {
+      "id": "core",
+      "name": "标准补给",
+      "standbyCost": 2,
+      "moveCost": 3,
+      "attackCost": 5,
+      "moveAttackCost": 6,
+      "shortageThreshold": 8,
+      "shortageAttackPenalty": 5,
+      "shortageMoralePenalty": 1
+    }
+  ],
+  "narrativeFragments": [
+    {
+      "id": "nf_course_infantry_001",
+      "triggerKind": "course",
+      "triggerTarget": "infantry",
+      "minWeek": 1,
+      "maxWeek": 12,
+      "title": "枪阵课后的复盘",
+      "speaker": "赵伯衡",
+      "body": "枪阵课结束后，赵伯衡把步兵、长枪与重步的站位画在沙盘上。你第一次看清：课程经验不是数字，而是战棋里每一次少死人、少掉士气的底气。",
+      "sceneId": "academy",
+      "relationshipTarget": "zhao",
+      "affectionDelta": 5,
+      "axisId": "region",
+      "axisDelta": -2,
+      "intelligenceDelta": 3,
+      "suspicionFaction": "Imperial",
+      "suspicionDelta": 1,
+      "nextStoryId": "",
+      "once": "true"
+    },
+    {
+      "id": "nf_course_infantry_002",
+      "triggerKind": "course",
+      "triggerTarget": "infantry",
+      "minWeek": 13,
+      "maxWeek": 40,
+      "title": "雨夜换防",
+      "speaker": "赵伯衡",
+      "body": "夜雨中，你们复盘防线换防。赵伯衡指出前排不稳时后排火枪会被骑兵直冲，这条记录会成为下一场战棋前的阵容提醒。",
+      "sceneId": "battlefield",
+      "relationshipTarget": "zhao",
+      "affectionDelta": 5,
+      "axisId": "region",
+      "axisDelta": -2,
+      "intelligenceDelta": 3,
+      "suspicionFaction": "Imperial",
+      "suspicionDelta": 2,
+      "nextStoryId": "",
+      "once": "true"
+    },
+    {
+      "id": "nf_course_cavalry_001",
+      "triggerKind": "course",
+      "triggerTarget": "cavalry",
+      "minWeek": 1,
+      "maxWeek": 14,
+      "title": "马房里的行军课",
+      "speaker": "伊尔德",
+      "body": "骑训课后，伊尔德让你沿着马蹄印反推道路消耗。你明白战略地图上的一次行军，不只是移动按钮，而是体力、补给和地形的合账。",
+      "sceneId": "frontier",
+      "relationshipTarget": "yierde",
+      "affectionDelta": 5,
+      "axisId": "nation",
+      "axisDelta": 3,
+      "intelligenceDelta": 3,
+      "suspicionFaction": "Native",
+      "suspicionDelta": 1,
+      "nextStoryId": "",
+      "once": "true"
+    },
+    {
+      "id": "nf_course_cavalry_002",
+      "triggerKind": "course",
+      "triggerTarget": "cavalry",
+      "minWeek": 15,
+      "maxWeek": 42,
+      "title": "边道复测",
+      "speaker": "伊尔德",
+      "body": "你随骑队复测边道，发现旧地图漏标了一段浅滩。伊尔德提醒你：战前情报越清楚，开局位置越不容易被动。",
+      "sceneId": "frontier",
+      "relationshipTarget": "yierde",
+      "affectionDelta": 5,
+      "axisId": "nation",
+      "axisDelta": 3,
+      "intelligenceDelta": 4,
+      "suspicionFaction": "Foreign",
+      "suspicionDelta": 1,
+      "nextStoryId": "",
+      "once": "true"
+    },
+    {
+      "id": "nf_course_artillery_001",
+      "triggerKind": "course",
+      "triggerTarget": "artillery",
+      "minWeek": 1,
+      "maxWeek": 16,
+      "title": "炮尺校准",
+      "speaker": "李婉清",
+      "body": "炮算课上，李婉清要求你把风向、距离和地形一起算入射击表。下一次使用火枪与重器单位时，这些计算会变成更稳的伤害预判。",
+      "sceneId": "battlefield",
+      "relationshipTarget": "li",
+      "affectionDelta": 4,
+      "axisId": "governance",
+      "axisDelta": 1,
+      "intelligenceDelta": 4,
+      "suspicionFaction": "Foreign",
+      "suspicionDelta": 2,
+      "nextStoryId": "",
+      "once": "true"
+    },
+    {
+      "id": "nf_course_artillery_002",
+      "triggerKind": "course",
+      "triggerTarget": "artillery",
+      "minWeek": 17,
+      "maxWeek": 44,
+      "title": "失准的炮表",
+      "speaker": "李婉清",
+      "body": "你们校准火炮时发现旧炮表误差很大。李婉清把误差写进战前提示：重器强，但没有侦察和保护就会拖慢整支部队。",
+      "sceneId": "battlefield",
+      "relationshipTarget": "li",
+      "affectionDelta": 5,
+      "axisId": "governance",
+      "axisDelta": -1,
+      "intelligenceDelta": 4,
+      "suspicionFaction": "Imperial",
+      "suspicionDelta": 2,
+      "nextStoryId": "",
+      "once": "true"
+    },
+    {
+      "id": "nf_course_management_001",
+      "triggerKind": "course",
+      "triggerTarget": "management",
+      "minWeek": 1,
+      "maxWeek": 18,
+      "title": "军政课的任务板",
+      "speaker": "林素心",
+      "body": "军政课讲到军令登记，林素心把主线任务、角色支线和日常目标分成三栏。你终于知道每周该先看目标，再决定课程和周末去向。",
+      "sceneId": "library",
+      "relationshipTarget": "lin",
+      "affectionDelta": 5,
+      "axisId": "class",
+      "axisDelta": 2,
+      "intelligenceDelta": 4,
+      "suspicionFaction": "Reformist",
+      "suspicionDelta": 1,
+      "nextStoryId": "",
+      "once": "true"
+    },
+    {
+      "id": "nf_course_management_002",
+      "triggerKind": "course",
+      "triggerTarget": "management",
+      "minWeek": 19,
+      "maxWeek": 46,
+      "title": "战报归档",
+      "speaker": "林素心",
+      "body": "林素心把几份战报排在一起，指出胜负之外还要看击溃数、补给消耗和关系反应。战棋结果会反过来改变任务评价。",
+      "sceneId": "library",
+      "relationshipTarget": "lin",
+      "affectionDelta": 5,
+      "axisId": "class",
+      "axisDelta": 2,
+      "intelligenceDelta": 5,
+      "suspicionFaction": "Imperial",
+      "suspicionDelta": 2,
+      "nextStoryId": "",
+      "once": "true"
+    },
+    {
+      "id": "nf_course_logistics_001",
+      "triggerKind": "course",
+      "triggerTarget": "logistics",
+      "minWeek": 1,
+      "maxWeek": 18,
+      "title": "补给线上的红圈",
+      "speaker": "旁白",
+      "body": "后勤教官让你复盘一次失败转运。地图上那几个红圈不是装饰，而是提醒你：补给不足时，战棋里的攻击、士气和移动都会变差。",
+      "sceneId": "harbor",
+      "relationshipTarget": "",
+      "affectionDelta": 0,
+      "axisId": "region",
+      "axisDelta": -1,
+      "intelligenceDelta": 4,
+      "suspicionFaction": "Foreign",
+      "suspicionDelta": 2,
+      "nextStoryId": "",
+      "once": "true"
+    },
+    {
+      "id": "nf_course_logistics_002",
+      "triggerKind": "course",
+      "triggerTarget": "logistics",
+      "minWeek": 19,
+      "maxWeek": 46,
+      "title": "盐袋里的军票",
+      "speaker": "旁白",
+      "body": "你在补给样箱中找到几张潮湿军票。票根没有收款人，只写着“学籍副册调阅费”。这不是普通贪墨，而是有人在购买身份。",
+      "sceneId": "harbor",
+      "relationshipTarget": "",
+      "affectionDelta": 0,
+      "axisId": "governance",
+      "axisDelta": -2,
+      "intelligenceDelta": 5,
+      "suspicionFaction": "Imperial",
+      "suspicionDelta": 2,
+      "nextStoryId": "",
+      "once": "true"
+    },
+    {
+      "id": "nf_course_training_001",
+      "triggerKind": "course",
+      "triggerTarget": "training",
+      "minWeek": 1,
+      "maxWeek": 18,
+      "title": "夜训后的体力账",
+      "speaker": "旁白",
+      "body": "夜训结束后，你把体力消耗记进周记。高强度养成能换来等级，但疲劳会让社交与战斗状态下降。",
+      "sceneId": "academy",
+      "relationshipTarget": "",
+      "affectionDelta": 0,
+      "axisId": "governance",
+      "axisDelta": 1,
+      "intelligenceDelta": 3,
+      "suspicionFaction": "Imperial",
+      "suspicionDelta": 2,
+      "nextStoryId": "",
+      "once": "true"
+    },
+    {
+      "id": "nf_course_training_002",
+      "triggerKind": "course",
+      "triggerTarget": "training",
+      "minWeek": 19,
+      "maxWeek": 48,
+      "title": "晨跑路线",
+      "speaker": "旁白",
+      "body": "晨跑路线临时改道，队伍绕过旧档案室后墙。你看见墙根有新鲜泥印，像是有人夜里从那里搬走过箱子。",
+      "sceneId": "academy",
+      "relationshipTarget": "",
+      "affectionDelta": 0,
+      "axisId": "governance",
+      "axisDelta": 1,
+      "intelligenceDelta": 4,
+      "suspicionFaction": "Imperial",
+      "suspicionDelta": 2,
+      "nextStoryId": "",
+      "once": "true"
+    },
+    {
+      "id": "nf_social_wander_001",
+      "triggerKind": "social",
+      "triggerTarget": "wander",
+      "minWeek": 1,
+      "maxWeek": 18,
+      "title": "雨廊里的名单",
+      "speaker": "旁白",
+      "body": "闲逛时，你在雨廊听见低年级学生背诵值日名单。其中一个名字你从未见过，却出现在旧档整理申请上。",
+      "sceneId": "academy",
+      "relationshipTarget": "",
+      "affectionDelta": 0,
+      "axisId": "",
+      "axisDelta": 0,
+      "intelligenceDelta": 3,
+      "suspicionFaction": "Imperial",
+      "suspicionDelta": 1,
+      "nextStoryId": "",
+      "once": "true"
+    },
+    {
+      "id": "nf_social_group_001",
+      "triggerKind": "social",
+      "triggerTarget": "group",
+      "minWeek": 1,
+      "maxWeek": 30,
+      "title": "同窗桌上的三种说法",
+      "speaker": "旁白",
+      "body": "朋友聚会时，同一件旧港封仓案被说成三种版本：军需审计、商团走私、旧部清算。说法越多，越说明有人不想让真相成形。",
+      "sceneId": "street",
+      "relationshipTarget": "",
+      "affectionDelta": 0,
+      "axisId": "class",
+      "axisDelta": 1,
+      "intelligenceDelta": 4,
+      "suspicionFaction": "Foreign",
+      "suspicionDelta": 1,
+      "nextStoryId": "",
+      "once": "true"
+    },
+    {
+      "id": "nf_social_zhao_001",
+      "triggerKind": "social",
+      "triggerTarget": "zhao",
+      "minWeek": 1,
+      "maxWeek": 26,
+      "title": "赵伯衡的前排法",
+      "speaker": "赵伯衡",
+      "body": "邀约归来时，赵伯衡用筷子摆出三层阵。若你愿意听他讲完，下一次编队时会更重视前排承伤和侧翼保护。",
+      "sceneId": "street",
+      "relationshipTarget": "zhao",
+      "affectionDelta": 7,
+      "axisId": "region",
+      "axisDelta": -3,
+      "intelligenceDelta": 3,
+      "suspicionFaction": "Imperial",
+      "suspicionDelta": 2,
+      "nextStoryId": "",
+      "once": "true"
+    },
+    {
+      "id": "nf_social_zhao_002",
+      "triggerKind": "social",
+      "triggerTarget": "zhao",
+      "minWeek": 27,
+      "maxWeek": 52,
+      "title": "父辈名单",
+      "speaker": "赵伯衡",
+      "body": "赵伯衡终于拿来一张残破名册。名单上既有沈家的旧部，也有赵家的家将。最末一栏被墨涂黑，只剩“押送”二字。",
+      "sceneId": "street",
+      "relationshipTarget": "zhao",
+      "affectionDelta": 8,
+      "axisId": "region",
+      "axisDelta": -3,
+      "intelligenceDelta": 5,
+      "suspicionFaction": "Imperial",
+      "suspicionDelta": 3,
+      "nextStoryId": "",
+      "once": "true"
+    },
+    {
+      "id": "nf_social_lin_001",
+      "triggerKind": "social",
+      "triggerTarget": "lin",
+      "minWeek": 1,
+      "maxWeek": 26,
+      "title": "林素心的索引卡",
+      "speaker": "林素心",
+      "body": "林素心把课程、任务和人际消息写成索引卡。她没有替你做决定，只提醒你：所有剧情都应该回答一个问题，本周要练什么、打什么、找谁。",
+      "sceneId": "library",
+      "relationshipTarget": "lin",
+      "affectionDelta": 7,
+      "axisId": "class",
+      "axisDelta": 3,
+      "intelligenceDelta": 4,
+      "suspicionFaction": "Reformist",
+      "suspicionDelta": 1,
+      "nextStoryId": "",
+      "once": "true"
+    },
+    {
+      "id": "nf_social_lin_002",
+      "triggerKind": "social",
+      "triggerTarget": "lin",
+      "minWeek": 27,
+      "maxWeek": 52,
+      "title": "剪报墙",
+      "speaker": "林素心",
+      "body": "她把一整面剪报墙展示给你。每当报纸要求学生远离政务，旧港或学籍副册就会在同一周发生变动。",
+      "sceneId": "library",
+      "relationshipTarget": "lin",
+      "affectionDelta": 8,
+      "axisId": "class",
+      "axisDelta": 3,
+      "intelligenceDelta": 5,
+      "suspicionFaction": "Reformist",
+      "suspicionDelta": 2,
+      "nextStoryId": "",
+      "once": "true"
+    },
+    {
+      "id": "nf_social_yierde_001",
+      "triggerKind": "social",
+      "triggerTarget": "yierde",
+      "minWeek": 1,
+      "maxWeek": 34,
+      "title": "伊尔德的边地歌",
+      "speaker": "伊尔德",
+      "body": "伊尔德唱起边地旧歌，歌词里全是道路、渡口和补给点。你意识到文化差异不只是文案，它会影响战略地图上的选择。",
+      "sceneId": "frontier",
+      "relationshipTarget": "yierde",
+      "affectionDelta": 7,
+      "axisId": "nation",
+      "axisDelta": 4,
+      "intelligenceDelta": 4,
+      "suspicionFaction": "Native",
+      "suspicionDelta": 1,
+      "nextStoryId": "",
+      "once": "true"
+    },
+    {
+      "id": "nf_social_chen_001",
+      "triggerKind": "social",
+      "triggerTarget": "chen",
+      "minWeek": 1,
+      "maxWeek": 34,
+      "title": "封档理由",
+      "speaker": "陈敬之",
+      "body": "陈敬之冷淡地提醒你：档案不是给少年逞英雄的玩具。可他越是警告，你越能听出法治派真正害怕的是副册外流。",
+      "sceneId": "council",
+      "relationshipTarget": "chen",
+      "affectionDelta": 6,
+      "axisId": "governance",
+      "axisDelta": -3,
+      "intelligenceDelta": 3,
+      "suspicionFaction": "Imperial",
+      "suspicionDelta": 2,
+      "nextStoryId": "",
+      "once": "true"
+    },
+    {
+      "id": "nf_social_li_001",
+      "triggerKind": "social",
+      "triggerTarget": "li",
+      "minWeek": 8,
+      "maxWeek": 52,
+      "title": "海图复核",
+      "speaker": "李婉清",
+      "body": "李婉清不谈传闻，只把炮尺、海图和演习编号摆成一列。三者同时指向旧港外的暗礁航道，那里不该出现在学院教材里。",
+      "sceneId": "battlefield",
+      "relationshipTarget": "li",
+      "affectionDelta": 7,
+      "axisId": "governance",
+      "axisDelta": 1,
+      "intelligenceDelta": 5,
+      "suspicionFaction": "Foreign",
+      "suspicionDelta": 2,
+      "nextStoryId": "",
+      "once": "true"
+    },
+    {
+      "id": "nf_activity_drill_001",
+      "triggerKind": "activity",
+      "triggerTarget": "drill",
+      "minWeek": 1,
+      "maxWeek": 22,
+      "title": "兵棋桌边的空位",
+      "speaker": "李婉清",
+      "body": "兵棋推演里多出一个空位。李婉清建议你把它留给远程单位，哪怕暂时少一名前排，也能逼敌军改变推进路线。",
+      "sceneId": "battlefield",
+      "relationshipTarget": "li",
+      "affectionDelta": 4,
+      "axisId": "governance",
+      "axisDelta": -2,
+      "intelligenceDelta": 4,
+      "suspicionFaction": "Imperial",
+      "suspicionDelta": 2,
+      "nextStoryId": "",
+      "once": "true"
+    },
+    {
+      "id": "nf_activity_drill_002",
+      "triggerKind": "activity",
+      "triggerTarget": "drill",
+      "minWeek": 23,
+      "maxWeek": 52,
+      "title": "沙盘外的敌人",
+      "speaker": "旁白",
+      "body": "推演结束后，你发现敌方行动路线过于贴近真实边防。若这份沙盘流到外面，夏季演习将不再只是演习。",
+      "sceneId": "battlefield",
+      "relationshipTarget": "",
+      "affectionDelta": 0,
+      "axisId": "governance",
+      "axisDelta": -2,
+      "intelligenceDelta": 5,
+      "suspicionFaction": "Foreign",
+      "suspicionDelta": 3,
+      "nextStoryId": "",
+      "once": "true"
+    },
+    {
+      "id": "nf_activity_salon_001",
+      "triggerKind": "activity",
+      "triggerTarget": "salon",
+      "minWeek": 1,
+      "maxWeek": 34,
+      "title": "茶馆里的派系风向",
+      "speaker": "陈敬之",
+      "body": "茶馆里有人谈军令，也有人谈名声。陈敬之提醒你：同一场胜利，在不同派系眼中可能是功劳，也可能是威胁。",
+      "sceneId": "street",
+      "relationshipTarget": "",
+      "affectionDelta": 0,
+      "axisId": "class",
+      "axisDelta": 1,
+      "intelligenceDelta": 3,
+      "suspicionFaction": "Imperial",
+      "suspicionDelta": 2,
+      "nextStoryId": "",
+      "once": "true"
+    },
+    {
+      "id": "nf_activity_lecture_001",
+      "triggerKind": "activity",
+      "triggerTarget": "lecture",
+      "minWeek": 1,
+      "maxWeek": 52,
+      "title": "讲座后的递条",
+      "speaker": "旁白",
+      "body": "讲座散场后，有人把一张纸条塞进你的书里：别只查谁偷了档案，先查谁有资格销毁档案。",
+      "sceneId": "council",
+      "relationshipTarget": "",
+      "affectionDelta": 0,
+      "axisId": "governance",
+      "axisDelta": 3,
+      "intelligenceDelta": 4,
+      "suspicionFaction": "Imperial",
+      "suspicionDelta": 2,
+      "nextStoryId": "",
+      "once": "true"
+    },
+    {
+      "id": "nf_activity_volunteer_001",
+      "triggerKind": "activity",
+      "triggerTarget": "volunteer",
+      "minWeek": 1,
+      "maxWeek": 40,
+      "title": "救济棚的收据",
+      "speaker": "旁白",
+      "body": "救济棚里，一名码头工把半张收据塞给你。上面写着旧港三号仓，却盖着学院军需处的章。",
+      "sceneId": "harbor",
+      "relationshipTarget": "",
+      "affectionDelta": 0,
+      "axisId": "nation",
+      "axisDelta": 4,
+      "intelligenceDelta": 4,
+      "suspicionFaction": "Foreign",
+      "suspicionDelta": 2,
+      "nextStoryId": "",
+      "once": "true"
+    },
+    {
+      "id": "nf_rest_secret_letter_001",
+      "triggerKind": "rest",
+      "triggerTarget": "rest",
+      "minWeek": 1,
+      "maxWeek": 28,
+      "title": "休息日的整理",
+      "speaker": "旁白",
+      "body": "难得休息时，你整理这周的课程记录、战报和邀约。休息不是跳过玩法，而是让下一周的体力与心态回到可控范围。",
+      "sceneId": "academy",
+      "relationshipTarget": "",
+      "affectionDelta": 0,
+      "axisId": "",
+      "axisDelta": 0,
+      "intelligenceDelta": 4,
+      "suspicionFaction": "Imperial",
+      "suspicionDelta": 1,
+      "nextStoryId": "",
+      "once": "true"
+    },
+    {
+      "id": "nf_rest_window_001",
+      "triggerKind": "rest",
+      "triggerTarget": "rest",
+      "minWeek": 29,
+      "maxWeek": 52,
+      "title": "窗外的灯",
+      "speaker": "旁白",
+      "body": "你本想早睡，却看见旧档案室的窗后亮着灯。次日清晨，门口多了两道新锁，像是有人赶在你之前处理了什么。",
+      "sceneId": "academy",
+      "relationshipTarget": "",
+      "affectionDelta": 0,
+      "axisId": "",
+      "axisDelta": 0,
+      "intelligenceDelta": 4,
+      "suspicionFaction": "Imperial",
+      "suspicionDelta": 2,
+      "nextStoryId": "",
+      "once": "true"
+    },
+    {
+      "id": "nf_study_library_001",
+      "triggerKind": "study",
+      "triggerTarget": "study",
+      "minWeek": 1,
+      "maxWeek": 28,
+      "title": "图书馆的克制表",
+      "speaker": "旁白",
+      "body": "自习到深夜，你在旧书页边看到一张兵种克制表。它很枯燥，却能让下一次攻击前的判断少一点赌运气。",
+      "sceneId": "library",
+      "relationshipTarget": "",
+      "affectionDelta": 0,
+      "axisId": "class",
+      "axisDelta": 1,
+      "intelligenceDelta": 4,
+      "suspicionFaction": "Foreign",
+      "suspicionDelta": 1,
+      "nextStoryId": "",
+      "once": "true"
+    },
+    {
+      "id": "nf_study_marginalia_001",
+      "triggerKind": "study",
+      "triggerTarget": "study",
+      "minWeek": 29,
+      "maxWeek": 52,
+      "title": "页边批注",
+      "speaker": "旁白",
+      "body": "你重读军政教材时，发现页边批注反复出现“副册不可入库”。写批注的人熟悉学院流程，也熟悉如何避开流程。",
+      "sceneId": "library",
+      "relationshipTarget": "",
+      "affectionDelta": 0,
+      "axisId": "governance",
+      "axisDelta": 1,
+      "intelligenceDelta": 5,
+      "suspicionFaction": "Imperial",
+      "suspicionDelta": 2,
+      "nextStoryId": "",
+      "once": "true"
+    },
+    {
+      "id": "nf_intel_010",
+      "triggerKind": "intelligence",
+      "triggerTarget": "10",
+      "minWeek": 1,
+      "maxWeek": 999,
+      "title": "情报：敌影初现",
+      "speaker": "旁白",
+      "body": "情报脉络初成，你终于能在战略地图上看出哪支敌军只是虚张声势，哪支部队真的会威胁据点。",
+      "sceneId": "library",
+      "relationshipTarget": "",
+      "affectionDelta": 0,
+      "axisId": "",
+      "axisDelta": 0,
+      "intelligenceDelta": 2,
+      "suspicionFaction": "Imperial",
+      "suspicionDelta": 1,
+      "nextStoryId": "",
+      "once": "true"
+    },
+    {
+      "id": "nf_intel_025",
+      "triggerKind": "intelligence",
+      "triggerTarget": "25",
+      "minWeek": 1,
+      "maxWeek": 999,
+      "title": "情报：补给破口",
+      "speaker": "旁白",
+      "body": "暗线传来回报，敌军补给队出现固定路线。若在战前动手，下一场战棋的敌方士气与补给都会更容易被压低。",
+      "sceneId": "harbor",
+      "relationshipTarget": "",
+      "affectionDelta": 0,
+      "axisId": "",
+      "axisDelta": 0,
+      "intelligenceDelta": 3,
+      "suspicionFaction": "Foreign",
+      "suspicionDelta": 2,
+      "nextStoryId": "",
+      "once": "true"
+    },
+    {
+      "id": "nf_intel_045",
+      "triggerKind": "intelligence",
+      "triggerTarget": "45",
+      "minWeek": 1,
+      "maxWeek": 999,
+      "title": "密档：副册名单",
+      "speaker": "林素心",
+      "body": "林素心确认副册并非普通学籍，而是一份能证明谁参与过旧港押送的名单。你的父亲似乎不是旁观者，而是名单上的一员。",
+      "sceneId": "library",
+      "relationshipTarget": "lin",
+      "affectionDelta": 6,
+      "axisId": "class",
+      "axisDelta": 2,
+      "intelligenceDelta": 4,
+      "suspicionFaction": "Imperial",
+      "suspicionDelta": 3,
+      "nextStoryId": "",
+      "once": "true"
+    },
+    {
+      "id": "nf_intel_065",
+      "triggerKind": "intelligence",
+      "triggerTarget": "65",
+      "minWeek": 1,
+      "maxWeek": 999,
+      "title": "密档：海灯代号",
+      "speaker": "李婉清",
+      "body": "李婉清把演习空位、炮表编号和旧港航道合在一起，得出一个代号：海灯。它像部队番号，也像一次尚未完成的行动。",
+      "sceneId": "battlefield",
+      "relationshipTarget": "li",
+      "affectionDelta": 6,
+      "axisId": "governance",
+      "axisDelta": 1,
+      "intelligenceDelta": 4,
+      "suspicionFaction": "Foreign",
+      "suspicionDelta": 3,
+      "nextStoryId": "",
+      "once": "true"
+    },
+    {
+      "id": "nf_intel_090",
+      "triggerKind": "intelligence",
+      "triggerTarget": "90",
+      "minWeek": 1,
+      "maxWeek": 999,
+      "title": "密档：可以开门了",
+      "speaker": "旁白",
+      "body": "你把所有索引钉在墙上，线头终于指向学院地下旧库。现在缺的不是线索，而是你是否准备好承担开门后的后果。",
+      "sceneId": "library",
+      "relationshipTarget": "",
+      "affectionDelta": 0,
+      "axisId": "",
+      "axisDelta": 0,
+      "intelligenceDelta": 5,
+      "suspicionFaction": "Imperial",
+      "suspicionDelta": 4,
+      "nextStoryId": "",
+      "once": "true"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+id,type,name,description,unlockKind,unlockTarget,unlockValue,targetKind,targetId,targetValue,rewardMerit,rewardTreasury,rewardExpTarget,rewardExp,rewardAffectionTarget,rewardAffection,rewardAchievement,nextQuestId
+main_01,主线,第一周整训,完成任意课程。剧情不再自动往前推，先让角色在养成中拿到第一份训练记录。,always,,0,anyCourseExp,,25,8,20,trainingExp,12,,0,A01,main_02
+main_02,主线,训练搭档,任意同窗好感达到30。战棋前需要可靠搭档，日常社交会直接打开后续剧情。,quest,main_01,1,anyRelationship,,30,8,10,managementExp,12,,0,,main_03
+main_03,主线,兵棋资格,任意课程达到2级。课程等级代表角色能读懂阵型、补给和兵种克制。,quest,main_02,1,anyCourseLevel,,2,12,18,trainingExp,12,,0,,main_04
+main_04,主线,战前侦察,情报值达到20。侦察结果会解释敌军配置，也决定剧情里哪些风险会提前暴露。,quest,main_03,1,intelligence,,20,10,12,logisticsExp,12,,0,,main_05
+main_05,主线,情报网成形,情报网达到2级。后续主线会把战棋、派系压力和日常消息串在一起。,quest,main_04,1,spyNetwork,,2,12,16,logisticsExp,14,,0,I01,main_06
+main_06,主线,首次军演胜利,赢得一场战棋战斗。主线只承认玩家在棋盘上打出来的结果。,quest,main_05,1,battleWins,,1,20,30,managementExp,16,,0,B01,main_07
+main_07,主线,连续出阵,累计完成2场战棋。胜败都会留下战报，但胜利会让后续评价更高。,quest,main_06,1,battlesFought,,2,16,24,infantryExp,12,,0,,main_08
+main_08,主线,毕业前整备,情报值达到45。终盘前先把敌情、补给和同盟线收束清楚。,quest,main_07,1,intelligence,,45,20,30,logisticsExp,18,,0,,
+rel_zhao_01,角色支线,枪阵搭档,与赵伯衡好感达到45。他会在步兵与重步阵型上给出额外战棋建议。,story,EV006,1,relationship,zhao,45,10,0,infantryExp,12,zhao,8,,
+rel_lin_01,角色支线,军政记录员,与林素心好感达到45。她会帮你把课程、任务和战报整理成可用情报。,story,EV009,1,relationship,lin,45,8,6,managementExp,12,lin,8,,
+rel_yierde_01,角色支线,边地向导,与伊尔德好感达到45。边地路线会影响战略地图上的侦察与行军判断。,story,EV008,1,relationship,yierde,45,8,0,cavalryExp,12,yierde,8,,
+rel_chen_01,角色支线,军法边界,与陈敬之好感达到45。他会提醒你哪些战术胜利会引发派系反弹。,story,EV008,1,relationship,chen,45,8,8,managementExp,10,chen,8,,
+rel_li_01,角色支线,炮算校准,与李婉清好感达到45。炮兵与重器单位的伤害预判会更可靠。,story,EV031,1,relationship,li,45,10,0,artilleryExp,12,li,8,,
+intel_scout_01,情报,战前耳目,情报网达到2级。情报任务服务战棋，帮助玩家看清敌军和补给。,quest,main_04,1,spyNetwork,,2,8,0,logisticsExp,8,,0,,
+faction_liberal_01,派系任务,议会观察,自由派立场达到40。派系任务只在玩家日常选择已经形成倾向后出现。,story,EV014,1,stance,liberal,40,12,8,managementExp,10,,0,,
+daily_drill,日常,晨练操典,训练进度达到50。日常任务不推主线，只给玩家稳定成长目标。,always,,0,trainingExp,,50,6,0,infantryExp,8,,0,,
