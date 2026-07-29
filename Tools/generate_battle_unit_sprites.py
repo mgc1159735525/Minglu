@@ -11,12 +11,16 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 OUT_ROOT = PROJECT_ROOT / "Assets" / "Resources" / "Art" / "BattleUnits"
+DESIGN_ROOT = PROJECT_ROOT / "Assets" / "Resources" / "Art" / "BattleUnitDesigns"
 MANIFEST = OUT_ROOT / "battle_unit_manifest.json"
 PREVIEW = PROJECT_ROOT / "DataTables" / "battle_unit_sprites_preview.png"
 CONFIG = PROJECT_ROOT / "Assets" / "Resources" / "Data" / "MingLuGameConfig.json"
+SOURCE_SHEET_ROOT = PROJECT_ROOT / "DataTables" / "battle_unit_sequence_sources"
 
 SIZE = 256
 SCALE = 3
+SHEET_COLUMNS = 6
+SHEET_ROWS = ("idle", "move", "attack", "hit")
 IDLE_FRAMES = 4
 MOVE_FRAMES = 6
 ATTACK_FRAMES = 6
@@ -258,6 +262,106 @@ def add_painted_grain(img, seed):
             a,
         )
     return img
+
+
+def source_sheet_path(unit_id):
+    return SOURCE_SHEET_ROOT / f"{unit_id}.png"
+
+
+def remove_chroma_key(img):
+    img = img.convert("RGBA")
+    pixels = []
+    for r, g, b, a in img.getdata():
+        green_delta = g - max(r, b)
+        if g > 165 and green_delta > 72:
+            pixels.append((r, g, b, 0))
+        elif g > 120 and green_delta > 38:
+            edge = min(1.0, (green_delta - 38) / 42.0)
+            alpha = int(a * (1.0 - edge))
+            pixels.append((r, min(g, max(r, b) + 18), b, alpha))
+        else:
+            pixels.append((r, g, b, a))
+    img.putdata(pixels)
+    alpha = img.getchannel("A").filter(ImageFilter.GaussianBlur(0.25))
+    img.putalpha(alpha)
+    return img
+
+
+def remove_stray_source_components(img, anim):
+    alpha = img.getchannel("A")
+    mask = alpha.point(lambda value: 255 if value > 24 else 0)
+    width, height = mask.size
+    pixels = mask.load()
+    visited = bytearray(width * height)
+    components = []
+
+    for y in range(height):
+        for x in range(width):
+            index = y * width + x
+            if visited[index] or pixels[x, y] == 0:
+                continue
+            stack = [(x, y)]
+            visited[index] = 1
+            points = []
+            min_x = max_x = x
+            min_y = max_y = y
+            while stack:
+                px, py = stack.pop()
+                points.append((px, py))
+                min_x = min(min_x, px)
+                max_x = max(max_x, px)
+                min_y = min(min_y, py)
+                max_y = max(max_y, py)
+                for nx, ny in ((px + 1, py), (px - 1, py), (px, py + 1), (px, py - 1)):
+                    if nx < 0 or ny < 0 or nx >= width or ny >= height:
+                        continue
+                    nindex = ny * width + nx
+                    if visited[nindex] or pixels[nx, ny] == 0:
+                        continue
+                    visited[nindex] = 1
+                    stack.append((nx, ny))
+            components.append({"area": len(points), "points": points, "box": (min_x, min_y, max_x, max_y)})
+
+    if not components:
+        return img
+
+    largest = max(item["area"] for item in components)
+    keep = []
+    for item in components:
+        min_x, min_y, max_x, max_y = item["box"]
+        is_edge_sliver = (min_y == 0 and max_y <= 14) or (max_y >= height - 1 and min_y >= height - 10)
+        if item["area"] == largest:
+            keep.append(item)
+        elif not is_edge_sliver and item["area"] >= largest * 0.06:
+            keep.append(item)
+        elif anim == "attack" and not is_edge_sliver and item["area"] >= max(120, largest * 0.015):
+            keep.append(item)
+
+    clean_alpha = Image.new("L", img.size, 0)
+    clean_pixels = clean_alpha.load()
+    src_alpha = alpha.load()
+    for item in keep:
+        for x, y in item["points"]:
+            clean_pixels[x, y] = src_alpha[x, y]
+    result = img.copy()
+    result.putalpha(clean_alpha.filter(ImageFilter.GaussianBlur(0.12)))
+    return result
+
+
+def source_sheet_frame(unit_id, anim, frame):
+    path = source_sheet_path(unit_id)
+    if not path.exists() or anim not in SHEET_ROWS:
+        return None
+    sheet = Image.open(path).convert("RGBA")
+    cell_w = sheet.width // SHEET_COLUMNS
+    cell_h = sheet.height // len(SHEET_ROWS)
+    row = SHEET_ROWS.index(anim)
+    col = frame % SHEET_COLUMNS
+    crop = sheet.crop((col * cell_w, row * cell_h, (col + 1) * cell_w, (row + 1) * cell_h))
+    crop = remove_stray_source_components(remove_chroma_key(crop), anim)
+    if crop.size != (SIZE, SIZE):
+        crop = crop.resize((SIZE, SIZE), Image.Resampling.LANCZOS)
+    return crop
 
 
 def load_units():
@@ -761,7 +865,10 @@ def save_frames():
             stale.unlink()
         for anim, count in FRAME_COUNTS.items():
             for frame in range(count):
-                render_unit(unit_id, role, family, anim, frame).save(unit_dir / f"{anim}_{frame}.png")
+                image = source_sheet_frame(unit_id, anim, frame)
+                if image is None:
+                    image = render_unit(unit_id, role, family, anim, frame)
+                image.save(unit_dir / f"{anim}_{frame}.png")
         manifest_units.append(
             {
                 "id": unit_id,
@@ -771,6 +878,7 @@ def save_frames():
                 "family": family,
                 "keyword": keyword,
                 "asset": f"Art/BattleUnits/{unit_id}",
+                "designAsset": f"Art/BattleUnitDesigns/{unit_id}" if (DESIGN_ROOT / f"{unit_id}.png").exists() else "",
                 "idleFrames": IDLE_FRAMES,
                 "moveFrames": MOVE_FRAMES,
                 "attackFrames": ATTACK_FRAMES,
@@ -804,7 +912,12 @@ def make_preview_row(unit_id, name, keyword, role, family):
     draw.text((12, 9), f"{name} / {ROLE_DISPLAY.get(role, role)} / {keyword}", font=text_font, fill=(238, 222, 185, 255))
     samples = [("idle", 0), ("move", 1), ("move", 4), ("attack", 2), ("attack", 4), ("hit", 2)]
     for i, (anim, frame) in enumerate(samples):
-        piece = render_unit(unit_id, role, family, anim, frame).resize((112, 112), Image.Resampling.LANCZOS)
+        path = OUT_ROOT / unit_id / f"{anim}_{frame}.png"
+        if path.exists():
+            piece = Image.open(path).convert("RGBA")
+        else:
+            piece = source_sheet_frame(unit_id, anim, frame) or render_unit(unit_id, role, family, anim, frame)
+        piece = piece.resize((112, 112), Image.Resampling.LANCZOS)
         x = 12 + i * 122
         row.alpha_composite(piece, (x, 36))
         draw.text((x + 29, 150), f"{anim}_{frame}", font=small_font, fill=(219, 202, 166, 255))

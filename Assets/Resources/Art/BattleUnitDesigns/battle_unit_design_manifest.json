@@ -1,0 +1,217 @@
+{
+  "generatedAt": "2026-07-29T18:14:09",
+  "style": "painted Chinese-topknot tactical miniature standing unit designs",
+  "sourceLayout": {
+    "columns": 4,
+    "rows": 3
+  },
+  "units": [
+    {
+      "id": "swordsmen_volunteers",
+      "name": "剑士队",
+      "keyword": "义勇军",
+      "role": "步兵",
+      "asset": "Art/BattleUnitDesigns/swordsmen_volunteers",
+      "sourceSheet": "DataTables/battle_unit_design_sources/design_sheet_a.png",
+      "sourceCell": 0
+    },
+    {
+      "id": "matchlock_volunteers",
+      "name": "火绳枪队",
+      "keyword": "义勇军",
+      "role": "火枪",
+      "asset": "Art/BattleUnitDesigns/matchlock_volunteers",
+      "sourceSheet": "DataTables/battle_unit_design_sources/design_sheet_a.png",
+      "sourceCell": 1
+    },
+    {
+      "id": "militia_volunteers",
+      "name": "民兵团",
+      "keyword": "义勇军",
+      "role": "散兵",
+      "asset": "Art/BattleUnitDesigns/militia_volunteers",
+      "sourceSheet": "DataTables/battle_unit_design_sources/design_sheet_a.png",
+      "sourceCell": 2
+    },
+    {
+      "id": "outlaw_skirmishers",
+      "name": "亡徒军",
+      "keyword": "贼徒",
+      "role": "散兵",
+      "asset": "Art/BattleUnitDesigns/outlaw_skirmishers",
+      "sourceSheet": "DataTables/battle_unit_design_sources/design_sheet_a.png",
+      "sourceCell": 3
+    },
+    {
+      "id": "imperial_halberdiers",
+      "name": "禁卫长戟队",
+      "keyword": "禁军",
+      "role": "重枪",
+      "asset": "Art/BattleUnitDesigns/imperial_halberdiers",
+      "sourceSheet": "DataTables/battle_unit_design_sources/design_sheet_a.png",
+      "sourceCell": 4
+    },
+    {
+      "id": "armored_iron_cavalry",
+      "name": "具装铁骑军",
+      "keyword": "禁军",
+      "role": "重骑",
+      "asset": "Art/BattleUnitDesigns/armored_iron_cavalry",
+      "sourceSheet": "DataTables/battle_unit_design_sources/design_sheet_a.png",
+      "sourceCell": 5
+    },
+    {
+      "id": "steel_helmet_heavy_infantry",
+      "name": "钢盔军",
+      "keyword": "义勇军",
+      "role": "重步",
+      "asset": "Art/BattleUnitDesigns/steel_helmet_heavy_infantry",
+      "sourceSheet": "DataTables/battle_unit_design_sources/design_sheet_a.png",
+      "sourceCell": 6
+    },
+    {
+      "id": "imperial_longbowmen",
+      "name": "禁军长弓兵",
+      "keyword": "禁军",
+      "role": "重弓",
+      "asset": "Art/BattleUnitDesigns/imperial_longbowmen",
+      "sourceSheet": "DataTables/battle_unit_design_sources/design_sheet_a.png",
+      "sourceCell": 7
+    },
+    {
+      "id": "sword_guard_corps",
+      "name": "剑卫军团",
+      "keyword": "义勇军",
+      "role": "步兵",
+      "asset": "Art/BattleUnitDesigns/sword_guard_corps",
+      "sourceSheet": "DataTables/battle_unit_design_sources/design_sheet_a.png",
+      "sourceCell": 8
+    },
+    {
+      "id": "imperial_axe_guard",
+      "name": "禁军斧卫",
+      "keyword": "禁军",
+      "role": "重猛",
+      "asset": "Art/BattleUnitDesigns/imperial_axe_guard",
+      "sourceSheet": "DataTables/battle_unit_design_sources/design_sheet_a.png",
+      "sourceCell": 9
+    },
+    {
+      "id": "vanguard_cavalry",
+      "name": "先锋骑军",
+      "keyword": "义勇军",
+      "role": "骑兵",
+      "asset": "Art/BattleUnitDesigns/vanguard_cavalry",
+      "sourceSheet": "DataTables/battle_unit_design_sources/design_sheet_a.png",
+      "sourceCell": 10
+    },
+    {
+      "id": "solemn_guard_matchlocks",
+      "name": "肃卫火枪队",
+      "keyword": "义勇军",
+      "role": "火枪",
+      "asset": "Art/BattleUnitDesigns/solemn_guard_matchlocks",
+      "sourceSheet": "DataTables/battle_unit_design_sources/design_sheet_a.png",
+      "sourceCell": 11
+    },
+    {
+      "id": "raiders",
+      "name": "掠杀军",
+      "keyword": "贼徒",
+      "role": "散兵",
+      "asset": "Art/BattleUnitDesigns/raiders",
+      "sourceSheet": "DataTables/battle_unit_design_sources/design_sheet_b.png",
+      "sourceCell": 0
+    },
+    {
+      "id": "imperial_heavy_guard",
+      "name": "重甲禁卫军",
+      "keyword": "禁军",
+      "role": "重步",
+      "asset": "Art/BattleUnitDesigns/imperial_heavy_guard",
+      "sourceSheet": "DataTables/battle_unit_design_sources/design_sheet_b.png",
+      "sourceCell": 1
+    },
+    {
+      "id": "warhammer_volunteers",
+      "name": "重锤军",
+      "keyword": "义勇军",
+      "role": "重猛",
+      "asset": "Art/BattleUnitDesigns/warhammer_volunteers",
+      "sourceSheet": "DataTables/battle_unit_design_sources/design_sheet_b.png",
+      "sourceCell": 2
+    },
+    {
+      "id": "imperial_shenji_artillery",
+      "name": "禁军神机队",
+      "keyword": "禁军",
+      "role": "重器",
+      "asset": "Art/BattleUnitDesigns/imperial_shenji_artillery",
+      "sourceSheet": "DataTables/battle_unit_design_sources/design_sheet_b.png",
+      "sourceCell": 3
+    },
+    {
+      "id": "zealot_believers",
+      "name": "狂热信众",
+      "keyword": "信徒",
+      "role": "散兵",
+      "asset": "Art/BattleUnitDesigns/zealot_believers",
+      "sourceSheet": "DataTables/battle_unit_design_sources/design_sheet_b.png",
+      "sourceCell": 4
+    },
+    {
+      "id": "zealot_mob",
+      "name": "狂热暴徒",
+      "keyword": "信徒",
+      "role": "猛士",
+      "asset": "Art/BattleUnitDesigns/zealot_mob",
+      "sourceSheet": "DataTables/battle_unit_design_sources/design_sheet_b.png",
+      "sourceCell": 5
+    },
+    {
+      "id": "leader_guard",
+      "name": "领袖卫队",
+      "keyword": "信徒",
+      "role": "重步",
+      "asset": "Art/BattleUnitDesigns/leader_guard",
+      "sourceSheet": "DataTables/battle_unit_design_sources/design_sheet_b.png",
+      "sourceCell": 6
+    },
+    {
+      "id": "elite_archers",
+      "name": "精锐弓兵队",
+      "keyword": "义勇军",
+      "role": "弓兵",
+      "asset": "Art/BattleUnitDesigns/elite_archers",
+      "sourceSheet": "DataTables/battle_unit_design_sources/design_sheet_b.png",
+      "sourceCell": 7
+    },
+    {
+      "id": "bandits",
+      "name": "土匪",
+      "keyword": "贼徒",
+      "role": "散兵",
+      "asset": "Art/BattleUnitDesigns/bandits",
+      "sourceSheet": "DataTables/battle_unit_design_sources/design_sheet_b.png",
+      "sourceCell": 8
+    },
+    {
+      "id": "great_axe_warriors",
+      "name": "巨斧军",
+      "keyword": "义勇军",
+      "role": "猛士",
+      "asset": "Art/BattleUnitDesigns/great_axe_warriors",
+      "sourceSheet": "DataTables/battle_unit_design_sources/design_sheet_b.png",
+      "sourceCell": 9
+    },
+    {
+      "id": "believer_elites",
+      "name": "信徒精锐",
+      "keyword": "信徒",
+      "role": "步兵",
+      "asset": "Art/BattleUnitDesigns/believer_elites",
+      "sourceSheet": "DataTables/battle_unit_design_sources/design_sheet_b.png",
+      "sourceCell": 10
+    }
+  ]
+}
