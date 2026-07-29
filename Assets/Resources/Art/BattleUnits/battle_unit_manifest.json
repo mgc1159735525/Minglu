@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-29T15:42:02",
-  "style": "modular inked miniature style; normal-proportion Chinese topknot soldiers, blue-red-gold lamellar uniforms, tabletop hex base, articulated reusable body parts",
+  "generatedAt": "2026-07-29T16:37:14",
+  "style": "modular inked miniature style; normal-proportion masked Chinese topknot soldiers, blue-red-gold lamellar uniforms, tabletop hex base, articulated reusable body parts",
   "animationPipeline": "body-part-rigged-composition",
   "units": [
     {
@@ -11,10 +11,10 @@
       "family": "volunteer",
       "asset": "Art/BattleUnits/swordsmen_volunteers",
       "rig": "Art/BattleUnitParts/swordsmen_volunteers/rig",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "matchlock_volunteers",
@@ -24,10 +24,10 @@
       "family": "volunteer",
       "asset": "Art/BattleUnits/matchlock_volunteers",
       "rig": "Art/BattleUnitParts/matchlock_volunteers/rig",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "militia_volunteers",
@@ -37,10 +37,10 @@
       "family": "volunteer",
       "asset": "Art/BattleUnits/militia_volunteers",
       "rig": "Art/BattleUnitParts/militia_volunteers/rig",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "outlaw_skirmishers",
@@ -50,10 +50,10 @@
       "family": "outlaw",
       "asset": "Art/BattleUnits/outlaw_skirmishers",
       "rig": "Art/BattleUnitParts/outlaw_skirmishers/rig",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "imperial_halberdiers",
@@ -63,10 +63,10 @@
       "family": "imperial",
       "asset": "Art/BattleUnits/imperial_halberdiers",
       "rig": "Art/BattleUnitParts/imperial_halberdiers/rig",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "armored_iron_cavalry",
@@ -76,10 +76,10 @@
       "family": "imperial",
       "asset": "Art/BattleUnits/armored_iron_cavalry",
       "rig": "Art/BattleUnitParts/armored_iron_cavalry/rig",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "steel_helmet_heavy_infantry",
@@ -89,10 +89,10 @@
       "family": "volunteer",
       "asset": "Art/BattleUnits/steel_helmet_heavy_infantry",
       "rig": "Art/BattleUnitParts/steel_helmet_heavy_infantry/rig",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "imperial_longbowmen",
@@ -102,10 +102,10 @@
       "family": "imperial",
       "asset": "Art/BattleUnits/imperial_longbowmen",
       "rig": "Art/BattleUnitParts/imperial_longbowmen/rig",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "sword_guard_corps",
@@ -115,10 +115,10 @@
       "family": "volunteer",
       "asset": "Art/BattleUnits/sword_guard_corps",
       "rig": "Art/BattleUnitParts/sword_guard_corps/rig",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "imperial_axe_guard",
@@ -128,10 +128,10 @@
       "family": "imperial",
       "asset": "Art/BattleUnits/imperial_axe_guard",
       "rig": "Art/BattleUnitParts/imperial_axe_guard/rig",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "vanguard_cavalry",
@@ -141,10 +141,10 @@
       "family": "volunteer",
       "asset": "Art/BattleUnits/vanguard_cavalry",
       "rig": "Art/BattleUnitParts/vanguard_cavalry/rig",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "solemn_guard_matchlocks",
@@ -154,10 +154,10 @@
       "family": "volunteer",
       "asset": "Art/BattleUnits/solemn_guard_matchlocks",
       "rig": "Art/BattleUnitParts/solemn_guard_matchlocks/rig",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "raiders",
@@ -167,10 +167,10 @@
       "family": "outlaw",
       "asset": "Art/BattleUnits/raiders",
       "rig": "Art/BattleUnitParts/raiders/rig",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "imperial_heavy_guard",
@@ -180,10 +180,10 @@
       "family": "imperial",
       "asset": "Art/BattleUnits/imperial_heavy_guard",
       "rig": "Art/BattleUnitParts/imperial_heavy_guard/rig",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "warhammer_volunteers",
@@ -193,10 +193,10 @@
       "family": "volunteer",
       "asset": "Art/BattleUnits/warhammer_volunteers",
       "rig": "Art/BattleUnitParts/warhammer_volunteers/rig",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "imperial_shenji_artillery",
@@ -206,10 +206,10 @@
       "family": "imperial",
       "asset": "Art/BattleUnits/imperial_shenji_artillery",
       "rig": "Art/BattleUnitParts/imperial_shenji_artillery/rig",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "zealot_believers",
@@ -219,10 +219,10 @@
       "family": "believer",
       "asset": "Art/BattleUnits/zealot_believers",
       "rig": "Art/BattleUnitParts/zealot_believers/rig",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "zealot_mob",
@@ -232,10 +232,10 @@
       "family": "believer",
       "asset": "Art/BattleUnits/zealot_mob",
       "rig": "Art/BattleUnitParts/zealot_mob/rig",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "leader_guard",
@@ -245,10 +245,10 @@
       "family": "believer",
       "asset": "Art/BattleUnits/leader_guard",
       "rig": "Art/BattleUnitParts/leader_guard/rig",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "elite_archers",
@@ -258,10 +258,10 @@
       "family": "volunteer",
       "asset": "Art/BattleUnits/elite_archers",
       "rig": "Art/BattleUnitParts/elite_archers/rig",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "bandits",
@@ -271,10 +271,10 @@
       "family": "outlaw",
       "asset": "Art/BattleUnits/bandits",
       "rig": "Art/BattleUnitParts/bandits/rig",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "great_axe_warriors",
@@ -284,10 +284,10 @@
       "family": "volunteer",
       "asset": "Art/BattleUnits/great_axe_warriors",
       "rig": "Art/BattleUnitParts/great_axe_warriors/rig",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "believer_elites",
@@ -297,10 +297,10 @@
       "family": "believer",
       "asset": "Art/BattleUnits/believer_elites",
       "rig": "Art/BattleUnitParts/believer_elites/rig",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     }
   ]
 }

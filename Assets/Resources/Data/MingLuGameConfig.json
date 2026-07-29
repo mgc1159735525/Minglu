@@ -4898,10 +4898,10 @@
       "keyword": "义勇军",
       "role": "infantry",
       "asset": "Art/BattleUnits/swordsmen_volunteers",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "matchlock_volunteers",
@@ -4909,10 +4909,10 @@
       "keyword": "义勇军",
       "role": "musket",
       "asset": "Art/BattleUnits/matchlock_volunteers",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "militia_volunteers",
@@ -4920,10 +4920,10 @@
       "keyword": "义勇军",
       "role": "skirmisher",
       "asset": "Art/BattleUnits/militia_volunteers",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "outlaw_skirmishers",
@@ -4931,10 +4931,10 @@
       "keyword": "贼徒",
       "role": "skirmisher",
       "asset": "Art/BattleUnits/outlaw_skirmishers",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "imperial_halberdiers",
@@ -4942,10 +4942,10 @@
       "keyword": "禁军",
       "role": "heavy_spear",
       "asset": "Art/BattleUnits/imperial_halberdiers",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "armored_iron_cavalry",
@@ -4953,10 +4953,10 @@
       "keyword": "禁军",
       "role": "heavy_cavalry",
       "asset": "Art/BattleUnits/armored_iron_cavalry",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "steel_helmet_heavy_infantry",
@@ -4964,10 +4964,10 @@
       "keyword": "义勇军",
       "role": "heavy_infantry",
       "asset": "Art/BattleUnits/steel_helmet_heavy_infantry",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "imperial_longbowmen",
@@ -4975,10 +4975,10 @@
       "keyword": "禁军",
       "role": "heavy_archer",
       "asset": "Art/BattleUnits/imperial_longbowmen",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "sword_guard_corps",
@@ -4986,10 +4986,10 @@
       "keyword": "义勇军",
       "role": "infantry",
       "asset": "Art/BattleUnits/sword_guard_corps",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "imperial_axe_guard",
@@ -4997,10 +4997,10 @@
       "keyword": "禁军",
       "role": "heavy_brute",
       "asset": "Art/BattleUnits/imperial_axe_guard",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "vanguard_cavalry",
@@ -5008,10 +5008,10 @@
       "keyword": "义勇军",
       "role": "cavalry",
       "asset": "Art/BattleUnits/vanguard_cavalry",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "solemn_guard_matchlocks",
@@ -5019,10 +5019,10 @@
       "keyword": "义勇军",
       "role": "musket",
       "asset": "Art/BattleUnits/solemn_guard_matchlocks",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "raiders",
@@ -5030,10 +5030,10 @@
       "keyword": "贼徒",
       "role": "skirmisher",
       "asset": "Art/BattleUnits/raiders",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "imperial_heavy_guard",
@@ -5041,10 +5041,10 @@
       "keyword": "禁军",
       "role": "heavy_infantry",
       "asset": "Art/BattleUnits/imperial_heavy_guard",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "warhammer_volunteers",
@@ -5052,10 +5052,10 @@
       "keyword": "义勇军",
       "role": "heavy_brute",
       "asset": "Art/BattleUnits/warhammer_volunteers",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "imperial_shenji_artillery",
@@ -5063,10 +5063,10 @@
       "keyword": "禁军",
       "role": "artillery",
       "asset": "Art/BattleUnits/imperial_shenji_artillery",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "zealot_believers",
@@ -5074,10 +5074,10 @@
       "keyword": "信徒",
       "role": "skirmisher",
       "asset": "Art/BattleUnits/zealot_believers",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "zealot_mob",
@@ -5085,10 +5085,10 @@
       "keyword": "信徒",
       "role": "brute",
       "asset": "Art/BattleUnits/zealot_mob",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "leader_guard",
@@ -5096,10 +5096,10 @@
       "keyword": "信徒",
       "role": "heavy_infantry",
       "asset": "Art/BattleUnits/leader_guard",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "elite_archers",
@@ -5107,10 +5107,10 @@
       "keyword": "义勇军",
       "role": "archer",
       "asset": "Art/BattleUnits/elite_archers",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "bandits",
@@ -5118,10 +5118,10 @@
       "keyword": "贼徒",
       "role": "skirmisher",
       "asset": "Art/BattleUnits/bandits",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "great_axe_warriors",
@@ -5129,10 +5129,10 @@
       "keyword": "义勇军",
       "role": "brute",
       "asset": "Art/BattleUnits/great_axe_warriors",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     },
     {
       "id": "believer_elites",
@@ -5140,10 +5140,10 @@
       "keyword": "信徒",
       "role": "infantry",
       "asset": "Art/BattleUnits/believer_elites",
-      "idleFrames": 2,
-      "moveFrames": 4,
-      "attackFrames": 4,
-      "hitFrames": 4
+      "idleFrames": 4,
+      "moveFrames": 6,
+      "attackFrames": 6,
+      "hitFrames": 6
     }
   ],
   "terrainRules": [

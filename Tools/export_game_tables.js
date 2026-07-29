@@ -74,10 +74,10 @@ function defaultCommonUnits() {
     keyword,
     role,
     asset: `Art/BattleUnits/${id}`,
-    idleFrames: 2,
-    moveFrames: 4,
-    attackFrames: 4,
-    hitFrames: 4
+    idleFrames: 4,
+    moveFrames: 6,
+    attackFrames: 6,
+    hitFrames: 6
   }));
 }
 

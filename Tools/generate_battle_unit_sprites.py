@@ -20,8 +20,18 @@ PREVIEW = PROJECT_ROOT / "DataTables" / "battle_unit_sprites_preview.png"
 PARTS_PREVIEW = PROJECT_ROOT / "DataTables" / "battle_unit_parts_preview.png"
 
 SIZE = 128
+IDLE_FRAMES = 4
+MOVE_FRAMES = 6
+ATTACK_FRAMES = 6
+HIT_FRAMES = 6
+FRAME_COUNTS = {
+    "idle": IDLE_FRAMES,
+    "move": MOVE_FRAMES,
+    "attack": ATTACK_FRAMES,
+    "hit": HIT_FRAMES,
+}
 STYLE_LABEL = (
-    "modular inked miniature style; normal-proportion Chinese topknot soldiers, "
+    "modular inked miniature style; normal-proportion masked Chinese topknot soldiers, "
     "blue-red-gold lamellar uniforms, tabletop hex base, articulated reusable body parts"
 )
 
@@ -241,6 +251,15 @@ def make_base_part(palette, seed):
         gx = rng.randint(42, 87)
         gy = rng.randint(y - 15, y + 2)
         line(draw, (gx, gy, gx + rng.randint(-4, 4), gy - rng.randint(2, 7)), rgba((70, 99, 49), 150), 1, None)
+    for _ in range(7):
+        rx = rng.randint(39, 88)
+        ry = rng.randint(y - 12, y + 3)
+        rr = rng.randint(1, 3)
+        ellipse(draw, (rx - rr, ry - rr, rx + rr + 1, ry + rr), rgba((74, 68, 55), 138), rgba((32, 28, 22), 90), 1)
+    for _ in range(4):
+        sx = rng.randint(44, 84)
+        sy = rng.randint(y - 16, y - 4)
+        line(draw, (sx, sy, sx + rng.randint(8, 16), sy + rng.randint(-2, 3)), rgba((231, 207, 128), 72), 1, None)
     for gx in (49, 65, 80):
         line(draw, (gx, y - 15, gx - 5, y + 1), (34, 27, 19, 46), 1, None)
     return Part("base", add_ink_finish(img), (64, 64), "base")
@@ -252,20 +271,24 @@ def make_head_part(palette, heavy, seed):
     rng = random.Random(seed)
     skin = (169 + rng.randint(-10, 10), 119 + rng.randint(-8, 8), 82 + rng.randint(-6, 8))
     hair = (19, 15, 13)
-    ellipse(draw, (31, 29, 49, 52), rgba(skin), rgba((54, 36, 25), 220), 1)
-    ellipse(draw, (35, 50, 45, 58), rgba(darken(skin, 10)), None)
+    mask = blend(palette["coat"], (25, 19, 17), 0.42)
+    ellipse(draw, (30, 28, 50, 52), rgba(darken(skin, 6), 218), rgba((54, 36, 25), 210), 1)
+    draw.rounded_rectangle((31, 35, 49, 53), radius=5, fill=rgba(mask, 238), outline=rgba((40, 27, 22), 190), width=1)
+    polygon(draw, [(34, 49), (46, 49), (49, 59), (31, 59)], rgba(blend(mask, palette["cloth"], 0.24), 220), rgba((41, 29, 22), 145), 1)
+    ellipse(draw, (35, 51, 45, 59), rgba(darken(skin, 14), 160), None)
     if heavy:
-        draw.arc((27, 21, 53, 39), 185, 356, fill=rgba(palette["metal"], 242), width=6)
-        line(draw, (29, 30, 51, 30), rgba(lighten(palette["metal"], 30), 185), 2, None)
+        draw.arc((26, 20, 54, 41), 184, 356, fill=rgba(palette["metal"], 245), width=7)
+        draw.rectangle((28, 29, 52, 36), fill=rgba(blend(palette["metal"], (42, 33, 25), 0.18), 228), outline=rgba((42, 33, 25), 160), width=1)
+        line(draw, (30, 31, 50, 31), rgba(lighten(palette["metal"], 34), 178), 2, None)
+        line(draw, (33, 35, 47, 35), rgba(palette["trim"], 130), 1, None)
         ellipse(draw, (36, 18, 44, 27), rgba(hair, 245), None)
-        line(draw, (33, 27, 47, 27), rgba(palette["trim"], 205), 2, None)
+        line(draw, (33, 27, 47, 27), rgba(palette["trim"], 210), 2, None)
     else:
-        draw.pieslice((27, 20, 53, 43), 190, 350, fill=rgba(hair, 248))
+        draw.pieslice((27, 19, 53, 43), 188, 352, fill=rgba(hair, 248))
         ellipse(draw, (35, 17, 45, 26), rgba(hair, 248), None)
-        line(draw, (30, 30, 50, 30), rgba(palette["trim"], 205), 2, None)
-    draw.point((36, 40), fill=(20, 15, 12, 255))
-    draw.point((45, 40), fill=(20, 15, 12, 255))
-    line(draw, (36, 45, 43, 46), rgba((73, 42, 32), 160), 1, None)
+        line(draw, (29, 30, 51, 30), rgba(palette["trim"], 205), 2, None)
+        line(draw, (32, 33, 48, 33), rgba(darken(palette["cloth"], 18), 150), 1, None)
+    line(draw, (34, 41, 46, 41), rgba(lighten(mask, 22), 78), 1, None)
     return Part("head", add_ink_finish(img), (40, 57), "head")
 
 
@@ -282,6 +305,10 @@ def make_torso_part(palette, role):
     line(draw, (48 + shoulder - 3, 22, 48 - waist + 1, 50), rgba(palette["trim"], 110), 1, None)
     draw.rectangle((34, 47, 62, 54), fill=rgba(palette["red"], 235), outline=rgba((37, 23, 18), 180), width=1)
     draw_lamellar_rows(draw, 34, 25, 62, 4 if heavy else 3, palette)
+    for row in range(3 if heavy else 2):
+        yy = 28 + row * 7
+        for x in (39, 48, 57):
+            ellipse(draw, (x - 1, yy - 1, x + 2, yy + 2), rgba(lighten(palette["trim"], 24), 150), None)
     for col in range(4):
         x = 35 + col * 7
         polygon(
@@ -293,6 +320,8 @@ def make_torso_part(palette, role):
         )
     draw_trimmed_cloth_tail(draw, palette, 40, 53, -1)
     draw_trimmed_cloth_tail(draw, palette, 56, 53, 1)
+    line(draw, (37, 55, 59, 55), rgba((45, 30, 20), 185), 2, None)
+    line(draw, (40, 58, 56, 58), rgba(palette["trim"], 130), 1, None)
     for x in (33, 63):
         polygon(
             draw,
@@ -301,6 +330,7 @@ def make_torso_part(palette, role):
             rgba((35, 26, 20), 150),
             1,
         )
+        line(draw, (x - 4, 17, x + 4, 18), rgba(lighten(palette["metal"], 30), 95), 1, None)
     return Part("torso", add_ink_finish(img), (48, 58), "torso")
 
 
@@ -311,6 +341,9 @@ def make_arm_part(palette, side):
     line(draw, (15, 31, 35, 27, 55, 30), rgba(sleeve), 7, rgba((28, 20, 15), 185))
     line(draw, (19, 27, 38, 25, 55, 27), rgba(lighten(sleeve, 32), 86), 2, None)
     draw.rectangle((28, 22, 43, 32), fill=rgba(blend(sleeve, palette["metal"], 0.14), 145), outline=rgba((31, 22, 17), 95), width=1)
+    line(draw, (29, 31, 43, 31), rgba(palette["trim"], 145), 2, None)
+    for x in (31, 37, 42):
+        ellipse(draw, (x - 1, 24, x + 1, 26), rgba(lighten(palette["metal"], 36), 125), None)
     ellipse(draw, (53, 25, 63, 35), rgba((164, 112, 78), 245), rgba((55, 36, 25), 180), 1)
     polygon(
         draw,
@@ -319,6 +352,7 @@ def make_arm_part(palette, side):
         rgba((35, 27, 21), 145),
         1,
     )
+    line(draw, (12, 28, 24, 30), rgba(lighten(palette["metal"], 26), 96), 1, None)
     return Part(side + "_arm", add_ink_finish(img), (15, 31), "arm")
 
 
@@ -329,7 +363,9 @@ def make_leg_part(palette, side):
     line(draw, (39, 14, 39, 42, 37, 62), rgba(pants), 8, rgba((23, 18, 15), 185))
     line(draw, (36, 17, 36, 48), rgba(lighten(pants, 28), 80), 2, None)
     draw.rectangle((28, 58, 50, 67), fill=rgba((28, 22, 18), 245), outline=rgba((16, 12, 10), 190), width=1)
-    draw.rectangle((35, 36, 44, 44), fill=rgba(palette["red"], 180))
+    draw.rectangle((35, 36, 44, 44), fill=rgba(palette["red"], 180), outline=rgba((35, 24, 18), 130), width=1)
+    draw.rectangle((34, 48, 44, 54), fill=rgba(blend(palette["metal"], pants, 0.22), 155), outline=rgba((30, 24, 19), 110), width=1)
+    line(draw, (31, 61, 49, 61), rgba(palette["trim"], 120), 1, None)
     return Part(side + "_leg", add_ink_finish(img), (39, 14), "leg")
 
 
@@ -343,6 +379,9 @@ def make_shield_part(palette, role):
         polygon(draw, [(19, 12), (43, 12), (45, 36), (31, 53), (17, 36)], rgba(shield_color, 235), rgba(palette["trim"], 220), 2)
     line(draw, (31, 16, 31, 48), rgba(palette["trim"], 128), 2, None)
     line(draw, (22, 26, 40, 26), rgba(lighten(shield_color, 24), 88), 2, None)
+    for point in ((25, 20), (37, 20), (24, 34), (38, 34), (31, 43)):
+        ellipse(draw, (point[0] - 2, point[1] - 2, point[0] + 2, point[1] + 2), rgba(lighten(palette["metal"], 28), 132), None)
+    draw.arc((23, 22, 39, 42), 208, 334, fill=rgba(palette["trim"], 116), width=1)
     return Part("shield", add_ink_finish(img), (31, 31), "shield")
 
 
@@ -357,20 +396,28 @@ def make_weapon_part(palette, role):
         line(draw, (35, 70, 132, 60), rgba(metal), 2, None)
         draw.rectangle((23, 72, 48, 80), fill=rgba(darken(wood, 20), 245), outline=rgba((31, 20, 14), 180), width=1)
         line(draw, (70, 66, 83, 84), rgba((87, 47, 29), 170), 2, None)
+        line(draw, (44, 70, 114, 63), rgba((242, 235, 204), 82), 1, None)
+        ellipse(draw, (118, 60, 126, 66), rgba(darken(metal, 22), 220), rgba(lighten(metal, 28), 95), 1)
     elif role in ("archer", "heavy_archer"):
         draw.arc((53, 30, 91, 112), -78, 76, fill=rgba((135, 82, 39), 245), width=5)
         line(draw, (75, 34, 75, 107), rgba((225, 206, 164), 160), 1, None)
         line(draw, (20, 73, 119, 60), rgba(metal), 2, None)
         polygon(draw, [(119, 60), (108, 55), (111, 64)], rgba(metal), None)
         line(draw, (33, 71, 29, 78), rgba(palette["red"], 180), 1, None)
+        line(draw, (58, 37, 78, 35), rgba(palette["trim"], 115), 1, None)
+        line(draw, (59, 105, 79, 104), rgba(palette["trim"], 115), 1, None)
     elif role in ("heavy_spear", "cavalry", "heavy_cavalry"):
         line(draw, (6, 92, 130, 42), rgba(wood), 5, rgba((37, 22, 14), 210))
         polygon(draw, [(132, 41), (114, 39), (124, 56)], rgba(metal), rgba((40, 32, 24), 160), 1)
         polygon(draw, [(112, 48), (96, 50), (106, 63)], rgba(palette["red"], 210), None)
+        line(draw, (21, 86, 108, 51), rgba(lighten(wood, 34), 72), 1, None)
+        line(draw, (118, 43, 129, 45), rgba((245, 240, 214), 115), 1, None)
     elif role in ("brute", "heavy_brute"):
         line(draw, (24, 100, 92, 35), rgba(wood), 6, rgba((36, 22, 14), 210))
         polygon(draw, [(87, 25), (119, 40), (93, 60)], rgba(metal), rgba((42, 34, 27), 160), 2)
         line(draw, (82, 39, 102, 50), rgba(lighten(metal, 35), 110), 2, None)
+        ellipse(draw, (91, 35, 99, 43), rgba(darken(metal, 24), 160), None)
+        line(draw, (35, 88, 85, 40), rgba(lighten(wood, 26), 74), 1, None)
     else:
         line(draw, (25, 91, 55, 70), rgba((73, 43, 25), 255), 4, rgba((34, 20, 14), 190))
         blade = [(56, 67), (110, 36), (126, 25), (115, 43), (62, 73)]
@@ -402,6 +449,10 @@ def make_horse_body_part(palette, heavy, seed):
     draw.arc((22, 43, 91, 81), 185, 360, fill=rgba(lighten(horse, 32), 75), width=3)
     draw.rectangle((41, 43, 72, 62), fill=rgba(palette["coat"], 230), outline=rgba(palette["trim"], 190), width=2)
     draw.rectangle((43, 41, 70, 47), fill=rgba(palette["red"], 220))
+    line(draw, (35, 61, 79, 61), rgba((34, 23, 17), 156), 2, None)
+    line(draw, (55, 42, 55, 70), rgba(palette["trim"], 128), 1, None)
+    for x in (45, 54, 63, 71):
+        ellipse(draw, (x - 1, 51, x + 1, 53), rgba(lighten(palette["trim"], 25), 120), None)
     if heavy:
         draw.arc((22, 45, 91, 82), 180, 360, fill=rgba(palette["metal"], 205), width=6)
         line(draw, (41, 50, 78, 50), rgba(palette["trim"], 145), 2, None)
@@ -415,6 +466,8 @@ def make_horse_head_part(palette, heavy):
     ellipse(draw, (22, 24, 57, 47), rgba(horse, 248), rgba((30, 21, 17), 220), 2)
     line(draw, (47, 28, 63, 17), rgba(darken(horse, 10), 245), 5, rgba((30, 21, 17), 180))
     line(draw, (31, 28, 54, 37), rgba(palette["trim"], 165), 2, None)
+    line(draw, (35, 42, 53, 34), rgba((36, 23, 16), 170), 2, None)
+    line(draw, (49, 30, 57, 40), rgba(palette["red"], 120), 1, None)
     draw.point((55, 29), fill=(10, 8, 7, 255))
     return Part("horse_head", add_ink_finish(img), (26, 37), "horse")
 
@@ -424,6 +477,7 @@ def make_horse_leg_part(heavy):
     draw = ImageDraw.Draw(img, "RGBA")
     color = (62, 48, 38) if not heavy else (45, 42, 40)
     line(draw, (31, 8, 29, 35, 32, 54), rgba(color, 245), 6, rgba((26, 19, 15), 190))
+    line(draw, (34, 13, 32, 37), rgba(lighten(color, 28), 78), 1, None)
     line(draw, (24, 54, 40, 54), rgba((24, 19, 16), 245), 3, None)
     return Part("horse_leg", add_ink_finish(img), (31, 8), "horse")
 
@@ -436,6 +490,9 @@ def make_cannon_part(palette):
     ellipse(draw, (73, 84, 94, 105), rgba(palette["metal"], 238), rgba((32, 25, 20), 210), 2)
     line(draw, (52, 72, 117, 50), rgba(palette["metal"], 255), 12, rgba((31, 25, 20), 190))
     line(draw, (49, 68, 114, 47), rgba(lighten(palette["metal"], 40), 115), 3, None)
+    for x, y in ((39, 81), (58, 76), (79, 68), (99, 60)):
+        ellipse(draw, (x - 2, y - 2, x + 2, y + 2), rgba(lighten(palette["trim"], 24), 130), None)
+    draw.rectangle((30, 88, 92, 93), fill=rgba((66, 45, 27), 180), outline=rgba((30, 20, 14), 140), width=1)
     return Part("cannon", add_ink_finish(img), (65, 83), "cannon")
 
 
@@ -500,9 +557,17 @@ def pose_for(role, anim, frame):
             "attack_flash": 0,
         }
     if anim == "move":
-        cycle = [0, 1, 0, -1][frame % 4]
+        step = [
+            {"cycle": 0.0, "bob": 0},
+            {"cycle": 0.82, "bob": -2},
+            {"cycle": 0.36, "bob": -1},
+            {"cycle": -0.36, "bob": 0},
+            {"cycle": -0.9, "bob": -2},
+            {"cycle": -0.22, "bob": -1},
+        ][frame % MOVE_FRAMES]
+        cycle = step["cycle"]
         return {
-            "bob": -abs(cycle) * 2,
+            "bob": step["bob"],
             "hit_x": 0,
             "torso": cycle * 2,
             "head": -cycle * 1,
@@ -515,19 +580,23 @@ def pose_for(role, anim, frame):
         }
     if anim == "attack":
         attacks = [
-            {"torso": -5, "front_arm": -80, "back_arm": -132, "weapon": -56, "bob": -1, "flash": 0},
-            {"torso": 6, "front_arm": -35, "back_arm": -100, "weapon": -18, "bob": -2, "flash": 0},
-            {"torso": 10, "front_arm": 0, "back_arm": -75, "weapon": 4, "bob": -4, "flash": 1},
-            {"torso": 0, "front_arm": -52, "back_arm": -114, "weapon": -32, "bob": 0, "flash": 0},
+            {"torso": -7, "front_arm": -82, "back_arm": -136, "weapon": -60, "bob": 0, "flash": 0},
+            {"torso": -10, "front_arm": -92, "back_arm": -148, "weapon": -72, "bob": -1, "flash": 0},
+            {"torso": 2, "front_arm": -48, "back_arm": -112, "weapon": -28, "bob": -2, "flash": 0},
+            {"torso": 12, "front_arm": 4, "back_arm": -74, "weapon": 9, "bob": -4, "flash": 1},
+            {"torso": 10, "front_arm": 17, "back_arm": -62, "weapon": 20, "bob": -3, "flash": 1},
+            {"torso": 0, "front_arm": -53, "back_arm": -116, "weapon": -34, "bob": 0, "flash": 0},
         ]
-        p = attacks[frame % 4]
+        p = attacks[frame % ATTACK_FRAMES]
         if role in ("musket", "archer", "heavy_archer", "artillery"):
             p = [
-                {"torso": -2, "front_arm": -12, "back_arm": -174, "weapon": -5, "bob": 0, "flash": 0},
-                {"torso": -1, "front_arm": -8, "back_arm": -168, "weapon": -3, "bob": -1, "flash": 0},
-                {"torso": 2, "front_arm": -2, "back_arm": -160, "weapon": 0, "bob": -2, "flash": 1},
-                {"torso": 0, "front_arm": -20, "back_arm": -174, "weapon": -7, "bob": 0, "flash": 0},
-            ][frame % 4]
+                {"torso": -3, "front_arm": -24, "back_arm": -180, "weapon": -10, "bob": 0, "flash": 0},
+                {"torso": -2, "front_arm": -16, "back_arm": -176, "weapon": -6, "bob": -1, "flash": 0},
+                {"torso": -1, "front_arm": -8, "back_arm": -170, "weapon": -3, "bob": -1, "flash": 0},
+                {"torso": 3, "front_arm": 2, "back_arm": -160, "weapon": 1, "bob": -3, "flash": 1},
+                {"torso": 2, "front_arm": -8, "back_arm": -164, "weapon": -2, "bob": -2, "flash": 1},
+                {"torso": 0, "front_arm": -24, "back_arm": -176, "weapon": -8, "bob": 0, "flash": 0},
+            ][frame % ATTACK_FRAMES]
         return {
             "bob": p["bob"],
             "hit_x": 0,
@@ -542,10 +611,12 @@ def pose_for(role, anim, frame):
         }
     hit = [
         {"hit_x": 0, "bob": 0, "torso": 0, "head": 0},
-        {"hit_x": -6, "bob": -3, "torso": -8, "head": -9},
-        {"hit_x": 4, "bob": 2, "torso": 6, "head": 7},
+        {"hit_x": -5, "bob": -2, "torso": -8, "head": -8},
+        {"hit_x": -8, "bob": -4, "torso": -12, "head": -12},
+        {"hit_x": 5, "bob": 1, "torso": 7, "head": 6},
+        {"hit_x": 2, "bob": 0, "torso": 3, "head": 2},
         {"hit_x": 0, "bob": 0, "torso": 0, "head": 0},
-    ][frame % 4]
+    ][frame % HIT_FRAMES]
     return {
         "bob": hit["bob"],
         "hit_x": hit["hit_x"],
@@ -576,7 +647,7 @@ def draw_attack_effect(draw, role, pose):
 
 
 def draw_hit_effect(draw, frame):
-    if frame not in (1, 2):
+    if frame not in (1, 2, 3):
         return
     for i in range(5):
         x = 27 + i * 18 + (frame % 2) * 6
@@ -635,9 +706,9 @@ def compose_cavalry(parts, role, anim, frame, unit_id):
     paste_part(canvas, parts["base"], (64, 106))
     if "flag" in parts:
         paste_part(canvas, parts["flag"], (31, 99 + y * 0.25), -7 if frame % 2 else 4)
-    leg_angles = [12, -9, -8, 14] if anim != "move" else [18, -21, -16, 22]
+    leg_angles = [12, -9, -8, 14] if anim != "move" else [18, -20, -8, 14, -22, 6]
     for idx, hx in enumerate((42, 56, 74, 88)):
-        paste_part(canvas, parts["horse_leg"], (hx, 79 + y), leg_angles[(idx + frame) % 4], 0.92)
+        paste_part(canvas, parts["horse_leg"], (hx, 79 + y), leg_angles[(idx + frame) % len(leg_angles)], 0.92)
     paste_part(canvas, parts["horse_body"], (64 + pose["hit_x"], 70 + y), pose["torso"] * 0.35, 1.0)
     paste_part(canvas, parts["horse_head"], (92 + pose["hit_x"], 59 + y), pose["head"] * 0.3, 1.0)
     paste_part(canvas, parts["back_arm"], (x - 1, 36 + y), pose["back_arm"], 0.72)
@@ -662,7 +733,8 @@ def compose_artillery(parts, role, anim, frame, unit_id):
     paste_part(canvas, parts["front_leg"], (88, 76), 4, 0.62)
     paste_part(canvas, parts["torso"], (88, 75), 3, 0.62)
     paste_part(canvas, parts["head"], (88, 47), 1, 0.62)
-    paste_part(canvas, parts["cannon"], (65, 83 + pose["bob"]), -2 if frame == 2 and anim == "attack" else 0)
+    cannon_angle = -3 if anim == "attack" and frame in (3, 4) else 0
+    paste_part(canvas, parts["cannon"], (65, 83 + pose["bob"]), cannon_angle)
     draw_attack_effect(draw, role, pose)
     if anim == "hit":
         draw_hit_effect(draw, frame)
@@ -723,7 +795,7 @@ def save_frames():
         unit_dir = OUT_ROOT / unit_id
         unit_dir.mkdir(parents=True, exist_ok=True)
         for anim in ("idle", "move", "attack", "hit"):
-            frames = 2 if anim == "idle" else 4
+            frames = FRAME_COUNTS[anim]
             for frame in range(frames):
                 image = render_unit(parts, unit_id, role, anim, 0 if anim == "idle" else frame)
                 image.save(unit_dir / f"{anim}_{frame}.png")
@@ -737,10 +809,10 @@ def save_frames():
                 "family": family,
                 "asset": f"Art/BattleUnits/{unit_id}",
                 "rig": f"Art/BattleUnitParts/{unit_id}/rig",
-                "idleFrames": 2,
-                "moveFrames": 4,
-                "attackFrames": 4,
-                "hitFrames": 4,
+                "idleFrames": IDLE_FRAMES,
+                "moveFrames": MOVE_FRAMES,
+                "attackFrames": ATTACK_FRAMES,
+                "hitFrames": HIT_FRAMES,
             }
         )
         rig_units.append(
@@ -787,16 +859,16 @@ def save_frames():
 
 
 def make_unit_preview_row(parts, unit_id, name, role, family):
-    row = Image.new("RGBA", (430, 136), (29, 25, 21, 255))
+    row = Image.new("RGBA", (650, 136), (29, 25, 21, 255))
     draw = ImageDraw.Draw(row, "RGBA")
     text_font = font(14)
     small_font = font(11)
     draw.text((10, 8), f"{name} / {ROLE_DISPLAY[role]} / {family}", font=text_font, fill=(235, 220, 184, 255))
-    samples = [("idle", 0), ("move", 1), ("attack", 2), ("hit", 1)]
+    samples = [("idle", 0), ("move", 1), ("move", 4), ("attack", 2), ("attack", 4), ("hit", 2)]
     for i, (anim, frame) in enumerate(samples):
         piece = render_unit(parts, unit_id, role, anim, frame).resize((88, 88), Image.Resampling.LANCZOS)
         row.alpha_composite(piece, (10 + i * 104, 30))
-        draw.text((32 + i * 104, 119), anim, font=small_font, fill=(218, 201, 166, 255))
+        draw.text((27 + i * 104, 119), f"{anim}_{frame}", font=small_font, fill=(218, 201, 166, 255))
     return row.convert("RGB")
 
 

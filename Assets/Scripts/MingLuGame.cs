@@ -4068,10 +4068,10 @@ public sealed class MingLuGame : MonoBehaviour
             keyword = keyword,
             role = role,
             asset = "Art/BattleUnits/" + id,
-            idleFrames = 2,
-            moveFrames = 4,
-            attackFrames = 4,
-            hitFrames = 4
+            idleFrames = 4,
+            moveFrames = 6,
+            attackFrames = 6,
+            hitFrames = 6
         };
     }
 
@@ -4164,7 +4164,7 @@ public sealed class MingLuGame : MonoBehaviour
 
     private int BattleUnitAnimationFrameCount(CommonBattleUnitConfig config, string animName)
     {
-        if (config == null) return animName == "idle" ? 2 : 4;
+        if (config == null) return animName == "idle" ? 4 : 6;
         if (animName == "move") return Mathf.Max(1, config.moveFrames);
         if (animName == "attack") return Mathf.Max(1, config.attackFrames);
         if (animName == "hit") return Mathf.Max(1, config.hitFrames);
