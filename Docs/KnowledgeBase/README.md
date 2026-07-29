@@ -63,6 +63,6 @@
 | `Docs/MingLu_FeaturePlan.md` | 主策、系统、执行策划 |
 | `Docs/剧情与日常养成串联重写方案.md` | 剧情、任务、角色、系统策划 |
 | `Docs/战棋工坊功能梳理.md` | 战斗、关卡、QA |
+| `Docs/战棋地图编辑器使用说明.md` | 战斗、关卡、QA |
 | `Docs/战斗AI风格设计.md` | 战斗、数值、AI 调参 |
 | `DataTables/导表说明.md` | 所有需要改表的人 |
-

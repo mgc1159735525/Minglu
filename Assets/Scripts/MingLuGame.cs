@@ -1,9 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public sealed class MingLuBootstrap
 {
@@ -801,8 +806,13 @@ public sealed class MingLuGame : MonoBehaviour
         public string role;
         public int q;
         public int r;
+        public int radius;
         public string title;
         public string body;
+        public string action;
+        public string actionSide;
+        public string actionRole;
+        public int actionValue;
         public bool once = true;
     }
 
@@ -1015,11 +1025,20 @@ public sealed class MingLuGame : MonoBehaviour
     private sealed class BattleLevelDesign
     {
         public string name = "工坊测试关";
+        public string author = "策划";
+        public string description = "使用地图编辑器制作的战棋关卡。";
         public int hexCols = 9;
         public int hexRows = 7;
         public string objectiveType = "capture";
         public int objectiveQ = 4;
         public int objectiveR = 3;
+        public int turnLimit = 0;
+        public string weather = "clear";
+        public string enemyAiProfile = "tactical";
+        public int playerTroops = 420;
+        public int enemyTroops = 420;
+        public int playerAttack = 18;
+        public int enemyAttack = 18;
         public List<BattleTerrainTileConfig> terrainTiles = new List<BattleTerrainTileConfig>();
         public List<BattleUnitSpawnConfig> spawns = new List<BattleUnitSpawnConfig>();
         public List<BattleLabTriggerConfig> triggers = new List<BattleLabTriggerConfig>();
@@ -1061,6 +1080,7 @@ public sealed class MingLuGame : MonoBehaviour
     private const string BattleLabAttackerId = "__battle_lab_attacker";
     private const string BattleLabDefenderId = "__battle_lab_defender";
     private const string BattleLabProvinceId = "__battle_lab";
+    private const string BattleLabExportFileSuffix = "_battle_level.json";
     private readonly Color bg = new Color(0.09f, 0.11f, 0.14f);
     private readonly Color panel = new Color(0.16f, 0.18f, 0.22f);
     private readonly Color panel2 = new Color(0.20f, 0.22f, 0.27f);
@@ -1105,8 +1125,11 @@ public sealed class MingLuGame : MonoBehaviour
     private readonly Dictionary<string, Image> battleLabSpawnSprites = new Dictionary<string, Image>();
     private BattleLevelDesign battleLabDesign;
     private string battleLabBrush = "player";
+    private string battleLabTab = "map";
     private string battleLabTerrain = "plain";
     private string battleLabRole = "infantry";
+    private string battleLabTriggerAction = "none";
+    private int battleLabBrushSize = 1;
     private int battleLabTriggerStoryPreset;
     private string battleLabMessage = "";
     private List<BattleTerrainTileConfig> battleTerrainOverride;
@@ -1733,17 +1756,17 @@ public sealed class MingLuGame : MonoBehaviour
         return text;
     }
 
-    private InputField AddInputField(Transform parent, string value, string placeholder, Vector2 pos, Vector2 size, Action<string> onChanged)
+    private InputField AddInputField(Transform parent, string value, string placeholder, Vector2 pos, Vector2 size, Action<string> onChanged, int characterLimit = 12, int fontSize = 20)
     {
         RectTransform rt = CreateRect("InputField", parent, pos, size, new Color(0.11f, 0.12f, 0.15f, 0.96f));
         Image image = rt.GetComponent<Image>();
         InputField input = rt.gameObject.AddComponent<InputField>();
         input.targetGraphic = image;
-        input.characterLimit = 12;
+        input.characterLimit = Mathf.Max(0, characterLimit);
         input.lineType = InputField.LineType.SingleLine;
         input.contentType = InputField.ContentType.Standard;
 
-        Text text = CreateText("InputText", rt, value ?? "", 20, ink, TextAnchor.MiddleLeft);
+        Text text = CreateText("InputText", rt, value ?? "", fontSize, ink, TextAnchor.MiddleLeft);
         text.supportRichText = false;
         RectTransform textRt = text.GetComponent<RectTransform>();
         textRt.anchorMin = Vector2.zero;
@@ -1751,7 +1774,7 @@ public sealed class MingLuGame : MonoBehaviour
         textRt.offsetMin = new Vector2(14, 4);
         textRt.offsetMax = new Vector2(-14, -4);
 
-        Text placeholderText = CreateText("Placeholder", rt, placeholder ?? "", 18, muted, TextAnchor.MiddleLeft);
+        Text placeholderText = CreateText("Placeholder", rt, placeholder ?? "", Mathf.Max(10, fontSize - 2), muted, TextAnchor.MiddleLeft);
         placeholderText.fontStyle = FontStyle.Italic;
         RectTransform placeholderRt = placeholderText.GetComponent<RectTransform>();
         placeholderRt.anchorMin = Vector2.zero;
@@ -6005,11 +6028,20 @@ public sealed class MingLuGame : MonoBehaviour
         BattleLevelDesign design = new BattleLevelDesign
         {
             name = T("battle_lab.default_name", "工坊测试关"),
+            author = player != null && !string.IsNullOrEmpty(player.name) ? player.name : T("battle_lab.default_author", "策划"),
+            description = T("battle_lab.default_description", "演示占点、歼灭、抵达和剧情触发的测试关卡。"),
             hexCols = BattleCore().hexCols,
             hexRows = BattleCore().hexRows,
             objectiveType = "capture",
             objectiveQ = BattleCore().objectiveQ,
             objectiveR = BattleCore().objectiveR,
+            turnLimit = 0,
+            weather = "clear",
+            enemyAiProfile = "tactical",
+            playerTroops = 420,
+            enemyTroops = 420,
+            playerAttack = 18,
+            enemyAttack = 18,
             terrainTiles = DefaultBattleLabTerrainTiles(),
             spawns = BattleUnitSpawns().Select(CopyBattleSpawn).ToList(),
             triggers = new List<BattleLabTriggerConfig>()
@@ -6079,8 +6111,13 @@ public sealed class MingLuGame : MonoBehaviour
             role = string.IsNullOrEmpty(trigger.role) ? "any" : trigger.role,
             q = trigger.q,
             r = trigger.r,
+            radius = Mathf.Clamp(trigger.radius, 0, 4),
             title = string.IsNullOrEmpty(trigger.title) ? BattleLabTriggerPresetTitle(battleLabTriggerStoryPreset) : trigger.title,
             body = string.IsNullOrEmpty(trigger.body) ? BattleLabTriggerPresetBody(battleLabTriggerStoryPreset) : trigger.body,
+            action = string.IsNullOrEmpty(trigger.action) ? "none" : trigger.action,
+            actionSide = string.IsNullOrEmpty(trigger.actionSide) ? (trigger.kind == "reach" ? "attacker" : "defender") : trigger.actionSide,
+            actionRole = string.IsNullOrEmpty(trigger.actionRole) ? (string.IsNullOrEmpty(trigger.role) ? "infantry" : trigger.role) : trigger.actionRole,
+            actionValue = trigger.actionValue == 0 ? 1 : trigger.actionValue,
             once = trigger.once
         };
     }
@@ -6090,6 +6127,16 @@ public sealed class MingLuGame : MonoBehaviour
         if (battleLabDesign.terrainTiles == null) battleLabDesign.terrainTiles = new List<BattleTerrainTileConfig>();
         if (battleLabDesign.spawns == null) battleLabDesign.spawns = new List<BattleUnitSpawnConfig>();
         if (battleLabDesign.triggers == null) battleLabDesign.triggers = new List<BattleLabTriggerConfig>();
+        if (string.IsNullOrEmpty(battleLabDesign.name)) battleLabDesign.name = T("battle_lab.default_name", "工坊测试关");
+        if (string.IsNullOrEmpty(battleLabDesign.author)) battleLabDesign.author = T("battle_lab.default_author", "策划");
+        if (string.IsNullOrEmpty(battleLabDesign.description)) battleLabDesign.description = T("battle_lab.default_description", "使用地图编辑器制作的战棋关卡。");
+        if (string.IsNullOrEmpty(battleLabDesign.weather)) battleLabDesign.weather = "clear";
+        if (string.IsNullOrEmpty(battleLabDesign.enemyAiProfile)) battleLabDesign.enemyAiProfile = "tactical";
+        if (battleLabDesign.playerTroops <= 0) battleLabDesign.playerTroops = 420;
+        if (battleLabDesign.enemyTroops <= 0) battleLabDesign.enemyTroops = 420;
+        if (battleLabDesign.playerAttack <= 0) battleLabDesign.playerAttack = 18;
+        if (battleLabDesign.enemyAttack <= 0) battleLabDesign.enemyAttack = 18;
+        battleLabDesign.turnLimit = Mathf.Clamp(battleLabDesign.turnLimit, 0, 99);
         if (battleLabDesign.hexCols <= 0) battleLabDesign.hexCols = BattleCore().hexCols;
         if (battleLabDesign.hexRows <= 0) battleLabDesign.hexRows = BattleCore().hexRows;
         battleLabDesign.hexCols = Mathf.Clamp(battleLabDesign.hexCols, BattleLabMinCols(), BattleLabMaxCols());
@@ -6143,6 +6190,7 @@ public sealed class MingLuGame : MonoBehaviour
         Color color = TerrainColor(q, r);
         if (q == BattleObjectiveQ() && r == BattleObjectiveR()) color = new Color(0.66f, 0.52f, 0.22f);
         BattleLabTriggerConfig trigger = BattleLabTriggerAt(q, r);
+        BattleLabTriggerConfig triggerArea = trigger ?? BattleLabTriggerCoveringCell(q, r);
         GameObject go = new GameObject("BattleLabHex_" + q + "_" + r);
         go.transform.SetParent(board, false);
         RectTransform rt = go.AddComponent<RectTransform>();
@@ -6154,7 +6202,7 @@ public sealed class MingLuGame : MonoBehaviour
         rt.sizeDelta = new Vector2(78, 68);
         HexTileGraphic graphic = go.AddComponent<HexTileGraphic>();
         graphic.color = color;
-        graphic.strokeColor = trigger != null ? new Color(0.72f, 0.32f, 0.82f, 0.96f) : BattleLabSpawnAt(q, r) != null ? highlightColor : new Color(0.18f, 0.19f, 0.17f, 0.92f);
+        graphic.strokeColor = trigger != null ? new Color(0.72f, 0.32f, 0.82f, 0.96f) : triggerArea != null ? new Color(0.54f, 0.28f, 0.68f, 0.68f) : BattleLabSpawnAt(q, r) != null ? highlightColor : new Color(0.18f, 0.19f, 0.17f, 0.92f);
         Button button = go.AddComponent<Button>();
         button.transition = Selectable.Transition.None;
         button.targetGraphic = graphic;
@@ -6235,50 +6283,401 @@ public sealed class MingLuGame : MonoBehaviour
     private void DrawBattleLabSidePanel(Transform parent)
     {
         RectTransform side = CreateUiPanel("BattleLabSide", parent, new Vector2(430, -2), new Vector2(360, 610));
+        if (!new[] { "map", "brush", "trigger", "file" }.Contains(battleLabTab)) battleLabTab = "map";
         int playerCount = battleLabDesign.spawns.Count(s => !string.Equals(s.side, "defender", StringComparison.OrdinalIgnoreCase));
         int enemyCount = battleLabDesign.spawns.Count(s => string.Equals(s.side, "defender", StringComparison.OrdinalIgnoreCase));
         int triggerCount = battleLabDesign.triggers.Count;
-        string body = TF("battle_lab.body", "工具：{0}\n地图：{1} x {2}  目标：{3}\n地形：{4}  兵种：{5}\n蓝方/红方：{6}/{7}  触发器：{8}\n\n点击棋盘可刷地形、单位、据点或剧情触发点。",
-            BattleLabBrushLabel(),
+        string body = TF("battle_lab.editor_summary", "{0}\n{1} x {2}｜目标：{3}｜AI：{4}\n画笔：{5}｜地形：{6}｜兵种：{7}\n蓝/红：{8}/{9}｜触发器：{10}",
+            battleLabDesign.name,
             BattleHexCols(),
             BattleHexRows(),
             BattleLabObjectiveTypeLabel(),
+            AiProfileName(battleLabDesign.enemyAiProfile),
+            BattleLabBrushLabel(),
             TerrainDisplayName(battleLabTerrain),
             RoleName(battleLabRole),
             playerCount,
             enemyCount,
             triggerCount);
-        AddText(side, body, new Vector2(0, 238), new Vector2(328, 116), 13, TextAnchor.UpperLeft);
+        AddText(side, body, new Vector2(0, 246), new Vector2(328, 86), 12, TextAnchor.UpperLeft);
 
-        AddFlatButton(side, T("battle_lab.cols_minus", "列 -"), new Vector2(-123, 154), new Vector2(72, 28), () => ResizeBattleLabMap(-1, 0), null, 12);
-        AddFlatButton(side, T("battle_lab.cols_plus", "列 +"), new Vector2(-41, 154), new Vector2(72, 28), () => ResizeBattleLabMap(1, 0), null, 12);
-        AddFlatButton(side, T("battle_lab.rows_minus", "行 -"), new Vector2(41, 154), new Vector2(72, 28), () => ResizeBattleLabMap(0, -1), null, 12);
-        AddFlatButton(side, T("battle_lab.rows_plus", "行 +"), new Vector2(123, 154), new Vector2(72, 28), () => ResizeBattleLabMap(0, 1), null, 12);
+        DrawBattleLabTabButton(side, "map", T("battle_lab.tab_map", "地图"), -123);
+        DrawBattleLabTabButton(side, "brush", T("battle_lab.tab_brush", "画笔"), -41);
+        DrawBattleLabTabButton(side, "trigger", T("battle_lab.tab_trigger", "触发"), 41);
+        DrawBattleLabTabButton(side, "file", T("battle_lab.tab_file", "文件"), 123);
 
-        AddFlatButton(side, TF("battle_lab.objective_type_button", "目标：{0}", BattleLabObjectiveTypeLabel()), new Vector2(-82, 116), new Vector2(148, 28), CycleBattleLabObjectiveType, new Color(0.20f, 0.18f, 0.12f, 0.96f), 12);
-        AddFlatButton(side, TF("battle_lab.trigger_story_button", "剧情：{0}", BattleLabTriggerPresetTitle(battleLabTriggerStoryPreset)), new Vector2(82, 116), new Vector2(148, 28), CycleBattleLabTriggerStory, new Color(0.18f, 0.16f, 0.22f, 0.96f), 12);
+        if (battleLabTab == "map") DrawBattleLabMapTab(side);
+        else if (battleLabTab == "brush") DrawBattleLabBrushTab(side);
+        else if (battleLabTab == "trigger") DrawBattleLabTriggerTab(side);
+        else DrawBattleLabFileTab(side);
 
-        AddFlatButton(side, T("battle_lab.brush_terrain", "地形"), new Vector2(-110, 74), new Vector2(96, 28), () => SetBattleLabBrush("terrain"), battleLabBrush == "terrain" ? (Color?)highlightColor : null, 12);
-        AddFlatButton(side, T("battle_lab.brush_player", "蓝方"), new Vector2(0, 74), new Vector2(96, 28), () => SetBattleLabBrush("player"), battleLabBrush == "player" ? (Color?)highlightColor : null, 12);
-        AddFlatButton(side, T("battle_lab.brush_enemy", "红方"), new Vector2(110, 74), new Vector2(96, 28), () => SetBattleLabBrush("enemy"), battleLabBrush == "enemy" ? (Color?)highlightColor : null, 12);
-        AddFlatButton(side, T("battle_lab.brush_objective", "据点"), new Vector2(-110, 38), new Vector2(96, 28), () => SetBattleLabBrush("objective"), battleLabBrush == "objective" ? (Color?)highlightColor : null, 12);
-        AddFlatButton(side, T("battle_lab.brush_trigger_reach", "抵达剧情"), new Vector2(0, 38), new Vector2(96, 28), () => SetBattleLabBrush("trigger_reach"), battleLabBrush == "trigger_reach" ? (Color?)highlightColor : null, 12);
-        AddFlatButton(side, T("battle_lab.brush_trigger_defeat", "击败剧情"), new Vector2(110, 38), new Vector2(96, 28), () => SetBattleLabBrush("trigger_defeat"), battleLabBrush == "trigger_defeat" ? (Color?)highlightColor : null, 12);
-        AddFlatButton(side, T("battle_lab.brush_erase", "擦除格子"), new Vector2(-82, 2), new Vector2(148, 28), () => SetBattleLabBrush("erase"), battleLabBrush == "erase" ? (Color?)new Color(0.45f, 0.18f, 0.18f) : null, 12);
-        AddFlatButton(side, T("battle_lab.clear_triggers", "清空触发"), new Vector2(82, 2), new Vector2(148, 28), ClearBattleLabTriggers, new Color(0.34f, 0.16f, 0.16f, 0.96f), 12);
+        AddText(side, string.IsNullOrEmpty(battleLabMessage) ? T("battle_lab.message_default", "像地图编辑器一样先定地图属性，再刷地形、摆单位、加触发器，最后开始测试。") : battleLabMessage, new Vector2(0, -254), new Vector2(328, 52), 12, TextAnchor.UpperLeft, muted);
+        AddFlatButton(side, T("battle_lab.test", "开始测试"), new Vector2(-82, -292), new Vector2(148, 28), StartBattleLabTest, new Color(0.24f, 0.36f, 0.24f, 0.96f), 12);
+        AddFlatButton(side, T("button.back_strategy", "返回战略"), new Vector2(82, -292), new Vector2(148, 28), ShowStrategy, null, 12);
+    }
 
-        AddFlatButton(side, T("battle_lab.prev_terrain", "上一地形"), new Vector2(-82, -42), new Vector2(148, 28), () => CycleBattleLabTerrain(-1), null, 12);
-        AddFlatButton(side, T("battle_lab.next_terrain", "下一地形"), new Vector2(82, -42), new Vector2(148, 28), () => CycleBattleLabTerrain(1), null, 12);
-        AddFlatButton(side, T("battle_lab.prev_role", "上一兵种"), new Vector2(-82, -78), new Vector2(148, 28), () => CycleBattleLabRole(-1), null, 12);
-        AddFlatButton(side, T("battle_lab.next_role", "下一兵种"), new Vector2(82, -78), new Vector2(148, 28), () => CycleBattleLabRole(1), null, 12);
+    private void DrawBattleLabTabButton(Transform side, string tab, string label, float x)
+    {
+        Color? color = battleLabTab == tab ? (Color?)highlightColor : null;
+        AddFlatButton(side, label, new Vector2(x, 183), new Vector2(72, 28), () => SetBattleLabTab(tab), color, 12);
+    }
 
-        AddText(side, string.IsNullOrEmpty(battleLabMessage) ? T("battle_lab.message_default", "建议：先保证双方至少各有1个单位，再测试。抵达剧情用当前兵种作为触发角色；击败剧情会绑定被点击格子的红方单位。") : battleLabMessage, new Vector2(0, -136), new Vector2(328, 70), 12, TextAnchor.UpperLeft, muted);
+    private void SetBattleLabTab(string tab)
+    {
+        battleLabTab = tab;
+        ShowBattleLabEditor();
+    }
 
-        AddFlatButton(side, T("battle_lab.test", "开始测试"), new Vector2(-82, -204), new Vector2(148, 30), StartBattleLabTest, new Color(0.24f, 0.36f, 0.24f, 0.96f), 13);
-        AddFlatButton(side, T("battle_lab.save", "保存草稿"), new Vector2(82, -204), new Vector2(148, 30), SaveBattleLabDesign, null, 13);
-        AddFlatButton(side, T("battle_lab.load", "载入草稿"), new Vector2(-82, -240), new Vector2(148, 28), LoadBattleLabDesign, null, 12);
-        AddFlatButton(side, T("battle_lab.reset", "重置"), new Vector2(82, -240), new Vector2(148, 28), ResetBattleLabDesign, new Color(0.45f, 0.18f, 0.18f, 0.96f), 12);
-        AddFlatButton(side, T("button.back_strategy", "返回战略"), new Vector2(0, -276), new Vector2(170, 28), ShowStrategy, null, 12);
+    private void DrawBattleLabMapTab(Transform side)
+    {
+        AddText(side, T("battle_lab.map_section", "地图属性"), new Vector2(0, 149), new Vector2(320, 24), 16, TextAnchor.MiddleLeft, highlightColor);
+        AddText(side, T("battle_lab.name_label", "名称"), new Vector2(-132, 117), new Vector2(58, 24), 12, TextAnchor.MiddleLeft, muted);
+        AddInputField(side, battleLabDesign.name, T("battle_lab.name_placeholder", "关卡名"), new Vector2(48, 117), new Vector2(248, 28), value => battleLabDesign.name = SafeText(value, T("battle_lab.default_name", "工坊测试关")), 18, 14);
+        AddText(side, T("battle_lab.author_label", "作者"), new Vector2(-132, 83), new Vector2(58, 24), 12, TextAnchor.MiddleLeft, muted);
+        AddInputField(side, battleLabDesign.author, T("battle_lab.author_placeholder", "策划名"), new Vector2(48, 83), new Vector2(248, 28), value => battleLabDesign.author = SafeText(value, T("battle_lab.default_author", "策划")), 12, 14);
+        AddText(side, T("battle_lab.desc_label", "说明"), new Vector2(-132, 49), new Vector2(58, 24), 12, TextAnchor.MiddleLeft, muted);
+        AddInputField(side, battleLabDesign.description, T("battle_lab.desc_placeholder", "一句话说明目标"), new Vector2(48, 49), new Vector2(248, 28), value => battleLabDesign.description = SafeText(value, T("battle_lab.default_description", "战棋测试关卡")), 48, 13);
+
+        AddFlatButton(side, T("battle_lab.cols_minus", "列 -"), new Vector2(-123, 10), new Vector2(72, 26), () => ResizeBattleLabMap(-1, 0), null, 11);
+        AddFlatButton(side, T("battle_lab.cols_plus", "列 +"), new Vector2(-41, 10), new Vector2(72, 26), () => ResizeBattleLabMap(1, 0), null, 11);
+        AddFlatButton(side, T("battle_lab.rows_minus", "行 -"), new Vector2(41, 10), new Vector2(72, 26), () => ResizeBattleLabMap(0, -1), null, 11);
+        AddFlatButton(side, T("battle_lab.rows_plus", "行 +"), new Vector2(123, 10), new Vector2(72, 26), () => ResizeBattleLabMap(0, 1), null, 11);
+
+        AddFlatButton(side, TF("battle_lab.objective_type_button", "目标：{0}", BattleLabObjectiveTypeLabel()), new Vector2(-82, -28), new Vector2(148, 26), CycleBattleLabObjectiveType, new Color(0.20f, 0.18f, 0.12f, 0.96f), 11);
+        AddFlatButton(side, TF("battle_lab.turn_limit_button", "回合：{0}", battleLabDesign.turnLimit <= 0 ? T("common.unlimited", "不限") : battleLabDesign.turnLimit.ToString()), new Vector2(82, -28), new Vector2(148, 26), () => AdjustBattleLabTurnLimit(1), null, 11);
+        AddFlatButton(side, T("battle_lab.turn_minus", "回合 -"), new Vector2(-82, -64), new Vector2(148, 26), () => AdjustBattleLabTurnLimit(-1), null, 11);
+        AddFlatButton(side, TF("battle_lab.weather_button", "天气：{0}", BattleLabWeatherLabel()), new Vector2(82, -64), new Vector2(148, 26), CycleBattleLabWeather, null, 11);
+        AddFlatButton(side, TF("battle_lab.enemy_ai_button", "敌AI：{0}", AiProfileName(battleLabDesign.enemyAiProfile)), new Vector2(0, -100), new Vector2(310, 26), CycleBattleLabEnemyAi, new Color(0.18f, 0.16f, 0.22f, 0.96f), 11);
+        AddFlatButton(side, T("battle_lab.player_power_minus", "蓝军 -"), new Vector2(-123, -137), new Vector2(72, 26), () => AdjustBattleLabTestPower("player", -20), null, 11);
+        AddFlatButton(side, T("battle_lab.player_power_plus", "蓝军 +"), new Vector2(-41, -137), new Vector2(72, 26), () => AdjustBattleLabTestPower("player", 20), null, 11);
+        AddFlatButton(side, T("battle_lab.enemy_power_minus", "红军 -"), new Vector2(41, -137), new Vector2(72, 26), () => AdjustBattleLabTestPower("enemy", -20), null, 11);
+        AddFlatButton(side, T("battle_lab.enemy_power_plus", "红军 +"), new Vector2(123, -137), new Vector2(72, 26), () => AdjustBattleLabTestPower("enemy", 20), null, 11);
+        AddText(side, TF("battle_lab.power_line", "测试兵力：蓝{0}/红{1}  攻击：蓝{2}/红{3}", battleLabDesign.playerTroops, battleLabDesign.enemyTroops, battleLabDesign.playerAttack, battleLabDesign.enemyAttack), new Vector2(0, -174), new Vector2(318, 28), 12, TextAnchor.MiddleLeft, muted);
+    }
+
+    private void DrawBattleLabBrushTab(Transform side)
+    {
+        AddText(side, T("battle_lab.brush_section", "画笔与对象"), new Vector2(0, 149), new Vector2(320, 24), 16, TextAnchor.MiddleLeft, highlightColor);
+        AddFlatButton(side, T("battle_lab.brush_terrain", "地形"), new Vector2(-110, 112), new Vector2(96, 28), () => SetBattleLabBrush("terrain"), battleLabBrush == "terrain" ? (Color?)highlightColor : null, 12);
+        AddFlatButton(side, T("battle_lab.brush_player", "蓝方"), new Vector2(0, 112), new Vector2(96, 28), () => SetBattleLabBrush("player"), battleLabBrush == "player" ? (Color?)highlightColor : null, 12);
+        AddFlatButton(side, T("battle_lab.brush_enemy", "红方"), new Vector2(110, 112), new Vector2(96, 28), () => SetBattleLabBrush("enemy"), battleLabBrush == "enemy" ? (Color?)highlightColor : null, 12);
+        AddFlatButton(side, T("battle_lab.brush_objective", "据点"), new Vector2(-110, 76), new Vector2(96, 28), () => SetBattleLabBrush("objective"), battleLabBrush == "objective" ? (Color?)highlightColor : null, 12);
+        AddFlatButton(side, T("battle_lab.brush_erase", "擦除"), new Vector2(0, 76), new Vector2(96, 28), () => SetBattleLabBrush("erase"), battleLabBrush == "erase" ? (Color?)new Color(0.45f, 0.18f, 0.18f) : null, 12);
+        AddFlatButton(side, TF("battle_lab.brush_size", "尺寸 {0}", battleLabBrushSize), new Vector2(110, 76), new Vector2(96, 28), CycleBattleLabBrushSize, null, 12);
+
+        AddFlatButton(side, T("battle_lab.prev_terrain", "上一地形"), new Vector2(-82, 32), new Vector2(148, 28), () => CycleBattleLabTerrain(-1), null, 12);
+        AddFlatButton(side, T("battle_lab.next_terrain", "下一地形"), new Vector2(82, 32), new Vector2(148, 28), () => CycleBattleLabTerrain(1), null, 12);
+        AddFlatButton(side, T("battle_lab.prev_role", "上一兵种"), new Vector2(-82, -4), new Vector2(148, 28), () => CycleBattleLabRole(-1), null, 12);
+        AddFlatButton(side, T("battle_lab.next_role", "下一兵种"), new Vector2(82, -4), new Vector2(148, 28), () => CycleBattleLabRole(1), null, 12);
+        AddFlatButton(side, T("battle_lab.fill_terrain", "填充当前地形"), new Vector2(-82, -48), new Vector2(148, 28), FillBattleLabTerrain, new Color(0.18f, 0.22f, 0.16f, 0.96f), 12);
+        AddFlatButton(side, T("battle_lab.mirror_terrain", "镜像地形"), new Vector2(82, -48), new Vector2(148, 28), MirrorBattleLabTerrain, null, 12);
+        AddFlatButton(side, T("battle_lab.clear_units", "清空单位"), new Vector2(-82, -84), new Vector2(148, 28), ClearBattleLabUnits, new Color(0.34f, 0.16f, 0.16f, 0.96f), 12);
+        AddFlatButton(side, T("battle_lab.clear_map", "清空地图"), new Vector2(82, -84), new Vector2(148, 28), ClearBattleLabMap, new Color(0.34f, 0.16f, 0.16f, 0.96f), 12);
+        AddText(side, TF("battle_lab.brush_hint", "当前：{0} / {1} / {2}\n地形和擦除支持尺寸画笔；单位、据点和触发器按单格放置。", BattleLabBrushLabel(), TerrainDisplayName(battleLabTerrain), RoleName(battleLabRole)), new Vector2(0, -145), new Vector2(318, 72), 12, TextAnchor.UpperLeft, muted);
+    }
+
+    private void DrawBattleLabTriggerTab(Transform side)
+    {
+        AddText(side, T("battle_lab.trigger_section", "触发器"), new Vector2(0, 149), new Vector2(320, 24), 16, TextAnchor.MiddleLeft, highlightColor);
+        AddFlatButton(side, T("battle_lab.brush_trigger_reach", "抵达剧情"), new Vector2(-82, 112), new Vector2(148, 28), () => SetBattleLabBrush("trigger_reach"), battleLabBrush == "trigger_reach" ? (Color?)highlightColor : null, 12);
+        AddFlatButton(side, T("battle_lab.brush_trigger_defeat", "击败剧情"), new Vector2(82, 112), new Vector2(148, 28), () => SetBattleLabBrush("trigger_defeat"), battleLabBrush == "trigger_defeat" ? (Color?)highlightColor : null, 12);
+        AddFlatButton(side, TF("battle_lab.trigger_story_button", "剧情：{0}", BattleLabTriggerPresetTitle(battleLabTriggerStoryPreset)), new Vector2(-82, 76), new Vector2(148, 28), CycleBattleLabTriggerStory, new Color(0.18f, 0.16f, 0.22f, 0.96f), 12);
+        AddFlatButton(side, TF("battle_lab.trigger_action_button", "动作：{0}", BattleLabTriggerActionLabel(battleLabTriggerAction)), new Vector2(82, 76), new Vector2(148, 28), CycleBattleLabTriggerAction, new Color(0.16f, 0.20f, 0.18f, 0.96f), 12);
+        AddFlatButton(side, T("battle_lab.clear_triggers", "清空触发"), new Vector2(0, 40), new Vector2(310, 28), ClearBattleLabTriggers, new Color(0.34f, 0.16f, 0.16f, 0.96f), 12);
+
+        string triggerLines = battleLabDesign.triggers.Count == 0
+            ? T("battle_lab.no_triggers", "暂无触发器。")
+            : string.Join("\n", battleLabDesign.triggers.Take(6).Select((trigger, index) => TF("battle_lab.trigger_list_row", "{0}. {1}({2},{3}) R{4} {5} -> {6}",
+                index + 1,
+                BattleLabTriggerShortLabel(trigger),
+                trigger.r + 1,
+                trigger.q + 1,
+                Mathf.Max(0, trigger.radius),
+                RoleName(trigger.role),
+                BattleLabTriggerActionLabel(trigger.action))).ToArray());
+        AddText(side, triggerLines, new Vector2(0, -62), new Vector2(318, 144), 12, TextAnchor.UpperLeft);
+        AddText(side, T("battle_lab.trigger_hint", "触发器目前支持：抵达、击败、刷援军、加减士气、直接胜负。后续可继续扩成条件树。"), new Vector2(0, -168), new Vector2(318, 54), 12, TextAnchor.UpperLeft, muted);
+    }
+
+    private void DrawBattleLabFileTab(Transform side)
+    {
+        AddText(side, T("battle_lab.file_section", "文件与测试"), new Vector2(0, 149), new Vector2(320, 24), 16, TextAnchor.MiddleLeft, highlightColor);
+        AddFlatButton(side, T("battle_lab.save", "保存草稿"), new Vector2(-82, 112), new Vector2(148, 30), SaveBattleLabDesign, null, 13);
+        AddFlatButton(side, T("battle_lab.load", "载入草稿"), new Vector2(82, 112), new Vector2(148, 30), LoadBattleLabDesign, null, 13);
+        AddFlatButton(side, T("battle_lab.export_json", "导出JSON"), new Vector2(-82, 72), new Vector2(148, 30), ExportBattleLabDesign, new Color(0.20f, 0.23f, 0.30f, 0.96f), 13);
+        AddFlatButton(side, T("battle_lab.import_json", "导入最新JSON"), new Vector2(82, 72), new Vector2(148, 30), ImportLatestBattleLabDesign, new Color(0.20f, 0.23f, 0.30f, 0.96f), 13);
+        AddFlatButton(side, T("battle_lab.reset", "重置"), new Vector2(-82, 32), new Vector2(148, 28), ResetBattleLabDesign, new Color(0.45f, 0.18f, 0.18f, 0.96f), 12);
+        AddFlatButton(side, T("battle_lab.open_export_folder", "导出目录"), new Vector2(82, 32), new Vector2(148, 28), ShowBattleLabExportFolder, null, 12);
+        AddText(side, TF("battle_lab.file_hint", "导出目录：\n{0}\n\n导出的 JSON 可以提交到 Git，用于团队共享关卡。运行包里会改用持久化目录。", BattleLabExportDirectory()), new Vector2(0, -68), new Vector2(318, 178), 11, TextAnchor.UpperLeft, muted);
+    }
+
+    private string AiProfileName(string id)
+    {
+        AiProfileConfig profile = AiProfiles().FirstOrDefault(p => p.id == id);
+        return profile != null ? profile.name : T("ai.default", "均衡型");
+    }
+
+    private void AdjustBattleLabTurnLimit(int delta)
+    {
+        EnsureBattleLabDesign();
+        battleLabDesign.turnLimit = Mathf.Clamp(battleLabDesign.turnLimit + delta, 0, 99);
+        battleLabMessage = battleLabDesign.turnLimit <= 0
+            ? T("battle_lab.turn_unlimited", "回合限制已关闭。")
+            : TF("battle_lab.turn_limited", "回合限制：{0} 回合。", battleLabDesign.turnLimit);
+        ShowBattleLabEditor();
+    }
+
+    private List<string> BattleLabWeatherIds()
+    {
+        return new List<string> { "clear", "rain", "fog", "night" };
+    }
+
+    private string BattleLabWeatherLabel()
+    {
+        string weather = SafeText(battleLabDesign.weather, "clear");
+        if (weather == "rain") return T("battle_lab.weather_rain", "雨");
+        if (weather == "fog") return T("battle_lab.weather_fog", "雾");
+        if (weather == "night") return T("battle_lab.weather_night", "夜");
+        return T("battle_lab.weather_clear", "晴");
+    }
+
+    private void CycleBattleLabWeather()
+    {
+        EnsureBattleLabDesign();
+        List<string> ids = BattleLabWeatherIds();
+        int index = Mathf.Max(0, ids.IndexOf(SafeText(battleLabDesign.weather, "clear")));
+        battleLabDesign.weather = ids[(index + 1) % ids.Count];
+        battleLabMessage = TF("battle_lab.weather_changed", "天气已改为：{0}。雨天削弱远程，雾天压低射程，夜战利于散兵。", BattleLabWeatherLabel());
+        ShowBattleLabEditor();
+    }
+
+    private void CycleBattleLabEnemyAi()
+    {
+        EnsureBattleLabDesign();
+        List<string> ids = AiProfiles().Select(p => p.id).Where(id => !string.IsNullOrEmpty(id)).ToList();
+        if (ids.Count == 0) ids.Add("balanced");
+        int index = Mathf.Max(0, ids.IndexOf(SafeText(battleLabDesign.enemyAiProfile, ids[0])));
+        battleLabDesign.enemyAiProfile = ids[(index + 1) % ids.Count];
+        battleLabMessage = TF("battle_lab.enemy_ai_changed", "敌方 AI 已切换为：{0}。", AiProfileName(battleLabDesign.enemyAiProfile));
+        ShowBattleLabEditor();
+    }
+
+    private void AdjustBattleLabTestPower(string side, int delta)
+    {
+        EnsureBattleLabDesign();
+        bool enemy = side == "enemy";
+        if (enemy)
+        {
+            battleLabDesign.enemyTroops = Mathf.Clamp(battleLabDesign.enemyTroops + delta, 80, 1200);
+            battleLabDesign.enemyAttack = Mathf.Clamp(battleLabDesign.enemyAttack + delta / 20, 4, 60);
+        }
+        else
+        {
+            battleLabDesign.playerTroops = Mathf.Clamp(battleLabDesign.playerTroops + delta, 80, 1200);
+            battleLabDesign.playerAttack = Mathf.Clamp(battleLabDesign.playerAttack + delta / 20, 4, 60);
+        }
+        battleLabMessage = TF("battle_lab.power_changed", "测试军力已调整：蓝{0}/红{1}。", battleLabDesign.playerTroops, battleLabDesign.enemyTroops);
+        ShowBattleLabEditor();
+    }
+
+    private void CycleBattleLabBrushSize()
+    {
+        battleLabBrushSize = battleLabBrushSize >= 3 ? 1 : battleLabBrushSize + 1;
+        battleLabMessage = TF("battle_lab.brush_size_changed", "画笔尺寸：{0}。", battleLabBrushSize);
+        ShowBattleLabEditor();
+    }
+
+    private IEnumerable<Vector2Int> BattleLabBrushCells(int centerQ, int centerR)
+    {
+        int radius = Mathf.Max(0, battleLabBrushSize - 1);
+        for (int r = 0; r < BattleHexRows(); r++)
+        {
+            for (int q = 0; q < BattleHexCols(); q++)
+            {
+                if (HexDistance(centerQ, centerR, q, r) <= radius) yield return new Vector2Int(q, r);
+            }
+        }
+    }
+
+    private void FillBattleLabTerrain()
+    {
+        EnsureBattleLabDesign();
+        for (int r = 0; r < BattleHexRows(); r++)
+        {
+            for (int q = 0; q < BattleHexCols(); q++)
+            {
+                SetBattleLabTerrain(q, r, battleLabTerrain);
+            }
+        }
+        SetBattleLabTerrain(battleLabDesign.objectiveQ, battleLabDesign.objectiveR, "city");
+        battleLabMessage = TF("battle_lab.filled", "全图已填充为：{0}。", TerrainDisplayName(battleLabTerrain));
+        ShowBattleLabEditor();
+    }
+
+    private void MirrorBattleLabTerrain()
+    {
+        EnsureBattleLabDesign();
+        Dictionary<string, string> source = battleLabDesign.terrainTiles.ToDictionary(t => t.q + ":" + t.r, t => t.terrain);
+        for (int r = 0; r < BattleHexRows(); r++)
+        {
+            for (int q = 0; q < BattleHexCols(); q++)
+            {
+                int mirrorQ = BattleHexCols() - 1 - q;
+                string key = q + ":" + r;
+                if (source.TryGetValue(key, out string terrain)) SetBattleLabTerrain(mirrorQ, r, terrain);
+            }
+        }
+        SetBattleLabTerrain(battleLabDesign.objectiveQ, battleLabDesign.objectiveR, "city");
+        battleLabMessage = T("battle_lab.mirrored", "已按左右镜像复制地形。");
+        ShowBattleLabEditor();
+    }
+
+    private void ClearBattleLabUnits()
+    {
+        EnsureBattleLabDesign();
+        battleLabDesign.spawns.Clear();
+        battleLabMessage = T("battle_lab.units_cleared", "已清空所有蓝方和红方单位。");
+        ShowBattleLabEditor();
+    }
+
+    private void ClearBattleLabMap()
+    {
+        EnsureBattleLabDesign();
+        for (int r = 0; r < BattleHexRows(); r++)
+        {
+            for (int q = 0; q < BattleHexCols(); q++)
+            {
+                SetBattleLabTerrain(q, r, "plain");
+            }
+        }
+        SetBattleLabTerrain(battleLabDesign.objectiveQ, battleLabDesign.objectiveR, "city");
+        battleLabDesign.spawns.Clear();
+        battleLabDesign.triggers.Clear();
+        battleLabMessage = T("battle_lab.map_cleared", "已清空地形、单位和触发器，并保留当前据点。");
+        ShowBattleLabEditor();
+    }
+
+    private List<string> BattleLabTriggerActions()
+    {
+        return new List<string> { "none", "spawn_enemy", "spawn_player", "morale_enemy", "morale_player", "victory", "defeat" };
+    }
+
+    private string BattleLabTriggerActionLabel(string action)
+    {
+        if (action == "spawn_enemy") return T("battle_lab.action_spawn_enemy", "刷红方");
+        if (action == "spawn_player") return T("battle_lab.action_spawn_player", "刷蓝方");
+        if (action == "morale_enemy") return T("battle_lab.action_morale_enemy", "红方士气");
+        if (action == "morale_player") return T("battle_lab.action_morale_player", "蓝方士气");
+        if (action == "victory") return T("battle_lab.action_victory", "直接胜利");
+        if (action == "defeat") return T("battle_lab.action_defeat", "直接失败");
+        return T("battle_lab.action_none", "仅剧情");
+    }
+
+    private void CycleBattleLabTriggerAction()
+    {
+        List<string> ids = BattleLabTriggerActions();
+        int index = Mathf.Max(0, ids.IndexOf(battleLabTriggerAction));
+        battleLabTriggerAction = ids[(index + 1) % ids.Count];
+        battleLabMessage = TF("battle_lab.trigger_action_changed", "新触发器动作：{0}。", BattleLabTriggerActionLabel(battleLabTriggerAction));
+        ShowBattleLabEditor();
+    }
+
+    private string BattleLabTriggerActionSide(string action, string triggerKind)
+    {
+        if (action == "spawn_player" || action == "morale_player") return "attacker";
+        if (action == "spawn_enemy" || action == "morale_enemy") return "defender";
+        return triggerKind == "reach" ? "attacker" : "defender";
+    }
+
+    private string BattleLabExportDirectory()
+    {
+#if UNITY_EDITOR
+        return Path.Combine(Application.dataPath, "Resources", "Data", "BattleLevels");
+#else
+        return Path.Combine(Application.persistentDataPath, "BattleLevels");
+#endif
+    }
+
+    private string SafeFileName(string value)
+    {
+        string raw = SafeText(value, "battle_lab").Trim();
+        foreach (char ch in Path.GetInvalidFileNameChars()) raw = raw.Replace(ch, '_');
+        raw = raw.Replace(' ', '_');
+        return string.IsNullOrEmpty(raw) ? "battle_lab" : raw;
+    }
+
+    private string BattleLabExportPath()
+    {
+        return Path.Combine(BattleLabExportDirectory(), SafeFileName(battleLabDesign.name) + BattleLabExportFileSuffix);
+    }
+
+    private void ExportBattleLabDesign()
+    {
+        EnsureBattleLabDesign();
+        try
+        {
+            string dir = BattleLabExportDirectory();
+            Directory.CreateDirectory(dir);
+            string path = BattleLabExportPath();
+            File.WriteAllText(path, JsonUtility.ToJson(battleLabDesign, true), Encoding.UTF8);
+#if UNITY_EDITOR
+            AssetDatabase.Refresh();
+#endif
+            battleLabMessage = TF("battle_lab.exported", "已导出关卡 JSON：{0}", path);
+        }
+        catch (Exception ex)
+        {
+            battleLabMessage = TF("battle_lab.export_failed", "导出失败：{0}", ex.Message);
+        }
+        ShowBattleLabEditor();
+    }
+
+    private void ImportLatestBattleLabDesign()
+    {
+        try
+        {
+            string dir = BattleLabExportDirectory();
+            if (!Directory.Exists(dir))
+            {
+                battleLabMessage = TF("battle_lab.import_no_dir", "还没有导出目录：{0}", dir);
+                ShowBattleLabEditor();
+                return;
+            }
+            string path = Directory.GetFiles(dir, "*" + BattleLabExportFileSuffix)
+                .OrderByDescending(File.GetLastWriteTimeUtc)
+                .FirstOrDefault();
+            if (string.IsNullOrEmpty(path))
+            {
+                battleLabMessage = T("battle_lab.import_no_file", "导出目录里没有可导入的关卡 JSON。");
+                ShowBattleLabEditor();
+                return;
+            }
+            string raw = File.ReadAllText(path, Encoding.UTF8);
+            BattleLevelDesign loaded = JsonUtility.FromJson<BattleLevelDesign>(raw);
+            if (loaded == null)
+            {
+                battleLabMessage = T("battle_lab.import_bad_file", "关卡 JSON 读取失败。");
+                ShowBattleLabEditor();
+                return;
+            }
+            battleLabDesign = loaded;
+            NormalizeBattleLabDesign();
+            battleLabMessage = TF("battle_lab.imported", "已导入最新关卡：{0}", Path.GetFileName(path));
+        }
+        catch (Exception ex)
+        {
+            battleLabMessage = TF("battle_lab.import_failed", "导入失败：{0}", ex.Message);
+        }
+        ShowBattleLabEditor();
+    }
+
+    private void ShowBattleLabExportFolder()
+    {
+        string dir = BattleLabExportDirectory();
+        Directory.CreateDirectory(dir);
+        battleLabMessage = TF("battle_lab.export_folder", "导出目录：{0}", dir);
+        Application.OpenURL("file:///" + dir.Replace("\\", "/"));
+        ShowBattleLabEditor();
     }
 
     private void OnBattleLabHexClicked(int q, int r)
@@ -6286,8 +6685,12 @@ public sealed class MingLuGame : MonoBehaviour
         EnsureBattleLabDesign();
         if (battleLabBrush == "terrain")
         {
-            SetBattleLabTerrain(q, r, battleLabTerrain);
-            battleLabMessage = TF("battle_lab.msg_terrain", "已设置地形：{0}。", TerrainDisplayName(battleLabTerrain));
+            foreach (Vector2Int cell in BattleLabBrushCells(q, r)) SetBattleLabTerrain(cell.x, cell.y, battleLabTerrain);
+            if (BattleLabBrushCells(q, r).Any(cell => cell.x == battleLabDesign.objectiveQ && cell.y == battleLabDesign.objectiveR))
+            {
+                SetBattleLabTerrain(battleLabDesign.objectiveQ, battleLabDesign.objectiveR, "city");
+            }
+            battleLabMessage = TF("battle_lab.msg_terrain_brush", "已用 {0} 格画笔设置地形：{1}。", battleLabBrushSize, TerrainDisplayName(battleLabTerrain));
         }
         else if (battleLabBrush == "player")
         {
@@ -6318,8 +6721,9 @@ public sealed class MingLuGame : MonoBehaviour
         }
         else
         {
-            EraseBattleLabCell(q, r);
-            battleLabMessage = T("battle_lab.msg_erase", "已擦除该格单位；无单位时会还原为平原。");
+            foreach (Vector2Int cell in BattleLabBrushCells(q, r)) EraseBattleLabCell(cell.x, cell.y);
+            SetBattleLabTerrain(battleLabDesign.objectiveQ, battleLabDesign.objectiveR, "city");
+            battleLabMessage = TF("battle_lab.msg_erase_brush", "已用 {0} 格画笔擦除。", battleLabBrushSize);
         }
         NormalizeBattleLabDesign();
         ShowBattleLabEditor();
@@ -6372,6 +6776,17 @@ public sealed class MingLuGame : MonoBehaviour
         return battleLabDesign.triggers.FirstOrDefault(t => t.q == q && t.r == r);
     }
 
+    private BattleLabTriggerConfig BattleLabTriggerCoveringCell(int q, int r)
+    {
+        if (battleLabDesign == null || battleLabDesign.triggers == null) return null;
+        return battleLabDesign.triggers.FirstOrDefault(t => BattleLabTriggerCoversCell(t, q, r));
+    }
+
+    private bool BattleLabTriggerCoversCell(BattleLabTriggerConfig trigger, int q, int r)
+    {
+        return trigger != null && HexDistance(trigger.q, trigger.r, q, r) <= Mathf.Max(0, trigger.radius);
+    }
+
     private void PlaceBattleLabTrigger(int q, int r, string kind)
     {
         if (battleLabDesign.triggers == null) battleLabDesign.triggers = new List<BattleLabTriggerConfig>();
@@ -6393,8 +6808,13 @@ public sealed class MingLuGame : MonoBehaviour
             role = role,
             q = q,
             r = r,
+            radius = Mathf.Max(0, battleLabBrushSize - 1),
             title = BattleLabTriggerPresetTitle(battleLabTriggerStoryPreset),
             body = BattleLabTriggerPresetBody(battleLabTriggerStoryPreset),
+            action = battleLabTriggerAction,
+            actionSide = BattleLabTriggerActionSide(battleLabTriggerAction, triggerKind),
+            actionRole = battleLabRole,
+            actionValue = 1,
             once = true
         });
     }
@@ -6579,9 +6999,12 @@ public sealed class MingLuGame : MonoBehaviour
     private void ResetBattleLabDesign()
     {
         battleLabDesign = DefaultBattleLabDesign();
+        battleLabTab = "map";
         battleLabBrush = "player";
         battleLabTerrain = "plain";
         battleLabRole = "infantry";
+        battleLabTriggerAction = "none";
+        battleLabBrushSize = 1;
         battleLabTriggerStoryPreset = 0;
         battleLabMessage = T("battle_lab.reset_done", "已恢复默认演习关卡。");
         ShowBattleLabEditor();
@@ -6600,8 +7023,8 @@ public sealed class MingLuGame : MonoBehaviour
         }
 
         RemoveBattleLabTempArmies();
-        Army playerArmy = NewBattleLabArmy(BattleLabAttackerId, T("battle_lab.player_army", "蓝方测试军"), Faction.Player, 420, 18);
-        Army enemyArmy = NewBattleLabArmy(BattleLabDefenderId, T("battle_lab.enemy_army", "红方测试军"), Faction.Imperial, 420, 18);
+        Army playerArmy = NewBattleLabArmy(BattleLabAttackerId, T("battle_lab.player_army", "蓝方测试军"), Faction.Player, battleLabDesign.playerTroops, battleLabDesign.playerAttack);
+        Army enemyArmy = NewBattleLabArmy(BattleLabDefenderId, T("battle_lab.enemy_army", "红方测试军"), Faction.Imperial, battleLabDesign.enemyTroops, battleLabDesign.enemyAttack);
         armies.Add(playerArmy);
         armies.Add(enemyArmy);
         battleTerrainOverride = battleLabDesign.terrainTiles;
@@ -6639,7 +7062,7 @@ public sealed class MingLuGame : MonoBehaviour
             attack = attack,
             supply = 99,
             maxSupply = 99,
-            aiProfile = faction == Faction.Player ? "balanced" : "tactical",
+            aiProfile = faction == Faction.Player ? "balanced" : SafeText(battleLabDesign != null ? battleLabDesign.enemyAiProfile : "", "tactical"),
             intelLevel = 3
         };
     }
@@ -6869,7 +7292,7 @@ public sealed class MingLuGame : MonoBehaviour
         battleUnitSprites.Clear();
         DrawSceneBackground("battlefield");
         Province province = ProvinceById(battle.provinceId);
-        string battleTitleName = province != null ? province.name : T("battle_lab.test_battle_name", "工坊测试关");
+        string battleTitleName = province != null ? province.name : battleLabDesign != null ? SafeText(battleLabDesign.name, T("battle_lab.test_battle_name", "工坊测试关")) : T("battle_lab.test_battle_name", "工坊测试关");
         AddTopBar(root, TF("battle.title", "边境军令：{0}  第{1}回合  当前：{2}", battleTitleName, battle.turn, FactionName(battle.activeFaction)));
         RectTransform board = CreateRect("Board", root, new Vector2(-160, 20), new Vector2(800, 560), new Color(0.46f, 0.47f, 0.40f, 0.96f));
         board.gameObject.AddComponent<RectMask2D>();
@@ -7054,21 +7477,30 @@ public sealed class MingLuGame : MonoBehaviour
             string type = BattleLabObjectiveType();
             if (type == "reach")
             {
-                return TF("battle.objective_panel_reach", "战争目标：抵达据点\n目标格：第{0}行第{1}列\n当前控制：{2}\n触发器：{3}",
+                return TF("battle.objective_panel_reach", "战争目标：抵达据点\n目标格：第{0}行第{1}列\n当前控制：{2}\n触发器：{3}\n{4}",
                     BattleObjectiveR() + 1,
                     BattleObjectiveQ() + 1,
                     objectiveOwner,
-                    battleLabDesign.triggers != null ? battleLabDesign.triggers.Count : 0);
+                    battleLabDesign.triggers != null ? battleLabDesign.triggers.Count : 0,
+                    BattleLabBattleRuleLine());
             }
             if (type == "rout")
             {
                 int enemies = battle.units.Count(u => u.faction != Faction.Player && u.hp > 0);
-                return TF("battle.objective_panel_rout", "战争目标：击溃敌军\n剩余敌军：{0}\n据点格：第{1}行第{2}列\n触发器：{3}",
+                return TF("battle.objective_panel_rout", "战争目标：击溃敌军\n剩余敌军：{0}\n据点格：第{1}行第{2}列\n触发器：{3}\n{4}",
                     enemies,
                     BattleObjectiveR() + 1,
                     BattleObjectiveQ() + 1,
-                    battleLabDesign.triggers != null ? battleLabDesign.triggers.Count : 0);
+                    battleLabDesign.triggers != null ? battleLabDesign.triggers.Count : 0,
+                    BattleLabBattleRuleLine());
             }
+            return TF("battle.objective_panel_lab_capture", "战争目标：占据据点\n当前控制：{0}\n我方进度：{1}/{2}  敌方进度：{3}/{4}\n{5}",
+                objectiveOwner,
+                battle.playerObjectiveHold,
+                PlayerObjectiveRequiredTurns(),
+                battle.enemyObjectiveHold,
+                EnemyObjectiveRequiredTurns(),
+                BattleLabBattleRuleLine());
         }
 
         return TF("battle.objective_panel", "中央据点：{0}\n我方据点进度：{1}/{2}\n敌方据点进度：{3}/{4}",
@@ -7079,20 +7511,28 @@ public sealed class MingLuGame : MonoBehaviour
             EnemyObjectiveRequiredTurns());
     }
 
+    private string BattleLabBattleRuleLine()
+    {
+        if (battleLabDesign == null) return "";
+        string limit = battleLabDesign.turnLimit <= 0 ? T("common.unlimited", "不限") : battleLabDesign.turnLimit.ToString();
+        return TF("battle_lab.battle_rule_line", "天气：{0}  回合限制：{1}", BattleLabWeatherLabel(), limit);
+    }
+
     private void DrawBattlePanel(Transform parent)
     {
         RectTransform side = CreateUiPanel("BattleSide", parent, new Vector2(430, 0), new Vector2(360, 570));
         BattleUnit selected = UnitById(selectedUnitId);
+        bool labBattle = battle != null && !battle.fromStrategy && battleLabDesign != null;
         UpdateObjectiveOwner();
         string objective = battle.objectiveOwner == Faction.Neutral ? T("battle.objective_contested", "争夺中") : FactionName(battle.objectiveOwner);
         string text = selected != null
             ? TF("battle.unit_text", "{0}\n兵种：{1}  编队：{2}\n兵力：{3}/{4}\n等级：{5}\n经验：{6}\n攻击：{7}\n士气：{8}\n移动：{9}  射程：{10}\n状态：{11}",
                 selected.name, RoleName(selected.role), selected.formation, selected.hp, selected.maxHp, selected.level, selected.exp, selected.attack, MoraleLabel(selected.morale), selected.move, selected.range, BattleUnitStatusLabel(selected))
             : T("battle.empty_hint", "点击蓝方军团选择。\n绿色格：可移动。\n红色格：可攻击。\n拖动战场可移动视野。\n步兵均衡，骑兵克弓兵，弓兵射程远。");
-        AddText(side, BattleObjectivePanelText(objective), new Vector2(0, 205), new Vector2(320, 92), 15, TextAnchor.UpperLeft, muted);
+        AddText(side, BattleObjectivePanelText(objective), labBattle ? new Vector2(0, 190) : new Vector2(0, 205), labBattle ? new Vector2(320, 122) : new Vector2(320, 92), labBattle ? 14 : 15, TextAnchor.UpperLeft, muted);
         if (selected != null) text += "\n" + TF("battle.unit_supply", "补给：{0}", SupplyStatus(ArmyById(selected.armyId)));
         if (selected != null) text += "\n\n" + BattleTargetPreview(selected);
-        AddText(side, text, new Vector2(0, 40), new Vector2(320, 224), 16, TextAnchor.UpperLeft);
+        AddText(side, text, labBattle ? new Vector2(0, 20) : new Vector2(0, 40), labBattle ? new Vector2(320, 196) : new Vector2(320, 224), 16, TextAnchor.UpperLeft);
         if (selected != null && selected.faction == Faction.Player && battle.outcome == "playing")
         {
             AddButton(side, T("button.guard", "防御"), new Vector2(-82, -104), new Vector2(136, 36), () => GuardSelectedUnit(), new Color(0.28f, 0.37f, 0.26f));
@@ -7429,7 +7869,7 @@ public sealed class MingLuGame : MonoBehaviour
         int aptitude = attacker.faction == Faction.Player ? BattleAptitudeLevel(attacker.role) : attacker.level;
         float health = HealthFactor(attacker);
         int moraleTerm = attacker.morale * FormationCoefficient(attacker) - defender.morale * FormationCoefficient(defender);
-        int baseDamage = attacker.attack + RoleDamageModifier(attacker, defender) + moraleTerm + aptitude * core.aptitudeDamagePerLevel - defender.level * core.defenderLevelDamagePenalty + random;
+        int baseDamage = attacker.attack + RoleDamageModifier(attacker, defender) + moraleTerm + aptitude * core.aptitudeDamagePerLevel - defender.level * core.defenderLevelDamagePenalty + BattleLabWeatherAttackModifier(attacker) + random;
         if (counter) baseDamage = Mathf.RoundToInt(baseDamage * core.counterDamagePercent / 100f);
         float terrain = 1f - TerrainDefensePercent(defender.q, defender.r, attacker.role) / 100f;
         int attackPercent = attacker.faction == Faction.Player ? PassiveSkillSum(s => s.attackPercent) : 0;
@@ -7442,6 +7882,17 @@ public sealed class MingLuGame : MonoBehaviour
         float skill = (100f + attackPercent) / 100f * (100f - Mathf.Clamp(defensePercent, -50, 80)) / 100f;
         int damage = Mathf.FloorToInt(Mathf.Max(1f, baseDamage * health * terrain * skill));
         return Mathf.Max(counter ? core.minCounterDamage : core.minDamage, damage);
+    }
+
+    private int BattleLabWeatherAttackModifier(BattleUnit attacker)
+    {
+        if (battle == null || battle.fromStrategy || battleLabDesign == null || attacker == null) return 0;
+        string weather = SafeText(battleLabDesign.weather, "clear");
+        if (weather == "rain" && IsRangedRole(attacker.role)) return -2;
+        if (weather == "fog" && IsRangedRole(attacker.role)) return -1;
+        if (weather == "night" && attacker.role == "skirmisher") return 2;
+        if (weather == "night" && attacker.role == "artillery") return -2;
+        return 0;
     }
 
     private int BattleAptitudeLevel(string role)
@@ -7543,6 +7994,11 @@ public sealed class MingLuGame : MonoBehaviour
             }
             battle.activeFaction = Faction.Player;
             battle.turn += 1;
+            if (CheckBattleLabTurnLimit())
+            {
+                ShowBattle();
+                return;
+            }
             foreach (BattleUnit unit in battle.units.Where(u => u.faction == Faction.Player && u.hp > 0))
             {
                 unit.moved = false;
@@ -7870,7 +8326,7 @@ public sealed class MingLuGame : MonoBehaviour
         foreach (BattleLabTriggerConfig trigger in battleLabDesign.triggers)
         {
             if (trigger == null || trigger.kind != "reach") continue;
-            if (trigger.q != unit.q || trigger.r != unit.r) continue;
+            if (!BattleLabTriggerCoversCell(trigger, unit.q, unit.r)) continue;
             if (!BattleLabTriggerMatchesUnit(trigger, unit)) continue;
             if (OpenBattleLabTriggerStory(trigger, unit, null)) return true;
         }
@@ -7883,8 +8339,8 @@ public sealed class MingLuGame : MonoBehaviour
         foreach (BattleLabTriggerConfig trigger in battleLabDesign.triggers)
         {
             if (trigger == null || trigger.kind != "defeat") continue;
-            bool sameOriginalCell = trigger.q == defeated.startQ && trigger.r == defeated.startR;
-            bool sameCurrentCell = trigger.q == defeated.q && trigger.r == defeated.r;
+            bool sameOriginalCell = BattleLabTriggerCoversCell(trigger, defeated.startQ, defeated.startR);
+            bool sameCurrentCell = BattleLabTriggerCoversCell(trigger, defeated.q, defeated.r);
             if (!sameOriginalCell && !sameCurrentCell) continue;
             if (!BattleLabTriggerMatchesUnit(trigger, defeated)) continue;
             if (OpenBattleLabTriggerStory(trigger, attacker, defeated)) return true;
@@ -7914,6 +8370,7 @@ public sealed class MingLuGame : MonoBehaviour
         string body = FormatBattleLabTriggerBody(trigger, actor, target);
         SetBattleMessage(title);
         AddLog(TF("battle_lab.trigger_log", "战场剧情：{0}", title));
+        ApplyBattleLabTriggerAction(trigger);
 
         activeStoryEventId = "";
         pendingStoryTitle = title;
@@ -7930,6 +8387,81 @@ public sealed class MingLuGame : MonoBehaviour
         return true;
     }
 
+    private void ApplyBattleLabTriggerAction(BattleLabTriggerConfig trigger)
+    {
+        if (trigger == null || battle == null) return;
+        string action = SafeText(trigger.action, "none");
+        if (action == "none") return;
+        if (action == "victory")
+        {
+            AddLog(T("battle_lab.action_log_victory", "触发器动作：判定蓝方胜利。"));
+            ApplyBattleOutcome(true);
+            return;
+        }
+        if (action == "defeat")
+        {
+            AddLog(T("battle_lab.action_log_defeat", "触发器动作：判定蓝方失败。"));
+            ApplyBattleOutcome(false);
+            return;
+        }
+        if (action == "morale_player" || action == "morale_enemy")
+        {
+            Faction faction = action == "morale_player" ? Faction.Player : Faction.Imperial;
+            int delta = Mathf.Clamp(trigger.actionValue == 0 ? 1 : trigger.actionValue, -2, 2);
+            foreach (BattleUnit unit in battle.units.Where(u => u.hp > 0 && (faction == Faction.Player ? u.faction == Faction.Player : u.faction != Faction.Player)))
+            {
+                unit.morale = Mathf.Clamp(unit.morale + delta, BattleCore().minMorale, BattleCore().maxMorale);
+            }
+            AddLog(TF("battle_lab.action_log_morale", "触发器动作：{0}士气 {1:+#;-#;0}。", faction == Faction.Player ? T("battle.side_player", "蓝方") : T("battle.side_enemy", "红方"), delta));
+            return;
+        }
+        if (action == "spawn_player" || action == "spawn_enemy")
+        {
+            SpawnBattleLabTriggerUnit(trigger, action == "spawn_enemy" ? "defender" : "attacker");
+        }
+    }
+
+    private void SpawnBattleLabTriggerUnit(BattleLabTriggerConfig trigger, string side)
+    {
+        Army army = string.Equals(side, "defender", StringComparison.OrdinalIgnoreCase)
+            ? ArmyById(BattleLabDefenderId)
+            : ArmyById(BattleLabAttackerId);
+        if (army == null) return;
+        Vector2Int cell = BattleLabNearestFreeCell(trigger.q, trigger.r);
+        if (!InsideHex(cell.x, cell.y))
+        {
+            AddLog(T("battle_lab.action_log_spawn_failed", "触发器动作：没有空格可刷出援军。"));
+            return;
+        }
+        string role = SafeText(trigger.actionRole, SafeText(trigger.role, battleLabRole));
+        int attackBonus = string.Equals(side, "defender", StringComparison.OrdinalIgnoreCase) ? 2 : 0;
+        BattleUnit unit = NewBattleUnit(army, BattleLabSpawnSuffix(role, side), role, cell.x, cell.y, army.attack + attackBonus, Mathf.Max(45, army.troops / 5));
+        unit.id = unit.id + "_trigger_" + battle.units.Count;
+        battle.units.Add(unit);
+        AddLog(TF("battle_lab.action_log_spawn", "触发器动作：{0}援军出现在第{1}行第{2}列。", string.Equals(side, "defender", StringComparison.OrdinalIgnoreCase) ? T("battle.side_enemy", "红方") : T("battle.side_player", "蓝方"), cell.y + 1, cell.x + 1));
+        UpdateObjectiveOwner();
+    }
+
+    private Vector2Int BattleLabNearestFreeCell(int q, int r)
+    {
+        Vector2Int best = new Vector2Int(-1, -1);
+        int bestDistance = 999;
+        for (int row = 0; row < BattleHexRows(); row++)
+        {
+            for (int col = 0; col < BattleHexCols(); col++)
+            {
+                if (UnitAt(col, row) != null) continue;
+                int distance = HexDistance(q, r, col, row);
+                if (distance < bestDistance)
+                {
+                    bestDistance = distance;
+                    best = new Vector2Int(col, row);
+                }
+            }
+        }
+        return best;
+    }
+
     private string FormatBattleLabTriggerBody(BattleLabTriggerConfig trigger, BattleUnit actor, BattleUnit target)
     {
         string actorName = actor != null ? ShortBattleUnitName(actor) : T("battle_lab.trigger_actor_default", "部队");
@@ -7939,7 +8471,8 @@ public sealed class MingLuGame : MonoBehaviour
             .Replace("{actor}", actorName)
             .Replace("{target}", targetName)
             .Replace("{q}", (trigger.q + 1).ToString())
-            .Replace("{r}", (trigger.r + 1).ToString());
+            .Replace("{r}", (trigger.r + 1).ToString())
+            .Replace("{radius}", Mathf.Max(0, trigger.radius).ToString());
     }
 
     private bool CheckBattleLabObjectiveOutcome()
@@ -7952,7 +8485,18 @@ public sealed class MingLuGame : MonoBehaviour
             ApplyBattleOutcome(true);
             return true;
         }
+        if (CheckBattleLabTurnLimit()) return true;
         return false;
+    }
+
+    private bool CheckBattleLabTurnLimit()
+    {
+        if (battle == null || battle.fromStrategy || battleLabDesign == null || battle.outcome != "playing") return false;
+        int limit = battleLabDesign.turnLimit;
+        if (limit <= 0 || battle.turn <= limit) return false;
+        SetBattleMessage(TF("battle_lab.turn_limit_defeat", "已超过 {0} 回合限制，测试失败。", limit));
+        ApplyBattleOutcome(false);
+        return true;
     }
 
     private void CheckBattleOutcome()
@@ -8177,7 +8721,12 @@ public sealed class MingLuGame : MonoBehaviour
 
     private int AttackRange(BattleUnit unit)
     {
-        return unit != null ? Mathf.Max(1, unit.range) : 1;
+        int range = unit != null ? Mathf.Max(1, unit.range) : 1;
+        if (battle != null && !battle.fromStrategy && battleLabDesign != null && SafeText(battleLabDesign.weather, "clear") == "fog" && unit != null && IsRangedRole(unit.role))
+        {
+            range = Mathf.Max(1, range - 1);
+        }
+        return range;
     }
 
     private int TerrainDefense(int q, int r)
