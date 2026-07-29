@@ -82,6 +82,32 @@ public sealed class HexTileGraphic : MaskableGraphic
 }
 
 [RequireComponent(typeof(CanvasRenderer))]
+public sealed class MapEllipseGraphic : MaskableGraphic
+{
+    protected override void OnPopulateMesh(VertexHelper vh)
+    {
+        vh.Clear();
+        Rect rect = rectTransform.rect;
+        Vector2 center = rect.center;
+        float rx = rect.width * 0.5f;
+        float ry = rect.height * 0.5f;
+        int centerIndex = vh.currentVertCount;
+        vh.AddVert(center, color, Vector2.zero);
+        const int segments = 40;
+        for (int i = 0; i <= segments; i++)
+        {
+            float angle = Mathf.PI * 2f * i / segments;
+            Vector2 p = center + new Vector2(Mathf.Cos(angle) * rx, Mathf.Sin(angle) * ry);
+            vh.AddVert(p, color, Vector2.zero);
+        }
+        for (int i = 1; i <= segments; i++)
+        {
+            vh.AddTriangle(centerIndex, i, i + 1);
+        }
+    }
+}
+
+[RequireComponent(typeof(CanvasRenderer))]
 public sealed class BattleUnitBadgeGraphic : MaskableGraphic
 {
     public Color darkColor = new Color(0.08f, 0.08f, 0.08f);
@@ -707,6 +733,11 @@ public sealed class MingLuGame : MonoBehaviour
     {
         public string id;
         public string name;
+        public string city;
+        public List<string> cities = new List<string>();
+        public string region;
+        public string terrain;
+        public string description;
         public string owner;
         public int defense;
         public int income;
@@ -948,6 +979,11 @@ public sealed class MingLuGame : MonoBehaviour
     {
         public string id;
         public string name;
+        public string city;
+        public List<string> cities = new List<string>();
+        public string region;
+        public string terrain;
+        public string description;
         public Faction owner;
         public int defense;
         public int income;
@@ -1233,6 +1269,10 @@ public sealed class MingLuGame : MonoBehaviour
         if (gameConfig.relationships == null) gameConfig.relationships = new List<Relationship>();
         if (gameConfig.stances == null) gameConfig.stances = new List<StanceScore>();
         if (gameConfig.provinces == null) gameConfig.provinces = new List<ProvinceConfig>();
+        foreach (ProvinceConfig province in gameConfig.provinces)
+        {
+            if (province.cities == null) province.cities = new List<string>();
+        }
         if (gameConfig.armies == null) gameConfig.armies = new List<ArmyConfig>();
         if (gameConfig.battleRoles == null) gameConfig.battleRoles = new List<BattleRoleConfig>();
         if (gameConfig.commonUnits == null) gameConfig.commonUnits = new List<CommonBattleUnitConfig>();
@@ -1397,6 +1437,11 @@ public sealed class MingLuGame : MonoBehaviour
             {
                 id = p.id,
                 name = p.name,
+                city = p.city ?? "",
+                cities = p.cities != null ? p.cities.Where(c => !string.IsNullOrEmpty(c)).ToList() : new List<string>(),
+                region = p.region ?? "",
+                terrain = p.terrain ?? "",
+                description = p.description ?? "",
                 owner = ParseFaction(p.owner, Faction.Neutral),
                 defense = p.defense,
                 income = p.income,
@@ -1477,9 +1522,10 @@ public sealed class MingLuGame : MonoBehaviour
         }
     }
 
-    private Province NewProvince(string id, string name, Faction owner, int defense, int income, float x, float y)
+    private Province NewProvince(string id, string name, Faction owner, int defense, int income, float x, float y, string city = "", string region = "", string terrain = "", string description = "")
     {
-        return new Province { id = id, name = name, owner = owner, defense = defense, income = income, x = x, y = y };
+        List<string> fallbackCities = string.IsNullOrEmpty(city) ? new List<string>() : new List<string> { city };
+        return new Province { id = id, name = name, city = city, cities = fallbackCities, region = region, terrain = terrain, description = description, owner = owner, defense = defense, income = income, x = x, y = y };
     }
 
     private Army NewArmy(string id, string name, Faction faction, string provinceId, int troops, int attack)
@@ -5860,37 +5906,117 @@ public sealed class MingLuGame : MonoBehaviour
 
     private void DrawStrategyDashboard()
     {
-        RectTransform map = CreateRect("Map", root, new Vector2(-160, 20), new Vector2(800, 560), new Color(0.50f, 0.50f, 0.43f, 0.94f));
-        CreateRect("MapInnerShade", map, Vector2.zero, new Vector2(760, 520), new Color(0.80f, 0.75f, 0.59f, 0.18f));
+        RectTransform map = CreateRect("Map", root, new Vector2(-178, 20), new Vector2(830, 520), new Color(0.73f, 0.70f, 0.58f, 0.94f));
+        DrawStrategyMapTerrain(map);
         foreach (Province p in provinces)
         {
             foreach (string road in p.roads)
             {
                 Province target = ProvinceById(road);
                 if (target == null || string.CompareOrdinal(p.id, target.id) > 0) continue;
-                DrawLine(map, StrategyMapPosition(p), StrategyMapPosition(target), new Color(0.29f, 0.27f, 0.23f, 0.86f), 7);
+                DrawLine(map, StrategyMapPosition(p), StrategyMapPosition(target), new Color(0.36f, 0.30f, 0.20f, 0.70f), 4);
             }
         }
         foreach (Province p in provinces) DrawProvince(map, p);
+        DrawStrategyLegend(map);
         DrawStrategySidePanel(root);
 
-        RectTransform commands = CreateUiPanel("StrategyCommands", root, new Vector2(-78, -284), new Vector2(910, 50));
-        AddButton(commands, T("button.mission", "军令"), new Vector2(-390, 0), new Vector2(104, 38), ShowMissionBrief);
-        AddButton(commands, T("button.story_menu", "剧情"), new Vector2(-268, 0), new Vector2(104, 38), () =>
+        RectTransform commands = CreateUiPanel("StrategyCommands", root, new Vector2(-126, -286), new Vector2(805, 48));
+        AddButton(commands, T("button.mission", "军令"), new Vector2(-338, 0), new Vector2(88, 32), ShowMissionBrief);
+        AddButton(commands, T("button.story_menu", "剧情"), new Vector2(-240, 0), new Vector2(88, 32), () =>
         {
             storyReturnMode = ScreenMode.Strategy;
             ShowStoryMenu();
         });
-        AddButton(commands, T("button.continue_main_story", "主线"), new Vector2(-146, 0), new Vector2(104, 38), () => StartStory(currentMainEventId, ScreenMode.Strategy), new Color(0.28f, 0.37f, 0.26f));
-        AddButton(commands, T("button.battle_lab", "工坊"), new Vector2(-24, 0), new Vector2(104, 38), ShowBattleLabEditor);
-        AddButton(commands, T("button.academy_review", "学院"), new Vector2(98, 0), new Vector2(104, 38), ShowAcademy);
-        AddButton(commands, T("button.system", "系统"), new Vector2(220, 0), new Vector2(104, 38), () => ShowSettingsPanel(ScreenMode.Strategy));
-        AddButton(commands, T("button.end_turn", "结束回合"), new Vector2(356, 0), new Vector2(124, 38), EndStrategyTurn, new Color(0.28f, 0.37f, 0.26f));
+        AddButton(commands, T("button.continue_main_story", "主线"), new Vector2(-142, 0), new Vector2(88, 32), () => StartStory(currentMainEventId, ScreenMode.Strategy), new Color(0.43f, 0.58f, 0.48f, 0.96f));
+        AddButton(commands, T("button.battle_lab", "工坊"), new Vector2(-44, 0), new Vector2(88, 32), ShowBattleLabEditor, new Color(0.52f, 0.42f, 0.62f, 0.96f));
+        AddButton(commands, T("button.academy_review", "学院"), new Vector2(54, 0), new Vector2(88, 32), ShowAcademy);
+        AddButton(commands, T("button.system", "系统"), new Vector2(152, 0), new Vector2(88, 32), () => ShowSettingsPanel(ScreenMode.Strategy));
+        AddButton(commands, T("button.end_turn", "结束回合"), new Vector2(282, 0), new Vector2(126, 32), EndStrategyTurn, new Color(0.43f, 0.58f, 0.48f, 0.96f));
     }
 
     private Vector2 StrategyMapPosition(Province province)
     {
-        return province == null ? Vector2.zero : new Vector2(province.x * 0.82f, province.y * 0.82f);
+        return province == null ? Vector2.zero : new Vector2(province.x, province.y);
+    }
+
+    private void DrawStrategyMapTerrain(Transform map)
+    {
+        CreateRect("MapSeaTint", map, Vector2.zero, new Vector2(790, 490), new Color(0.50f, 0.66f, 0.70f, 0.20f));
+        CreateRect("MapLandMass", map, new Vector2(-35, 0), new Vector2(690, 455), new Color(0.83f, 0.78f, 0.58f, 0.72f));
+        DrawMapPatch(map, "PacificCoast", new Vector2(-342, 0), new Vector2(92, 410), new Color(0.47f, 0.66f, 0.70f, 0.42f), T("strategy.map_pacific", "太平洋"));
+        DrawMapPatch(map, "AtlanticCoast", new Vector2(354, -6), new Vector2(92, 420), new Color(0.47f, 0.66f, 0.70f, 0.42f), T("strategy.map_atlantic", "大西洋"));
+        DrawMapPatch(map, "Gulf", new Vector2(105, -226), new Vector2(360, 62), new Color(0.47f, 0.66f, 0.70f, 0.40f), T("strategy.map_gulf", "墨湾"));
+        DrawMapPatch(map, "Rockies", new Vector2(-214, 20), new Vector2(88, 370), new Color(0.50f, 0.42f, 0.30f, 0.42f), T("strategy.map_rockies", "落基山脉"));
+        DrawMapPatch(map, "GreatPlains", new Vector2(-74, -12), new Vector2(170, 380), new Color(0.83f, 0.72f, 0.48f, 0.38f), T("strategy.map_plains", "大平原"));
+        DrawMapPatch(map, "Appalachia", new Vector2(178, -8), new Vector2(82, 300), new Color(0.39f, 0.54f, 0.36f, 0.34f), T("strategy.map_appalachia", "青岭山脉"));
+
+        DrawStrategyRiver(map, new Vector2(-80, 108), new Vector2(-22, 52), new Vector2(12, -46), new Vector2(45, -172));
+        DrawStrategyRiver(map, new Vector2(106, 76), new Vector2(88, 26), new Vector2(76, -45), new Vector2(48, -174));
+        DrawStrategyRiver(map, new Vector2(236, 72), new Vector2(220, 30), new Vector2(206, -28), new Vector2(196, -92));
+
+        CreateEllipse("LakeSuperior", map, new Vector2(42, 150), new Vector2(78, 28), new Color(0.36f, 0.56f, 0.70f, 0.66f));
+        CreateEllipse("LakeMichigan", map, new Vector2(82, 105), new Vector2(42, 64), new Color(0.36f, 0.56f, 0.70f, 0.60f));
+        CreateEllipse("LakeHuron", map, new Vector2(124, 126), new Vector2(48, 42), new Color(0.36f, 0.56f, 0.70f, 0.60f));
+        CreateEllipse("LakeErie", map, new Vector2(154, 82), new Vector2(64, 22), new Color(0.36f, 0.56f, 0.70f, 0.60f));
+        CreateEllipse("LakeOntario", map, new Vector2(202, 104), new Vector2(46, 18), new Color(0.36f, 0.56f, 0.70f, 0.60f));
+        AddText(map, T("strategy.map_lakes", "五大湖"), new Vector2(122, 168), new Vector2(120, 20), 11, TextAnchor.MiddleCenter, new Color(0.23f, 0.37f, 0.43f, 0.84f));
+    }
+
+    private void DrawMapPatch(Transform parent, string name, Vector2 pos, Vector2 size, Color color, string label)
+    {
+        RectTransform patch = CreateRect(name, parent, pos, size, color);
+        patch.GetComponent<Image>().raycastTarget = false;
+        Text text = AddText(patch, label, Vector2.zero, new Vector2(size.x - 8f, 28), 12, TextAnchor.MiddleCenter, new Color(0.25f, 0.22f, 0.17f, 0.62f));
+        text.raycastTarget = false;
+        text.resizeTextForBestFit = true;
+        text.resizeTextMinSize = 8;
+        text.resizeTextMaxSize = 12;
+    }
+
+    private RectTransform CreateEllipse(string name, Transform parent, Vector2 pos, Vector2 size, Color color)
+    {
+        GameObject go = new GameObject(name);
+        go.transform.SetParent(parent, false);
+        MapEllipseGraphic ellipse = go.AddComponent<MapEllipseGraphic>();
+        ellipse.color = color;
+        ellipse.raycastTarget = false;
+        RectTransform rt = go.GetComponent<RectTransform>();
+        rt.anchorMin = new Vector2(0.5f, 0.5f);
+        rt.anchorMax = new Vector2(0.5f, 0.5f);
+        rt.pivot = new Vector2(0.5f, 0.5f);
+        rt.anchoredPosition = pos;
+        rt.sizeDelta = size;
+        return rt;
+    }
+
+    private void DrawStrategyRiver(Transform parent, params Vector2[] points)
+    {
+        for (int i = 1; i < points.Length; i++)
+        {
+            DrawLine(parent, points[i - 1], points[i], new Color(0.24f, 0.47f, 0.62f, 0.56f), 4f);
+        }
+    }
+
+    private void DrawStrategyLegend(Transform map)
+    {
+        RectTransform legend = CreateRect("StrategyLegend", map, new Vector2(-18, 238), new Vector2(560, 28), new Color(0.96f, 0.88f, 0.68f, 0.50f));
+        AddText(legend, T("strategy.legend_title", "势力"), new Vector2(-254, 0), new Vector2(44, 18), 11, TextAnchor.MiddleLeft, highlightColor);
+        DrawLegendItem(legend, Faction.Player, new Vector2(-188, 0));
+        DrawLegendItem(legend, Faction.Imperial, new Vector2(-96, 0));
+        DrawLegendItem(legend, Faction.Reformist, new Vector2(2, 0));
+        DrawLegendItem(legend, Faction.Native, new Vector2(98, 0));
+        DrawLegendItem(legend, Faction.Foreign, new Vector2(190, 0));
+        DrawLegendItem(legend, Faction.Neutral, new Vector2(282, 0));
+    }
+
+    private void DrawLegendItem(Transform parent, Faction faction, Vector2 pos)
+    {
+        CreateRect("LegendColor_" + faction, parent, pos + new Vector2(-31, 0), new Vector2(12, 12), ProvinceColor(faction));
+        Text label = AddText(parent, FactionName(faction), pos + new Vector2(18, 0), new Vector2(72, 18), 9, TextAnchor.MiddleLeft, muted);
+        label.resizeTextForBestFit = true;
+        label.resizeTextMinSize = 7;
+        label.resizeTextMaxSize = 9;
     }
 
     private void DrawLine(Transform parent, Vector2 a, Vector2 b, Color color, float width)
@@ -5898,6 +6024,7 @@ public sealed class MingLuGame : MonoBehaviour
         Vector2 mid = (a + b) * 0.5f;
         float length = Vector2.Distance(a, b);
         RectTransform line = CreateRect("Road", parent, mid, new Vector2(length, width), color);
+        line.GetComponent<Image>().raycastTarget = false;
         line.localRotation = Quaternion.Euler(0, 0, Mathf.Atan2(b.y - a.y, b.x - a.x) * Mathf.Rad2Deg);
     }
 
@@ -5905,17 +6032,80 @@ public sealed class MingLuGame : MonoBehaviour
     {
         Color color = ProvinceColor(province.owner);
         if (province.id == selectedProvinceId) color = highlightColor;
-        Button button = AddButton(map, province.name, StrategyMapPosition(province), new Vector2(110, 50), () => OnProvinceClicked(province.id), color);
+        Button button = AddButton(map, province.name, StrategyMapPosition(province), new Vector2(68, 34), () => OnProvinceClicked(province.id), color);
         Text label = button.GetComponentInChildren<Text>();
         Army army = ArmyById(province.armyId);
-        label.text = province.name + (army != null ? "\n" + ArmyShort(army) : "");
-        label.fontSize = 14;
+        label.text = SafeText(province.city, province.name) + (army != null ? "\n" + T("strategy.army_badge", "驻") + army.troops : "");
+        label.fontSize = 10;
+        label.resizeTextForBestFit = true;
+        label.resizeTextMinSize = 7;
+        label.resizeTextMaxSize = 10;
         Army selectedArmy = ArmyById(selectedArmyId);
         if (selectedArmy != null && IsAdjacent(selectedArmy.provinceId, province.id) && province.id != selectedArmy.provinceId)
         {
             Image image = button.GetComponent<Image>();
             image.color = province.owner == Faction.Player ? new Color(0.23f, 0.48f, 0.30f) : new Color(0.64f, 0.34f, 0.21f);
         }
+        AddText(map, TerrainShortLabel(province), StrategyMapPosition(province) + new Vector2(0, -24), new Vector2(70, 12), 8, TextAnchor.MiddleCenter, new Color(0.24f, 0.20f, 0.15f, 0.78f)).raycastTarget = false;
+    }
+
+    private string TerrainShortLabel(Province province)
+    {
+        if (province == null) return "";
+        if (!string.IsNullOrEmpty(province.terrain))
+        {
+            string terrain = province.terrain;
+            int split = terrain.IndexOfAny(new[] { '/', '、', '，', ' ' });
+            return split > 0 ? terrain.Substring(0, split) : terrain;
+        }
+        return !string.IsNullOrEmpty(province.region) ? province.region : "";
+    }
+
+    private List<string> ProvinceCities(Province province)
+    {
+        List<string> result = new List<string>();
+        if (province == null) return result;
+        if (province.cities != null)
+        {
+            foreach (string cityName in province.cities)
+            {
+                if (!string.IsNullOrEmpty(cityName) && !result.Contains(cityName)) result.Add(cityName);
+            }
+        }
+        string mainCity = SafeText(province.city, province.name);
+        if (!string.IsNullOrEmpty(mainCity) && !result.Contains(mainCity)) result.Insert(0, mainCity);
+        return result;
+    }
+
+    private string ProvinceCitySummary(Province province)
+    {
+        List<string> cities = ProvinceCities(province);
+        if (cities.Count == 0) return T("common.none", "无");
+        string visible = string.Join(T("common.list_separator", "、"), cities.Take(4).ToArray());
+        return cities.Count > 4 ? TF("strategy.city_summary_more", "{0} 等{1}城", visible, cities.Count) : visible;
+    }
+
+    private void ShowProvinceCitiesPanel()
+    {
+        Province province = ProvinceById(selectedProvinceId) ?? provinces.FirstOrDefault();
+        if (province == null)
+        {
+            ShowStrategy();
+            return;
+        }
+
+        List<string> cities = ProvinceCities(province);
+        string roster = string.Join("\n", cities.Select((cityName, index) => (index + 1) + ". " + cityName).ToArray());
+        string body = TF("strategy.city_roster_body", "{0}\n区域：{1}\n地形：{2}\n辖城：{3}座\n\n{4}",
+            province.name,
+            SafeText(province.region, T("common.unknown", "未知")),
+            SafeText(province.terrain, T("common.unknown", "未知")),
+            cities.Count,
+            roster);
+        OpenSystemPopup(TF("strategy.city_roster_title", "{0} 城池名册", province.name), body, new List<Tuple<string, Action>>
+        {
+            Tuple.Create(T("button.back", "返回"), (Action)ShowStrategy)
+        }, ScreenMode.Strategy, "strategy");
     }
 
     private void DrawStrategySidePanel(Transform parent)
@@ -5923,26 +6113,51 @@ public sealed class MingLuGame : MonoBehaviour
         RectTransform side = CreateUiPanel("Side", parent, new Vector2(430, 0), new Vector2(360, 570));
         Province selectedProvince = ProvinceById(selectedProvinceId) ?? provinces[0];
         Army selectedArmy = ArmyById(selectedArmyId);
-        string provinceText = TF("strategy.province_text", "省份：{0}\n势力：{1}\n城防：{2}\n收入：{3}\n驻军：{4}\n道路：{5}",
-            selectedProvince.name,
+        string roads = string.Join(T("common.list_separator", "、"), selectedProvince.roads.Select(id => ProvinceById(id)).Where(p => p != null).Select(p => SafeText(p.city, p.name)).ToArray());
+        string citySummary = ProvinceCitySummary(selectedProvince);
+        string provinceText = TF("strategy.province_text_v4", "主城：{0}\n辖城：{1}\n区域：{2}\n地形：{3}\n势力：{4}\n城防：{5}  收入：{6}\n驻军：{7}\n道路：{8}\n\n{9}",
+            SafeText(selectedProvince.city, selectedProvince.name),
+            citySummary,
+            SafeText(selectedProvince.region, T("common.unknown", "未知")),
+            SafeText(selectedProvince.terrain, T("common.unknown", "未知")),
             FactionName(selectedProvince.owner),
             selectedProvince.defense,
             selectedProvince.income,
             ArmyById(selectedProvince.armyId) != null ? ArmyById(selectedProvince.armyId).name : T("common.none", "无"),
-            string.Join(T("common.list_separator", "、"), selectedProvince.roads.Select(id => ProvinceById(id).name).ToArray()));
-        AddText(side, TF("strategy.command_text", "军衔：{0}  指挥上限：{1}\n{2}", CurrentMilitaryRank(), CommandLimit(), CurrentMissionSummary()), new Vector2(0, 226), new Vector2(320, 68), 15, TextAnchor.UpperLeft, highlightColor);
-        AddText(side, CurrentGoalSummary(), new Vector2(0, 164), new Vector2(320, 46), 14, TextAnchor.UpperLeft, muted);
-        AddText(side, provinceText, new Vector2(0, 62), new Vector2(320, 138), 17, TextAnchor.UpperLeft);
+            roads,
+            SafeText(selectedProvince.description, T("strategy.no_province_desc", "暂无详细情报。")));
+        AddSectionTitle(side, T("strategy.section_theater", "北美战区"), new Vector2(-144, 246), new Vector2(292, 30));
+        AddText(side, TF("strategy.command_text", "军衔：{0}  指挥上限：{1}\n{2}", CurrentMilitaryRank(), CommandLimit(), CurrentMissionSummary()), new Vector2(0, 203), new Vector2(320, 58), 14, TextAnchor.UpperLeft, highlightColor);
+        AddText(side, CurrentGoalSummary(), new Vector2(0, 150), new Vector2(320, 40), 12, TextAnchor.UpperLeft, muted);
+
+        RectTransform provinceCard = CreateRect("StrategyProvinceCard", side, new Vector2(0, 22), new Vector2(318, 206), new Color(0.96f, 0.88f, 0.68f, 0.46f));
+        AddText(provinceCard, selectedProvince.name, new Vector2(-132, 84), new Vector2(200, 24), 16, TextAnchor.MiddleLeft, highlightColor);
+        AddButton(provinceCard, T("button.city_roster", "名册"), new Vector2(112, 84), new Vector2(72, 24), ShowProvinceCitiesPanel, new Color(0.43f, 0.58f, 0.48f, 0.96f));
+        Text provinceInfo = AddText(provinceCard, provinceText, new Vector2(0, -14), new Vector2(286, 168), 12, TextAnchor.UpperLeft, muted);
+        provinceInfo.verticalOverflow = VerticalWrapMode.Truncate;
+        provinceInfo.resizeTextForBestFit = true;
+        provinceInfo.resizeTextMinSize = 9;
+        provinceInfo.resizeTextMaxSize = 12;
+        provinceInfo.lineSpacing = 0.9f;
 
         string armyText = selectedArmy != null
             ? TF("strategy.army_text", "军团：{0}\n兵力：{1}/{2}\n等级：{3}\n经验：{4}\n攻击：{5}\n行军力：{6}/{7}", selectedArmy.name, selectedArmy.troops, selectedArmy.maxTroops, selectedArmy.level, selectedArmy.exp, selectedArmy.attack, selectedArmy.move, selectedArmy.maxMove)
-            : T("strategy.no_army_hint", "点击有我方军团的省份可选择军团。\n点击相邻己方省份行军。\n点击相邻敌方省份发起六边形战棋。");
+            : T("strategy.no_army_hint", "点击有我方军团的城池可选择军团。\n点击相邻己方城池行军。\n点击相邻敌方城池发起六边形战棋。");
         if (selectedArmy != null)
         {
             armyText += "\n" + TF("strategy.army_extra_text_v2", "补给：{0}\n战术：{1}\n情报：{2}", SupplyStatus(selectedArmy), AiProfileForArmy(selectedArmy).name, selectedArmy.faction == Faction.Player ? player.intelligence.ToString() : KnownArmyIntelText(selectedArmy));
         }
-        AddText(side, armyText, new Vector2(0, -90), new Vector2(320, 170), 17, TextAnchor.UpperLeft, selectedArmy != null ? ink : muted);
-        AddText(side, T("label.recent_news", "最近消息：") + "\n" + LatestLog(4), new Vector2(0, -216), new Vector2(320, 122), 15, TextAnchor.UpperLeft, muted);
+        RectTransform armyCard = CreateRect("StrategyArmyCard", side, new Vector2(0, -162), new Vector2(318, 138), new Color(0.96f, 0.88f, 0.68f, 0.36f));
+        AddText(armyCard, T("strategy.section_army", "军团行动"), new Vector2(-136, 52), new Vector2(160, 22), 14, TextAnchor.MiddleLeft, highlightColor);
+        Text armyInfo = AddText(armyCard, armyText, new Vector2(0, -10), new Vector2(286, 104), 12, TextAnchor.UpperLeft, selectedArmy != null ? ink : muted);
+        armyInfo.verticalOverflow = VerticalWrapMode.Truncate;
+        armyInfo.resizeTextForBestFit = true;
+        armyInfo.resizeTextMinSize = 9;
+        armyInfo.resizeTextMaxSize = 12;
+        armyInfo.lineSpacing = 0.9f;
+
+        Text logText = AddText(side, T("label.recent_news", "最近消息：") + "\n" + LatestLog(3), new Vector2(0, -254), new Vector2(320, 72), 11, TextAnchor.UpperLeft, muted);
+        logText.verticalOverflow = VerticalWrapMode.Truncate;
     }
 
     private string CurrentMissionSummary()
@@ -9177,6 +9392,9 @@ public sealed class MingLuGame : MonoBehaviour
         if (faction == Faction.Player) return playerColor;
         if (faction == Faction.Neutral) return neutralColor;
         if (faction == Faction.Native) return new Color(0.32f, 0.47f, 0.24f);
+        if (faction == Faction.Imperial) return enemyColor;
+        if (faction == Faction.Reformist) return new Color(0.50f, 0.36f, 0.66f);
+        if (faction == Faction.Foreign) return new Color(0.66f, 0.48f, 0.22f);
         return enemyColor;
     }
 
@@ -9187,12 +9405,12 @@ public sealed class MingLuGame : MonoBehaviour
         if (configured != null && !string.IsNullOrEmpty(configured.displayName)) return configured.displayName;
         switch (faction)
         {
-            case Faction.Player: return "我方";
-            case Faction.Imperial: return "返乡团/朝廷";
-            case Faction.Reformist: return "革故派";
+            case Faction.Player: return "新京都督府";
+            case Faction.Imperial: return "返乡团/龙旗朝廷";
+            case Faction.Reformist: return "革故自治军";
             case Faction.Native: return "印第安乡党";
-            case Faction.Foreign: return "外邦势力";
-            default: return "中立";
+            case Faction.Foreign: return "外邦商馆";
+            default: return "边地中立";
         }
     }
 
@@ -9292,6 +9510,12 @@ public sealed class MingLuGame : MonoBehaviour
         stances = data.stances ?? stances;
         provinces = data.provinces ?? provinces;
         armies = data.armies ?? armies;
+        bool upgradedStrategyMap = false;
+        if (StrategyMapNeedsConfigRefresh())
+        {
+            BuildStrategyMap();
+            upgradedStrategyMap = true;
+        }
         foreach (Army army in armies)
         {
             if (army.maxSupply <= 0) army.maxSupply = DefaultArmyMaxSupply(army.faction);
@@ -9307,7 +9531,14 @@ public sealed class MingLuGame : MonoBehaviour
         storyValues = data.storyValues ?? new List<StoryValue>();
         RefreshProgressionSystems(false);
         AddLog(TF("log.load_success_slot", "系统：已读取 {0}。", slot));
+        if (upgradedStrategyMap) AddLog(T("log.strategy_map_upgraded", "系统：战略地图已升级为北美战区配置。"));
         ShowStrategy();
+    }
+
+    private bool StrategyMapNeedsConfigRefresh()
+    {
+        if (provinces == null || provinces.Count < 30) return true;
+        return provinces.Any(p => p == null || p.cities == null || p.cities.Count < 5);
     }
 
     private void AutoSave(string slot)
