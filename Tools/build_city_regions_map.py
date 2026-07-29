@@ -19,23 +19,24 @@ from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont
 
 from build_north_america_strategy_map import (
     ART_SOURCE,
-    HEIGHT,
     LAT_MAX,
     LAT_MIN,
     LON_MAX,
     LON_MIN,
     OUTPUT,
     SOURCE,
-    WIDTH,
     ensure_source_data,
     iter_parts,
     part_visible,
 )
 
 
-GRID_W = 768
-GRID_H = 432
+MAP_WIDTH = 4096
+MAP_HEIGHT = 2304
+GRID_W = 1024
+GRID_H = 576
 TARGET_CITY_COUNT = 86
+MAX_RIVER_SCALERANK = 8
 CITY_TILES = ART_SOURCE / "Tiles_CityRegions"
 CITY_INDEX = ART_SOURCE / "north_america_city_regions.csv"
 
@@ -181,14 +182,15 @@ def draw_land_mask() -> np.ndarray:
     return np.asarray(image, dtype=np.uint8) > 0
 
 
-def draw_river_mask() -> tuple[np.ndarray, list[list[tuple[float, float]]]]:
+def draw_river_mask() -> tuple[np.ndarray, list[tuple[int, list[tuple[float, float]]]]]:
     image = Image.new("L", (GRID_W, GRID_H), 0)
     draw = ImageDraw.Draw(image)
-    visible_parts: list[list[tuple[float, float]]] = []
+    visible_parts: list[tuple[int, list[tuple[float, float]]]] = []
     reader = shapefile.Reader(str(RIVER_SHP), encoding="utf-8")
     for shape_record in reader.iterShapeRecords():
         record = record_lower(shape_record.record)
-        if int(record.get("scalerank") or 99) > 6:
+        scalerank = int(record.get("scalerank") or 99)
+        if scalerank > MAX_RIVER_SCALERANK:
             continue
         for part in iter_parts(shape_record.shape):
             if not part_visible(part):
@@ -212,16 +214,19 @@ def draw_river_mask() -> tuple[np.ndarray, list[list[tuple[float, float]]]]:
             if len(segment) >= 2:
                 clipped_segments.append(segment)
             for points in clipped_segments:
-                width = 3 if int(record.get("scalerank") or 99) <= 3 else 2
+                width = 3 if scalerank <= 3 else 2
                 draw.line(points, fill=255, width=width, joint="curve")
                 visible_parts.append(
-                    [
-                        (
-                            LON_MIN + x / GRID_W * (LON_MAX - LON_MIN),
-                            LAT_MAX - y / GRID_H * (LAT_MAX - LAT_MIN),
-                        )
-                        for x, y in points
-                    ]
+                    (
+                        scalerank,
+                        [
+                            (
+                                LON_MIN + x / GRID_W * (LON_MAX - LON_MIN),
+                                LAT_MAX - y / GRID_H * (LAT_MAX - LAT_MIN),
+                            )
+                            for x, y in points
+                        ],
+                    )
                 )
     return np.asarray(image, dtype=np.uint8) > 0, visible_parts
 
@@ -337,45 +342,49 @@ def region_neighbors(labels: np.ndarray) -> dict[int, set[int]]:
 def render_map(
     labels: np.ndarray,
     cities: list[dict[str, object]],
-    river_parts: list[list[tuple[float, float]]],
+    river_parts: list[tuple[int, list[tuple[float, float]]]],
 ) -> Image.Image:
     base = Image.open(OUTPUT / "north_america_terrain.png").convert("RGB")
+    if base.size != (MAP_WIDTH, MAP_HEIGHT):
+        base = base.resize((MAP_WIDTH, MAP_HEIGHT), Image.Resampling.LANCZOS)
     base = ImageEnhance.Color(base).enhance(0.62)
     base = ImageEnhance.Contrast(base).enhance(1.18)
     base = ImageEnhance.Brightness(base).enhance(0.80)
     parchment = Image.open(ART_SOURCE / "parchment_ocean_base.png").convert("RGB")
-    parchment = parchment.resize((WIDTH, HEIGHT), Image.Resampling.LANCZOS)
+    parchment = parchment.resize((MAP_WIDTH, MAP_HEIGHT), Image.Resampling.LANCZOS)
     base = Image.blend(base, parchment, 0.10).convert("RGBA")
 
     fill_small = Image.new("RGBA", (GRID_W, GRID_H), (0, 0, 0, 0))
     fill_pixels = np.asarray(fill_small).copy()
     for index, city in enumerate(cities):
         fill_pixels[labels == index] = region_palette(city)
-    fill_layer = Image.fromarray(fill_pixels, mode="RGBA").resize((WIDTH, HEIGHT), Image.Resampling.NEAREST)
+    fill_layer = Image.fromarray(fill_pixels, mode="RGBA").resize((MAP_WIDTH, MAP_HEIGHT), Image.Resampling.NEAREST)
     result = Image.alpha_composite(base, fill_layer)
 
     boundaries = label_boundaries(labels, labels >= 0)
     boundary_image = Image.fromarray((boundaries * 255).astype(np.uint8), mode="L")
-    boundary_image = boundary_image.resize((WIDTH, HEIGHT), Image.Resampling.NEAREST)
+    boundary_image = boundary_image.resize((MAP_WIDTH, MAP_HEIGHT), Image.Resampling.NEAREST)
     boundary_image = boundary_image.filter(ImageFilter.MaxFilter(3))
-    ink = Image.new("RGBA", (WIDTH, HEIGHT), (61, 38, 31, 225))
+    ink = Image.new("RGBA", (MAP_WIDTH, MAP_HEIGHT), (61, 38, 31, 225))
     result = Image.composite(ink, result, boundary_image)
 
     draw = ImageDraw.Draw(result)
-    for part in river_parts:
-        points = [project_to(lon, lat, WIDTH, HEIGHT) for lon, lat in part]
-        draw.line(points, fill=(75, 111, 125, 220), width=4, joint="curve")
-        draw.line(points, fill=(150, 180, 183, 155), width=2, joint="curve")
+    for scalerank, part in river_parts:
+        points = [project_to(lon, lat, MAP_WIDTH, MAP_HEIGHT) for lon, lat in part]
+        outer_width = 5 if scalerank <= 3 else 3
+        inner_width = 2 if scalerank <= 3 else 1
+        draw.line(points, fill=(75, 111, 125, 220), width=outer_width, joint="curve")
+        draw.line(points, fill=(150, 180, 183, 155), width=inner_width, joint="curve")
 
     font_path = Path("C:/Windows/Fonts/msyh.ttc")
-    font = ImageFont.truetype(str(font_path), 16) if font_path.exists() else ImageFont.load_default()
-    capital_font = ImageFont.truetype(str(font_path), 19) if font_path.exists() else font
+    font = ImageFont.truetype(str(font_path), 21) if font_path.exists() else ImageFont.load_default()
+    capital_font = ImageFont.truetype(str(font_path), 25) if font_path.exists() else font
     occupied: list[tuple[float, float, float, float]] = []
     for city in cities:
-        x, y = project_to(float(city["lon"]), float(city["lat"]), WIDTH, HEIGHT)
-        if not (0 <= x < WIDTH and 0 <= y < HEIGHT):
+        x, y = project_to(float(city["lon"]), float(city["lat"]), MAP_WIDTH, MAP_HEIGHT)
+        if not (0 <= x < MAP_WIDTH and 0 <= y < MAP_HEIGHT):
             continue
-        radius = 7 if int(city["capital"]) else 5
+        radius = 9 if int(city["capital"]) else 7
         draw.ellipse((x - radius, y - radius, x + radius, y + radius), fill=(245, 217, 151, 255), outline=(55, 35, 30, 255), width=3)
         label = str(city["strategy_name"])
         selected_font = capital_font if int(city["capital"]) else font
@@ -390,7 +399,7 @@ def render_map(
         placed = False
         for tx, ty in options:
             candidate = (tx - 2, ty - 2, tx + label_w + 2, ty + label_h + 2)
-            if tx < 0 or ty < 0 or candidate[2] >= WIDTH or candidate[3] >= HEIGHT:
+            if tx < 0 or ty < 0 or candidate[2] >= MAP_WIDTH or candidate[3] >= MAP_HEIGHT:
                 continue
             if any(not (candidate[2] < other[0] or candidate[0] > other[2] or candidate[3] < other[1] or candidate[1] > other[3]) for other in occupied):
                 continue
@@ -426,7 +435,7 @@ def export_regions(labels: np.ndarray, cities: list[dict[str, object]]) -> None:
         writer = csv.DictWriter(handle, fieldnames=fields)
         writer.writeheader()
         for index, city in enumerate(cities):
-            x, y = project_to(float(city["lon"]), float(city["lat"]), WIDTH, HEIGHT)
+            x, y = project_to(float(city["lon"]), float(city["lat"]), MAP_WIDTH, MAP_HEIGHT)
             writer.writerow(
                 {
                     "id": city["id"],
@@ -438,8 +447,8 @@ def export_regions(labels: np.ndarray, cities: list[dict[str, object]]) -> None:
                     "longitude": f"{float(city['lon']):.6f}",
                     "latitude": f"{float(city['lat']):.6f}",
                     "population": city["population"],
-                    "map_x": f"{x / WIDTH:.6f}",
-                    "map_y": f"{y / HEIGHT:.6f}",
+                    "map_x": f"{x / MAP_WIDTH:.6f}",
+                    "map_y": f"{y / MAP_HEIGHT:.6f}",
                     "neighbors": ";".join(str(cities[n]["id"]) for n in sorted(neighbors.get(index, set()))),
                 }
             )
@@ -447,7 +456,7 @@ def export_regions(labels: np.ndarray, cities: list[dict[str, object]]) -> None:
 
 def save_tiles(image: Image.Image) -> None:
     CITY_TILES.mkdir(parents=True, exist_ok=True)
-    tile_w, tile_h = WIDTH // 4, HEIGHT // 3
+    tile_w, tile_h = MAP_WIDTH // 4, MAP_HEIGHT // 3
     for row in range(3):
         for col in range(4):
             image.crop((col * tile_w, row * tile_h, (col + 1) * tile_w, (row + 1) * tile_h)).save(
@@ -470,8 +479,11 @@ def main() -> None:
     export_regions(labels, cities)
     summary = {
         "map": str(output_path),
+        "size": [MAP_WIDTH, MAP_HEIGHT],
+        "tile_size": [MAP_WIDTH // 4, MAP_HEIGHT // 3],
         "city_regions": len(cities),
         "grid": [GRID_W, GRID_H],
+        "river_scalerank": MAX_RIVER_SCALERANK,
         "partition": "multi-source terrain-cost expansion",
         "barriers": ["major rivers", "terrain slope", "coastlines"],
     }
