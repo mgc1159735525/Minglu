@@ -1081,15 +1081,15 @@ public sealed class MingLuGame : MonoBehaviour
     private const string BattleLabDefenderId = "__battle_lab_defender";
     private const string BattleLabProvinceId = "__battle_lab";
     private const string BattleLabExportFileSuffix = "_battle_level.json";
-    private readonly Color bg = new Color(0.09f, 0.11f, 0.14f);
-    private readonly Color panel = new Color(0.16f, 0.18f, 0.22f);
-    private readonly Color panel2 = new Color(0.20f, 0.22f, 0.27f);
-    private readonly Color ink = new Color(0.92f, 0.89f, 0.80f);
-    private readonly Color muted = new Color(0.70f, 0.68f, 0.62f);
+    private readonly Color bg = new Color(0.84f, 0.78f, 0.66f);
+    private readonly Color panel = new Color(0.94f, 0.88f, 0.73f);
+    private readonly Color panel2 = new Color(0.37f, 0.54f, 0.44f);
+    private readonly Color ink = new Color(0.19f, 0.15f, 0.11f);
+    private readonly Color muted = new Color(0.44f, 0.39f, 0.32f);
     private readonly Color playerColor = new Color(0.20f, 0.46f, 0.75f);
     private readonly Color enemyColor = new Color(0.66f, 0.22f, 0.20f);
     private readonly Color neutralColor = new Color(0.38f, 0.38f, 0.35f);
-    private readonly Color highlightColor = new Color(0.88f, 0.67f, 0.25f);
+    private readonly Color highlightColor = new Color(0.73f, 0.52f, 0.18f);
 
     private Canvas canvas;
     private RectTransform root;
@@ -1347,7 +1347,7 @@ public sealed class MingLuGame : MonoBehaviour
             GameObject es = new GameObject("EventSystem");
             es.AddComponent<EventSystem>();
             es.AddComponent<StandaloneInputModule>();
-            DontDestroyOnLoad(es);
+            if (Application.isPlaying) DontDestroyOnLoad(es);
         }
 
         GameObject canvasGo = new GameObject("MingLuCanvas");
@@ -1358,7 +1358,7 @@ public sealed class MingLuGame : MonoBehaviour
         scaler.referenceResolution = new Vector2(1280, 720);
         scaler.matchWidthOrHeight = 0.5f;
         canvasGo.AddComponent<GraphicRaycaster>();
-        DontDestroyOnLoad(canvasGo);
+        if (Application.isPlaying) DontDestroyOnLoad(canvasGo);
 
         root = canvasGo.GetComponent<RectTransform>();
         font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
@@ -1623,7 +1623,9 @@ public sealed class MingLuGame : MonoBehaviour
     {
         string resource = SceneResource(sceneId);
         CreateSpriteRect("BackgroundArt", root, Vector2.zero, new Vector2(1280, 720), resource, bg, false, false);
-        CreateRect("BackgroundShade", root, Vector2.zero, new Vector2(1400, 820), new Color(0.02f, 0.02f, 0.03f, 0.40f));
+        bool darkScene = sceneId == "battlefield" || sceneId == "frontier" || sceneId == "strategy";
+        Color shade = darkScene ? new Color(0.03f, 0.025f, 0.020f, 0.34f) : new Color(0.78f, 0.68f, 0.48f, 0.24f);
+        CreateRect("BackgroundShade", root, Vector2.zero, new Vector2(1400, 820), shade);
     }
 
     private string SceneResource(string sceneId)
@@ -1667,26 +1669,33 @@ public sealed class MingLuGame : MonoBehaviour
 
     private string ButtonSkinForColor(Color? requestedColor)
     {
-        if (!requestedColor.HasValue) return "button_idle";
+        if (!requestedColor.HasValue) return "button_clean_jade";
         Color color = requestedColor.Value;
-        if (color.r > 0.42f && color.g < 0.28f && color.b < 0.28f) return "button_danger";
-        if (color.g > color.r && color.g > color.b) return "button_primary";
-        if (color.b > color.r && color.b > color.g) return "button_secondary";
-        return "button_idle";
+        if (color.r > 0.42f && color.g < 0.32f && color.b < 0.32f) return "button_clean_red";
+        if (color.b > color.r && color.b > color.g) return "button_clean_blue";
+        if (color.g > color.r && color.g > color.b) return "button_clean_jade";
+        return "button_clean_neutral";
+    }
+
+    private Color ButtonLabelColor(Color? requestedColor)
+    {
+        string skin = ButtonSkinForColor(requestedColor);
+        if (skin == "button_clean_neutral") return ink;
+        return new Color(1.00f, 0.96f, 0.84f);
     }
 
     private RectTransform AddPortrait(Transform parent, string characterName, Vector2 pos, Vector2 size, bool dimFallback = false)
     {
         string resource = PortraitResource(characterName);
         Color fallback = dimFallback ? new Color(0.18f, 0.18f, 0.20f, 0.75f) : new Color(0.12f, 0.13f, 0.16f, 0.0f);
-        RectTransform frame = CreateRect("PortraitFrame_" + SafeText(characterName, "Player"), parent, pos, size + new Vector2(22, 22), new Color(0.10f, 0.08f, 0.08f, 0.42f));
+        RectTransform frame = CreateRect("PortraitFrame_" + SafeText(characterName, "Player"), parent, pos, size + new Vector2(22, 22), new Color(0.86f, 0.72f, 0.44f, 0.42f));
         Image frameImage = frame.GetComponent<Image>();
-        Sprite panelSprite = LoadArtSprite("Art/UI/panel_paper", new Vector4(28, 28, 28, 28));
+        Sprite panelSprite = LoadArtSprite("Art/UI/panel_clean_paper", new Vector4(28, 28, 28, 28));
         if (panelSprite != null)
         {
             frameImage.sprite = panelSprite;
             frameImage.type = Image.Type.Sliced;
-            frameImage.color = new Color(0.92f, 0.80f, 0.58f, 0.78f);
+            frameImage.color = Color.white;
         }
         RectTransform portrait = CreateSpriteRect("Portrait_" + SafeText(characterName, "Player"), frame, Vector2.zero, size, resource, fallback, false, true);
         portrait.GetComponent<Image>().raycastTarget = false;
@@ -1758,8 +1767,11 @@ public sealed class MingLuGame : MonoBehaviour
 
     private InputField AddInputField(Transform parent, string value, string placeholder, Vector2 pos, Vector2 size, Action<string> onChanged, int characterLimit = 12, int fontSize = 20)
     {
-        RectTransform rt = CreateRect("InputField", parent, pos, size, new Color(0.11f, 0.12f, 0.15f, 0.96f));
+        RectTransform rt = CreateRect("InputField", parent, pos, size, new Color(0.96f, 0.90f, 0.75f, 0.96f));
         Image image = rt.GetComponent<Image>();
+        image.sprite = LoadArtSprite("Art/UI/button_clean_neutral", new Vector4(30, 30, 30, 30));
+        image.type = Image.Type.Sliced;
+        image.color = Color.white;
         InputField input = rt.gameObject.AddComponent<InputField>();
         input.targetGraphic = image;
         input.characterLimit = Mathf.Max(0, characterLimit);
@@ -1797,14 +1809,14 @@ public sealed class MingLuGame : MonoBehaviour
         Button button = rt.gameObject.AddComponent<Button>();
         ColorBlock colors = button.colors;
         colors.normalColor = hasSkin ? Color.white : color ?? panel2;
-        colors.highlightedColor = hasSkin ? new Color(1.12f, 1.08f, 0.92f, 1f) : highlightColor;
-        colors.pressedColor = hasSkin ? new Color(0.78f, 0.74f, 0.66f, 1f) : new Color(0.10f, 0.36f, 0.55f);
-        colors.selectedColor = hasSkin ? new Color(1.0f, 0.92f, 0.62f, 1f) : highlightColor;
+        colors.highlightedColor = hasSkin ? new Color(1.00f, 0.96f, 0.78f, 1f) : highlightColor;
+        colors.pressedColor = hasSkin ? new Color(0.82f, 0.78f, 0.64f, 1f) : new Color(0.10f, 0.36f, 0.55f);
+        colors.selectedColor = hasSkin ? new Color(0.96f, 0.86f, 0.55f, 1f) : highlightColor;
         button.colors = colors;
         int buttonFontSize = label.Contains("\n") ? Mathf.RoundToInt(size.y > 54 ? 17 : 15) : Mathf.RoundToInt(size.y > 54 ? 22 : 18);
         if (label.Length > 64) buttonFontSize = Mathf.Min(buttonFontSize, 13);
         else if (label.Length > 42) buttonFontSize = Mathf.Min(buttonFontSize, 15);
-        Text text = CreateText("Label", rt, label, buttonFontSize, ink, TextAnchor.MiddleCenter);
+        Text text = CreateText("Label", rt, label, buttonFontSize, ButtonLabelColor(color), TextAnchor.MiddleCenter);
         text.verticalOverflow = VerticalWrapMode.Truncate;
         text.lineSpacing = 0.9f;
         RectTransform trt = text.GetComponent<RectTransform>();
@@ -1818,23 +1830,25 @@ public sealed class MingLuGame : MonoBehaviour
 
     private Button AddFlatButton(Transform parent, string label, Vector2 pos, Vector2 size, Action action, Color? color = null, int fontSize = 15, TextAnchor anchor = TextAnchor.MiddleCenter)
     {
-        Color normal = color ?? new Color(0.17f, 0.145f, 0.115f, 0.96f);
+        Color normal = color ?? new Color(0.78f, 0.66f, 0.43f, 0.96f);
         RectTransform rt = CreateRect("FlatButton_" + label, parent, pos, size, normal);
         Image image = rt.GetComponent<Image>();
+        Color? skinColor = color ?? normal;
+        bool hasSkin = ApplyButtonSkin(image, skinColor);
         Button button = rt.gameObject.AddComponent<Button>();
         button.targetGraphic = image;
         ColorBlock colors = button.colors;
-        colors.normalColor = normal;
-        colors.highlightedColor = Color.Lerp(normal, highlightColor, 0.28f);
-        colors.pressedColor = Color.Lerp(normal, Color.black, 0.18f);
-        colors.selectedColor = Color.Lerp(normal, highlightColor, 0.20f);
+        colors.normalColor = hasSkin ? Color.white : normal;
+        colors.highlightedColor = hasSkin ? new Color(1.00f, 0.96f, 0.80f, 1f) : Color.Lerp(normal, highlightColor, 0.28f);
+        colors.pressedColor = hasSkin ? new Color(0.82f, 0.78f, 0.66f, 1f) : Color.Lerp(normal, Color.black, 0.18f);
+        colors.selectedColor = hasSkin ? new Color(0.96f, 0.86f, 0.55f, 1f) : Color.Lerp(normal, highlightColor, 0.20f);
         colors.disabledColor = new Color(normal.r, normal.g, normal.b, 0.40f);
         button.colors = colors;
 
         int maxFont = fontSize;
         if (label.Contains("\n")) maxFont = Mathf.Min(maxFont, 13);
         if (label.Length > 40) maxFont = Mathf.Min(maxFont, 12);
-        Text text = CreateText("Label", rt, label, maxFont, ink, anchor);
+        Text text = CreateText("Label", rt, label, maxFont, ButtonLabelColor(skinColor), anchor);
         text.verticalOverflow = VerticalWrapMode.Truncate;
         text.resizeTextForBestFit = true;
         text.resizeTextMinSize = 10;
@@ -1852,17 +1866,19 @@ public sealed class MingLuGame : MonoBehaviour
     private Button AddTraitChoiceCard(Transform parent, CharacterTrait trait, bool selected, Vector2 pos, Vector2 size, Action action)
     {
         string key = trait != null && !string.IsNullOrEmpty(trait.id) ? trait.id : "trait";
-        RectTransform rt = CreateRect("TraitCard_" + key, parent, pos, size, selected ? new Color(0.22f, 0.18f, 0.11f, 0.96f) : new Color(0.105f, 0.095f, 0.075f, 0.94f));
+        RectTransform rt = CreateRect("TraitCard_" + key, parent, pos, size, selected ? new Color(0.95f, 0.84f, 0.57f, 0.97f) : new Color(0.96f, 0.89f, 0.72f, 0.95f));
         Image image = rt.GetComponent<Image>();
+        image.sprite = LoadArtSprite("Art/UI/panel_clean_paper", new Vector4(28, 28, 28, 28));
+        image.type = Image.Type.Sliced;
         Button button = rt.gameObject.AddComponent<Button>();
         ColorBlock colors = button.colors;
         colors.normalColor = image.color;
-        colors.highlightedColor = new Color(0.24f, 0.20f, 0.12f, 0.98f);
-        colors.pressedColor = new Color(0.34f, 0.25f, 0.12f, 1f);
+        colors.highlightedColor = new Color(1.00f, 0.94f, 0.72f, 0.98f);
+        colors.pressedColor = new Color(0.86f, 0.74f, 0.52f, 1f);
         colors.selectedColor = colors.highlightedColor;
         button.colors = colors;
 
-        CreateRect("TraitMark", rt, new Vector2(-size.x * 0.5f + 24f, 0), new Vector2(22, 22), selected ? highlightColor : new Color(0.09f, 0.08f, 0.065f, 0.92f));
+        CreateRect("TraitMark", rt, new Vector2(-size.x * 0.5f + 24f, 0), new Vector2(22, 22), selected ? highlightColor : new Color(0.82f, 0.72f, 0.50f, 0.92f));
         AddText(rt, selected ? "✓" : "", new Vector2(-size.x * 0.5f + 24f, 0), new Vector2(22, 22), 16, TextAnchor.MiddleCenter, selected ? Color.black : muted);
 
         Text title = AddText(rt, trait != null ? trait.name : "", new Vector2(28, 10), new Vector2(size.x - 76f, 20), 16, TextAnchor.MiddleLeft, selected ? highlightColor : ink);
@@ -1878,28 +1894,33 @@ public sealed class MingLuGame : MonoBehaviour
     private RectTransform CreateStoryDialogFrame(string title, string portraitName, string speakerName, out Vector2 bodyPos, out Vector2 bodySize, out Vector2 optionsCenter, out Vector2 optionsSize)
     {
         bool hasPortrait = !string.IsNullOrEmpty(portraitName);
-        CreateRect("DialogBottomShade", root, new Vector2(0, -124), new Vector2(1400, 560), new Color(0.015f, 0.012f, 0.010f, 0.62f));
-        RectTransform frame = CreateSpriteRect("DialogFrame", root, new Vector2(0, -72), new Vector2(1180, 560), "Art/UI/panel_paper", panel, true, false, new Vector4(28, 28, 28, 28));
+        CreateRect("DialogBottomShade", root, new Vector2(0, -124), new Vector2(1400, 560), new Color(0.06f, 0.04f, 0.025f, 0.36f));
+        RectTransform frame = CreateSpriteRect("DialogFrame", root, new Vector2(0, -72), new Vector2(1180, 560), "Art/UI/panel_clean_paper", panel, true, false, new Vector4(28, 28, 28, 28));
         Image frameImage = frame.GetComponent<Image>();
-        frameImage.color = new Color(0.24f, 0.18f, 0.12f, 0.96f);
+        frameImage.color = Color.white;
 
-        CreateRect("DialogInnerShade", frame, Vector2.zero, new Vector2(1142, 520), new Color(0.045f, 0.038f, 0.032f, 0.72f));
+        CreateRect("DialogInnerShade", frame, Vector2.zero, new Vector2(1142, 520), new Color(1.00f, 0.94f, 0.78f, 0.34f));
 
         float contentX = hasPortrait ? 132f : 0f;
         float contentWidth = hasPortrait ? 800f : 1030f;
         if (hasPortrait)
         {
-            CreateRect("DialogPortraitWell", frame, new Vector2(-462, -8), new Vector2(274, 492), new Color(0.03f, 0.026f, 0.022f, 0.74f));
+            CreateRect("DialogPortraitWell", frame, new Vector2(-462, -8), new Vector2(274, 492), new Color(0.96f, 0.88f, 0.68f, 0.46f));
             AddPortrait(frame, portraitName, new Vector2(-462, -14), new Vector2(230, 438), true);
             string label = !string.IsNullOrEmpty(speakerName) ? speakerName : portraitName;
-            CreateRect("DialogNameplate", frame, new Vector2(-462, -240), new Vector2(236, 30), new Color(0.08f, 0.055f, 0.035f, 0.86f));
-            AddText(frame, label, new Vector2(-462, -240), new Vector2(220, 26), 17, TextAnchor.MiddleCenter, highlightColor);
+            CreateRect("DialogNameplate", frame, new Vector2(-462, -240), new Vector2(236, 30), new Color(0.36f, 0.53f, 0.43f, 0.92f));
+            AddText(frame, label, new Vector2(-462, -240), new Vector2(220, 26), 17, TextAnchor.MiddleCenter, new Color(1.00f, 0.96f, 0.84f));
         }
 
-        AddText(frame, title, new Vector2(contentX, 248), new Vector2(contentWidth - 44f, 30), 18, TextAnchor.MiddleLeft, highlightColor);
+        Text titleText = AddText(frame, title, new Vector2(contentX, 244), new Vector2(contentWidth - 54f, 42), 16, TextAnchor.MiddleLeft, highlightColor);
+        titleText.verticalOverflow = VerticalWrapMode.Truncate;
+        titleText.resizeTextForBestFit = true;
+        titleText.resizeTextMinSize = 12;
+        titleText.resizeTextMaxSize = 16;
+        titleText.lineSpacing = 0.9f;
         AddButton(frame, T("button.close_short", "X"), new Vector2(548, 248), new Vector2(34, 28), CloseStoryDialog, new Color(0.36f, 0.16f, 0.13f));
-        CreateRect("DialogTextWell", frame, new Vector2(contentX, 116), new Vector2(contentWidth, 174), new Color(0.025f, 0.023f, 0.021f, 0.58f));
-        CreateRect("DialogChoiceWell", frame, new Vector2(contentX, -120), new Vector2(contentWidth, 270), new Color(0.025f, 0.023f, 0.021f, 0.48f));
+        CreateRect("DialogTextWell", frame, new Vector2(contentX, 116), new Vector2(contentWidth, 174), new Color(1.00f, 0.95f, 0.82f, 0.56f));
+        CreateRect("DialogChoiceWell", frame, new Vector2(contentX, -120), new Vector2(contentWidth, 270), new Color(0.94f, 0.84f, 0.62f, 0.32f));
 
         bodyPos = new Vector2(contentX, 116);
         bodySize = new Vector2(contentWidth - 38, 144);
@@ -1912,14 +1933,16 @@ public sealed class MingLuGame : MonoBehaviour
     {
         string cleanLabel = CleanDialogChoiceText(label);
         string display = (index + 1).ToString() + ".  " + cleanLabel;
-        RectTransform rt = CreateRect("DialogChoice_" + index, parent, pos, size, new Color(0.12f, 0.105f, 0.085f, 0.94f));
+        RectTransform rt = CreateRect("DialogChoice_" + index, parent, pos, size, new Color(0.96f, 0.89f, 0.72f, 0.95f));
         Image image = rt.GetComponent<Image>();
+        image.sprite = LoadArtSprite("Art/UI/button_clean_neutral", new Vector4(30, 30, 30, 30));
+        image.type = Image.Type.Sliced;
         Button button = rt.gameObject.AddComponent<Button>();
         ColorBlock colors = button.colors;
-        colors.normalColor = new Color(0.12f, 0.105f, 0.085f, 0.94f);
-        colors.highlightedColor = new Color(0.28f, 0.22f, 0.14f, 0.98f);
-        colors.pressedColor = new Color(0.40f, 0.28f, 0.12f, 1f);
-        colors.selectedColor = new Color(0.26f, 0.20f, 0.12f, 0.98f);
+        colors.normalColor = Color.white;
+        colors.highlightedColor = new Color(1.00f, 0.96f, 0.78f, 1f);
+        colors.pressedColor = new Color(0.82f, 0.78f, 0.64f, 1f);
+        colors.selectedColor = new Color(0.96f, 0.86f, 0.55f, 1f);
         button.colors = colors;
         int fontSize = DialogChoiceFontSize(cleanLabel, size);
         Text text = CreateText("ChoiceLabel", rt, display, fontSize, ink, TextAnchor.MiddleLeft);
@@ -2096,8 +2119,8 @@ public sealed class MingLuGame : MonoBehaviour
 
     private void AddTopBar(Transform parent, string title)
     {
-        RectTransform bar = CreateSpriteRect("TopBar", parent, new Vector2(0, 322), new Vector2(1180, 52), "Art/UI/topbar_wine", panel, true, false, new Vector4(28, 28, 28, 28));
-        AddText(bar, title, new Vector2(-430, 0), new Vector2(300, 38), 22, TextAnchor.MiddleLeft, ink);
+        RectTransform bar = CreateSpriteRect("TopBar", parent, new Vector2(0, 322), new Vector2(1180, 52), "Art/UI/topbar_clean_paper", panel, true, false, new Vector4(28, 28, 28, 28));
+        AddText(bar, title, new Vector2(-430, -1), new Vector2(300, 36), 22, TextAnchor.MiddleLeft, ink);
         AddTopStat(bar, T("hud.week", "周"), CalendarLabel(), 0);
         AddTopStat(bar, T("hud.mood", "心情"), player.mood.ToString(), 1);
         AddTopStat(bar, T("hud.stamina", "体力"), player.stamina.ToString(), 2);
@@ -2112,16 +2135,16 @@ public sealed class MingLuGame : MonoBehaviour
     private void AddTopStat(Transform parent, string label, string value, int index)
     {
         float x = -150f + index * 122f;
-        RectTransform chip = CreateRect("TopStat_" + label, parent, new Vector2(x, 0), new Vector2(108, 32), new Color(0.055f, 0.045f, 0.038f, 0.72f));
+        RectTransform chip = CreateRect("TopStat_" + label, parent, new Vector2(x, -1), new Vector2(108, 30), new Color(0.97f, 0.89f, 0.70f, 0.82f));
         AddText(chip, label, new Vector2(-30, 0), new Vector2(40, 20), 12, TextAnchor.MiddleLeft, muted);
         AddText(chip, value, new Vector2(27, 0), new Vector2(52, 20), 14, TextAnchor.MiddleRight, highlightColor);
     }
 
     private RectTransform CreateUiPanel(string name, Transform parent, Vector2 pos, Vector2 size)
     {
-        RectTransform panelRt = CreateSpriteRect(name, parent, pos, size, "Art/UI/panel_paper", panel, true, false, new Vector4(28, 28, 28, 28));
+        RectTransform panelRt = CreateSpriteRect(name, parent, pos, size, "Art/UI/panel_clean_paper", panel, true, false, new Vector4(28, 28, 28, 28));
         Image image = panelRt.GetComponent<Image>();
-        image.color = new Color(0.18f, 0.145f, 0.105f, 0.94f);
+        image.color = Color.white;
         return panelRt;
     }
 
@@ -2337,16 +2360,18 @@ public sealed class MingLuGame : MonoBehaviour
 
     private Button AddCreationOptionCard(Transform parent, string title, string body, bool selected, Vector2 pos, Vector2 size, Action action)
     {
-        RectTransform rt = CreateRect("CreationOption_" + SafeText(title, "Option"), parent, pos, size, selected ? new Color(0.24f, 0.20f, 0.12f, 0.97f) : new Color(0.105f, 0.095f, 0.075f, 0.95f));
+        RectTransform rt = CreateRect("CreationOption_" + SafeText(title, "Option"), parent, pos, size, selected ? new Color(0.95f, 0.84f, 0.57f, 0.97f) : new Color(0.96f, 0.89f, 0.72f, 0.95f));
         Image image = rt.GetComponent<Image>();
+        image.sprite = LoadArtSprite("Art/UI/panel_clean_paper", new Vector4(28, 28, 28, 28));
+        image.type = Image.Type.Sliced;
         Button button = rt.gameObject.AddComponent<Button>();
         ColorBlock colors = button.colors;
         colors.normalColor = image.color;
-        colors.highlightedColor = new Color(0.28f, 0.22f, 0.14f, 0.98f);
-        colors.pressedColor = new Color(0.40f, 0.28f, 0.12f, 1f);
+        colors.highlightedColor = new Color(1.00f, 0.94f, 0.72f, 0.98f);
+        colors.pressedColor = new Color(0.86f, 0.74f, 0.52f, 1f);
         colors.selectedColor = colors.highlightedColor;
         button.colors = colors;
-        CreateRect("CreationOptionMark", rt, new Vector2(-size.x * 0.5f + 18f, size.y * 0.5f - 18f), new Vector2(18, 18), selected ? highlightColor : new Color(0.06f, 0.052f, 0.045f, 0.92f));
+        CreateRect("CreationOptionMark", rt, new Vector2(-size.x * 0.5f + 18f, size.y * 0.5f - 18f), new Vector2(18, 18), selected ? highlightColor : new Color(0.82f, 0.72f, 0.50f, 0.92f));
         AddText(rt, selected ? "✓" : "", new Vector2(-size.x * 0.5f + 18f, size.y * 0.5f - 18f), new Vector2(18, 18), 13, TextAnchor.MiddleCenter, selected ? Color.black : muted);
         Text nameText = AddText(rt, title, new Vector2(14, size.y * 0.5f - 20f), new Vector2(size.x - 54f, 22), title.Length > 14 ? 13 : 15, TextAnchor.MiddleLeft, selected ? highlightColor : ink);
         nameText.verticalOverflow = VerticalWrapMode.Overflow;
@@ -4362,71 +4387,118 @@ public sealed class MingLuGame : MonoBehaviour
         Clear();
         DrawSceneBackground("academy");
         AddTopBar(root, T("academy.title", "新京军事学院"));
-        DrawSystemDock(root, ScreenMode.Academy);
         DrawAcademyDashboard();
+        DrawSystemDock(root, ScreenMode.Academy);
     }
 
     private void DrawAcademyDashboard()
     {
-        RectTransform profile = CreateUiPanel("AcademyProfilePanel", root, new Vector2(-482, 2), new Vector2(276, 560));
-        AddSectionTitle(profile, T("academy.section_profile", "学籍档案"), new Vector2(-104, 250), new Vector2(220, 28));
-        AddPortrait(profile, player.name, new Vector2(0, 138), new Vector2(116, 156), true);
-        Text profileBrief = AddText(profile, AcademyProfileBrief(), new Vector2(0, 24), new Vector2(228, 58), 13, TextAnchor.UpperLeft, muted);
-        profileBrief.lineSpacing = 0.92f;
-        profileBrief.verticalOverflow = VerticalWrapMode.Truncate;
+        RectTransform profile = CreateUiPanel("AcademyProfilePanel", root, new Vector2(-470, -8), new Vector2(290, 536));
+        DrawAcademyProfileColumn(profile);
+
+        RectTransform schedule = CreateUiPanel("AcademySchedulePanel", root, new Vector2(-74, -8), new Vector2(506, 536));
+        DrawAcademyScheduleColumn(schedule);
+
+        RectTransform inspector = CreateUiPanel("AcademyInspectorPanel", root, new Vector2(414, -8), new Vector2(350, 536));
+        DrawAcademyInspectorColumn(inspector);
+    }
+
+    private void DrawAcademyProfileColumn(Transform profile)
+    {
+        AddSectionTitle(profile, T("academy.section_profile", "学籍档案"), new Vector2(-104, 246), new Vector2(220, 28));
+        AddPortrait(profile, player.name, new Vector2(0, 118), new Vector2(142, 190), true);
+
+        RectTransform nameBand = CreateRect("AcademyProfileNameBand", profile, new Vector2(0, -2), new Vector2(224, 48), new Color(0.92f, 0.80f, 0.55f, 0.42f));
+        AddText(nameBand, player.name, new Vector2(0, 10), new Vector2(204, 22), 18, TextAnchor.MiddleCenter, highlightColor);
+        AddText(nameBand, player.title, new Vector2(0, -11), new Vector2(204, 18), 12, TextAnchor.MiddleCenter, muted);
+
+        string traits = TraitNames(player.traits);
+        if (traits.Length > 18) traits = traits.Substring(0, 18) + "...";
+        Text brief = AddText(profile, TF("academy.profile_brief_clean", "{0}岁  {1}年级  第{2}周\n军衔：{3}    特性：{4}", player.age, player.year, player.week, CurrentMilitaryRank(), traits), new Vector2(0, -47), new Vector2(232, 38), 12, TextAnchor.UpperLeft, muted);
+        brief.lineSpacing = 0.9f;
+        brief.verticalOverflow = VerticalWrapMode.Truncate;
+
         DrawCompactAcademyAttributeBars(profile);
-        AddFlatButton(profile, T("button.character", "角色"), new Vector2(-62, -250), new Vector2(104, 28), () => ShowCharacterStatusPanel(ScreenMode.Academy), new Color(0.20f, 0.17f, 0.13f, 0.96f), 13);
-        AddFlatButton(profile, T("button.attribute_guide", "属性说明"), new Vector2(62, -250), new Vector2(104, 28), () => ShowAttributeGuide(ScreenMode.Academy), new Color(0.20f, 0.17f, 0.13f, 0.96f), 13);
 
-        RectTransform schedule = CreateUiPanel("AcademySchedulePanel", root, new Vector2(-90, 2), new Vector2(440, 560));
-        AddSectionTitle(schedule, T("academy.section_schedule", "本周安排"), new Vector2(-178, 250), new Vector2(360, 30));
-        DrawCurrentGoalCard(schedule, new Vector2(0, 202), new Vector2(374, 76));
+        AddFlatButton(profile, T("button.character", "角色"), new Vector2(-62, -244), new Vector2(104, 28), () => ShowCharacterStatusPanel(ScreenMode.Academy), new Color(0.43f, 0.58f, 0.48f, 0.96f), 13);
+        AddFlatButton(profile, T("button.attribute_guide", "属性说明"), new Vector2(62, -244), new Vector2(104, 28), () => ShowAttributeGuide(ScreenMode.Academy), new Color(0.72f, 0.57f, 0.28f, 0.96f), 13);
+    }
 
-        AddText(schedule, T("academy.group_courses", "课程"), new Vector2(-170, 144), new Vector2(120, 24), 15, TextAnchor.MiddleLeft, highlightColor);
-        List<CourseConfig> courses = CourseCatalog();
+    private void DrawAcademyScheduleColumn(Transform schedule)
+    {
+        AddSectionTitle(schedule, T("academy.section_schedule", "本周安排"), new Vector2(-208, 246), new Vector2(360, 30));
+        DrawCurrentGoalCard(schedule, new Vector2(0, 196), new Vector2(440, 84));
+
+        AddText(schedule, T("academy.group_courses", "课程训练"), new Vector2(-202, 134), new Vector2(160, 24), 15, TextAnchor.MiddleLeft, highlightColor);
+        List<CourseConfig> courses = CourseCatalog().Where(c => c.target != "social").Take(6).ToList();
         for (int i = 0; i < courses.Count; i++)
         {
             int index = i;
-            AddFlatButton(schedule, courses[i].label, new Vector2(-98 + (i % 2) * 196, 110 - (i / 2) * 42), new Vector2(168, 32), () => RunAcademyAction(courses[index].label), new Color(0.18f, 0.13f, 0.13f, 0.96f), 15);
+            AddFlatButton(schedule, courses[i].label, new Vector2(-112 + (i % 2) * 224, 102 - (i / 2) * 38), new Vector2(194, 30), () => RunAcademyAction(courses[index].label), new Color(0.38f, 0.52f, 0.64f, 0.96f), 14);
         }
 
-        AddText(schedule, T("academy.group_weekend", "休整与社交"), new Vector2(-170, -30), new Vector2(160, 24), 15, TextAnchor.MiddleLeft, highlightColor);
-        AddFlatButton(schedule, T("button.rest", "休息"), new Vector2(-98, -66), new Vector2(168, 32), () => RunSundayAction("rest"), new Color(0.16f, 0.22f, 0.17f, 0.96f), 15);
-        AddFlatButton(schedule, T("button.study", "自习"), new Vector2(98, -66), new Vector2(168, 32), () => RunSundayAction("study"), new Color(0.16f, 0.22f, 0.17f, 0.96f), 15);
-        AddFlatButton(schedule, T("button.invite", "邀约同窗"), new Vector2(-98, -108), new Vector2(168, 32), ShowInviteEvent, new Color(0.16f, 0.18f, 0.23f, 0.96f), 15);
-        AddFlatButton(schedule, T("button.campus_activity", "周末活动"), new Vector2(98, -108), new Vector2(168, 32), ShowCampusActivity, new Color(0.16f, 0.18f, 0.23f, 0.96f), 15);
+        AddText(schedule, T("academy.group_weekend", "休整与社交"), new Vector2(-202, -28), new Vector2(160, 24), 15, TextAnchor.MiddleLeft, highlightColor);
+        AddFlatButton(schedule, T("button.rest", "休息"), new Vector2(-166, -62), new Vector2(130, 30), () => RunSundayAction("rest"), new Color(0.43f, 0.58f, 0.48f, 0.96f), 14);
+        AddFlatButton(schedule, T("button.study", "自习"), new Vector2(-28, -62), new Vector2(130, 30), () => RunSundayAction("study"), new Color(0.43f, 0.58f, 0.48f, 0.96f), 14);
+        AddFlatButton(schedule, T("button.invite", "邀约同窗"), new Vector2(110, -62), new Vector2(130, 30), ShowInviteEvent, new Color(0.38f, 0.52f, 0.64f, 0.96f), 14);
+        AddFlatButton(schedule, T("button.campus_activity", "周末活动"), new Vector2(-98, -100), new Vector2(194, 30), ShowCampusActivity, new Color(0.38f, 0.52f, 0.64f, 0.96f), 14);
+        AddFlatButton(schedule, T("button.battle_lab", "战棋工坊"), new Vector2(126, -100), new Vector2(194, 30), ShowBattleLabEditor, new Color(0.52f, 0.42f, 0.62f, 0.96f), 14);
 
-        RectTransform logCard = CreateRect("AcademyLogCard", schedule, new Vector2(0, -208), new Vector2(374, 104), new Color(0.060f, 0.050f, 0.040f, 0.78f));
-        AddText(logCard, T("label.log", "日志："), new Vector2(-168, 38), new Vector2(120, 20), 14, TextAnchor.MiddleLeft, highlightColor);
-        Text logText = AddText(logCard, LatestLog(4), new Vector2(0, -12), new Vector2(336, 72), 12, TextAnchor.UpperLeft, muted);
+        RectTransform logCard = CreateRect("AcademyLogCard", schedule, new Vector2(0, -194), new Vector2(440, 114), new Color(0.96f, 0.88f, 0.68f, 0.48f));
+        AddText(logCard, T("label.log", "日志："), new Vector2(-198, 42), new Vector2(120, 20), 14, TextAnchor.MiddleLeft, highlightColor);
+        Text logText = AddText(logCard, LatestLog(4), new Vector2(0, -10), new Vector2(398, 82), 12, TextAnchor.UpperLeft, muted);
         logText.lineSpacing = 0.9f;
         logText.verticalOverflow = VerticalWrapMode.Truncate;
+    }
 
-        DrawRelationships(root);
+    private void DrawAcademyInspectorColumn(Transform inspector)
+    {
+        AddSectionTitle(inspector, T("academy.section_action_preview", "行动预览"), new Vector2(-144, 246), new Vector2(292, 30));
 
-        RectTransform eventPanel = CreateUiPanel("AcademyEventPanel", root, new Vector2(405, -200), new Vector2(350, 188));
-        AddSectionTitle(eventPanel, T("academy.section_events", "事件入口"), new Vector2(-144, 76), new Vector2(292, 26));
-        Text dossier = AddText(eventPanel, SecretDossierSummary(), new Vector2(0, 48), new Vector2(296, 24), 12, TextAnchor.MiddleLeft, muted);
-        dossier.verticalOverflow = VerticalWrapMode.Truncate;
-        AddFlatButton(eventPanel, T("button.newspaper", "报纸"), new Vector2(-78, 12), new Vector2(136, 28), ShowNewspaperMenu, new Color(0.19f, 0.16f, 0.12f, 0.96f), 13);
-        AddFlatButton(eventPanel, T("button.ideology", "立场"), new Vector2(78, 12), new Vector2(136, 28), ShowIdeologyPanel, new Color(0.19f, 0.16f, 0.12f, 0.96f), 13);
-        AddFlatButton(eventPanel, T("button.main_story", "主线"), new Vector2(-78, -24), new Vector2(136, 28), () => StartStory(currentMainEventId, ScreenMode.Academy), new Color(0.18f, 0.28f, 0.19f, 0.96f), 13);
-        AddFlatButton(eventPanel, T("button.strategy_short", "战略"), new Vector2(78, -24), new Vector2(136, 28), ShowStrategy, new Color(0.18f, 0.20f, 0.27f, 0.96f), 13);
-        AddFlatButton(eventPanel, T("button.story_menu", "剧情目录"), new Vector2(-78, -60), new Vector2(136, 28), () =>
+        RectTransform preview = CreateRect("AcademyPreviewBand", inspector, new Vector2(0, 184), new Vector2(292, 92), new Color(0.96f, 0.88f, 0.68f, 0.48f));
+        AddText(preview, T("academy.preview_main_check", "主线检定"), new Vector2(-126, 34), new Vector2(120, 20), 14, TextAnchor.MiddleLeft, highlightColor);
+        Text previewText = AddText(preview, RecommendedActionSummary() + "\n" + SecretDossierSummary(), new Vector2(0, -8), new Vector2(254, 58), 12, TextAnchor.UpperLeft, muted);
+        previewText.lineSpacing = 0.9f;
+        previewText.verticalOverflow = VerticalWrapMode.Truncate;
+
+        AddButton(inspector, T("button.continue_main_story", "继续主线"), new Vector2(-78, 120), new Vector2(136, 32), () => StartStory(currentMainEventId, ScreenMode.Academy), new Color(0.43f, 0.58f, 0.48f, 0.96f));
+        AddButton(inspector, T("button.strategy_short", "战略"), new Vector2(78, 120), new Vector2(136, 32), ShowStrategy, new Color(0.38f, 0.52f, 0.64f, 0.96f));
+
+        AddText(inspector, T("label.relationships", "同窗关系"), new Vector2(-144, 78), new Vector2(292, 24), 15, TextAnchor.MiddleLeft, highlightColor);
+        int visibleRelationships = Mathf.Min(relationships.Count, 3);
+        for (int i = 0; i < visibleRelationships; i++)
         {
-            storyReturnMode = ScreenMode.Academy;
-            ShowStoryMenu();
-        }, new Color(0.19f, 0.16f, 0.12f, 0.96f), 13);
-        AddFlatButton(eventPanel, T("button.character_archive", "角色档案"), new Vector2(78, -60), new Vector2(136, 28), () =>
+            Relationship rel = relationships[i];
+            string itemLabel = TF("relationship.button_label_compact", "{0}  {1}  好感{2}", rel.name, RelationshipLevel(rel.affection), rel.affection);
+            AddFlatButton(inspector, itemLabel, new Vector2(0, 46 - i * 36), new Vector2(292, 28), () => ShowRelationshipDetail(rel.id), i % 2 == 0 ? new Color(0.38f, 0.52f, 0.64f, 0.96f) : new Color(0.43f, 0.58f, 0.48f, 0.96f), 12, TextAnchor.MiddleLeft);
+        }
+
+        AddFlatButton(inspector, T("relationship.more_button", "更多人物：角色档案"), new Vector2(0, -70), new Vector2(292, 28), () =>
         {
             storyReturnMode = ScreenMode.Academy;
             ShowCharacterArchive();
-        }, new Color(0.19f, 0.16f, 0.12f, 0.96f), 13);
+        }, new Color(0.72f, 0.57f, 0.28f, 0.96f), 12);
+
+        AddText(inspector, T("academy.section_events", "事件入口"), new Vector2(-144, -112), new Vector2(292, 24), 15, TextAnchor.MiddleLeft, highlightColor);
+        Text dossier = AddText(inspector, SecretDossierSummary(), new Vector2(0, -136), new Vector2(292, 22), 12, TextAnchor.MiddleLeft, muted);
+        dossier.verticalOverflow = VerticalWrapMode.Truncate;
+        AddFlatButton(inspector, T("button.newspaper", "报纸"), new Vector2(-78, -170), new Vector2(136, 28), ShowNewspaperMenu, new Color(0.72f, 0.57f, 0.28f, 0.96f), 13);
+        AddFlatButton(inspector, T("button.ideology", "立场"), new Vector2(78, -170), new Vector2(136, 28), ShowIdeologyPanel, new Color(0.72f, 0.57f, 0.28f, 0.96f), 13);
+        AddFlatButton(inspector, T("button.story_menu", "剧情目录"), new Vector2(-78, -206), new Vector2(136, 28), () =>
+        {
+            storyReturnMode = ScreenMode.Academy;
+            ShowStoryMenu();
+        }, new Color(0.52f, 0.42f, 0.62f, 0.96f), 13);
+        AddFlatButton(inspector, T("button.character_archive", "角色档案"), new Vector2(78, -206), new Vector2(136, 28), () =>
+        {
+            storyReturnMode = ScreenMode.Academy;
+            ShowCharacterArchive();
+        }, new Color(0.52f, 0.42f, 0.62f, 0.96f), 13);
     }
 
     private void DrawCurrentGoalCard(Transform parent, Vector2 pos, Vector2 size)
     {
-        RectTransform goal = CreateRect("CurrentGoalCard", parent, pos, size, new Color(0.075f, 0.060f, 0.047f, 0.86f));
+        RectTransform goal = CreateRect("CurrentGoalCard", parent, pos, size, new Color(0.96f, 0.88f, 0.68f, 0.48f));
         AddText(goal, T("goal.current_title", "当前目标"), new Vector2(-size.x * 0.5f + 62f, size.y * 0.5f - 18f), new Vector2(120, 24), 16, TextAnchor.MiddleLeft, highlightColor);
         AddText(goal, CurrentGoalSummary() + "\n" + RecommendedActionSummary(), new Vector2(8, -10), new Vector2(size.x - 34f, size.y - 32f), 13, TextAnchor.UpperLeft, muted);
     }
@@ -4509,17 +4581,17 @@ public sealed class MingLuGame : MonoBehaviour
     {
         if (returnMode == ScreenMode.Academy)
         {
-            RectTransform compactDock = CreateRect("SystemDockCompact", parent, new Vector2(0, -336), new Vector2(560, 46), new Color(0.085f, 0.065f, 0.050f, 0.82f));
-            Vector2 compactButtonSize = new Vector2(112, 18);
+            RectTransform compactDock = CreateSpriteRect("SystemDockCompact", parent, new Vector2(0, -322), new Vector2(720, 52), "Art/UI/topbar_clean_paper", panel, true, false, new Vector4(28, 28, 28, 28));
+            Vector2 compactButtonSize = new Vector2(118, 20);
             float compactStartX = -180f;
-            float compactGap = 120f;
+            float compactGap = 126f;
             AddFlatButton(compactDock, T("button.map_tab", "地图"), new Vector2(compactStartX + compactGap * 0, 10), compactButtonSize, () => ReturnToMode(returnMode), null, 11);
             AddFlatButton(compactDock, T("button.formation", "编队"), new Vector2(compactStartX + compactGap * 1, 10), compactButtonSize, () => ShowFormationPanel(returnMode), null, 11);
             AddFlatButton(compactDock, T("button.character", "角色"), new Vector2(compactStartX + compactGap * 2, 10), compactButtonSize, () => ShowCharacterStatusPanel(returnMode), null, 11);
             AddFlatButton(compactDock, T("button.skills", "技能"), new Vector2(compactStartX + compactGap * 3, 10), compactButtonSize, () => ShowSkillPanel(returnMode), null, 11);
             AddFlatButton(compactDock, T("button.quests", "任务"), new Vector2(compactStartX + compactGap * 0, -10), compactButtonSize, () => ShowQuestLog(returnMode), null, 11);
             AddFlatButton(compactDock, T("button.diplomacy", "外交"), new Vector2(compactStartX + compactGap * 1, -10), compactButtonSize, () => ShowDiplomacyPanel(returnMode), null, 11);
-            AddFlatButton(compactDock, T("button.intelligence", "情报"), new Vector2(compactStartX + compactGap * 2, -10), compactButtonSize, () => ShowIntelligencePanel(returnMode), new Color(0.16f, 0.18f, 0.24f, 0.96f), 11);
+            AddFlatButton(compactDock, T("button.intelligence", "情报"), new Vector2(compactStartX + compactGap * 2, -10), compactButtonSize, () => ShowIntelligencePanel(returnMode), new Color(0.38f, 0.52f, 0.64f, 0.96f), 11);
             AddFlatButton(compactDock, T("button.settings", "设置"), new Vector2(compactStartX + compactGap * 3, -10), compactButtonSize, () => ShowSettingsPanel(returnMode), null, 11);
             return;
         }
@@ -4776,7 +4848,7 @@ public sealed class MingLuGame : MonoBehaviour
 
     private void DrawCompactAcademyAttributeBars(Transform parent)
     {
-        AddText(parent, T("label.character_attributes", "角色属性"), new Vector2(-94, -32), new Vector2(160, 22), 15, TextAnchor.MiddleLeft, highlightColor);
+        AddText(parent, T("label.character_attributes", "角色属性"), new Vector2(-94, -78), new Vector2(160, 22), 15, TextAnchor.MiddleLeft, highlightColor);
         DrawCompactAcademyAttributeBar(parent, T("attribute.infantry", "步兵"), player.infantryExp, 0);
         DrawCompactAcademyAttributeBar(parent, T("attribute.cavalry", "骑兵"), player.cavalryExp, 1);
         DrawCompactAcademyAttributeBar(parent, T("attribute.artillery", "炮兵"), player.artilleryExp, 2);
@@ -4787,13 +4859,13 @@ public sealed class MingLuGame : MonoBehaviour
 
     private void DrawCompactAcademyAttributeBar(Transform parent, string label, int exp, int index)
     {
-        float y = -62 - index * 26;
+        float y = -104 - index * 23;
         int level = AcademyDisplayLevel(exp);
         AddText(parent, label + " Lv." + level, new Vector2(-80, y), new Vector2(92, 20), 12, TextAnchor.MiddleLeft);
         float barWidth = 126f;
-        CreateRect("CompactBarBack_" + label, parent, new Vector2(32, y - 1), new Vector2(barWidth, 8), new Color(0.09f, 0.10f, 0.12f, 0.95f));
+        CreateRect("CompactBarBack_" + label, parent, new Vector2(32, y - 1), new Vector2(barWidth, 8), new Color(0.79f, 0.70f, 0.52f, 0.72f));
         float fillWidth = Mathf.Max(2f, barWidth * AcademyProgress01(exp));
-        CreateRect("CompactBarFill_" + label, parent, new Vector2(32 - barWidth * 0.5f + fillWidth * 0.5f, y - 1), new Vector2(fillWidth, 8), highlightColor);
+        CreateRect("CompactBarFill_" + label, parent, new Vector2(32 - barWidth * 0.5f + fillWidth * 0.5f, y - 1), new Vector2(fillWidth, 8), new Color(0.33f, 0.55f, 0.43f, 0.96f));
         AddText(parent, AcademyProgressLabel(exp), new Vector2(108, y), new Vector2(48, 18), 10, TextAnchor.MiddleRight, muted);
     }
 
@@ -4815,9 +4887,9 @@ public sealed class MingLuGame : MonoBehaviour
         AddText(parent, label + "  Lv." + level, new Vector2(-128, y), new Vector2(140, 24), 15, TextAnchor.MiddleLeft);
         AddText(parent, AcademyProgressLabel(exp), new Vector2(157, y), new Vector2(110, 24), 13, TextAnchor.MiddleRight, muted);
         float barWidth = 210f;
-        CreateRect("BarBack_" + label, parent, new Vector2(35, y - 14), new Vector2(barWidth, 9), new Color(0.09f, 0.10f, 0.12f, 0.95f));
+        CreateRect("BarBack_" + label, parent, new Vector2(35, y - 14), new Vector2(barWidth, 9), new Color(0.79f, 0.70f, 0.52f, 0.72f));
         float fillWidth = Mathf.Max(2f, barWidth * AcademyProgress01(exp));
-        CreateRect("BarFill_" + label, parent, new Vector2(35 - barWidth * 0.5f + fillWidth * 0.5f, y - 14), new Vector2(fillWidth, 9), highlightColor);
+        CreateRect("BarFill_" + label, parent, new Vector2(35 - barWidth * 0.5f + fillWidth * 0.5f, y - 14), new Vector2(fillWidth, 9), new Color(0.33f, 0.55f, 0.43f, 0.96f));
     }
 
     private int AcademyDisplayLevel(int exp)
@@ -7627,7 +7699,7 @@ public sealed class MingLuGame : MonoBehaviour
         string title = battle.outcome == "victory" ? T("battle.outcome_victory", "战役胜利") : T("battle.outcome_defeat", "战役失败");
         string body = battle.outcome == "victory" ? T("battle.outcome_victory_body", "敌军已被击溃，或中央据点已被我方巩固。") : T("battle.outcome_defeat_body", "我方军团被迫撤退，或中央据点落入敌方掌控。");
         AddText(root, title, new Vector2(0, 60), new Vector2(520, 70), 42, TextAnchor.MiddleCenter, highlightColor);
-        AddText(root, body, new Vector2(0, -5), new Vector2(760, 70), 20, TextAnchor.MiddleCenter, ink);
+        AddText(root, body, new Vector2(0, -5), new Vector2(760, 70), 20, TextAnchor.MiddleCenter, new Color(1.00f, 0.96f, 0.84f));
         if (battle != null && !battle.fromStrategy)
         {
             AddButton(root, T("button.back_battle_lab", "返回工坊"), new Vector2(0, -90), new Vector2(210, 48), ReturnToBattleLabAfterTest, new Color(0.28f, 0.37f, 0.26f));
