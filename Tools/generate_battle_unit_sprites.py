@@ -18,6 +18,7 @@ MANIFEST = OUT_ROOT / "battle_unit_manifest.json"
 PREVIEW = PROJECT_ROOT / "DataTables" / "battle_unit_sprites_preview.png"
 MAP_PREVIEW = PROJECT_ROOT / "DataTables" / "battle_map_style_preview.png"
 SIZE = 128
+STYLE_LABEL = "chosen tactical token style C; normal-proportion single soldier, hex base, Chinese topknot, blue-red-gold lamellar uniforms"
 
 
 UNITS = [
@@ -137,12 +138,17 @@ def line(draw, xy, fill, width=1):
 
 def draw_compact_base(draw, p, phase, hit_flash=0):
     y = 104 + math.sin(phase) * 0.5
-    ellipse(draw, (28, y - 10, 100, y + 12), (0, 0, 0, 58))
-    ellipse(draw, (31, y - 14, 97, y + 5), rgba((49, 38, 30), 210))
-    ellipse(draw, (34, y - 15, 94, y + 1), rgba(p["base"], 230), rgba(p["trim"], 210), 2)
-    draw.arc((36, y - 15, 92, y + 1), 198, 343, fill=rgba(lighten(p["base"], 50), 120), width=2)
+    shadow = [(32, y - 3), (47, y - 13), (82, y - 13), (99, y - 3), (83, y + 9), (46, y + 9)]
+    top = [(29, y - 6), (45, y - 19), (83, y - 19), (101, y - 6), (84, y + 8), (45, y + 8)]
+    rim = [(34, y - 8), (48, y - 17), (81, y - 17), (95, y - 8), (81, y + 3), (49, y + 3)]
+    draw.polygon([(int(x), int(yy + 6)) for x, yy in shadow], fill=(0, 0, 0, 52))
+    draw.polygon([(int(x), int(yy)) for x, yy in top], fill=rgba((43, 37, 29), 230), outline=rgba((26, 21, 17), 220))
+    draw.polygon([(int(x), int(yy)) for x, yy in rim], fill=rgba(blend(p["base"], (166, 139, 79), 0.38), 238), outline=rgba(p["trim"], 230))
+    draw.line([(37, y - 7), (49, y - 15), (80, y - 15), (92, y - 7)], fill=rgba(lighten(p["base"], 56), 110), width=2)
+    for gx in (48, 64, 80):
+        draw.line((gx, y - 14, gx - 5, y + 2), fill=(35, 29, 22, 42), width=1)
     if hit_flash:
-        ellipse(draw, (30, y - 17, 98, y + 5), (225, 45, 36, hit_flash))
+        draw.polygon([(int(x), int(yy)) for x, yy in top], fill=(225, 45, 36, hit_flash))
 
 
 def draw_small_flag(draw, p, x, y, phase, attack):
@@ -176,6 +182,8 @@ def draw_head(draw, x, y, p, heavy, seed, scale=1.0):
     if heavy:
         draw.arc((x - rx - 2, y - ry - 3, x + rx + 2, y + ry - 1), 185, 355, fill=rgba(p["metal"], 238), width=max(2, int(2 * scale)))
         line(draw, (x - rx, y - ry - 1, x + rx, y - ry - 1), rgba(lighten(p["metal"], 24), 170), 1)
+        ellipse(draw, (x - 3, y - ry - 8, x + 3, y - ry - 3), rgba(hair, 235))
+        line(draw, (x - 4, y - ry - 4, x + 4, y - ry - 4), rgba(p["trim"], 190), 1)
     else:
         draw.pieslice((x - rx - 2, y - ry - 5, x + rx + 2, y + 2), 190, 350, fill=rgba(hair, 245))
         ellipse(draw, (x - 3, y - ry - 7, x + 3, y - ry - 2), rgba(hair, 245))
@@ -259,6 +267,12 @@ def draw_arm_and_weapon(draw, role, x, y, p, attack, phase, facing=1, scale=1.0)
         hy = y + int(10 - attack * 12)
         line(draw, (x - 14 * facing, y + 48, hx, hy), rgba(wood), 5)
         draw.polygon([(hx, hy - 12), (hx + 14 * facing, hy), (hx, hy + 13)], fill=rgba(metal))
+    elif role == "infantry":
+        tx = x + int((25 + attack * 14) * facing)
+        ty = y + int(14 - attack * 7)
+        line(draw, (x - 10 * facing, y + 44, tx - 5 * facing, ty + 7), rgba((72, 45, 26)), max(2, int(3 * scale)))
+        draw.arc((tx - 25, ty - 16, tx + 19, ty + 28), -55 if facing > 0 else 125, 26 if facing > 0 else 206, fill=rgba(metal), width=max(3, int(4 * scale)))
+        draw.arc((tx - 22, ty - 13, tx + 18, ty + 24), -50 if facing > 0 else 130, 16 if facing > 0 else 196, fill=rgba((240, 238, 218), 150), width=1)
     else:
         tx = x + int((30 + attack * 13) * facing)
         ty = y + int(12 - attack * 6)
@@ -351,25 +365,28 @@ def render_unit(unit_id, role, family, anim, frame):
     img = Image.new("RGBA", (SIZE, SIZE), (0, 0, 0, 0))
     draw = ImageDraw.Draw(img, "RGBA")
     draw_compact_base(draw, p, phase, hit_flash)
-    draw_small_flag(draw, p, 25, 19 + int(bob * 0.35), phase, attack)
 
     facing = 1
     if role in ("cavalry", "heavy_cavalry"):
-        for i, (ox, oy) in enumerate(role_offsets(role)):
-            draw_horseman(draw, 64 + ox, 37 + oy + int(bob), p, phase + i, role == "heavy_cavalry", attack, stable_hash(unit_id) + i, facing)
+        draw_horseman(draw, 62, 42 + int(bob), p, phase, role == "heavy_cavalry", attack, stable_hash(unit_id), facing)
+        if family in ("imperial", "believer"):
+            draw_small_flag(draw, p, 26, 23 + int(bob * 0.35), phase, attack * 0.65)
     elif role == "artillery":
-        draw_normal_soldier(draw, "infantry", 40, 42 + int(bob), p, phase, 0, stable_hash(unit_id), facing, 0.78)
-        draw_normal_soldier(draw, "infantry", 82, 40 + int(bob), p, phase + 0.8, 0, stable_hash(unit_id) + 3, facing, 0.78)
-        draw_cannon(draw, 63, 60 + int(bob), p, attack, facing)
+        draw_cannon(draw, 61, 61 + int(bob), p, attack, facing)
+        draw_normal_soldier(draw, "infantry", 43, 39 + int(bob), p, phase, 0, stable_hash(unit_id), facing, 0.82)
+        draw_normal_soldier(draw, "infantry", 84, 39 + int(bob), p, phase + 0.8, 0, stable_hash(unit_id) + 3, facing, 0.82)
     else:
-        offsets = role_offsets(role)
-        for i, (ox, oy) in enumerate(sorted(offsets, key=lambda value: value[1])):
-            member_attack = attack if i == len(offsets) - 1 else attack * 0.65
-            scale = 0.92 if role not in ("brute", "heavy_brute") else 0.96
-            draw_normal_soldier(draw, role, 64 + ox, 37 + oy + int(bob), p, phase + i * 0.7, member_attack, stable_hash(unit_id) + i, facing, scale)
+        scale = 1.08
+        if role in ("brute", "heavy_brute", "heavy_infantry", "heavy_spear"):
+            scale = 1.12
+        if role in ("archer", "heavy_archer", "musket"):
+            scale = 1.05
+        draw_normal_soldier(draw, role, 64, 34 + int(bob), p, phase, attack, stable_hash(unit_id), facing, scale)
+        if unit_id in ("leader_guard", "imperial_halberdiers", "believer_elites"):
+            draw_small_flag(draw, p, 25, 24 + int(bob * 0.35), phase, attack * 0.5)
 
     if anim == "attack" and attack > 0.55 and role not in ("musket", "artillery", "archer", "heavy_archer"):
-        draw.arc((72, 23, 130, 95), -35, 55, fill=(255, 225, 116, 145), width=5)
+        draw.arc((70, 18, 126, 92), -35, 55, fill=(255, 225, 116, 145), width=5)
     if anim == "hit":
         for i in range(4):
             x = 27 + i * 20 + (frame % 2) * 5
@@ -488,7 +505,7 @@ def save_frames():
         json.dumps(
             {
                 "generatedAt": datetime.now().isoformat(timespec="seconds"),
-                "style": "normal-proportion historical soldier squads; readable full-body troops, compact bases, banners, move/attack/hit sequence frames",
+                "style": STYLE_LABEL,
                 "units": manifest_units,
             },
             ensure_ascii=False,
