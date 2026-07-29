@@ -51,6 +51,18 @@ NORTH_AMERICA_CODES = {
     "ATG", "DMA", "KNA", "BMU", "VIR", "CYM", "SPM",
 }
 
+CHINESE_REGION_NAMES = [
+    "天澜", "天岁", "羽州", "霁云川", "星落原", "月隐泽", "苍汐湾", "曜石岭", "玄雾关", "青鹭汀",
+    "赤霞浦", "银沙津", "玉衡台", "风眠谷", "云栖野", "雁回川", "鹿鸣泽", "鹤归岭", "龙吟湾", "凤翎原",
+    "松影津", "溪月关", "汐语台", "霞照岭", "黎星浦", "晨霜谷", "暮云泽", "岚歌湾", "瀚月原", "沧羽汀",
+    "景星川", "朔风岭", "熙光津", "昭雾台", "宁霞浦", "安月泽", "靖星湾", "怀霜原", "望云关", "归鹤汀",
+    "绯雪川", "素潮湾", "碧落原", "金乌岭", "白鹿津", "紫宸泽", "墨羽浦", "青冥原", "玄鸟岭", "长风汀",
+    "流火泽", "飞霜津", "落星台", "朝雾湾", "夜澜川", "晴岚原", "雨鹤浦", "雪汐关", "雷泽岭", "云帆津",
+    "星槎湾", "月轮原", "雾海汀", "霜岫川", "苍曜台", "青蘅泽", "赤羽关", "银澜浦", "玉霄岭", "风烛原",
+    "云镜湾", "雁书津", "鹿野汀", "鹤梦泽", "龙烛台", "凤歌川", "松月湾", "溪岚原", "汐风浦", "霞羽岭",
+    "黎光关", "晨星泽", "暮雪津", "岚月汀", "瀚霜湾", "沧星原",
+]
+
 
 def project_to(lon: float, lat: float, width: int, height: int) -> tuple[float, float]:
     if lon < LON_MIN:
@@ -137,8 +149,18 @@ def load_cities() -> list[dict[str, object]]:
             if all(haversine_km(city, other) >= minimum_distance for other in selected):
                 selected.append(city)
                 if len(selected) >= TARGET_CITY_COUNT:
-                    return selected
-    return selected[:TARGET_CITY_COUNT]
+                    return assign_strategy_names(selected)
+    return assign_strategy_names(selected[:TARGET_CITY_COUNT])
+
+
+def assign_strategy_names(cities: list[dict[str, object]]) -> list[dict[str, object]]:
+    if len(cities) > len(CHINESE_REGION_NAMES):
+        raise ValueError("Not enough Chinese strategy names for selected cities")
+    # Coordinate order keeps the assignment stable even if population rankings change.
+    ordered = sorted(cities, key=lambda city: (-float(city["lat"]), float(city["lon"])))
+    for city, strategy_name in zip(ordered, CHINESE_REGION_NAMES):
+        city["strategy_name"] = strategy_name
+    return cities
 
 
 def draw_land_mask() -> np.ndarray:
@@ -355,7 +377,7 @@ def render_map(
             continue
         radius = 7 if int(city["capital"]) else 5
         draw.ellipse((x - radius, y - radius, x + radius, y + radius), fill=(245, 217, 151, 255), outline=(55, 35, 30, 255), width=3)
-        label = str(city["name_zh"] or city["name"])
+        label = str(city["strategy_name"])
         selected_font = capital_font if int(city["capital"]) else font
         box = draw.textbbox((0, 0), label, font=selected_font, stroke_width=2)
         label_w, label_h = box[2] - box[0], box[3] - box[1]
@@ -399,8 +421,8 @@ def export_regions(labels: np.ndarray, cities: list[dict[str, object]]) -> None:
             neighbors.setdefault(index, set()).add(nearest)
             neighbors.setdefault(nearest, set()).add(index)
     with CITY_INDEX.open("w", newline="", encoding="utf-8-sig") as handle:
-        fields = ["id", "city_name", "city_name_zh", "country", "country_code", "longitude", "latitude",
-                  "population", "map_x", "map_y", "neighbors"]
+        fields = ["id", "strategy_name", "source_city_name", "source_city_name_zh", "country", "country_code",
+                  "longitude", "latitude", "population", "map_x", "map_y", "neighbors"]
         writer = csv.DictWriter(handle, fieldnames=fields)
         writer.writeheader()
         for index, city in enumerate(cities):
@@ -408,8 +430,9 @@ def export_regions(labels: np.ndarray, cities: list[dict[str, object]]) -> None:
             writer.writerow(
                 {
                     "id": city["id"],
-                    "city_name": city["name"],
-                    "city_name_zh": city["name_zh"],
+                    "strategy_name": city["strategy_name"],
+                    "source_city_name": city["name"],
+                    "source_city_name_zh": city["name_zh"],
                     "country": city["country"],
                     "country_code": city["country_code"],
                     "longitude": f"{float(city['lon']):.6f}",
