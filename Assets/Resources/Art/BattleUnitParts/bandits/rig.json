@@ -1,0 +1,80 @@
+{
+  "id": "bandits",
+  "role": "skirmisher",
+  "family": "outlaw",
+  "style": "modular inked miniature style; normal-proportion Chinese topknot soldiers, blue-red-gold lamellar uniforms, tabletop hex base, articulated reusable body parts",
+  "parts": [
+    {
+      "name": "base",
+      "role": "base",
+      "pivot": {
+        "x": 64,
+        "y": 64
+      },
+      "asset": "Art/BattleUnitParts/bandits/base"
+    },
+    {
+      "name": "head",
+      "role": "head",
+      "pivot": {
+        "x": 40,
+        "y": 57
+      },
+      "asset": "Art/BattleUnitParts/bandits/head"
+    },
+    {
+      "name": "torso",
+      "role": "torso",
+      "pivot": {
+        "x": 48,
+        "y": 58
+      },
+      "asset": "Art/BattleUnitParts/bandits/torso"
+    },
+    {
+      "name": "front_arm",
+      "role": "arm",
+      "pivot": {
+        "x": 15,
+        "y": 31
+      },
+      "asset": "Art/BattleUnitParts/bandits/front_arm"
+    },
+    {
+      "name": "back_arm",
+      "role": "arm",
+      "pivot": {
+        "x": 15,
+        "y": 31
+      },
+      "asset": "Art/BattleUnitParts/bandits/back_arm"
+    },
+    {
+      "name": "front_leg",
+      "role": "leg",
+      "pivot": {
+        "x": 39,
+        "y": 14
+      },
+      "asset": "Art/BattleUnitParts/bandits/front_leg"
+    },
+    {
+      "name": "back_leg",
+      "role": "leg",
+      "pivot": {
+        "x": 39,
+        "y": 14
+      },
+      "asset": "Art/BattleUnitParts/bandits/back_leg"
+    },
+    {
+      "name": "weapon",
+      "role": "weapon",
+      "pivot": {
+        "x": 45,
+        "y": 70
+      },
+      "asset": "Art/BattleUnitParts/bandits/weapon"
+    }
+  ]
+}

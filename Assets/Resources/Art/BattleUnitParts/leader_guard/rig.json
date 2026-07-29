@@ -1,0 +1,98 @@
+{
+  "id": "leader_guard",
+  "role": "heavy_infantry",
+  "family": "believer",
+  "style": "modular inked miniature style; normal-proportion Chinese topknot soldiers, blue-red-gold lamellar uniforms, tabletop hex base, articulated reusable body parts",
+  "parts": [
+    {
+      "name": "base",
+      "role": "base",
+      "pivot": {
+        "x": 64,
+        "y": 64
+      },
+      "asset": "Art/BattleUnitParts/leader_guard/base"
+    },
+    {
+      "name": "head",
+      "role": "head",
+      "pivot": {
+        "x": 40,
+        "y": 57
+      },
+      "asset": "Art/BattleUnitParts/leader_guard/head"
+    },
+    {
+      "name": "torso",
+      "role": "torso",
+      "pivot": {
+        "x": 48,
+        "y": 58
+      },
+      "asset": "Art/BattleUnitParts/leader_guard/torso"
+    },
+    {
+      "name": "front_arm",
+      "role": "arm",
+      "pivot": {
+        "x": 15,
+        "y": 31
+      },
+      "asset": "Art/BattleUnitParts/leader_guard/front_arm"
+    },
+    {
+      "name": "back_arm",
+      "role": "arm",
+      "pivot": {
+        "x": 15,
+        "y": 31
+      },
+      "asset": "Art/BattleUnitParts/leader_guard/back_arm"
+    },
+    {
+      "name": "front_leg",
+      "role": "leg",
+      "pivot": {
+        "x": 39,
+        "y": 14
+      },
+      "asset": "Art/BattleUnitParts/leader_guard/front_leg"
+    },
+    {
+      "name": "back_leg",
+      "role": "leg",
+      "pivot": {
+        "x": 39,
+        "y": 14
+      },
+      "asset": "Art/BattleUnitParts/leader_guard/back_leg"
+    },
+    {
+      "name": "weapon",
+      "role": "weapon",
+      "pivot": {
+        "x": 45,
+        "y": 70
+      },
+      "asset": "Art/BattleUnitParts/leader_guard/weapon"
+    },
+    {
+      "name": "shield",
+      "role": "shield",
+      "pivot": {
+        "x": 31,
+        "y": 31
+      },
+      "asset": "Art/BattleUnitParts/leader_guard/shield"
+    },
+    {
+      "name": "flag",
+      "role": "flag",
+      "pivot": {
+        "x": 24,
+        "y": 83
+      },
+      "asset": "Art/BattleUnitParts/leader_guard/flag"
+    }
+  ]
+}
