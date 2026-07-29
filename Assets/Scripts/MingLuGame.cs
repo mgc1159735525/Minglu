@@ -5788,8 +5788,17 @@ public sealed class MingLuGame : MonoBehaviour
 
     private void DrawStrategyDashboard()
     {
-        RectTransform map = CreateRect("Map", root, new Vector2(-160, 20), new Vector2(800, 560), new Color(0.50f, 0.50f, 0.43f, 0.94f));
-        CreateRect("MapInnerShade", map, Vector2.zero, new Vector2(760, 520), new Color(0.80f, 0.75f, 0.59f, 0.18f));
+        RectTransform map = CreateRect("Map", root, new Vector2(-160, 20), new Vector2(800, 560), new Color(0.18f, 0.20f, 0.21f, 0.98f));
+        CreateSpriteRect(
+            "NorthAmericaAtlas",
+            map,
+            new Vector2(0, 18),
+            new Vector2(780, 439),
+            "Art/StrategyMap/north_america_city_regions",
+            new Color(0.46f, 0.50f, 0.48f),
+            false,
+            true);
+        CreateRect("MapInnerShade", map, new Vector2(0, 18), new Vector2(780, 439), new Color(0.10f, 0.08f, 0.07f, 0.10f));
         foreach (Province p in provinces)
         {
             foreach (string road in p.roads)

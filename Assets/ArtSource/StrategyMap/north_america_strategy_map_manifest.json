@@ -1,0 +1,56 @@
+{
+  "name": "North America Strategy Map",
+  "projection": "continuous equirectangular across the international date line",
+  "extent": {
+    "west": 160,
+    "east": -40,
+    "south": 6.0,
+    "north": 85.0
+  },
+  "size": {
+    "width": 3072,
+    "height": 1728
+  },
+  "tiles": {
+    "columns": 4,
+    "rows": 3,
+    "files": [
+      "north_america_r1_c1.png",
+      "north_america_r1_c2.png",
+      "north_america_r1_c3.png",
+      "north_america_r1_c4.png",
+      "north_america_r2_c1.png",
+      "north_america_r2_c2.png",
+      "north_america_r2_c3.png",
+      "north_america_r2_c4.png",
+      "north_america_r3_c1.png",
+      "north_america_r3_c2.png",
+      "north_america_r3_c3.png",
+      "north_america_r3_c4.png"
+    ]
+  },
+  "ew3_style_tiles": {
+    "columns": 4,
+    "rows": 3,
+    "files": [
+      "north_america_ew3_r1_c1.png",
+      "north_america_ew3_r1_c2.png",
+      "north_america_ew3_r1_c3.png",
+      "north_america_ew3_r1_c4.png",
+      "north_america_ew3_r2_c1.png",
+      "north_america_ew3_r2_c2.png",
+      "north_america_ew3_r2_c3.png",
+      "north_america_ew3_r2_c4.png",
+      "north_america_ew3_r3_c1.png",
+      "north_america_ew3_r3_c2.png",
+      "north_america_ew3_r3_c3.png",
+      "north_america_ew3_r3_c4.png"
+    ]
+  },
+  "admin1_units_indexed": 489,
+  "sources": [
+    "Natural Earth I with Shaded Relief and Water, 1:50m",
+    "Natural Earth Admin 0 Countries, 1:10m",
+    "Natural Earth Admin 1 States and Provinces, 1:10m"
+  ]
+}

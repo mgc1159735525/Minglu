@@ -1,0 +1,14 @@
+{
+  "map": "D:\\ml\\Assets\\Resources\\Art\\StrategyMap\\north_america_city_regions.png",
+  "city_regions": 86,
+  "grid": [
+    768,
+    432
+  ],
+  "partition": "multi-source terrain-cost expansion",
+  "barriers": [
+    "major rivers",
+    "terrain slope",
+    "coastlines"
+  ]
+}
