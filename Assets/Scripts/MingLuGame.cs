@@ -7408,22 +7408,25 @@ public sealed class MingLuGame : MonoBehaviour
 
     private void DrawBattleUnit(Transform board, BattleUnit unit)
     {
-        RectTransform rt = CreateEmptyRect("Unit_" + unit.id, board, UnitRenderPosition(unit), new Vector2(92, 104));
+        RectTransform rt = CreateEmptyRect("Unit_" + unit.id, board, UnitRenderPosition(unit), new Vector2(76, 80));
         EnsureCanvasRenderer(rt.gameObject);
         BattleUnitBadgeGraphic badge = rt.gameObject.AddComponent<BattleUnitBadgeGraphic>();
         badge.color = unit.faction == Faction.Player ? playerColor : enemyColor;
         badge.darkColor = unit.faction == Faction.Player ? new Color(0.08f, 0.18f, 0.32f) : new Color(0.31f, 0.08f, 0.08f);
         badge.goldColor = highlightColor;
-        Button button = rt.gameObject.AddComponent<Button>();
-        button.transition = Selectable.Transition.None;
-        button.targetGraphic = badge;
-        button.onClick.AddListener(() => ActivateOnce("unit_" + unit.id, () => OnHexClicked(unit.q, unit.r)));
-        AddBattleDragEvents(rt.gameObject);
+        badge.raycastTarget = false;
+        AddBattleUnitHitArea(rt, unit);
+
+        RectTransform statusLayer = CreateEmptyRect("UnitStatusLayer", rt, Vector2.zero, new Vector2(76, 80));
+        statusLayer.SetAsLastSibling();
+        statusLayer.gameObject.AddComponent<CanvasRenderer>();
+        AddBattleDragEvents(statusLayer.gameObject);
 
         Sprite unitSprite = LoadBattleUnitSprite(unit);
         if (unitSprite != null)
         {
-            RectTransform spriteRt = CreateRect("UnitSprite", rt, new Vector2(0, 4), new Vector2(90, 90), new Color(1f, 1f, 1f, 0f));
+            RectTransform spriteRt = CreateRect("UnitSprite", rt, new Vector2(0, 8), new Vector2(64, 64), new Color(1f, 1f, 1f, 0f));
+            spriteRt.SetAsFirstSibling();
             Image spriteImage = spriteRt.GetComponent<Image>();
             spriteImage.sprite = unitSprite;
             spriteImage.color = Color.white;
@@ -7433,33 +7436,48 @@ public sealed class MingLuGame : MonoBehaviour
         }
         else
         {
-            Text symbol = CreateText("Symbol", rt, RoleSymbol(unit.role), 25, Color.white, TextAnchor.MiddleCenter);
+            Text symbol = CreateText("Symbol", rt, RoleSymbol(unit.role), 21, Color.white, TextAnchor.MiddleCenter);
             symbol.raycastTarget = false;
             RectTransform symbolRt = symbol.GetComponent<RectTransform>();
             symbolRt.anchorMin = new Vector2(0.5f, 0.5f);
             symbolRt.anchorMax = new Vector2(0.5f, 0.5f);
             symbolRt.pivot = new Vector2(0.5f, 0.5f);
-            symbolRt.anchoredPosition = new Vector2(0, 8);
-            symbolRt.sizeDelta = new Vector2(52, 42);
+            symbolRt.anchoredPosition = new Vector2(0, 10);
+            symbolRt.sizeDelta = new Vector2(42, 34);
         }
 
-        Text label = CreateText("UnitLabel", rt, ShortBattleUnitName(unit) + "\nHP " + Mathf.Max(0, unit.hp), 11, ink, TextAnchor.MiddleCenter);
+        Text label = CreateText("UnitLabel", statusLayer, ShortBattleUnitName(unit), 9, ink, TextAnchor.MiddleCenter);
         label.raycastTarget = false;
         RectTransform labelRt = label.GetComponent<RectTransform>();
         labelRt.anchorMin = new Vector2(0.5f, 0.5f);
         labelRt.anchorMax = new Vector2(0.5f, 0.5f);
         labelRt.pivot = new Vector2(0.5f, 0.5f);
-        labelRt.anchoredPosition = new Vector2(0, -39);
-        labelRt.sizeDelta = new Vector2(100, 32);
+        labelRt.anchoredPosition = new Vector2(0, -25);
+        labelRt.sizeDelta = new Vector2(64, 18);
 
-        const float hpBarWidth = 56f;
-        CreateRect("HpBack", rt, new Vector2(0, -58), new Vector2(hpBarWidth, 5), new Color(0.15f, 0.10f, 0.08f, 0.95f));
+        const float hpBarWidth = 42f;
+        RectTransform hpBack = CreateRect("HpBack", statusLayer, new Vector2(0, -35), new Vector2(hpBarWidth, 4), new Color(0.15f, 0.10f, 0.08f, 0.95f));
+        hpBack.GetComponent<Image>().raycastTarget = false;
         float hpWidth = hpBarWidth * Mathf.Clamp01((float)Mathf.Max(0, unit.hp) / Mathf.Max(1, unit.maxHp));
-        RectTransform hp = CreateRect("Hp", rt, new Vector2((hpWidth - hpBarWidth) * 0.5f, -58), new Vector2(hpWidth, 5), unit.faction == Faction.Player ? new Color(0.22f, 0.72f, 0.39f) : new Color(0.82f, 0.26f, 0.20f));
+        RectTransform hp = CreateRect("Hp", statusLayer, new Vector2((hpWidth - hpBarWidth) * 0.5f, -35), new Vector2(hpWidth, 4), unit.faction == Faction.Player ? new Color(0.22f, 0.72f, 0.39f) : new Color(0.82f, 0.26f, 0.20f));
+        hp.GetComponent<Image>().raycastTarget = false;
         hp.pivot = new Vector2(0.5f, 0.5f);
 
         battleUnitViews[unit.id] = rt;
         battleUnitBadges[unit.id] = badge;
+    }
+
+    private void AddBattleUnitHitArea(RectTransform parent, BattleUnit unit)
+    {
+        RectTransform hit = CreateRect("UnitHitArea", parent, new Vector2(0, 8), new Vector2(50, 52), new Color(1f, 1f, 1f, 0.001f));
+        hit.SetAsLastSibling();
+        Image hitImage = hit.GetComponent<Image>();
+        hitImage.raycastTarget = true;
+        Button button = hit.gameObject.AddComponent<Button>();
+        button.transition = Selectable.Transition.None;
+        button.targetGraphic = hitImage;
+        button.onClick.AddListener(() => ActivateOnce("unit_" + unit.id, () => OnHexClicked(unit.q, unit.r)));
+        AddBattleDragEvents(hit.gameObject);
     }
 
     private string ShortBattleUnitName(BattleUnit unit)
