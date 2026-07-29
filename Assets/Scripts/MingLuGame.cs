@@ -1600,7 +1600,12 @@ public sealed class MingLuGame : MonoBehaviour
 
     private void Clear()
     {
-        for (int i = root.childCount - 1; i >= 0; i--) Destroy(root.GetChild(i).gameObject);
+        for (int i = root.childCount - 1; i >= 0; i--)
+        {
+            GameObject child = root.GetChild(i).gameObject;
+            if (Application.isPlaying) Destroy(child);
+            else DestroyImmediate(child);
+        }
     }
 
     private RectTransform CreateRect(string name, Transform parent, Vector2 pos, Vector2 size, Color color)
@@ -5906,7 +5911,7 @@ public sealed class MingLuGame : MonoBehaviour
 
     private void DrawStrategyDashboard()
     {
-        RectTransform map = CreateRect("Map", root, new Vector2(-178, 20), new Vector2(830, 520), new Color(0.73f, 0.70f, 0.58f, 0.94f));
+        RectTransform map = CreateRect("Map", root, new Vector2(-178, 20), new Vector2(830, 520), new Color(0.10f, 0.075f, 0.045f, 0.96f));
         DrawStrategyMapTerrain(map);
         foreach (Province p in provinces)
         {
@@ -5914,7 +5919,7 @@ public sealed class MingLuGame : MonoBehaviour
             {
                 Province target = ProvinceById(road);
                 if (target == null || string.CompareOrdinal(p.id, target.id) > 0) continue;
-                DrawLine(map, StrategyMapPosition(p), StrategyMapPosition(target), new Color(0.36f, 0.30f, 0.20f, 0.70f), 4);
+                DrawLine(map, StrategyMapPosition(p), StrategyMapPosition(target), new Color(0.13f, 0.09f, 0.045f, 0.82f), 3);
             }
         }
         foreach (Province p in provinces) DrawProvince(map, p);
@@ -5942,25 +5947,17 @@ public sealed class MingLuGame : MonoBehaviour
 
     private void DrawStrategyMapTerrain(Transform map)
     {
-        CreateRect("MapSeaTint", map, Vector2.zero, new Vector2(790, 490), new Color(0.50f, 0.66f, 0.70f, 0.20f));
-        CreateRect("MapLandMass", map, new Vector2(-35, 0), new Vector2(690, 455), new Color(0.83f, 0.78f, 0.58f, 0.72f));
-        DrawMapPatch(map, "PacificCoast", new Vector2(-342, 0), new Vector2(92, 410), new Color(0.47f, 0.66f, 0.70f, 0.42f), T("strategy.map_pacific", "太平洋"));
-        DrawMapPatch(map, "AtlanticCoast", new Vector2(354, -6), new Vector2(92, 420), new Color(0.47f, 0.66f, 0.70f, 0.42f), T("strategy.map_atlantic", "大西洋"));
-        DrawMapPatch(map, "Gulf", new Vector2(105, -226), new Vector2(360, 62), new Color(0.47f, 0.66f, 0.70f, 0.40f), T("strategy.map_gulf", "墨湾"));
-        DrawMapPatch(map, "Rockies", new Vector2(-214, 20), new Vector2(88, 370), new Color(0.50f, 0.42f, 0.30f, 0.42f), T("strategy.map_rockies", "落基山脉"));
-        DrawMapPatch(map, "GreatPlains", new Vector2(-74, -12), new Vector2(170, 380), new Color(0.83f, 0.72f, 0.48f, 0.38f), T("strategy.map_plains", "大平原"));
-        DrawMapPatch(map, "Appalachia", new Vector2(178, -8), new Vector2(82, 300), new Color(0.39f, 0.54f, 0.36f, 0.34f), T("strategy.map_appalachia", "青岭山脉"));
+        RectTransform mapArt = CreateSpriteRect("NorthAmericaStrategyMap", map, Vector2.zero, new Vector2(806, 500), "Art/Scenes/scene_strategy", new Color(0.48f, 0.42f, 0.31f, 0.96f), false, false);
+        Image mapImage = mapArt.GetComponent<Image>();
+        if (mapImage != null) mapImage.raycastTarget = false;
 
-        DrawStrategyRiver(map, new Vector2(-80, 108), new Vector2(-22, 52), new Vector2(12, -46), new Vector2(45, -172));
-        DrawStrategyRiver(map, new Vector2(106, 76), new Vector2(88, 26), new Vector2(76, -45), new Vector2(48, -174));
-        DrawStrategyRiver(map, new Vector2(236, 72), new Vector2(220, 30), new Vector2(206, -28), new Vector2(196, -92));
+        RectTransform shade = CreateRect("MapReadabilityShade", map, Vector2.zero, new Vector2(806, 500), new Color(0.02f, 0.016f, 0.010f, 0.10f));
+        Image shadeImage = shade.GetComponent<Image>();
+        if (shadeImage != null) shadeImage.raycastTarget = false;
 
-        CreateEllipse("LakeSuperior", map, new Vector2(42, 150), new Vector2(78, 28), new Color(0.36f, 0.56f, 0.70f, 0.66f));
-        CreateEllipse("LakeMichigan", map, new Vector2(82, 105), new Vector2(42, 64), new Color(0.36f, 0.56f, 0.70f, 0.60f));
-        CreateEllipse("LakeHuron", map, new Vector2(124, 126), new Vector2(48, 42), new Color(0.36f, 0.56f, 0.70f, 0.60f));
-        CreateEllipse("LakeErie", map, new Vector2(154, 82), new Vector2(64, 22), new Color(0.36f, 0.56f, 0.70f, 0.60f));
-        CreateEllipse("LakeOntario", map, new Vector2(202, 104), new Vector2(46, 18), new Color(0.36f, 0.56f, 0.70f, 0.60f));
-        AddText(map, T("strategy.map_lakes", "五大湖"), new Vector2(122, 168), new Vector2(120, 20), 11, TextAnchor.MiddleCenter, new Color(0.23f, 0.37f, 0.43f, 0.84f));
+        RectTransform border = CreateRect("MapInnerBorder", map, Vector2.zero, new Vector2(814, 508), new Color(0.96f, 0.74f, 0.34f, 0.12f));
+        Image borderImage = border.GetComponent<Image>();
+        if (borderImage != null) borderImage.raycastTarget = false;
     }
 
     private void DrawMapPatch(Transform parent, string name, Vector2 pos, Vector2 size, Color color, string label)
@@ -6000,7 +5997,7 @@ public sealed class MingLuGame : MonoBehaviour
 
     private void DrawStrategyLegend(Transform map)
     {
-        RectTransform legend = CreateRect("StrategyLegend", map, new Vector2(-18, 238), new Vector2(560, 28), new Color(0.96f, 0.88f, 0.68f, 0.50f));
+        RectTransform legend = CreateRect("StrategyLegend", map, new Vector2(-18, 238), new Vector2(560, 28), new Color(0.08f, 0.055f, 0.030f, 0.58f));
         AddText(legend, T("strategy.legend_title", "势力"), new Vector2(-254, 0), new Vector2(44, 18), 11, TextAnchor.MiddleLeft, highlightColor);
         DrawLegendItem(legend, Faction.Player, new Vector2(-188, 0));
         DrawLegendItem(legend, Faction.Imperial, new Vector2(-96, 0));
@@ -6013,7 +6010,7 @@ public sealed class MingLuGame : MonoBehaviour
     private void DrawLegendItem(Transform parent, Faction faction, Vector2 pos)
     {
         CreateRect("LegendColor_" + faction, parent, pos + new Vector2(-31, 0), new Vector2(12, 12), ProvinceColor(faction));
-        Text label = AddText(parent, FactionName(faction), pos + new Vector2(18, 0), new Vector2(72, 18), 9, TextAnchor.MiddleLeft, muted);
+        Text label = AddText(parent, FactionName(faction), pos + new Vector2(18, 0), new Vector2(72, 18), 9, TextAnchor.MiddleLeft, new Color(0.88f, 0.80f, 0.62f, 0.96f));
         label.resizeTextForBestFit = true;
         label.resizeTextMinSize = 7;
         label.resizeTextMaxSize = 9;
@@ -6032,21 +6029,21 @@ public sealed class MingLuGame : MonoBehaviour
     {
         Color color = ProvinceColor(province.owner);
         if (province.id == selectedProvinceId) color = highlightColor;
-        Button button = AddButton(map, province.name, StrategyMapPosition(province), new Vector2(68, 34), () => OnProvinceClicked(province.id), color);
+        Button button = AddButton(map, province.name, StrategyMapPosition(province), new Vector2(62, 30), () => OnProvinceClicked(province.id), color);
         Text label = button.GetComponentInChildren<Text>();
         Army army = ArmyById(province.armyId);
         label.text = SafeText(province.city, province.name) + (army != null ? "\n" + T("strategy.army_badge", "驻") + army.troops : "");
-        label.fontSize = 10;
+        label.fontSize = 9;
         label.resizeTextForBestFit = true;
         label.resizeTextMinSize = 7;
-        label.resizeTextMaxSize = 10;
+        label.resizeTextMaxSize = 9;
         Army selectedArmy = ArmyById(selectedArmyId);
         if (selectedArmy != null && IsAdjacent(selectedArmy.provinceId, province.id) && province.id != selectedArmy.provinceId)
         {
             Image image = button.GetComponent<Image>();
             image.color = province.owner == Faction.Player ? new Color(0.23f, 0.48f, 0.30f) : new Color(0.64f, 0.34f, 0.21f);
         }
-        AddText(map, TerrainShortLabel(province), StrategyMapPosition(province) + new Vector2(0, -24), new Vector2(70, 12), 8, TextAnchor.MiddleCenter, new Color(0.24f, 0.20f, 0.15f, 0.78f)).raycastTarget = false;
+        AddText(map, TerrainShortLabel(province), StrategyMapPosition(province) + new Vector2(0, -22), new Vector2(68, 12), 8, TextAnchor.MiddleCenter, new Color(0.12f, 0.095f, 0.065f, 0.82f)).raycastTarget = false;
     }
 
     private string TerrainShortLabel(Province province)
