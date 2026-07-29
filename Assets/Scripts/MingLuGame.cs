@@ -6095,8 +6095,8 @@ public sealed class MingLuGame : MonoBehaviour
         }
 
         List<string> cities = ProvinceCities(province);
-        string roster = string.Join("\n", cities.Select((cityName, index) => (index + 1) + ". " + cityName).ToArray());
-        string body = TF("strategy.city_roster_body", "{0}\n区域：{1}\n地形：{2}\n辖城：{3}座\n\n{4}",
+        string roster = string.Join(T("common.list_separator", "、"), cities.ToArray());
+        string body = TF("strategy.city_roster_body", "{0}\n区域：{1}\n地形：{2}\n辖城（{3}座）：{4}",
             province.name,
             SafeText(province.region, T("common.unknown", "未知")),
             SafeText(province.terrain, T("common.unknown", "未知")),
