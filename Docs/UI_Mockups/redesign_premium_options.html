@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>明路 高级版 UI 方案</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #090807;
+      color: #f4ead8;
+      font-family: "Microsoft YaHei", "Noto Sans CJK SC", "SimHei", Arial, sans-serif;
+    }
+    .stack { display: grid; gap: 36px; padding: 36px; width: fit-content; }
+    .screen {
+      position: relative;
+      width: 1280px;
+      height: 720px;
+      overflow: hidden;
+      background: #14100d;
+      border: 1px solid rgba(255, 244, 210, .12);
+      box-shadow: 0 26px 90px rgba(0,0,0,.58);
+      isolation: isolate;
+    }
+    .bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -3;
+    }
+    .shade { position: absolute; inset: 0; z-index: -2; pointer-events: none; }
+    .grain {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      opacity: .13;
+      pointer-events: none;
+      background-image:
+        linear-gradient(90deg, rgba(255,255,255,.10) 1px, transparent 1px),
+        linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px);
+      background-size: 58px 58px;
+      mask-image: radial-gradient(circle at 50% 48%, black, transparent 78%);
+    }
+    .top {
+      position: absolute;
+      left: 42px;
+      right: 42px;
+      top: 26px;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 18px;
+    }
+    .title {
+      font-size: 25px;
+      font-weight: 800;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+    .metric {
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 12px;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+    .metric b { font-size: 18px; }
+    .panel-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      font-size: 19px;
+      font-weight: 800;
+    }
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      opacity: .72;
+    }
+    .button {
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 16px;
+      font-size: 17px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .small { font-size: 13px; line-height: 1.55; opacity: .76; }
+    .row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .bar {
+      height: 7px;
+      overflow: hidden;
+      position: relative;
+    }
+    .bar i { display: block; height: 100%; }
+    .portrait {
+      position: absolute;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    #premium-a {
+      --gold: #d8ba78;
+      --gold2: #fff1bd;
+      --wine: #552236;
+      --deep: #140909;
+      --paper: #f0dfbc;
+    }
+    #premium-a .bg { filter: brightness(.58) saturate(.82) contrast(1.02); }
+    #premium-a .shade {
+      background:
+        linear-gradient(90deg, rgba(15,6,8,.96), rgba(41,18,20,.46) 38%, rgba(14,6,8,.93)),
+        radial-gradient(circle at 49% 48%, rgba(255,218,133,.22), transparent 34%);
+    }
+    #premium-a .top {
+      background: linear-gradient(180deg, rgba(89,36,55,.96), rgba(42,16,24,.96));
+      border: 1px solid rgba(216,186,120,.76);
+      box-shadow: inset 0 0 0 1px rgba(255,241,189,.18), 0 18px 42px rgba(0,0,0,.34);
+    }
+    #premium-a .metric { background: rgba(20,9,9,.48); border-left: 1px solid rgba(216,186,120,.36); color: #f5e4b7; }
+    #premium-a .portrait {
+      left: 438px; top: 94px; width: 404px; height: 566px;
+      border: 1px solid rgba(216,186,120,.72);
+      box-shadow: 0 28px 64px rgba(0,0,0,.62), inset 0 0 0 10px rgba(216,186,120,.14);
+    }
+    #premium-a .portrait-frame {
+      position: absolute; left: 420px; top: 76px; width: 440px; height: 604px;
+      border: 2px solid rgba(216,186,120,.82);
+      box-shadow: inset 0 0 0 1px rgba(255,241,189,.28);
+      pointer-events: none;
+    }
+    #premium-a .panel {
+      position: absolute;
+      background: linear-gradient(180deg, rgba(38,18,14,.88), rgba(19,8,7,.92));
+      border: 1px solid rgba(216,186,120,.48);
+      box-shadow: inset 0 0 0 1px rgba(255,241,189,.10), 0 22px 48px rgba(0,0,0,.42);
+      backdrop-filter: blur(8px);
+    }
+    #premium-a .left { left: 48px; top: 116px; width: 326px; height: 500px; padding: 22px; }
+    #premium-a .right { right: 48px; top: 116px; width: 326px; height: 500px; padding: 22px; }
+    #premium-a .stat {
+      height: 60px;
+      padding: 10px 12px;
+      margin-bottom: 10px;
+      background: rgba(240,223,188,.07);
+      border: 1px solid rgba(216,186,120,.24);
+    }
+    #premium-a .bar { background: rgba(0,0,0,.42); border: 1px solid rgba(216,186,120,.24); }
+    #premium-a .bar i { background: linear-gradient(90deg, #b98a39, #fff0b3); }
+    #premium-a .button {
+      background: linear-gradient(180deg, #7c3049, #4d1d2f);
+      border: 1px solid rgba(216,186,120,.72);
+      color: #fff0c3;
+      box-shadow: inset 0 1px rgba(255,255,255,.12), 0 8px 20px rgba(0,0,0,.22);
+    }
+    #premium-a .mission {
+      background: rgba(0,0,0,.28);
+      border-left: 4px solid var(--gold);
+      padding: 12px;
+      margin-top: 12px;
+    }
+    #premium-a .bottom {
+      position: absolute; left: 120px; right: 120px; bottom: 22px; height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 20px;
+      background: rgba(19,8,7,.72);
+      border: 1px solid rgba(216,186,120,.5);
+    }
+
+    #premium-b {
+      --steel: #9fb7b8;
+      --red: #b84a3e;
+      --paper: #cfc5a7;
+      --deep: #0f171a;
+    }
+    #premium-b .bg { filter: brightness(.48) saturate(.78) contrast(1.12); }
+    #premium-b .shade {
+      background:
+        linear-gradient(90deg, rgba(9,15,18,.96), rgba(15,24,29,.42) 54%, rgba(9,15,18,.96)),
+        radial-gradient(circle at 47% 42%, rgba(159,183,184,.16), transparent 40%);
+    }
+    #premium-b .top {
+      background: rgba(14,24,29,.92);
+      border: 1px solid rgba(159,183,184,.32);
+      border-bottom: 3px solid var(--red);
+      box-shadow: 0 18px 44px rgba(0,0,0,.36);
+    }
+    #premium-b .metric { background: rgba(255,255,255,.06); border: 1px solid rgba(159,183,184,.18); color: #dce9e7; }
+    #premium-b .table {
+      position: absolute; left: 54px; top: 112px; bottom: 92px; width: 730px;
+      background: linear-gradient(180deg, rgba(21,32,37,.9), rgba(12,20,24,.92));
+      border: 1px solid rgba(159,183,184,.26);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.04), 0 26px 58px rgba(0,0,0,.45);
+    }
+    #premium-b .map {
+      position: absolute; left: 26px; right: 26px; top: 76px; bottom: 30px;
+      background:
+        radial-gradient(circle at 35% 35%, rgba(184,74,62,.12), transparent 28%),
+        repeating-linear-gradient(30deg, rgba(159,183,184,.12) 0 2px, transparent 2px 42px),
+        repeating-linear-gradient(150deg, rgba(159,183,184,.08) 0 2px, transparent 2px 42px),
+        rgba(198,190,161,.12);
+      border: 1px solid rgba(159,183,184,.22);
+    }
+    #premium-b .node {
+      position: absolute;
+      width: 86px; height: 52px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(40,65,73,.92);
+      border: 1px solid rgba(159,183,184,.75);
+      color: #f1f3e8;
+      font-weight: 800;
+      box-shadow: 0 10px 20px rgba(0,0,0,.28);
+    }
+    #premium-b .node.red { background: rgba(126,45,39,.95); border-color: rgba(236,158,126,.86); }
+    #premium-b .side {
+      position: absolute; right: 54px; top: 112px; bottom: 92px; width: 376px;
+      background: rgba(11,18,21,.93);
+      border: 1px solid rgba(159,183,184,.26);
+      padding: 22px;
+      box-shadow: 0 26px 58px rgba(0,0,0,.43);
+    }
+    #premium-b .portrait {
+      right: 76px; top: 152px; width: 148px; height: 188px;
+      border: 2px solid rgba(184,74,62,.88);
+      box-shadow: 0 18px 36px rgba(0,0,0,.38);
+    }
+    #premium-b .brief {
+      min-height: 64px;
+      padding: 12px;
+      margin-bottom: 12px;
+      background: rgba(255,255,255,.055);
+      border-left: 4px solid var(--red);
+    }
+    #premium-b .button {
+      background: rgba(42,70,80,.94);
+      border: 1px solid rgba(159,183,184,.36);
+      color: #eef4ee;
+    }
+    #premium-b .bar { background: rgba(0,0,0,.42); }
+    #premium-b .bar i { background: linear-gradient(90deg, #b84a3e, #f0a47e); }
+    #premium-b .bottom {
+      position: absolute; left: 54px; right: 54px; bottom: 24px; height: 44px;
+      display: flex; gap: 10px; justify-content: center;
+    }
+
+    #premium-c {
+      --ink: #2a221a;
+      --paper: #f6ecd6;
+      --jade: #406f66;
+      --red: #a55143;
+      --blue: #465f72;
+    }
+    #premium-c { color: var(--ink); }
+    #premium-c .bg { filter: brightness(1.08) saturate(.62); }
+    #premium-c .shade {
+      background:
+        linear-gradient(90deg, rgba(242,231,211,.98), rgba(242,231,211,.62) 48%, rgba(242,231,211,.96)),
+        radial-gradient(circle at 45% 38%, rgba(255,255,255,.38), transparent 34%);
+    }
+    #premium-c .top {
+      background: rgba(255,250,239,.88);
+      border: 1px solid rgba(42,34,26,.14);
+      box-shadow: 0 16px 34px rgba(84,61,38,.16);
+    }
+    #premium-c .metric { background: rgba(64,111,102,.08); border: 1px solid rgba(64,111,102,.16); color: var(--ink); }
+    #premium-c .portrait {
+      left: 62px; top: 112px; width: 292px; height: 462px;
+      border: 1px solid rgba(42,34,26,.16);
+      box-shadow: 0 26px 48px rgba(84,61,38,.18);
+    }
+    #premium-c .nameplate {
+      position: absolute; left: 62px; top: 586px; width: 292px; height: 58px;
+      background: rgba(255,250,239,.82);
+      border: 1px solid rgba(42,34,26,.14);
+      padding: 10px 14px;
+    }
+    #premium-c .workspace {
+      position: absolute; left: 394px; right: 52px; top: 106px; bottom: 90px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+      background: rgba(255,250,239,.64);
+      border: 1px solid rgba(42,34,26,.12);
+      box-shadow: 0 24px 48px rgba(84,61,38,.14);
+      padding: 20px;
+    }
+    #premium-c .page {
+      background: rgba(255,252,244,.86);
+      border: 1px solid rgba(42,34,26,.12);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.62);
+      padding: 20px;
+    }
+    #premium-c .note {
+      min-height: 66px;
+      padding: 12px 14px;
+      margin-bottom: 12px;
+      background: rgba(64,111,102,.075);
+      border-left: 4px solid var(--jade);
+    }
+    #premium-c .button {
+      background: var(--jade);
+      color: #fff8e9;
+      box-shadow: 0 8px 18px rgba(64,111,102,.18);
+    }
+    #premium-c .button.red { background: var(--red); }
+    #premium-c .button.blue { background: var(--blue); }
+    #premium-c .bar { background: rgba(42,34,26,.14); }
+    #premium-c .bar i { background: var(--jade); }
+    #premium-c .bottom {
+      position: absolute; left: 394px; right: 52px; bottom: 26px; height: 44px;
+      display: flex; justify-content: center; gap: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="stack">
+    <section class="screen" id="premium-a">
+      <img class="bg" src="../../Assets/Resources/Art/Scenes/scene_palace.png" alt="">
+      <div class="shade"></div><div class="grain"></div>
+      <div class="top">
+        <div class="title">高级A 鎏金军校</div>
+        <div class="metric">周 <b>1</b></div><div class="metric">心情 <b>50</b></div><div class="metric">体力 <b>80</b></div><div class="metric">战功 <b>14</b></div><div style="flex:1"></div><div class="metric">设置</div>
+      </div>
+      <img class="portrait" src="../../Assets/Resources/Art/Portraits/portrait_player_mo_mingyuan.png" alt="">
+      <div class="portrait-frame"></div>
+      <div class="panel left">
+        <div class="panel-title"><span>角色状态</span><span class="eyebrow">PROFILE</span></div>
+        <div class="stat"><div class="row"><b>步兵 Lv.2</b><span>65%</span></div><div class="bar"><i style="width:65%"></i></div></div>
+        <div class="stat"><div class="row"><b>骑训 Lv.1</b><span>34%</span></div><div class="bar"><i style="width:34%"></i></div></div>
+        <div class="stat"><div class="row"><b>后勤 Lv.2</b><span>72%</span></div><div class="bar"><i style="width:72%"></i></div></div>
+        <div class="mission small">夏邑，新京军事学院预备生。特性：沉着、野外行军、校场老手。</div>
+        <div class="row" style="margin-top:16px"><div class="button">角色档案</div><div class="button">属性说明</div></div>
+      </div>
+      <div class="panel right">
+        <div class="panel-title"><span>本周安排</span><span class="eyebrow">ACTION</span></div>
+        <div class="button" style="margin-bottom:12px">枪阵课</div>
+        <div class="button" style="margin-bottom:12px">补给课</div>
+        <div class="button" style="margin-bottom:12px">邀约同窗</div>
+        <div class="button" style="margin-bottom:12px">战棋工坊</div>
+        <div class="mission"><b>主线目标</b><br><span class="small">完成训练搭档，任意同窗好感达到30。</span></div>
+      </div>
+      <div class="bottom"><b>日志</b><span>剧情未触发，先完成对应养成、情报、任务或战棋目标。</span><span>下一步：补给课 / 邀约同窗</span></div>
+    </section>
+
+    <section class="screen" id="premium-b">
+      <img class="bg" src="../../Assets/Resources/Art/Scenes/scene_frontier.png" alt="">
+      <div class="shade"></div><div class="grain"></div>
+      <div class="top">
+        <div class="title">高级B 战地沙盘</div>
+        <div class="metric">学院</div><div class="metric">战棋</div><div class="metric">情报</div><div class="metric">任务</div><div style="flex:1"></div><div class="metric">体力 <b>80</b></div><div class="metric">国库 <b>140</b></div>
+      </div>
+      <div class="table">
+        <div style="position:absolute;left:26px;top:24px;font-size:20px;font-weight:800">本周推演桌</div>
+        <div class="map">
+          <div class="node" style="left:96px;top:78px">枪阵</div>
+          <div class="node" style="left:268px;top:136px">补给</div>
+          <div class="node red" style="left:486px;top:92px">战棋</div>
+          <div class="node" style="left:160px;top:312px">情报</div>
+          <div class="node red" style="left:432px;top:324px">伏击</div>
+        </div>
+      </div>
+      <div class="side">
+        <div class="panel-title"><span>军情简报</span><span class="eyebrow">BRIEFING</span></div>
+        <img class="portrait" src="../../Assets/Resources/Art/Portraits/portrait_player_mo_mingyuan.png" alt="">
+        <div style="height:190px"></div>
+        <div class="brief"><b>当前目标</b><br><span class="small">完成训练搭档，之后解锁战前侦察。</span></div>
+        <div class="brief"><b>推荐行动</b><br><span class="small">先补给课，再测试桥头遭遇战。</span></div>
+        <div class="row"><b>步兵 Lv.2</b><span>65%</span></div><div class="bar"><i style="width:65%"></i></div><br>
+        <div class="row"><div class="button">开始推演</div><div class="button">任务</div></div>
+      </div>
+      <div class="bottom"><div class="button">地图</div><div class="button">编队</div><div class="button">战棋工坊</div><div class="button">情报</div><div class="button">设置</div></div>
+    </section>
+
+    <section class="screen" id="premium-c">
+      <img class="bg" src="../../Assets/Resources/Art/Scenes/scene_library.png" alt="">
+      <div class="shade"></div><div class="grain"></div>
+      <div class="top">
+        <div class="title">高级C 书院卷宗</div>
+        <div class="metric">今日</div><div class="metric">课程</div><div class="metric">同窗</div><div class="metric">战备</div><div style="flex:1"></div><div class="metric">心情 <b>50</b></div><div class="metric">体力 <b>80</b></div><div class="metric">设置</div>
+      </div>
+      <img class="portrait" src="../../Assets/Resources/Art/Portraits/portrait_player_mo_mingyuan.png" alt="">
+      <div class="nameplate"><b>夏邑</b><br><span class="small">预备生 / 特性 3 / 本周可行动 2</span></div>
+      <div class="workspace">
+        <div class="page">
+          <div class="panel-title"><span>本周笔记</span><span class="eyebrow">NOTES</span></div>
+          <div class="note"><b>主线目标</b><br><span class="small">完成训练搭档，任意同窗好感达到30。</span></div>
+          <div class="note"><b>剧情入口</b><br><span class="small">满足条件后自动推进，不在主界面堆字段。</span></div>
+          <div class="note"><b>战备提醒</b><br><span class="small">补给课能降低战棋消耗，枪阵课提高正面作战。</span></div>
+          <div class="row"><div class="button">读报</div><div class="button">任务</div></div>
+        </div>
+        <div class="page">
+          <div class="panel-title"><span>行动安排</span><span class="eyebrow">SCHEDULE</span></div>
+          <div class="button" style="margin-bottom:12px">枪阵课</div>
+          <div class="button blue" style="margin-bottom:12px">骑训课</div>
+          <div class="button red" style="margin-bottom:12px">战棋演练</div>
+          <div class="button" style="margin-bottom:18px">邀约同窗</div>
+          <div class="row"><b>步兵 Lv.2</b><span>65%</span></div><div class="bar"><i style="width:65%"></i></div><br>
+          <div class="row"><b>后勤 Lv.2</b><span>72%</span></div><div class="bar"><i style="width:72%"></i></div>
+        </div>
+      </div>
+      <div class="bottom"><div class="button">角色档案</div><div class="button">关系</div><div class="button red">战棋工坊</div><div class="button">存档</div></div>
+    </section>
+  </div>
+</body>
+</html>

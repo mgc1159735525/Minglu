@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>明路 游戏感统一模板 UI 方案</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #090807;
+      font-family: "Microsoft YaHei", "Noto Sans CJK SC", "SimHei", Arial, sans-serif;
+    }
+    .stack { display: grid; gap: 36px; padding: 36px; width: fit-content; }
+    .screen {
+      position: relative;
+      width: 1280px;
+      height: 720px;
+      overflow: hidden;
+      color: var(--text);
+      background: var(--base);
+      border: 1px solid var(--edge-soft);
+      box-shadow: 0 26px 90px rgba(0,0,0,.56);
+      isolation: isolate;
+    }
+    .bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: var(--bg-filter);
+      z-index: -3;
+    }
+    .shade {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background: var(--shade);
+    }
+    .texture {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      opacity: .11;
+      pointer-events: none;
+      background-image:
+        linear-gradient(90deg, rgba(255,255,255,.10) 1px, transparent 1px),
+        linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px);
+      background-size: 54px 54px;
+      mask-image: radial-gradient(circle at 52% 50%, black, transparent 76%);
+    }
+    .topbar {
+      position: absolute;
+      left: 38px;
+      right: 38px;
+      top: 24px;
+      height: 62px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 14px;
+      padding: 0 16px;
+      background: var(--top);
+      border: 1px solid var(--edge);
+      box-shadow: var(--shadow);
+    }
+    .title {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+    .top-stats, .top-actions, .bottom-actions, .reward-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: nowrap;
+    }
+    .top-stats { justify-content: flex-start; }
+    .top-actions { justify-content: flex-end; }
+    .tag {
+      min-width: 66px;
+      height: 34px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 0 10px;
+      font-size: 14px;
+      font-weight: 800;
+      white-space: nowrap;
+      color: var(--tag-text);
+      background: var(--tag);
+      border: 1px solid var(--tag-edge);
+    }
+    .tag b { font-size: 19px; }
+    .layout {
+      position: absolute;
+      left: 38px;
+      right: 38px;
+      top: 104px;
+      bottom: 82px;
+      display: grid;
+      grid-template-columns: 294px 1fr 306px;
+      gap: 18px;
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--edge);
+      box-shadow: var(--panel-shadow);
+    }
+    .left-panel {
+      display: grid;
+      grid-template-rows: 406px 1fr;
+      overflow: hidden;
+    }
+    .portrait-wrap {
+      position: relative;
+      margin: 16px 16px 0;
+      border: 1px solid var(--edge);
+      overflow: hidden;
+      box-shadow: var(--portrait-shadow);
+    }
+    .portrait {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+    .identity {
+      padding: 14px 16px;
+      display: grid;
+      gap: 8px;
+    }
+    .name-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+    }
+    .name {
+      font-size: 21px;
+      font-weight: 900;
+    }
+    .rank {
+      font-size: 13px;
+      opacity: .76;
+      white-space: nowrap;
+    }
+    .small {
+      font-size: 13px;
+      line-height: 1.45;
+      opacity: .78;
+    }
+    .main-panel {
+      display: grid;
+      grid-template-rows: 138px 1fr;
+      gap: 14px;
+    }
+    .chapter {
+      padding: 18px;
+      background: var(--chapter);
+      border: 1px solid var(--edge);
+      box-shadow: var(--panel-shadow);
+    }
+    .panel-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .panel-title b {
+      font-size: 20px;
+      font-weight: 900;
+    }
+    .micro {
+      font-size: 11px;
+      letter-spacing: 1.2px;
+      opacity: .66;
+      text-transform: uppercase;
+    }
+    .progress-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      align-items: center;
+      margin-top: 6px;
+    }
+    .progress-badge {
+      min-width: 62px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+      font-weight: 900;
+      background: var(--badge);
+      border: 1px solid var(--tag-edge);
+      color: var(--tag-text);
+    }
+    .schedule {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .slot {
+      position: relative;
+      min-width: 0;
+      padding: 16px;
+      background: var(--slot);
+      border: 1px solid var(--edge);
+      box-shadow: var(--slot-shadow);
+    }
+    .slot-time {
+      position: absolute;
+      right: 14px;
+      top: 12px;
+      font-size: 12px;
+      opacity: .62;
+      font-weight: 700;
+    }
+    .slot h3 {
+      margin: 16px 0 10px;
+      font-size: 23px;
+      line-height: 1;
+    }
+    .slot p {
+      margin: 0;
+      min-height: 52px;
+      font-size: 13px;
+      line-height: 1.45;
+      opacity: .78;
+    }
+    .badge {
+      height: 28px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 8px;
+      font-size: 14px;
+      font-weight: 900;
+      color: var(--tag-text);
+      background: var(--badge);
+      border: 1px solid var(--tag-edge);
+    }
+    .side-panel {
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 14px;
+      padding: 18px;
+    }
+    .event-card {
+      padding: 12px;
+      background: var(--event);
+      border-left: 4px solid var(--accent);
+    }
+    .event-card b {
+      font-size: 17px;
+    }
+    .stat-row {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .stat-label {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 16px;
+      font-weight: 900;
+    }
+    .bar {
+      height: 8px;
+      overflow: hidden;
+      background: var(--bar);
+    }
+    .bar i {
+      display: block;
+      height: 100%;
+      background: var(--bar-fill);
+    }
+    .button {
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 16px;
+      font-size: 17px;
+      font-weight: 900;
+      color: var(--button-text);
+      background: var(--button);
+      border: 1px solid var(--button-edge);
+      box-shadow: var(--button-shadow);
+      white-space: nowrap;
+    }
+    .button.alt { background: var(--button-alt); }
+    .button.warn { background: var(--button-warn); }
+    .bottom-actions {
+      position: absolute;
+      left: 350px;
+      right: 350px;
+      bottom: 24px;
+      justify-content: center;
+    }
+
+    .skin-a {
+      --base: #2a1712;
+      --text: #fff0d0;
+      --bg-filter: brightness(.73) saturate(.88) contrast(1.03);
+      --shade: linear-gradient(90deg, rgba(31,12,13,.92), rgba(56,25,18,.30) 50%, rgba(25,10,13,.9)), radial-gradient(circle at 45% 44%, rgba(255,209,112,.28), transparent 36%);
+      --top: linear-gradient(180deg, rgba(111,42,59,.96), rgba(63,24,37,.96));
+      --panel: rgba(28,11,9,.80);
+      --chapter: linear-gradient(90deg, rgba(59,22,17,.90), rgba(87,34,30,.75));
+      --slot: rgba(30,12,10,.82);
+      --event: rgba(240,197,109,.09);
+      --tag: rgba(30,10,12,.44);
+      --badge: rgba(240,197,109,.16);
+      --tag-text: #ffe7a8;
+      --tag-edge: rgba(240,197,109,.42);
+      --edge: rgba(240,197,109,.48);
+      --edge-soft: rgba(240,197,109,.18);
+      --accent: #f0c56d;
+      --bar: rgba(0,0,0,.35);
+      --bar-fill: linear-gradient(90deg, #e0994d, #ffe69b);
+      --button: linear-gradient(180deg, #4f8a63, #2e5540);
+      --button-alt: linear-gradient(180deg, #416a8a, #29475f);
+      --button-warn: linear-gradient(180deg, #a85647, #70322c);
+      --button-text: #fff5d4;
+      --button-edge: rgba(240,197,109,.48);
+      --shadow: 0 18px 42px rgba(0,0,0,.38), inset 0 0 0 1px rgba(255,239,180,.14);
+      --panel-shadow: 0 18px 42px rgba(0,0,0,.28), inset 0 0 0 1px rgba(255,239,180,.08);
+      --slot-shadow: 0 12px 22px rgba(0,0,0,.22);
+      --portrait-shadow: 0 24px 46px rgba(0,0,0,.42);
+      --button-shadow: 0 9px 18px rgba(0,0,0,.24);
+    }
+    .skin-b {
+      --base: #17202b;
+      --text: #eef7f3;
+      --bg-filter: brightness(.48) saturate(.8) contrast(1.08);
+      --shade: linear-gradient(90deg, rgba(10,17,22,.96), rgba(15,24,32,.44) 48%, rgba(9,15,20,.96)), radial-gradient(circle at 45% 42%, rgba(159,190,196,.16), transparent 42%);
+      --top: rgba(14,24,31,.94);
+      --panel: rgba(12,20,25,.90);
+      --chapter: rgba(21,34,41,.88);
+      --slot: rgba(19,31,38,.86);
+      --event: rgba(255,255,255,.065);
+      --tag: rgba(255,255,255,.06);
+      --badge: rgba(159,190,196,.12);
+      --tag-text: #e8f2ef;
+      --tag-edge: rgba(159,190,196,.26);
+      --edge: rgba(159,190,196,.30);
+      --edge-soft: rgba(159,190,196,.16);
+      --accent: #c95745;
+      --bar: rgba(0,0,0,.34);
+      --bar-fill: linear-gradient(90deg, #c95745, #f0a679);
+      --button: #294b5a;
+      --button-alt: #3a604c;
+      --button-warn: #7d3029;
+      --button-text: #eef7f3;
+      --button-edge: rgba(159,190,196,.36);
+      --shadow: 0 18px 44px rgba(0,0,0,.38), inset 0 -3px #c95745;
+      --panel-shadow: 0 20px 48px rgba(0,0,0,.36), inset 0 0 0 1px rgba(255,255,255,.035);
+      --slot-shadow: 0 12px 22px rgba(0,0,0,.24);
+      --portrait-shadow: 0 20px 40px rgba(0,0,0,.38);
+      --button-shadow: 0 9px 18px rgba(0,0,0,.22);
+    }
+    .skin-c {
+      --base: #efe3cb;
+      --text: #2d241b;
+      --bg-filter: brightness(1.08) saturate(.64);
+      --shade: linear-gradient(90deg, rgba(239,227,203,.97), rgba(239,227,203,.58) 48%, rgba(239,227,203,.96)), radial-gradient(circle at 44% 44%, rgba(255,255,255,.42), transparent 34%);
+      --top: rgba(255,249,236,.90);
+      --panel: rgba(255,249,236,.84);
+      --chapter: rgba(255,249,236,.86);
+      --slot: rgba(255,249,236,.82);
+      --event: rgba(66,119,100,.08);
+      --tag: rgba(66,119,100,.08);
+      --badge: rgba(66,119,100,.10);
+      --tag-text: #2d241b;
+      --tag-edge: rgba(66,119,100,.22);
+      --edge: rgba(45,36,27,.14);
+      --edge-soft: rgba(45,36,27,.12);
+      --accent: #427764;
+      --bar: rgba(45,36,27,.13);
+      --bar-fill: #427764;
+      --button: #427764;
+      --button-alt: #4d6f86;
+      --button-warn: #aa5545;
+      --button-text: #fff8e7;
+      --button-edge: rgba(45,36,27,.14);
+      --shadow: 0 16px 34px rgba(84,61,38,.16);
+      --panel-shadow: 0 22px 42px rgba(84,61,38,.13), inset 0 0 0 1px rgba(255,255,255,.62);
+      --slot-shadow: 0 12px 24px rgba(84,61,38,.10);
+      --portrait-shadow: 0 22px 44px rgba(84,61,38,.16);
+      --button-shadow: 0 8px 18px rgba(66,119,100,.18);
+    }
+  </style>
+</head>
+<body>
+  <div class="stack">
+    <section class="screen skin-a" id="unified-a">
+      <img class="bg" src="../../Assets/Resources/Art/Scenes/scene_academy.png" alt="">
+      <div class="shade"></div><div class="texture"></div>
+      <div class="topbar">
+        <div class="title">统一A 厚重养成</div>
+        <div class="top-stats"><div class="tag">第<b>1</b>周</div><div class="tag">行动<b>2</b>/3</div><div class="tag">心情<b>50</b></div><div class="tag">体力<b>80</b></div><div class="tag">战功<b>14</b></div></div>
+        <div class="top-actions"><div class="tag">设置</div></div>
+      </div>
+      <div class="layout">
+        <div class="panel left-panel">
+          <div class="portrait-wrap"><img class="portrait" src="../../Assets/Resources/Art/Portraits/portrait_player_mo_mingyuan.png" alt=""></div>
+          <div class="identity"><div class="name-row"><span class="name">夏邑</span><span class="rank">预备生</span></div><div class="small">特性：沉着 / 野外行军 / 校场老手</div><div class="bar"><i style="width:62%"></i></div></div>
+        </div>
+        <div class="main-panel">
+          <div class="chapter"><div class="panel-title"><b>章节目标：训练搭档</b><span class="micro">STORY QUEST</span></div><div class="progress-row"><span>任意同窗好感达到30后，解锁战前侦察与第一次正式演习。</span><span class="progress-badge">26/30</span></div><div class="reward-row" style="margin-top:12px"><span class="badge">剧情</span><span class="badge">同窗支援</span><span class="badge">战棋入口</span></div></div>
+          <div class="schedule">
+            <div class="slot"><span class="slot-time">上午</span><h3>枪阵课</h3><p>步兵经验 +12，可能触发课堂事件。</p><div class="reward-row"><span class="badge">兵学</span><span class="badge">+12</span></div></div>
+            <div class="slot"><span class="slot-time">下午</span><h3>邀约同窗</h3><p>选择同窗推进关系，满足主线触发条件。</p><div class="reward-row"><span class="badge">好感</span><span class="badge">事件</span></div></div>
+            <div class="slot"><span class="slot-time">周末</span><h3>战棋工坊</h3><p>测试桥头关卡，不写入正式战绩。</p><div class="reward-row"><span class="badge">演练</span><span class="badge">地图</span></div></div>
+          </div>
+        </div>
+        <div class="panel side-panel">
+          <div class="panel-title"><b>行动预览</b><span class="micro">PREVIEW</span></div>
+          <div class="event-card"><b>主线检定</b><br><span class="small">选“邀约同窗”后，大概率完成训练搭档。</span></div>
+          <div class="event-card"><b>风险提示</b><br><span class="small">连续战棋会压低体力，补给课可缓冲。</span></div>
+          <div><div class="stat-row"><div class="stat-label"><span>步兵 Lv.2</span><span>65%</span></div><div class="bar"><i style="width:65%"></i></div></div><div class="stat-row"><div class="stat-label"><span>后勤 Lv.2</span><span>72%</span></div><div class="bar"><i style="width:72%"></i></div></div></div>
+          <div class="row"><div class="button">确认本周</div><div class="button alt">重选</div></div>
+        </div>
+      </div>
+      <div class="bottom-actions"><div class="button alt">课程</div><div class="button alt">同窗</div><div class="button warn">战棋</div><div class="button alt">读报</div><div class="button">任务</div></div>
+    </section>
+
+    <section class="screen skin-b" id="unified-b">
+      <img class="bg" src="../../Assets/Resources/Art/Scenes/scene_frontier.png" alt="">
+      <div class="shade"></div><div class="texture"></div>
+      <div class="topbar">
+        <div class="title">统一B 战备养成</div>
+        <div class="top-stats"><div class="tag">第<b>1</b>周</div><div class="tag">行动<b>2</b>/3</div><div class="tag">心情<b>50</b></div><div class="tag">体力<b>80</b></div><div class="tag">战功<b>14</b></div></div>
+        <div class="top-actions"><div class="tag">设置</div></div>
+      </div>
+      <div class="layout">
+        <div class="panel left-panel">
+          <div class="portrait-wrap"><img class="portrait" src="../../Assets/Resources/Art/Portraits/portrait_player_mo_mingyuan.png" alt=""></div>
+          <div class="identity"><div class="name-row"><span class="name">夏邑</span><span class="rank">预备生</span></div><div class="small">特性：沉着 / 野外行军 / 校场老手</div><div class="bar"><i style="width:62%"></i></div></div>
+        </div>
+        <div class="main-panel">
+          <div class="chapter"><div class="panel-title"><b>章节目标：训练搭档</b><span class="micro">STORY QUEST</span></div><div class="progress-row"><span>任意同窗好感达到30后，解锁战前侦察与第一次正式演习。</span><span class="progress-badge">26/30</span></div><div class="reward-row" style="margin-top:12px"><span class="badge">剧情</span><span class="badge">同窗支援</span><span class="badge">战棋入口</span></div></div>
+          <div class="schedule">
+            <div class="slot"><span class="slot-time">上午</span><h3>枪阵课</h3><p>步兵经验 +12，可能触发课堂事件。</p><div class="reward-row"><span class="badge">兵学</span><span class="badge">+12</span></div></div>
+            <div class="slot"><span class="slot-time">下午</span><h3>邀约同窗</h3><p>选择同窗推进关系，满足主线触发条件。</p><div class="reward-row"><span class="badge">好感</span><span class="badge">事件</span></div></div>
+            <div class="slot"><span class="slot-time">周末</span><h3>战棋工坊</h3><p>测试桥头关卡，不写入正式战绩。</p><div class="reward-row"><span class="badge">演练</span><span class="badge">地图</span></div></div>
+          </div>
+        </div>
+        <div class="panel side-panel">
+          <div class="panel-title"><b>行动预览</b><span class="micro">PREVIEW</span></div>
+          <div class="event-card"><b>主线检定</b><br><span class="small">选“邀约同窗”后，大概率完成训练搭档。</span></div>
+          <div class="event-card"><b>风险提示</b><br><span class="small">连续战棋会压低体力，补给课可缓冲。</span></div>
+          <div><div class="stat-row"><div class="stat-label"><span>步兵 Lv.2</span><span>65%</span></div><div class="bar"><i style="width:65%"></i></div></div><div class="stat-row"><div class="stat-label"><span>后勤 Lv.2</span><span>72%</span></div><div class="bar"><i style="width:72%"></i></div></div></div>
+          <div class="row"><div class="button">确认本周</div><div class="button alt">重选</div></div>
+        </div>
+      </div>
+      <div class="bottom-actions"><div class="button alt">课程</div><div class="button alt">同窗</div><div class="button warn">战棋</div><div class="button alt">读报</div><div class="button">任务</div></div>
+    </section>
+
+    <section class="screen skin-c" id="unified-c">
+      <img class="bg" src="../../Assets/Resources/Art/Scenes/scene_library.png" alt="">
+      <div class="shade"></div><div class="texture"></div>
+      <div class="topbar">
+        <div class="title">统一C 清爽养成</div>
+        <div class="top-stats"><div class="tag">第<b>1</b>周</div><div class="tag">行动<b>2</b>/3</div><div class="tag">心情<b>50</b></div><div class="tag">体力<b>80</b></div><div class="tag">战功<b>14</b></div></div>
+        <div class="top-actions"><div class="tag">设置</div></div>
+      </div>
+      <div class="layout">
+        <div class="panel left-panel">
+          <div class="portrait-wrap"><img class="portrait" src="../../Assets/Resources/Art/Portraits/portrait_player_mo_mingyuan.png" alt=""></div>
+          <div class="identity"><div class="name-row"><span class="name">夏邑</span><span class="rank">预备生</span></div><div class="small">特性：沉着 / 野外行军 / 校场老手</div><div class="bar"><i style="width:62%"></i></div></div>
+        </div>
+        <div class="main-panel">
+          <div class="chapter"><div class="panel-title"><b>章节目标：训练搭档</b><span class="micro">STORY QUEST</span></div><div class="progress-row"><span>任意同窗好感达到30后，解锁战前侦察与第一次正式演习。</span><span class="progress-badge">26/30</span></div><div class="reward-row" style="margin-top:12px"><span class="badge">剧情</span><span class="badge">同窗支援</span><span class="badge">战棋入口</span></div></div>
+          <div class="schedule">
+            <div class="slot"><span class="slot-time">上午</span><h3>枪阵课</h3><p>步兵经验 +12，可能触发课堂事件。</p><div class="reward-row"><span class="badge">兵学</span><span class="badge">+12</span></div></div>
+            <div class="slot"><span class="slot-time">下午</span><h3>邀约同窗</h3><p>选择同窗推进关系，满足主线触发条件。</p><div class="reward-row"><span class="badge">好感</span><span class="badge">事件</span></div></div>
+            <div class="slot"><span class="slot-time">周末</span><h3>战棋工坊</h3><p>测试桥头关卡，不写入正式战绩。</p><div class="reward-row"><span class="badge">演练</span><span class="badge">地图</span></div></div>
+          </div>
+        </div>
+        <div class="panel side-panel">
+          <div class="panel-title"><b>行动预览</b><span class="micro">PREVIEW</span></div>
+          <div class="event-card"><b>主线检定</b><br><span class="small">选“邀约同窗”后，大概率完成训练搭档。</span></div>
+          <div class="event-card"><b>风险提示</b><br><span class="small">连续战棋会压低体力，补给课可缓冲。</span></div>
+          <div><div class="stat-row"><div class="stat-label"><span>步兵 Lv.2</span><span>65%</span></div><div class="bar"><i style="width:65%"></i></div></div><div class="stat-row"><div class="stat-label"><span>后勤 Lv.2</span><span>72%</span></div><div class="bar"><i style="width:72%"></i></div></div></div>
+          <div class="row"><div class="button">确认本周</div><div class="button alt">重选</div></div>
+        </div>
+      </div>
+      <div class="bottom-actions"><div class="button alt">课程</div><div class="button alt">同窗</div><div class="button warn">战棋</div><div class="button alt">读报</div><div class="button">任务</div></div>
+    </section>
+  </div>
+</body>
+</html>

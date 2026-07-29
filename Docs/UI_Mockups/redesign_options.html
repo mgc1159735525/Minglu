@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>明路 UI 翻新方案</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #111;
+      font-family: "Microsoft YaHei", "Noto Sans CJK SC", "SimHei", Arial, sans-serif;
+      color: #f3ead8;
+    }
+    .stack { display: grid; gap: 32px; padding: 32px; width: fit-content; }
+    .screen {
+      position: relative;
+      width: 1280px;
+      height: 720px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: 0 22px 70px rgba(0,0,0,.42);
+    }
+    .bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(.86) contrast(.98);
+    }
+    .shade { position: absolute; inset: 0; pointer-events: none; }
+    .top { position: absolute; left: 36px; right: 36px; top: 24px; height: 54px; display: flex; align-items: center; gap: 14px; }
+    .title { font-size: 24px; font-weight: 700; letter-spacing: 0; white-space: nowrap; }
+    .pill { height: 30px; display: inline-flex; align-items: center; gap: 8px; padding: 0 12px; font-size: 14px; white-space: nowrap; }
+    .btn { height: 38px; display: flex; align-items: center; justify-content: center; padding: 0 18px; font-size: 18px; font-weight: 700; }
+    .small { font-size: 13px; opacity: .78; }
+    .section-title { font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+    .row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .bar { height: 7px; overflow: hidden; }
+    .bar i { display: block; height: 100%; }
+    .portrait { position: absolute; object-fit: cover; object-position: top center; }
+    .nav { position: absolute; display: flex; gap: 8px; }
+
+    #option-a {
+      background: #1a1013;
+      --gold: #d4ad61;
+      --paper: #efe0bf;
+      --ink: #211612;
+      --wine: #4d2232;
+      --deep: rgba(23, 12, 12, .83);
+    }
+    #option-a .shade {
+      background:
+        linear-gradient(90deg, rgba(31,15,17,.92), rgba(34,16,18,.18) 42%, rgba(24,11,14,.9)),
+        radial-gradient(circle at 50% 45%, rgba(239,204,127,.28), transparent 36%);
+    }
+    #option-a .top {
+      background: linear-gradient(180deg, rgba(91,39,56,.96), rgba(58,24,35,.96));
+      border: 2px solid var(--gold);
+      box-shadow: 0 0 0 4px rgba(24,11,14,.55);
+      padding: 0 18px;
+    }
+    #option-a .pill { background: rgba(0,0,0,.28); color: #f4d899; border-left: 1px solid rgba(212,173,97,.55); }
+    #option-a .portrait {
+      left: 474px; top: 96px; width: 300px; height: 520px;
+      border: 5px solid var(--gold);
+      box-shadow: 0 18px 44px rgba(0,0,0,.55);
+    }
+    #option-a .panel {
+      position: absolute;
+      background: linear-gradient(180deg, rgba(37,22,16,.92), rgba(24,13,10,.94));
+      border: 2px solid rgba(212,173,97,.72);
+      box-shadow: inset 0 0 0 1px rgba(255,236,184,.18), 0 18px 38px rgba(0,0,0,.34);
+    }
+    #option-a .left { left: 52px; top: 110px; width: 350px; height: 482px; padding: 22px; }
+    #option-a .right { right: 52px; top: 110px; width: 350px; height: 482px; padding: 22px; }
+    #option-a .bottom { left: 100px; right: 100px; bottom: 24px; height: 78px; padding: 16px 22px; }
+    #option-a .card {
+      background: rgba(239,224,191,.08);
+      border: 1px solid rgba(212,173,97,.38);
+      padding: 12px;
+      margin-bottom: 10px;
+    }
+    #option-a .btn { background: linear-gradient(180deg, #8f4457, #5a2637); border: 2px solid var(--gold); color: #f7e6b8; }
+    #option-a .bar { background: rgba(0,0,0,.36); border: 1px solid rgba(212,173,97,.36); }
+    #option-a .bar i { background: linear-gradient(90deg, #d4ad61, #f6da8e); }
+
+    #option-b {
+      background: #17201d;
+      --paper: #d9d0b3;
+      --ink: #1c221e;
+      --steel: #40505a;
+      --green: #394a37;
+      --red: #9a4135;
+      --tan: #b9a16f;
+    }
+    #option-b .shade {
+      background:
+        linear-gradient(90deg, rgba(15,21,19,.94), rgba(15,21,19,.42) 48%, rgba(18,22,20,.92)),
+        linear-gradient(180deg, rgba(83,88,73,.2), rgba(6,10,10,.72));
+    }
+    #option-b .top {
+      background: rgba(20,28,26,.92);
+      border-bottom: 2px solid rgba(185,161,111,.84);
+      padding: 0 12px;
+    }
+    #option-b .pill { background: rgba(217,208,179,.11); color: #e9dfc2; border: 1px solid rgba(217,208,179,.22); }
+    #option-b .side {
+      position: absolute;
+      top: 100px; bottom: 86px;
+      background: rgba(22,29,27,.9);
+      border: 1px solid rgba(217,208,179,.28);
+      box-shadow: 0 18px 36px rgba(0,0,0,.32);
+    }
+    #option-b .left { left: 36px; width: 310px; padding: 18px; }
+    #option-b .right { right: 36px; width: 310px; padding: 18px; }
+    #option-b .center {
+      position: absolute;
+      left: 372px; right: 372px; top: 100px; bottom: 86px;
+      background: rgba(217,208,179,.82);
+      color: var(--ink);
+      border: 2px solid rgba(185,161,111,.88);
+      padding: 20px;
+    }
+    #option-b .portrait { right: 54px; top: 120px; width: 124px; height: 158px; border: 2px solid rgba(185,161,111,.9); }
+    #option-b .route {
+      height: 58px; margin-bottom: 10px; padding: 10px 12px;
+      background: rgba(217,208,179,.1); border-left: 4px solid var(--tan);
+    }
+    #option-b .hexmap {
+      position: absolute; left: 34px; right: 34px; top: 78px; bottom: 76px;
+      background:
+        linear-gradient(30deg, rgba(64,80,90,.18), transparent 26%),
+        repeating-linear-gradient(60deg, transparent 0 34px, rgba(28,34,30,.12) 35px 37px);
+      border: 1px solid rgba(28,34,30,.22);
+    }
+    #option-b .node { position: absolute; width: 70px; height: 42px; background: rgba(57,74,55,.88); color: #f1e7c9; display: flex; align-items: center; justify-content: center; border: 2px solid #b9a16f; }
+    #option-b .btn { background: #3a4639; border: 1px solid rgba(217,208,179,.42); color: #efe5ca; }
+    #option-b .bar { background: rgba(0,0,0,.3); }
+    #option-b .bar i { background: #c7a753; }
+    #option-b .bottom-nav { left: 70px; right: 70px; bottom: 24px; height: 44px; justify-content: center; }
+
+    #option-c {
+      background: #efe5cd;
+      color: #2d251d;
+      --paper: #f7edd8;
+      --paper2: #eadbbd;
+      --ink: #2d251d;
+      --jade: #4b7461;
+      --red: #9d5345;
+      --blue: #4a6674;
+    }
+    #option-c .shade {
+      background:
+        linear-gradient(90deg, rgba(247,237,216,.94), rgba(247,237,216,.56) 48%, rgba(247,237,216,.94)),
+        radial-gradient(circle at 45% 45%, rgba(255,255,255,.35), transparent 34%);
+    }
+    #option-c .top {
+      background: rgba(247,237,216,.9);
+      border: 1px solid rgba(45,37,29,.18);
+      box-shadow: 0 12px 24px rgba(84,58,34,.16);
+      padding: 0 16px;
+      color: var(--ink);
+    }
+    #option-c .pill { background: rgba(75,116,97,.12); color: var(--ink); border: 1px solid rgba(75,116,97,.22); }
+    #option-c .portrait {
+      left: 70px; top: 112px; width: 258px; height: 420px;
+      border: 1px solid rgba(45,37,29,.18);
+      box-shadow: 0 16px 30px rgba(84,58,34,.18);
+    }
+    #option-c .book {
+      position: absolute;
+      left: 360px; right: 50px; top: 104px; bottom: 96px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+      background: rgba(247,237,216,.78);
+      border: 1px solid rgba(45,37,29,.16);
+      padding: 22px;
+      color: var(--ink);
+    }
+    #option-c .page { background: rgba(255,250,237,.82); border: 1px solid rgba(45,37,29,.12); padding: 18px; }
+    #option-c .note {
+      background: rgba(75,116,97,.08);
+      border-left: 4px solid var(--jade);
+      padding: 12px;
+      margin-bottom: 12px;
+    }
+    #option-c .btn { background: #4b7461; color: #fff8e6; border: 1px solid rgba(45,37,29,.16); }
+    #option-c .bar { background: rgba(45,37,29,.14); }
+    #option-c .bar i { background: #4b7461; }
+    #option-c .bottom-nav { left: 360px; right: 50px; bottom: 28px; height: 48px; justify-content: center; }
+  </style>
+</head>
+<body>
+  <div class="stack">
+    <section class="screen" id="option-a">
+      <img class="bg" src="../../Assets/Resources/Art/Scenes/scene_academy.png" alt="">
+      <div class="shade"></div>
+      <div class="top">
+        <div class="title">方案A 玄金学院</div>
+        <div class="pill">周 第1周</div><div class="pill">校历 春</div><div class="pill">心情 50</div><div class="pill">体力 80</div><div class="pill">国库 140</div>
+      </div>
+      <img class="portrait" src="../../Assets/Resources/Art/Portraits/portrait_player_mo_mingyuan.png" alt="">
+      <div class="panel left">
+        <div class="section-title">角色状态</div>
+        <div class="card"><div class="row"><b>步兵 Lv.2</b><span>65%</span></div><div class="bar"><i style="width:65%"></i></div></div>
+        <div class="card"><div class="row"><b>骑训 Lv.1</b><span>34%</span></div><div class="bar"><i style="width:34%"></i></div></div>
+        <div class="card"><div class="row"><b>后勤 Lv.2</b><span>72%</span></div><div class="bar"><i style="width:72%"></i></div></div>
+        <div class="card small">姓名：夏邑　身份：新京军事学院预备生<br>特性：沉着、野外行军、校场老手</div>
+        <div class="row"><div class="btn">角色档案</div><div class="btn">属性说明</div></div>
+      </div>
+      <div class="panel right">
+        <div class="section-title">本周安排</div>
+        <div class="btn" style="margin-bottom:12px">枪阵课</div>
+        <div class="btn" style="margin-bottom:12px">骑训课</div>
+        <div class="btn" style="margin-bottom:12px">补给课</div>
+        <div class="btn" style="margin-bottom:12px">邀约同窗</div>
+        <div class="btn" style="margin-bottom:12px">周末活动</div>
+        <div class="card small">当前目标：完成训练搭档。先提升任意同窗好感到30。</div>
+      </div>
+      <div class="panel bottom">日志：剧情未触发，先完成对应养成、情报、任务或战棋目标。　　下一步建议：补给课 / 邀约同窗</div>
+    </section>
+
+    <section class="screen" id="option-b">
+      <img class="bg" src="../../Assets/Resources/Art/Scenes/scene_strategy.png" alt="">
+      <div class="shade"></div>
+      <div class="top">
+        <div class="title">方案B 军令桌案</div>
+        <div class="pill">学院</div><div class="pill">任务</div><div class="pill">战棋</div><div class="pill">情报</div>
+        <div style="flex:1"></div>
+        <div class="pill">体力 80</div><div class="pill">战功 14</div><div class="pill">设置</div>
+      </div>
+      <div class="side left">
+        <div class="section-title">军令板</div>
+        <div class="route"><b>主线</b><br><span class="small">训练搭档 26/30</span></div>
+        <div class="route"><b>支线</b><br><span class="small">桥头侦察 待接取</span></div>
+        <div class="route"><b>战斗准备</b><br><span class="small">补给正常，敌情不足</span></div>
+        <div class="btn" style="margin-top:18px">打开任务</div>
+      </div>
+      <div class="center">
+        <div class="section-title">本周推演</div>
+        <div class="hexmap">
+          <div class="node" style="left:56px;top:68px">枪阵</div>
+          <div class="node" style="left:180px;top:112px">骑训</div>
+          <div class="node" style="left:306px;top:72px;background:#9a4135">战棋</div>
+          <div class="node" style="left:112px;top:240px">补给</div>
+          <div class="node" style="left:260px;top:250px">情报</div>
+        </div>
+        <div style="position:absolute;left:34px;right:34px;bottom:22px" class="row">
+          <div class="btn">开始课程</div><div class="btn">战棋工坊</div><div class="btn">周末活动</div>
+        </div>
+      </div>
+      <div class="side right">
+        <img class="portrait" src="../../Assets/Resources/Art/Portraits/portrait_player_mo_mingyuan.png" alt="">
+        <div class="section-title">夏邑</div>
+        <div class="small" style="margin-bottom:180px">新京军事学院<br>步兵 Lv.2　补给 Lv.2</div>
+        <div class="row"><b>兵学</b><span>65%</span></div><div class="bar"><i style="width:65%"></i></div><br>
+        <div class="row"><b>同窗</b><span>26</span></div><div class="bar"><i style="width:52%"></i></div><br>
+        <div class="btn">角色与心态</div>
+      </div>
+      <div class="nav bottom-nav"><div class="btn">地图</div><div class="btn">编队</div><div class="btn">角色</div><div class="btn">技能</div><div class="btn">外交</div><div class="btn">设置</div></div>
+    </section>
+
+    <section class="screen" id="option-c">
+      <img class="bg" src="../../Assets/Resources/Art/Scenes/scene_library.png" alt="">
+      <div class="shade"></div>
+      <div class="top">
+        <div class="title">方案C 书院手账</div>
+        <div class="pill">今日</div><div class="pill">课程</div><div class="pill">同窗</div><div class="pill">战备</div>
+        <div style="flex:1"></div>
+        <div class="pill">心情 50</div><div class="pill">体力 80</div><div class="pill">设置</div>
+      </div>
+      <img class="portrait" src="../../Assets/Resources/Art/Portraits/portrait_player_mo_mingyuan.png" alt="">
+      <div style="position:absolute;left:70px;top:548px;width:258px;color:#2d251d">
+        <b>夏邑</b><br><span class="small">预备生 / 特性 3 / 本周可行动 2</span>
+      </div>
+      <div class="book">
+        <div class="page">
+          <div class="section-title">本周笔记</div>
+          <div class="note"><b>主线目标</b><br><span class="small">完成训练搭档，任意同窗好感达到30。</span></div>
+          <div class="note"><b>课程建议</b><br><span class="small">补给课能降低战棋消耗，枪阵课提高正面作战。</span></div>
+          <div class="note"><b>剧情入口</b><br><span class="small">满足条件后自动推进，不在主界面堆字段。</span></div>
+          <div class="row"><div class="btn">读报</div><div class="btn">任务</div></div>
+        </div>
+        <div class="page">
+          <div class="section-title">行动安排</div>
+          <div class="btn" style="margin-bottom:12px">枪阵课</div>
+          <div class="btn" style="margin-bottom:12px;background:#4a6674">骑训课</div>
+          <div class="btn" style="margin-bottom:12px;background:#9d5345">战棋演练</div>
+          <div class="btn" style="margin-bottom:12px">邀约同窗</div>
+          <div class="row"><b>步兵 Lv.2</b><span>65%</span></div><div class="bar"><i style="width:65%"></i></div><br>
+          <div class="row"><b>后勤 Lv.2</b><span>72%</span></div><div class="bar"><i style="width:72%"></i></div>
+        </div>
+      </div>
+      <div class="nav bottom-nav"><div class="btn">角色档案</div><div class="btn">关系</div><div class="btn">战棋工坊</div><div class="btn">存档</div></div>
+    </section>
+  </div>
+</body>
+</html>

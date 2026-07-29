@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>明路 游戏感 UI 方案</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #090807;
+      color: #fff2d6;
+      font-family: "Microsoft YaHei", "Noto Sans CJK SC", "SimHei", Arial, sans-serif;
+    }
+    .stack { display: grid; gap: 36px; padding: 36px; width: fit-content; }
+    .screen {
+      position: relative;
+      width: 1280px;
+      height: 720px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: 0 26px 90px rgba(0,0,0,.58);
+      isolation: isolate;
+    }
+    .bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -3;
+    }
+    .shade { position: absolute; inset: 0; z-index: -2; pointer-events: none; }
+    .texture {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: .12;
+      background-image:
+        linear-gradient(90deg, rgba(255,255,255,.10) 1px, transparent 1px),
+        linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px);
+      background-size: 54px 54px;
+      mask-image: radial-gradient(circle at 50% 50%, black, transparent 76%);
+    }
+    .top {
+      position: absolute;
+      left: 38px;
+      right: 38px;
+      top: 24px;
+      height: 62px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 16px;
+    }
+    .title {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+    .tag {
+      min-width: 66px;
+      height: 34px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 0 10px;
+      font-size: 14px;
+      white-space: nowrap;
+      font-weight: 700;
+    }
+    .tag b { font-size: 19px; }
+    .button {
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 16px;
+      font-size: 17px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+    .small { font-size: 13px; line-height: 1.45; opacity: .78; }
+    .micro { font-size: 11px; letter-spacing: 1.2px; opacity: .68; text-transform: uppercase; }
+    .panel-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+      font-size: 20px;
+      font-weight: 900;
+    }
+    .row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .bar { height: 8px; overflow: hidden; background: rgba(0,0,0,.25); }
+    .bar i { display: block; height: 100%; }
+    .portrait { position: absolute; object-fit: cover; object-position: top center; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 28px;
+      height: 28px;
+      padding: 0 8px;
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    #game-a {
+      background: #2a1712;
+      --gold: #f0c56d;
+      --leaf: #4f8a63;
+      --wine: #923d53;
+      --blue: #416a8a;
+      --paper: #f5dfb0;
+    }
+    #game-a .bg { filter: brightness(.74) saturate(.9) contrast(1.02); }
+    #game-a .shade {
+      background:
+        linear-gradient(90deg, rgba(31,12,13,.92), rgba(56,25,18,.32) 50%, rgba(25,10,13,.9)),
+        radial-gradient(circle at 45% 44%, rgba(255,209,112,.28), transparent 36%);
+    }
+    #game-a .top {
+      background: linear-gradient(180deg, rgba(111,42,59,.96), rgba(63,24,37,.96));
+      border: 1px solid rgba(240,197,109,.82);
+      box-shadow: 0 18px 42px rgba(0,0,0,.38), inset 0 0 0 1px rgba(255,239,180,.14);
+    }
+    #game-a .tag { background: rgba(30,10,12,.44); border: 1px solid rgba(240,197,109,.24); color: #ffe7a8; }
+    #game-a .portrait {
+      left: 58px; top: 112px; width: 290px; height: 440px;
+      border: 2px solid rgba(240,197,109,.72);
+      box-shadow: 0 26px 56px rgba(0,0,0,.5);
+    }
+    #game-a .mood {
+      position: absolute; left: 58px; top: 566px; width: 290px; height: 86px;
+      background: rgba(24,9,9,.72);
+      border: 1px solid rgba(240,197,109,.44);
+      padding: 12px;
+    }
+    #game-a .main {
+      position: absolute; left: 382px; right: 42px; top: 112px; bottom: 84px;
+      display: grid; grid-template-rows: 150px 1fr 118px; gap: 14px;
+    }
+    #game-a .chapter {
+      background: linear-gradient(90deg, rgba(39,15,14,.88), rgba(83,35,28,.76));
+      border: 1px solid rgba(240,197,109,.5);
+      padding: 18px;
+      box-shadow: inset 0 0 0 1px rgba(255,239,180,.08);
+    }
+    #game-a .slots {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    #game-a .slot {
+      position: relative;
+      background: rgba(28,11,9,.78);
+      border: 1px solid rgba(240,197,109,.36);
+      padding: 14px;
+    }
+    #game-a .slot::before {
+      content: attr(data-day);
+      position: absolute;
+      right: 12px;
+      top: 10px;
+      font-size: 12px;
+      opacity: .62;
+    }
+    #game-a .reward {
+      display: flex;
+      gap: 8px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+    #game-a .badge { background: rgba(240,197,109,.16); border: 1px solid rgba(240,197,109,.38); color: #ffe8ad; }
+    #game-a .actions {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+    #game-a .action {
+      background: linear-gradient(180deg, #814257, #4c2134);
+      border: 1px solid rgba(240,197,109,.66);
+      box-shadow: 0 12px 22px rgba(0,0,0,.28), inset 0 1px rgba(255,255,255,.1);
+      padding: 12px;
+    }
+    #game-a .action.green { background: linear-gradient(180deg, #4f8a63, #2e5540); }
+    #game-a .action.blue { background: linear-gradient(180deg, #416a8a, #29475f); }
+    #game-a .action.red { background: linear-gradient(180deg, #a85647, #70322c); }
+    #game-a .button { background: #4f8a63; color: #fff5d4; border: 1px solid rgba(240,197,109,.44); }
+    #game-a .bar i { background: linear-gradient(90deg, #e0994d, #ffe69b); }
+
+    #game-b {
+      background: #17202b;
+      --steel: #9fbec4;
+      --red: #c95745;
+      --blue: #477391;
+      --green: #4b775e;
+      --gold: #d5b46a;
+    }
+    #game-b .bg { filter: brightness(.48) saturate(.8) contrast(1.08); }
+    #game-b .shade {
+      background:
+        linear-gradient(90deg, rgba(10,17,22,.96), rgba(15,24,32,.44) 48%, rgba(9,15,20,.96)),
+        radial-gradient(circle at 45% 42%, rgba(159,190,196,.16), transparent 42%);
+    }
+    #game-b .top {
+      background: rgba(14,24,31,.94);
+      border: 1px solid rgba(159,190,196,.28);
+      border-bottom: 3px solid var(--red);
+      box-shadow: 0 18px 44px rgba(0,0,0,.38);
+    }
+    #game-b .tag { background: rgba(255,255,255,.06); border: 1px solid rgba(159,190,196,.2); color: #e8f2ef; }
+    #game-b .board {
+      position: absolute; left: 42px; top: 112px; bottom: 88px; width: 760px;
+      background: linear-gradient(180deg, rgba(21,34,41,.92), rgba(12,20,25,.94));
+      border: 1px solid rgba(159,190,196,.28);
+      box-shadow: 0 26px 58px rgba(0,0,0,.46);
+      padding: 24px;
+    }
+    #game-b .track {
+      position: absolute; left: 24px; right: 24px; top: 88px; bottom: 24px;
+      background:
+        repeating-linear-gradient(30deg, rgba(159,190,196,.13) 0 2px, transparent 2px 40px),
+        repeating-linear-gradient(150deg, rgba(159,190,196,.09) 0 2px, transparent 2px 40px),
+        rgba(196,188,155,.10);
+      border: 1px solid rgba(159,190,196,.22);
+    }
+    #game-b .node {
+      position: absolute;
+      width: 96px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 900;
+      background: rgba(45,74,84,.95);
+      border: 1px solid rgba(159,190,196,.74);
+      box-shadow: 0 12px 24px rgba(0,0,0,.3);
+    }
+    #game-b .node.red { background: rgba(125,48,41,.96); border-color: rgba(230,145,111,.82); }
+    #game-b .node.green { background: rgba(55,96,72,.96); }
+    #game-b .side {
+      position: absolute; right: 42px; top: 112px; bottom: 88px; width: 400px;
+      background: rgba(12,20,25,.94);
+      border: 1px solid rgba(159,190,196,.28);
+      box-shadow: 0 26px 58px rgba(0,0,0,.45);
+      padding: 22px;
+    }
+    #game-b .portrait {
+      right: 64px; top: 154px; width: 144px; height: 182px;
+      border: 2px solid rgba(230,145,111,.82);
+      box-shadow: 0 18px 36px rgba(0,0,0,.42);
+    }
+    #game-b .quest {
+      background: rgba(255,255,255,.065);
+      border-left: 4px solid var(--red);
+      padding: 12px;
+      margin-bottom: 12px;
+    }
+    #game-b .button { background: #294b5a; color: #eef7f3; border: 1px solid rgba(159,190,196,.36); }
+    #game-b .bar i { background: linear-gradient(90deg, #c95745, #f0a679); }
+    #game-b .bottom {
+      position: absolute; left: 42px; right: 42px; bottom: 24px; height: 44px;
+      display: flex; justify-content: center; gap: 10px;
+    }
+
+    #game-c {
+      color: #2d241b;
+      background: #efe3cb;
+      --paper: #fff8e8;
+      --green: #427764;
+      --blue: #4d6f86;
+      --red: #aa5545;
+      --gold: #c49648;
+    }
+    #game-c .bg { filter: brightness(1.08) saturate(.64); }
+    #game-c .shade {
+      background:
+        linear-gradient(90deg, rgba(239,227,203,.97), rgba(239,227,203,.58) 48%, rgba(239,227,203,.96)),
+        radial-gradient(circle at 44% 44%, rgba(255,255,255,.42), transparent 34%);
+    }
+    #game-c .top {
+      background: rgba(255,249,236,.9);
+      border: 1px solid rgba(45,36,27,.14);
+      box-shadow: 0 16px 34px rgba(84,61,38,.16);
+    }
+    #game-c .tag { background: rgba(66,119,100,.08); border: 1px solid rgba(66,119,100,.18); color: #2d241b; }
+    #game-c .portrait {
+      left: 62px; top: 112px; width: 292px; height: 452px;
+      border: 1px solid rgba(45,36,27,.16);
+      box-shadow: 0 24px 46px rgba(84,61,38,.18);
+    }
+    #game-c .identity {
+      position: absolute; left: 62px; top: 578px; width: 292px; height: 70px;
+      background: rgba(255,249,236,.86);
+      border: 1px solid rgba(45,36,27,.12);
+      padding: 10px 14px;
+    }
+    #game-c .main {
+      position: absolute; left: 392px; right: 48px; top: 112px; bottom: 88px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+    }
+    #game-c .page {
+      background: rgba(255,249,236,.86);
+      border: 1px solid rgba(45,36,27,.12);
+      box-shadow: 0 22px 42px rgba(84,61,38,.13), inset 0 0 0 1px rgba(255,255,255,.62);
+      padding: 20px;
+    }
+    #game-c .event {
+      background: rgba(66,119,100,.08);
+      border-left: 4px solid var(--green);
+      padding: 12px;
+      margin-bottom: 12px;
+    }
+    #game-c .action {
+      height: 64px;
+      display: grid;
+      grid-template-columns: 44px 1fr auto;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      margin-bottom: 10px;
+      background: rgba(66,119,100,.08);
+      border: 1px solid rgba(45,36,27,.12);
+    }
+    #game-c .icon {
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--green);
+      color: #fff8e7;
+      font-weight: 900;
+    }
+    #game-c .action.red .icon { background: var(--red); }
+    #game-c .action.blue .icon { background: var(--blue); }
+    #game-c .button { background: var(--green); color: #fff8e7; box-shadow: 0 8px 18px rgba(66,119,100,.18); }
+    #game-c .button.red { background: var(--red); }
+    #game-c .bar i { background: var(--green); }
+    #game-c .bottom {
+      position: absolute; left: 392px; right: 48px; bottom: 26px; height: 44px;
+      display: flex; justify-content: center; gap: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="stack">
+    <section class="screen" id="game-a">
+      <img class="bg" src="../../Assets/Resources/Art/Scenes/scene_academy.png" alt="">
+      <div class="shade"></div><div class="texture"></div>
+      <div class="top">
+        <div class="title">游戏感A 日程冒险</div>
+        <div class="tag">第<b>1</b>周</div><div class="tag">行动<b>2</b>/3</div><div class="tag">心情<b>50</b></div><div class="tag">体力<b>80</b></div><div class="tag">战功<b>14</b></div><div style="flex:1"></div><div class="tag">设置</div>
+      </div>
+      <img class="portrait" src="../../Assets/Resources/Art/Portraits/portrait_player_mo_mingyuan.png" alt="">
+      <div class="mood">
+        <div class="row"><b>夏邑</b><span>预备生</span></div>
+        <div class="small">特性：沉着 / 野外行军 / 校场老手</div>
+        <div class="bar" style="margin-top:8px"><i style="width:62%"></i></div>
+      </div>
+      <div class="main">
+        <div class="chapter">
+          <div class="panel-title"><span>章节目标：训练搭档</span><span class="micro">STORY QUEST</span></div>
+          <div class="row"><span>任意同窗好感达到30后，解锁战前侦察与第一次正式演习。</span><span class="badge">26/30</span></div>
+          <div class="reward"><span class="badge">剧情</span><span class="badge">同窗支援</span><span class="badge">战棋入口</span></div>
+        </div>
+        <div class="slots">
+          <div class="slot" data-day="上午"><h3>枪阵课</h3><p class="small">步兵经验 +12，可能触发课堂事件。</p><div class="reward"><span class="badge">兵学</span><span class="badge">+12</span></div></div>
+          <div class="slot" data-day="下午"><h3>邀约同窗</h3><p class="small">选择同窗推进关系，满足主线触发条件。</p><div class="reward"><span class="badge">好感</span><span class="badge">事件</span></div></div>
+          <div class="slot" data-day="周末"><h3>战棋工坊</h3><p class="small">测试桥头关卡，不写入正式战绩。</p><div class="reward"><span class="badge">演练</span><span class="badge">地图</span></div></div>
+        </div>
+        <div class="actions">
+          <div class="action green"><b>课程</b><br><span class="small">训练属性</span></div>
+          <div class="action blue"><b>同窗</b><br><span class="small">关系事件</span></div>
+          <div class="action red"><b>战棋</b><br><span class="small">军演关卡</span></div>
+          <div class="action"><b>读报</b><br><span class="small">立场情报</span></div>
+          <div class="action"><b>任务</b><br><span class="small">目标链</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="game-b">
+      <img class="bg" src="../../Assets/Resources/Art/Scenes/scene_frontier.png" alt="">
+      <div class="shade"></div><div class="texture"></div>
+      <div class="top">
+        <div class="title">游戏感B 成长棋盘</div>
+        <div class="tag">校历<b>春</b></div><div class="tag">行动点<b>2</b></div><div class="tag">补给<b>正常</b></div><div style="flex:1"></div><div class="tag">体力<b>80</b></div><div class="tag">国库<b>140</b></div>
+      </div>
+      <div class="board">
+        <div class="panel-title"><span>本周路线</span><span class="micro">ROUTE BOARD</span></div>
+        <div class="track">
+          <div class="node green" style="left:86px;top:68px">枪阵<br>+12</div>
+          <div class="node" style="left:250px;top:136px">补给<br>-耗</div>
+          <div class="node red" style="left:482px;top:82px">战棋<br>演练</div>
+          <div class="node" style="left:154px;top:300px">情报<br>+8</div>
+          <div class="node red" style="left:430px;top:318px">事件<br>检定</div>
+        </div>
+      </div>
+      <div class="side">
+        <div class="panel-title"><span>行动预览</span><span class="micro">PREVIEW</span></div>
+        <img class="portrait" src="../../Assets/Resources/Art/Portraits/portrait_player_mo_mingyuan.png" alt="">
+        <div style="height:182px"></div>
+        <div class="quest"><b>主线检定</b><br><span class="small">训练搭档 26/30。选“邀约同窗”后大概率达成。</span></div>
+        <div class="quest"><b>风险提示</b><br><span class="small">连续战棋会压低体力，补给课可缓冲。</span></div>
+        <div class="row"><b>步兵 Lv.2</b><span>65%</span></div><div class="bar"><i style="width:65%"></i></div><br>
+        <div class="row"><div class="button">确认本周</div><div class="button">重选路线</div></div>
+      </div>
+      <div class="bottom"><div class="button">地图</div><div class="button">角色</div><div class="button">战棋工坊</div><div class="button">情报</div><div class="button">存档</div></div>
+    </section>
+
+    <section class="screen" id="game-c">
+      <img class="bg" src="../../Assets/Resources/Art/Scenes/scene_library.png" alt="">
+      <div class="shade"></div><div class="texture"></div>
+      <div class="top">
+        <div class="title">游戏感C 任务手账</div>
+        <div class="tag">今日</div><div class="tag">课程</div><div class="tag">同窗</div><div class="tag">战备</div><div style="flex:1"></div><div class="tag">心情<b>50</b></div><div class="tag">体力<b>80</b></div>
+      </div>
+      <img class="portrait" src="../../Assets/Resources/Art/Portraits/portrait_player_mo_mingyuan.png" alt="">
+      <div class="identity"><b>夏邑</b><br><span class="small">预备生 / 本周可行动 2 / 章节：学院初训</span></div>
+      <div class="main">
+        <div class="page">
+          <div class="panel-title"><span>事件栏</span><span class="micro">EVENTS</span></div>
+          <div class="event"><b>主线目标</b><br><span class="small">完成训练搭档，任意同窗好感达到30。</span></div>
+          <div class="event"><b>可触发</b><br><span class="small">补给课后可能出现“仓库夜谈”。</span></div>
+          <div class="event"><b>战棋提示</b><br><span class="small">桥头测试关适合验证伏兵区域触发。</span></div>
+          <div class="row"><div class="button">读报</div><div class="button">剧情目录</div></div>
+        </div>
+        <div class="page">
+          <div class="panel-title"><span>行动卡</span><span class="micro">ACTIONS</span></div>
+          <div class="action"><div class="icon">枪</div><div><b>枪阵课</b><br><span class="small">步兵经验 +12</span></div><span class="badge">1点</span></div>
+          <div class="action blue"><div class="icon">骑</div><div><b>骑训课</b><br><span class="small">移动与冲击</span></div><span class="badge">1点</span></div>
+          <div class="action red"><div class="icon">战</div><div><b>战棋演练</b><br><span class="small">进入测试关卡</span></div><span class="badge">2点</span></div>
+          <div class="action"><div class="icon">友</div><div><b>邀约同窗</b><br><span class="small">推进主线条件</span></div><span class="badge">1点</span></div>
+          <div class="row"><b>后勤 Lv.2</b><span>72%</span></div><div class="bar"><i style="width:72%"></i></div>
+        </div>
+      </div>
+      <div class="bottom"><div class="button">角色档案</div><div class="button">关系</div><div class="button red">战棋工坊</div><div class="button">存档</div></div>
+    </section>
+  </div>
+</body>
+</html>
