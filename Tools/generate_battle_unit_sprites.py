@@ -21,12 +21,12 @@ SIZE = 256
 SCALE = 3
 SHEET_COLUMNS = 6
 SHEET_ROWS = ("idle", "move", "attack", "hit")
-IDLE_FRAMES = 4
-MOVE_FRAMES = 6
-ATTACK_FRAMES = 6
-HIT_FRAMES = 6
-RECOVER_FRAMES = 6
-DEFEAT_FRAMES = 8
+IDLE_FRAMES = 6
+MOVE_FRAMES = 12
+ATTACK_FRAMES = 8
+HIT_FRAMES = 8
+RECOVER_FRAMES = 8
+DEFEAT_FRAMES = 10
 FRAME_COUNTS = {
     "idle": IDLE_FRAMES,
     "move": MOVE_FRAMES,
@@ -37,7 +37,7 @@ FRAME_COUNTS = {
 }
 STYLE_LABEL = (
     "painted tactical miniature sprites animated from standing unit designs; "
-    "visible left-right gait cycles, attack anticipation, impact recoil, and full-frame raster output"
+    "12-frame alternating gait cycles, attack anticipation, impact recoil, recovery, defeat, and full-frame raster output"
 )
 
 ROLE_DISPLAY = {
@@ -470,10 +470,12 @@ def split_design_layers(img, role):
     mid_x = x0 + int((x1 - x0) * (0.50 if role not in ("cavalry", "heavy_cavalry") else 0.53))
     overlap = 16
 
+    upper_bottom = hip_y + (18 if role in ("cavalry", "heavy_cavalry", "artillery") else 4)
+    leg_top = hip_y - (8 if role in ("cavalry", "heavy_cavalry", "artillery") else 16)
     base = layer_rect(img, (x0 - 10, base_top, x1 + 10, y1 + 4))
-    upper = layer_rect(img, (x0 - 12, y0 - 8, x1 + 12, hip_y + 18))
-    back_leg = layer_rect(img, (x0 - 8, hip_y - 6, mid_x + overlap, base_top + 18))
-    front_leg = layer_rect(img, (mid_x - overlap, hip_y - 6, x1 + 8, base_top + 18))
+    upper = layer_rect(img, (x0 - 12, y0 - 8, x1 + 12, upper_bottom))
+    back_leg = layer_rect(img, (x0 - 8, leg_top, mid_x + overlap, base_top + 22))
+    front_leg = layer_rect(img, (mid_x - overlap, leg_top, x1 + 8, base_top + 22))
     return base, upper, back_leg, front_leg
 
 
@@ -487,12 +489,13 @@ def downsample_design_frame(img):
 def draw_move_marks(draw, bbox, frame, role):
     x0, y0, x1, y1 = bbox
     phase = (frame % MOVE_FRAMES) / float(MOVE_FRAMES)
-    if frame in (1, 4):
+    phase_index = frame % MOVE_FRAMES
+    if phase_index in (2, 3, 8, 9):
         y = y1 - 54
         for i in range(2):
-            start = x0 + 28 + i * 35 + (8 if frame == 4 else 0)
+            start = x0 + 28 + i * 35 + (8 if phase_index >= 8 else 0)
             draw.line((start, y + i * 16, start - 34, y + 10 + i * 12), fill=(222, 198, 128, 72), width=3)
-    if role in ("cavalry", "heavy_cavalry") and frame in (0, 2, 3, 5):
+    if role in ("cavalry", "heavy_cavalry") and phase_index in (1, 3, 5, 7, 9, 11):
         draw.arc((x0 + 42, y1 - 116, x1 - 28, y1 - 24), 198 + phase * 22, 264 + phase * 22, fill=(220, 191, 104, 74), width=4)
 
 
@@ -511,13 +514,13 @@ def make_straight_walk_leg_layer(bbox, frame, role):
     foot_y = y1 - height * 0.13
     phase = frame % MOVE_FRAMES
 
-    # Contact -> right foot forward -> passing -> left foot forward -> passing -> recovery.
-    front_step = [10, 30, 12, -12, -26, -8][phase]
-    back_step = [-16, -26, -6, 12, 30, 10][phase]
-    front_lift = [0, -10, -5, 0, -3, -8][phase]
-    back_lift = [-3, 0, -8, -5, -11, -3][phase]
-    front_knee = [2, 8, -4, -2, -7, 4][phase]
-    back_knee = [-4, -7, 5, 2, 8, -2][phase]
+    # Two contact poses with passing frames between them. Default sprites face right.
+    front_step = [32, 26, 14, 2, -12, -25, -34, -26, -12, 4, 19, 31][phase]
+    back_step = [-31, -20, -6, 9, 24, 34, 30, 18, 2, -14, -25, -32][phase]
+    front_lift = [0, -2, -8, -13, -9, -3, 0, -3, -9, -14, -8, -2][phase]
+    back_lift = [-2, -8, -13, -9, -3, 0, 0, -2, -8, -13, -9, -3][phase]
+    front_knee = [6, 8, 5, 0, -5, -8, -6, -4, 0, 5, 8, 7][phase]
+    back_knee = [-6, -4, 0, 5, 8, 7, 6, 8, 5, 0, -5, -8][phase]
 
     leg_color = (34, 40, 43, 205)
     front_color = (50, 59, 62, 218)
@@ -649,40 +652,43 @@ def design_animation_frame(unit_id, role, anim, frame):
     base, upper, back_leg, front_leg = split_design_layers(source, role)
 
     if anim == "idle":
-        bob = [0, -3, -1, 2][frame % IDLE_FRAMES]
-        sway = [-0.5, 0.4, 0.2, -0.3][frame % IDLE_FRAMES]
+        bob = [0, -2, -4, -2, 1, 0][frame % IDLE_FRAMES]
+        sway = [-0.5, 0.1, 0.5, 0.2, -0.2, -0.4][frame % IDLE_FRAMES]
         body = transform_layer(composite_layers(upper, back_leg, front_leg), dy=bob, angle=sway)
         result = composite_layers(base, body)
     elif anim == "move":
         phase = frame % MOVE_FRAMES
         if role in ("cavalry", "heavy_cavalry"):
-            cycle = [-1.0, -0.35, 0.45, 1.0, 0.35, -0.45][phase]
-            body_bob = [0, -8, -3, 0, -8, -3][phase]
-            upper_dx = [5, 7, 6, 5, 7, 6][phase]
-            upper_angle = [0.5, 0.2, -0.1, 0.5, 0.2, -0.1][phase]
-            stride = 31
+            cycle = math.sin((phase / MOVE_FRAMES) * math.tau)
+            body_bob = [0, -4, -8, -6, -2, 0, 0, -4, -8, -6, -2, 0][phase]
+            upper_dx = [5, 6, 8, 7, 6, 5, 5, 6, 8, 7, 6, 5][phase]
+            upper_angle = [0.7, 0.5, 0.2, -0.2, -0.4, 0.0, 0.7, 0.5, 0.2, -0.2, -0.4, 0.0][phase]
+            stride = 36
             back = transform_layer(back_leg, dx=-cycle * stride, dy=-3, angle=-cycle * 7, shear=cycle * -0.025)
-            front = transform_layer(front_leg, dx=cycle * stride, dy=-7 if phase in (1, 4) else 0, angle=cycle * 8, shear=cycle * 0.025)
+            front = transform_layer(front_leg, dx=cycle * stride, dy=-8 if phase in (2, 3, 8, 9) else 0, angle=cycle * 8, shear=cycle * 0.025)
         else:
-            front_dx = [18, 10, -2, -14, -8, 8][phase]
-            back_dx = [-12, -4, 10, 18, 10, -2][phase]
-            front_lift = [0, -9, -4, 0, -2, -7][phase]
-            back_lift = [-2, -7, 0, 0, -9, -4][phase]
-            body_bob = [0, -5, -2, 0, -5, -2][phase]
-            upper_dx = [4, 5, 6, 4, 5, 6][phase]
-            upper_angle = [0.8, 0.4, 0.0, 0.8, 0.4, 0.0][phase]
-            back = transform_layer(back_leg, dx=back_dx, dy=back_lift, angle=back_dx * 0.34, shear=back_dx * 0.0015)
-            front = transform_layer(front_leg, dx=front_dx, dy=front_lift, angle=front_dx * 0.34, shear=front_dx * 0.0015)
+            front_dx = [32, 26, 14, 2, -12, -25, -34, -26, -12, 4, 19, 31][phase]
+            back_dx = [-31, -20, -6, 9, 24, 34, 30, 18, 2, -14, -25, -32][phase]
+            front_lift = [0, -2, -8, -13, -9, -3, 0, -3, -9, -14, -8, -2][phase]
+            back_lift = [-2, -8, -13, -9, -3, 0, 0, -2, -8, -13, -9, -3][phase]
+            body_bob = [0, -3, -7, -4, 0, -2, 0, -3, -7, -4, 0, -2][phase]
+            upper_dx = [4, 5, 7, 8, 7, 5, 4, 5, 7, 8, 7, 5][phase]
+            upper_angle = [0.9, 0.6, 0.2, -0.2, -0.4, 0.1, 0.9, 0.6, 0.2, -0.2, -0.4, 0.1][phase]
+            back = transform_layer(back_leg, dx=back_dx, dy=back_lift, angle=back_dx * 0.30, shear=back_dx * 0.0020)
+            front = transform_layer(front_leg, dx=front_dx, dy=front_lift, angle=front_dx * 0.30, shear=front_dx * 0.0020)
         upper_moved = transform_layer(upper, dx=upper_dx, dy=body_bob, angle=upper_angle)
-        result = composite_layers(base, back, front, upper_moved)
+        if role in ("cavalry", "heavy_cavalry") or front_dx >= back_dx:
+            result = composite_layers(base, back, front, upper_moved)
+        else:
+            result = composite_layers(base, front, back, upper_moved)
         draw = ImageDraw.Draw(result, "RGBA")
         draw_move_marks(draw, bbox, frame, role)
     elif anim == "attack":
         phase = frame % ATTACK_FRAMES
-        attack_dx = [0, -8, 12, 26, 10, 0][phase]
-        attack_dy = [0, -2, -4, 0, 2, 0][phase]
-        attack_angle = [0, -4, 5, 9, 2, 0][phase]
-        leg_brace = [0, -5, 8, 13, 4, 0][phase]
+        attack_dx = [0, -6, -12, 4, 22, 30, 12, 0][phase]
+        attack_dy = [0, -1, -3, -5, -2, 0, 1, 0][phase]
+        attack_angle = [0, -3, -6, 2, 8, 11, 4, 0][phase]
+        leg_brace = [0, -4, -7, 2, 10, 16, 7, 0][phase]
         back = transform_layer(back_leg, dx=-leg_brace * 0.5, dy=0, angle=-leg_brace * 0.4)
         front = transform_layer(front_leg, dx=leg_brace, dy=0, angle=leg_brace * 0.45)
         upper_attack = transform_layer(upper, dx=attack_dx, dy=attack_dy, angle=attack_angle)
@@ -690,26 +696,26 @@ def design_animation_frame(unit_id, role, anim, frame):
         draw_attack_effect(ImageDraw.Draw(result, "RGBA"), bbox, role, frame)
     elif anim == "hit":
         phase = frame % HIT_FRAMES
-        recoil_dx = [0, -12, -24, -17, -7, 0][phase]
-        recoil_dy = [0, -1, 5, 3, 1, 0][phase]
-        recoil_angle = [0, -5, -11, -7, -2, 0][phase]
+        recoil_dx = [0, -8, -18, -24, -18, -10, -4, 0][phase]
+        recoil_dy = [0, -1, 3, 6, 4, 2, 1, 0][phase]
+        recoil_angle = [0, -3, -8, -12, -8, -4, -1, 0][phase]
         body = transform_layer(composite_layers(upper, back_leg, front_leg), dx=recoil_dx, dy=recoil_dy, angle=recoil_angle)
         result = composite_layers(base, body)
         draw_hit_effect(ImageDraw.Draw(result, "RGBA"), bbox, frame)
     elif anim == "recover":
         phase = frame % RECOVER_FRAMES
-        recoil_dx = [-14, -10, -6, -2, 1, 0][phase]
-        recoil_dy = [4, 2, 0, -2, -1, 0][phase]
-        recoil_angle = [-8, -5, -3, -1, 0.5, 0][phase]
+        recoil_dx = [-16, -13, -10, -6, -3, 0, 1, 0][phase]
+        recoil_dy = [5, 4, 2, 0, -2, -2, -1, 0][phase]
+        recoil_angle = [-9, -7, -5, -3, -1, 0.6, 0.4, 0][phase]
         body = transform_layer(composite_layers(upper, back_leg, front_leg), dx=recoil_dx, dy=recoil_dy, angle=recoil_angle)
         result = composite_layers(base, body)
         draw_recover_effect(ImageDraw.Draw(result, "RGBA"), bbox, frame)
     else:
         phase = frame % DEFEAT_FRAMES
         p = phase / max(1, DEFEAT_FRAMES - 1)
-        fall_dx = [0, -12, -24, -34, -42, -46, -48, -48][phase]
-        fall_dy = [0, 5, 14, 26, 39, 48, 54, 58][phase]
-        fall_angle = [0, -10, -22, -38, -55, -68, -74, -78][phase]
+        fall_dx = [0, -8, -16, -26, -36, -43, -48, -51, -52, -52][phase]
+        fall_dy = [0, 3, 8, 16, 27, 38, 48, 55, 60, 62][phase]
+        fall_angle = [0, -6, -14, -26, -40, -54, -66, -74, -79, -82][phase]
         body = transform_layer(composite_layers(upper, back_leg, front_leg), dx=fall_dx, dy=fall_dy, angle=fall_angle, scale=1.0 - p * 0.16)
         body = fade_layer(body, 1.0 - p * 0.45)
         result = composite_layers(base, body)
@@ -756,14 +762,20 @@ def pose_for(anim, frame):
         }
     if anim == "move":
         steps = [
-            (0.0, 0, 0),
-            (0.9, -4, -2),
-            (0.4, -2, -1),
-            (-0.35, 0, 1),
-            (-0.95, -4, 3),
-            (-0.25, -1, 1),
+            (0.95, 0, -2),
+            (0.78, -2, -2),
+            (0.45, -5, -1),
+            (0.08, -4, 0),
+            (-0.36, 0, 1),
+            (-0.78, -2, 2),
+            (-0.96, 0, 3),
+            (-0.76, -2, 2),
+            (-0.40, -5, 1),
+            (0.02, -4, 0),
+            (0.44, 0, -1),
+            (0.82, -2, -2),
         ]
-        stride, bob, lean = steps[frame % MOVE_FRAMES]
+        stride, bob, lean = steps[frame % len(steps)]
         return {
             "bob": bob,
             "hit_x": 0,
@@ -778,12 +790,14 @@ def pose_for(anim, frame):
         attacks = [
             (-0.25, 0, -7, -64, 0),
             (-0.55, -2, -10, -82, 0),
-            (0.15, -4, 3, -28, 0),
+            (-0.35, -4, -7, -76, 0),
+            (0.15, -5, 3, -28, 0),
             (0.58, -6, 11, 12, 1),
-            (0.42, -4, 8, 30, 1),
+            (0.52, -5, 10, 30, 1),
+            (0.30, -2, 5, 8, 0),
             (0.0, 0, 0, -36, 0),
         ]
-        arm, bob, lean, weapon, flash = attacks[frame % ATTACK_FRAMES]
+        arm, bob, lean, weapon, flash = attacks[frame % len(attacks)]
         return {
             "bob": bob,
             "hit_x": 0,
@@ -796,13 +810,15 @@ def pose_for(anim, frame):
         }
     hits = [
         (0, 0, 0, 0),
-        (-6, -3, -8, 1),
+        (-4, -2, -5, 1),
+        (-8, -4, -10, 1),
         (-10, -5, -13, 1),
+        (-6, -2, -8, 1),
         (5, 0, 7, 1),
         (2, 0, 3, 0),
         (0, 0, 0, 0),
     ]
-    hit_x, bob, lean, recoil = hits[frame % HIT_FRAMES]
+    hit_x, bob, lean, recoil = hits[frame % len(hits)]
     return {
         "bob": bob,
         "hit_x": hit_x,
@@ -1263,12 +1279,25 @@ def save_frames():
 
 
 def make_preview_row(unit_id, name, keyword, role, family):
-    row = Image.new("RGBA", (1120, 172), (29, 25, 21, 255))
+    row = Image.new("RGBA", (1480, 172), (29, 25, 21, 255))
     draw = ImageDraw.Draw(row, "RGBA")
     text_font = font(15)
     small_font = font(11)
     draw.text((12, 9), f"{name} / {ROLE_DISPLAY.get(role, role)} / {keyword}", font=text_font, fill=(238, 222, 185, 255))
-    samples = [("idle", 0), ("move", 1), ("move", 2), ("move", 4), ("attack", 3), ("hit", 2), ("recover", 3), ("defeat", 3), ("defeat", 7)]
+    samples = [
+        ("idle", 0),
+        ("move", 0),
+        ("move", 2),
+        ("move", 4),
+        ("move", 6),
+        ("move", 8),
+        ("move", 10),
+        ("attack", 4),
+        ("hit", 3),
+        ("recover", 4),
+        ("defeat", 5),
+        ("defeat", 9),
+    ]
     for i, (anim, frame) in enumerate(samples):
         path = OUT_ROOT / unit_id / f"{anim}_{frame}.png"
         if path.exists():

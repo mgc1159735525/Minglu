@@ -4074,12 +4074,12 @@ public sealed class MingLuGame : MonoBehaviour
             keyword = keyword,
             role = role,
             asset = "Art/BattleUnits/" + id,
-            idleFrames = 4,
-            moveFrames = 6,
-            attackFrames = 6,
-            hitFrames = 6,
-            recoverFrames = 6,
-            defeatFrames = 8
+            idleFrames = 6,
+            moveFrames = 12,
+            attackFrames = 8,
+            hitFrames = 8,
+            recoverFrames = 8,
+            defeatFrames = 10
         };
     }
 
@@ -4178,12 +4178,18 @@ public sealed class MingLuGame : MonoBehaviour
 
     private int BattleUnitAnimationFrameCount(CommonBattleUnitConfig config, string animName)
     {
-        if (config == null) return animName == "idle" ? 4 : 6;
+        if (config == null)
+        {
+            if (animName == "idle") return 6;
+            if (animName == "move") return 12;
+            if (animName == "defeat") return 10;
+            return 8;
+        }
         if (animName == "move") return Mathf.Max(1, config.moveFrames);
         if (animName == "attack") return Mathf.Max(1, config.attackFrames);
         if (animName == "hit") return Mathf.Max(1, config.hitFrames);
-        if (animName == "recover") return Mathf.Max(1, config.recoverFrames > 0 ? config.recoverFrames : 6);
-        if (animName == "defeat") return Mathf.Max(1, config.defeatFrames > 0 ? config.defeatFrames : 8);
+        if (animName == "recover") return Mathf.Max(1, config.recoverFrames > 0 ? config.recoverFrames : 8);
+        if (animName == "defeat") return Mathf.Max(1, config.defeatFrames > 0 ? config.defeatFrames : 10);
         return Mathf.Max(1, config.idleFrames);
     }
 
@@ -8041,7 +8047,7 @@ public sealed class MingLuGame : MonoBehaviour
             Vector2 moveFrom = HexScreen(fromQ, fromR);
             Vector2 moveTo = HexScreen(q, r);
             selected.facing = BattleFacingFromTo(moveFrom, moveTo, selected.facing);
-            StartBattleAnimation(selected.id, BattleAnimationKind.Move, moveFrom, moveTo, 0.55f, selected.facing, true, BattleAnimationKind.Recover, 0.24f);
+            StartBattleAnimation(selected.id, BattleAnimationKind.Move, moveFrom, moveTo, 0.78f, selected.facing, true, BattleAnimationKind.Recover, 0.36f);
             UpdateObjectiveOwner();
             selectedUnitId = selected.id;
             SetBattleMessage(TF("battle.msg.moved_to", "{0}移动至第{1}行第{2}列，可继续攻击。", selected.name, r + 1, q + 1));
@@ -8135,7 +8141,7 @@ public sealed class MingLuGame : MonoBehaviour
         float direction = defenderPos.x >= attackerPos.x ? 1f : -1f;
         attacker.facing = direction;
         defender.facing = -direction;
-        StartBattleAnimation(attacker.id, BattleAnimationKind.Attack, attackerPos, attackerPos, 0.45f, direction, true, BattleAnimationKind.Recover, 0.24f);
+        StartBattleAnimation(attacker.id, BattleAnimationKind.Attack, attackerPos, attackerPos, 0.56f, direction, true, BattleAnimationKind.Recover, 0.36f);
         defender.hp -= damage;
         BattleCoreConfig core = BattleCore();
         SetBattleMessage(TF("battle.msg.attack_damage", "{0}攻击{1}，造成{2}伤害。", attacker.name, defender.name, damage));
@@ -8144,7 +8150,7 @@ public sealed class MingLuGame : MonoBehaviour
         if (defender.hp <= 0)
         {
             defender.hp = 0;
-            StartBattleAnimation(defender.id, BattleAnimationKind.Defeat, defenderPos, defenderPos, 0.78f, direction);
+            StartBattleAnimation(defender.id, BattleAnimationKind.Defeat, defenderPos, defenderPos, 0.96f, direction);
             SetBattleMessage(TF("battle.msg.routed", "{0}溃散。", defender.name));
             attacker.morale = Mathf.Clamp(attacker.morale + 1, core.minMorale, core.maxMorale);
             GainBattleExp(attacker, core.battleExpKill);
@@ -8152,7 +8158,7 @@ public sealed class MingLuGame : MonoBehaviour
             UpdateObjectiveOwner();
             return TryFireBattleLabDefeatTrigger(attacker, defender);
         }
-        StartBattleAnimation(defender.id, BattleAnimationKind.Hit, defenderPos, defenderPos, 0.34f, direction, true, BattleAnimationKind.Recover, 0.32f);
+        StartBattleAnimation(defender.id, BattleAnimationKind.Hit, defenderPos, defenderPos, 0.44f, direction, true, BattleAnimationKind.Recover, 0.38f);
 
         if (HexDistance(attacker.q, attacker.r, defender.q, defender.r) <= AttackRange(defender) && !defender.acted)
         {
@@ -8161,21 +8167,21 @@ public sealed class MingLuGame : MonoBehaviour
             int counter = CalculateBattleDamage(defender, attacker, true);
             defender.facing = -direction;
             attacker.facing = direction;
-            StartBattleAnimation(defender.id, BattleAnimationKind.Attack, defenderPos, defenderPos, 0.42f, -direction, true, BattleAnimationKind.Recover, 0.24f);
+            StartBattleAnimation(defender.id, BattleAnimationKind.Attack, defenderPos, defenderPos, 0.54f, -direction, true, BattleAnimationKind.Recover, 0.36f);
             attacker.hp -= counter;
             AddLog(TF("battle.msg.counter_damage", "{0}反击，造成{1}伤害。", defender.name, counter));
             AdjustMoraleAfterDamage(attacker);
             if (attacker.hp <= 0)
             {
                 attacker.hp = 0;
-                StartBattleAnimation(attacker.id, BattleAnimationKind.Defeat, attackerPos, attackerPos, 0.78f, -direction);
+                StartBattleAnimation(attacker.id, BattleAnimationKind.Defeat, attackerPos, attackerPos, 0.96f, -direction);
                 AddLog(TF("battle.msg.routed", "{0}溃散。", attacker.name));
                 defender.morale = Mathf.Clamp(defender.morale + 1, core.minMorale, core.maxMorale);
                 if (defender.faction == Faction.Player && attacker.faction != Faction.Player) player.enemiesDefeated += 1;
                 UpdateObjectiveOwner();
                 return TryFireBattleLabDefeatTrigger(defender, attacker);
             }
-            StartBattleAnimation(attacker.id, BattleAnimationKind.Hit, attackerPos, attackerPos, 0.34f, -direction, true, BattleAnimationKind.Recover, 0.32f);
+            StartBattleAnimation(attacker.id, BattleAnimationKind.Hit, attackerPos, attackerPos, 0.44f, -direction, true, BattleAnimationKind.Recover, 0.38f);
         }
         UpdateObjectiveOwner();
         return false;
@@ -8578,7 +8584,7 @@ public sealed class MingLuGame : MonoBehaviour
         unit.guarding = false;
         Vector2 to = HexScreen(q, r);
         unit.facing = BattleFacingFromTo(from, to, unit.facing);
-        StartBattleAnimation(unit.id, BattleAnimationKind.Move, from, to, 0.55f, unit.facing, true, BattleAnimationKind.Recover, 0.24f);
+        StartBattleAnimation(unit.id, BattleAnimationKind.Move, from, to, 0.78f, unit.facing, true, BattleAnimationKind.Recover, 0.36f);
         UpdateObjectiveOwner();
         return true;
     }

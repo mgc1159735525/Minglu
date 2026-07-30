@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-30T13:00:32",
-  "style": "painted tactical miniature sprites animated from standing unit designs; visible left-right gait cycles, attack anticipation, impact recoil, and full-frame raster output",
+  "generatedAt": "2026-07-30T13:30:22",
+  "style": "painted tactical miniature sprites animated from standing unit designs; 12-frame alternating gait cycles, attack anticipation, impact recoil, recovery, defeat, and full-frame raster output",
   "animationPipeline": "standing-design-driven-raster-sequence",
   "units": [
     {
@@ -12,12 +12,12 @@
       "keyword": "义勇军",
       "asset": "Art/BattleUnits/swordsmen_volunteers",
       "designAsset": "Art/BattleUnitDesigns/swordsmen_volunteers",
-      "idleFrames": 4,
-      "moveFrames": 6,
-      "attackFrames": 6,
-      "hitFrames": 6,
-      "recoverFrames": 6,
-      "defeatFrames": 8
+      "idleFrames": 6,
+      "moveFrames": 12,
+      "attackFrames": 8,
+      "hitFrames": 8,
+      "recoverFrames": 8,
+      "defeatFrames": 10
     },
     {
       "id": "matchlock_volunteers",
@@ -28,12 +28,12 @@
       "keyword": "义勇军",
       "asset": "Art/BattleUnits/matchlock_volunteers",
       "designAsset": "Art/BattleUnitDesigns/matchlock_volunteers",
-      "idleFrames": 4,
-      "moveFrames": 6,
-      "attackFrames": 6,
-      "hitFrames": 6,
-      "recoverFrames": 6,
-      "defeatFrames": 8
+      "idleFrames": 6,
+      "moveFrames": 12,
+      "attackFrames": 8,
+      "hitFrames": 8,
+      "recoverFrames": 8,
+      "defeatFrames": 10
     },
     {
       "id": "militia_volunteers",
@@ -44,12 +44,12 @@
       "keyword": "义勇军",
       "asset": "Art/BattleUnits/militia_volunteers",
       "designAsset": "Art/BattleUnitDesigns/militia_volunteers",
-      "idleFrames": 4,
-      "moveFrames": 6,
-      "attackFrames": 6,
-      "hitFrames": 6,
-      "recoverFrames": 6,
-      "defeatFrames": 8
+      "idleFrames": 6,
+      "moveFrames": 12,
+      "attackFrames": 8,
+      "hitFrames": 8,
+      "recoverFrames": 8,
+      "defeatFrames": 10
     },
     {
       "id": "outlaw_skirmishers",
@@ -60,12 +60,12 @@
       "keyword": "贼徒",
       "asset": "Art/BattleUnits/outlaw_skirmishers",
       "designAsset": "Art/BattleUnitDesigns/outlaw_skirmishers",
-      "idleFrames": 4,
-      "moveFrames": 6,
-      "attackFrames": 6,
-      "hitFrames": 6,
-      "recoverFrames": 6,
-      "defeatFrames": 8
+      "idleFrames": 6,
+      "moveFrames": 12,
+      "attackFrames": 8,
+      "hitFrames": 8,
+      "recoverFrames": 8,
+      "defeatFrames": 10
     },
     {
       "id": "imperial_halberdiers",
@@ -76,12 +76,12 @@
       "keyword": "禁军",
       "asset": "Art/BattleUnits/imperial_halberdiers",
       "designAsset": "Art/BattleUnitDesigns/imperial_halberdiers",
-      "idleFrames": 4,
-      "moveFrames": 6,
-      "attackFrames": 6,
-      "hitFrames": 6,
-      "recoverFrames": 6,
-      "defeatFrames": 8
+      "idleFrames": 6,
+      "moveFrames": 12,
+      "attackFrames": 8,
+      "hitFrames": 8,
+      "recoverFrames": 8,
+      "defeatFrames": 10
     },
     {
       "id": "armored_iron_cavalry",
@@ -92,12 +92,12 @@
       "keyword": "禁军",
       "asset": "Art/BattleUnits/armored_iron_cavalry",
       "designAsset": "Art/BattleUnitDesigns/armored_iron_cavalry",
-      "idleFrames": 4,
-      "moveFrames": 6,
-      "attackFrames": 6,
-      "hitFrames": 6,
-      "recoverFrames": 6,
-      "defeatFrames": 8
+      "idleFrames": 6,
+      "moveFrames": 12,
+      "attackFrames": 8,
+      "hitFrames": 8,
+      "recoverFrames": 8,
+      "defeatFrames": 10
     },
     {
       "id": "steel_helmet_heavy_infantry",
@@ -108,12 +108,12 @@
       "keyword": "义勇军",
       "asset": "Art/BattleUnits/steel_helmet_heavy_infantry",
       "designAsset": "Art/BattleUnitDesigns/steel_helmet_heavy_infantry",
-      "idleFrames": 4,
-      "moveFrames": 6,
-      "attackFrames": 6,
-      "hitFrames": 6,
-      "recoverFrames": 6,
-      "defeatFrames": 8
+      "idleFrames": 6,
+      "moveFrames": 12,
+      "attackFrames": 8,
+      "hitFrames": 8,
+      "recoverFrames": 8,
+      "defeatFrames": 10
     },
     {
       "id": "imperial_longbowmen",
@@ -124,12 +124,12 @@
       "keyword": "禁军",
       "asset": "Art/BattleUnits/imperial_longbowmen",
       "designAsset": "Art/BattleUnitDesigns/imperial_longbowmen",
-      "idleFrames": 4,
-      "moveFrames": 6,
-      "attackFrames": 6,
-      "hitFrames": 6,
-      "recoverFrames": 6,
-      "defeatFrames": 8
+      "idleFrames": 6,
+      "moveFrames": 12,
+      "attackFrames": 8,
+      "hitFrames": 8,
+      "recoverFrames": 8,
+      "defeatFrames": 10
     },
     {
       "id": "sword_guard_corps",
@@ -140,12 +140,12 @@
       "keyword": "义勇军",
       "asset": "Art/BattleUnits/sword_guard_corps",
       "designAsset": "Art/BattleUnitDesigns/sword_guard_corps",
-      "idleFrames": 4,
-      "moveFrames": 6,
-      "attackFrames": 6,
-      "hitFrames": 6,
-      "recoverFrames": 6,
-      "defeatFrames": 8
+      "idleFrames": 6,
+      "moveFrames": 12,
+      "attackFrames": 8,
+      "hitFrames": 8,
+      "recoverFrames": 8,
+      "defeatFrames": 10
     },
     {
       "id": "imperial_axe_guard",
@@ -156,12 +156,12 @@
       "keyword": "禁军",
       "asset": "Art/BattleUnits/imperial_axe_guard",
       "designAsset": "Art/BattleUnitDesigns/imperial_axe_guard",
-      "idleFrames": 4,
-      "moveFrames": 6,
-      "attackFrames": 6,
-      "hitFrames": 6,
-      "recoverFrames": 6,
-      "defeatFrames": 8
+      "idleFrames": 6,
+      "moveFrames": 12,
+      "attackFrames": 8,
+      "hitFrames": 8,
+      "recoverFrames": 8,
+      "defeatFrames": 10
     },
     {
       "id": "vanguard_cavalry",
@@ -172,12 +172,12 @@
       "keyword": "义勇军",
       "asset": "Art/BattleUnits/vanguard_cavalry",
       "designAsset": "Art/BattleUnitDesigns/vanguard_cavalry",
-      "idleFrames": 4,
-      "moveFrames": 6,
-      "attackFrames": 6,
-      "hitFrames": 6,
-      "recoverFrames": 6,
-      "defeatFrames": 8
+      "idleFrames": 6,
+      "moveFrames": 12,
+      "attackFrames": 8,
+      "hitFrames": 8,
+      "recoverFrames": 8,
+      "defeatFrames": 10
     },
     {
       "id": "solemn_guard_matchlocks",
@@ -188,12 +188,12 @@
       "keyword": "义勇军",
       "asset": "Art/BattleUnits/solemn_guard_matchlocks",
       "designAsset": "Art/BattleUnitDesigns/solemn_guard_matchlocks",
-      "idleFrames": 4,
-      "moveFrames": 6,
-      "attackFrames": 6,
-      "hitFrames": 6,
-      "recoverFrames": 6,
-      "defeatFrames": 8
+      "idleFrames": 6,
+      "moveFrames": 12,
+      "attackFrames": 8,
+      "hitFrames": 8,
+      "recoverFrames": 8,
+      "defeatFrames": 10
     },
     {
       "id": "raiders",
@@ -204,12 +204,12 @@
       "keyword": "贼徒",
       "asset": "Art/BattleUnits/raiders",
       "designAsset": "Art/BattleUnitDesigns/raiders",
-      "idleFrames": 4,
-      "moveFrames": 6,
-      "attackFrames": 6,
-      "hitFrames": 6,
-      "recoverFrames": 6,
-      "defeatFrames": 8
+      "idleFrames": 6,
+      "moveFrames": 12,
+      "attackFrames": 8,
+      "hitFrames": 8,
+      "recoverFrames": 8,
+      "defeatFrames": 10
     },
     {
       "id": "imperial_heavy_guard",
@@ -220,12 +220,12 @@
       "keyword": "禁军",
       "asset": "Art/BattleUnits/imperial_heavy_guard",
       "designAsset": "Art/BattleUnitDesigns/imperial_heavy_guard",
-      "idleFrames": 4,
-      "moveFrames": 6,
-      "attackFrames": 6,
-      "hitFrames": 6,
-      "recoverFrames": 6,
-      "defeatFrames": 8
+      "idleFrames": 6,
+      "moveFrames": 12,
+      "attackFrames": 8,
+      "hitFrames": 8,
+      "recoverFrames": 8,
+      "defeatFrames": 10
     },
     {
       "id": "warhammer_volunteers",
@@ -236,12 +236,12 @@
       "keyword": "义勇军",
       "asset": "Art/BattleUnits/warhammer_volunteers",
       "designAsset": "Art/BattleUnitDesigns/warhammer_volunteers",
-      "idleFrames": 4,
-      "moveFrames": 6,
-      "attackFrames": 6,
-      "hitFrames": 6,
-      "recoverFrames": 6,
-      "defeatFrames": 8
+      "idleFrames": 6,
+      "moveFrames": 12,
+      "attackFrames": 8,
+      "hitFrames": 8,
+      "recoverFrames": 8,
+      "defeatFrames": 10
     },
     {
       "id": "imperial_shenji_artillery",
@@ -252,12 +252,12 @@
       "keyword": "禁军",
       "asset": "Art/BattleUnits/imperial_shenji_artillery",
       "designAsset": "Art/BattleUnitDesigns/imperial_shenji_artillery",
-      "idleFrames": 4,
-      "moveFrames": 6,
-      "attackFrames": 6,
-      "hitFrames": 6,
-      "recoverFrames": 6,
-      "defeatFrames": 8
+      "idleFrames": 6,
+      "moveFrames": 12,
+      "attackFrames": 8,
+      "hitFrames": 8,
+      "recoverFrames": 8,
+      "defeatFrames": 10
     },
     {
       "id": "zealot_believers",
@@ -268,12 +268,12 @@
       "keyword": "信徒",
       "asset": "Art/BattleUnits/zealot_believers",
       "designAsset": "Art/BattleUnitDesigns/zealot_believers",
-      "idleFrames": 4,
-      "moveFrames": 6,
-      "attackFrames": 6,
-      "hitFrames": 6,
-      "recoverFrames": 6,
-      "defeatFrames": 8
+      "idleFrames": 6,
+      "moveFrames": 12,
+      "attackFrames": 8,
+      "hitFrames": 8,
+      "recoverFrames": 8,
+      "defeatFrames": 10
     },
     {
       "id": "zealot_mob",
@@ -284,12 +284,12 @@
       "keyword": "信徒",
       "asset": "Art/BattleUnits/zealot_mob",
       "designAsset": "Art/BattleUnitDesigns/zealot_mob",
-      "idleFrames": 4,
-      "moveFrames": 6,
-      "attackFrames": 6,
-      "hitFrames": 6,
-      "recoverFrames": 6,
-      "defeatFrames": 8
+      "idleFrames": 6,
+      "moveFrames": 12,
+      "attackFrames": 8,
+      "hitFrames": 8,
+      "recoverFrames": 8,
+      "defeatFrames": 10
     },
     {
       "id": "leader_guard",
@@ -300,12 +300,12 @@
       "keyword": "信徒",
       "asset": "Art/BattleUnits/leader_guard",
       "designAsset": "Art/BattleUnitDesigns/leader_guard",
-      "idleFrames": 4,
-      "moveFrames": 6,
-      "attackFrames": 6,
-      "hitFrames": 6,
-      "recoverFrames": 6,
-      "defeatFrames": 8
+      "idleFrames": 6,
+      "moveFrames": 12,
+      "attackFrames": 8,
+      "hitFrames": 8,
+      "recoverFrames": 8,
+      "defeatFrames": 10
     },
     {
       "id": "elite_archers",
@@ -316,12 +316,12 @@
       "keyword": "义勇军",
       "asset": "Art/BattleUnits/elite_archers",
       "designAsset": "Art/BattleUnitDesigns/elite_archers",
-      "idleFrames": 4,
-      "moveFrames": 6,
-      "attackFrames": 6,
-      "hitFrames": 6,
-      "recoverFrames": 6,
-      "defeatFrames": 8
+      "idleFrames": 6,
+      "moveFrames": 12,
+      "attackFrames": 8,
+      "hitFrames": 8,
+      "recoverFrames": 8,
+      "defeatFrames": 10
     },
     {
       "id": "bandits",
@@ -332,12 +332,12 @@
       "keyword": "贼徒",
       "asset": "Art/BattleUnits/bandits",
       "designAsset": "Art/BattleUnitDesigns/bandits",
-      "idleFrames": 4,
-      "moveFrames": 6,
-      "attackFrames": 6,
-      "hitFrames": 6,
-      "recoverFrames": 6,
-      "defeatFrames": 8
+      "idleFrames": 6,
+      "moveFrames": 12,
+      "attackFrames": 8,
+      "hitFrames": 8,
+      "recoverFrames": 8,
+      "defeatFrames": 10
     },
     {
       "id": "great_axe_warriors",
@@ -348,12 +348,12 @@
       "keyword": "义勇军",
       "asset": "Art/BattleUnits/great_axe_warriors",
       "designAsset": "Art/BattleUnitDesigns/great_axe_warriors",
-      "idleFrames": 4,
-      "moveFrames": 6,
-      "attackFrames": 6,
-      "hitFrames": 6,
-      "recoverFrames": 6,
-      "defeatFrames": 8
+      "idleFrames": 6,
+      "moveFrames": 12,
+      "attackFrames": 8,
+      "hitFrames": 8,
+      "recoverFrames": 8,
+      "defeatFrames": 10
     },
     {
       "id": "believer_elites",
@@ -364,12 +364,12 @@
       "keyword": "信徒",
       "asset": "Art/BattleUnits/believer_elites",
       "designAsset": "Art/BattleUnitDesigns/believer_elites",
-      "idleFrames": 4,
-      "moveFrames": 6,
-      "attackFrames": 6,
-      "hitFrames": 6,
-      "recoverFrames": 6,
-      "defeatFrames": 8
+      "idleFrames": 6,
+      "moveFrames": 12,
+      "attackFrames": 8,
+      "hitFrames": 8,
+      "recoverFrames": 8,
+      "defeatFrames": 10
     }
   ]
 }
