@@ -792,6 +792,8 @@ public sealed class MingLuGame : MonoBehaviour
         public int moveFrames;
         public int attackFrames;
         public int hitFrames;
+        public int recoverFrames;
+        public int defeatFrames;
     }
 
     [Serializable]
@@ -1037,6 +1039,7 @@ public sealed class MingLuGame : MonoBehaviour
         public bool acted;
         public bool guarding;
         public string armyId;
+        public float facing = 1f;
     }
 
     [Serializable]
@@ -1080,7 +1083,7 @@ public sealed class MingLuGame : MonoBehaviour
         public List<BattleLabTriggerConfig> triggers = new List<BattleLabTriggerConfig>();
     }
 
-    private enum BattleAnimationKind { Move, Attack, Hit }
+    private enum BattleAnimationKind { Move, Attack, Hit, Recover, Defeat }
     private enum AiMoveIntent { Advance, Retreat }
 
     private sealed class BattleAnimation
@@ -1092,6 +1095,9 @@ public sealed class MingLuGame : MonoBehaviour
         public float duration;
         public float elapsed;
         public float direction;
+        public bool hasNext;
+        public BattleAnimationKind nextKind;
+        public float nextDuration;
     }
 
     [Serializable]
@@ -4071,7 +4077,9 @@ public sealed class MingLuGame : MonoBehaviour
             idleFrames = 4,
             moveFrames = 6,
             attackFrames = 6,
-            hitFrames = 6
+            hitFrames = 6,
+            recoverFrames = 6,
+            defeatFrames = 8
         };
     }
 
@@ -4099,6 +4107,16 @@ public sealed class MingLuGame : MonoBehaviour
         return CommonUnits().FirstOrDefault(u => u.role == spawn.role);
     }
 
+    private string BattleAnimationName(BattleAnimationKind kind)
+    {
+        if (kind == BattleAnimationKind.Move) return "move";
+        if (kind == BattleAnimationKind.Attack) return "attack";
+        if (kind == BattleAnimationKind.Hit) return "hit";
+        if (kind == BattleAnimationKind.Recover) return "recover";
+        if (kind == BattleAnimationKind.Defeat) return "defeat";
+        return "idle";
+    }
+
     private string BattleUnitSpriteResource(BattleUnit unit)
     {
         CommonBattleUnitConfig config = CommonUnitForBattleUnit(unit);
@@ -4110,9 +4128,7 @@ public sealed class MingLuGame : MonoBehaviour
         if (anim != null)
         {
             float p = Mathf.Clamp01(anim.elapsed / Mathf.Max(0.01f, anim.duration));
-            if (anim.kind == BattleAnimationKind.Move) animName = "move";
-            else if (anim.kind == BattleAnimationKind.Attack) animName = "attack";
-            else if (anim.kind == BattleAnimationKind.Hit) animName = "hit";
+            animName = BattleAnimationName(anim.kind);
             int count = BattleUnitAnimationFrameCount(config, animName);
             frame = Mathf.Clamp(Mathf.FloorToInt(p * count), 0, Mathf.Max(0, count - 1));
         }
@@ -4141,9 +4157,7 @@ public sealed class MingLuGame : MonoBehaviour
         if (anim != null)
         {
             float p = Mathf.Clamp01(anim.elapsed / Mathf.Max(0.01f, anim.duration));
-            if (anim.kind == BattleAnimationKind.Move) animName = "move";
-            else if (anim.kind == BattleAnimationKind.Attack) animName = "attack";
-            else if (anim.kind == BattleAnimationKind.Hit) animName = "hit";
+            animName = BattleAnimationName(anim.kind);
             int count = BattleUnitAnimationFrameCount(config, animName);
             frame = Mathf.Clamp(Mathf.FloorToInt(p * count), 0, Mathf.Max(0, count - 1));
         }
@@ -4168,6 +4182,8 @@ public sealed class MingLuGame : MonoBehaviour
         if (animName == "move") return Mathf.Max(1, config.moveFrames);
         if (animName == "attack") return Mathf.Max(1, config.attackFrames);
         if (animName == "hit") return Mathf.Max(1, config.hitFrames);
+        if (animName == "recover") return Mathf.Max(1, config.recoverFrames > 0 ? config.recoverFrames : 6);
+        if (animName == "defeat") return Mathf.Max(1, config.defeatFrames > 0 ? config.defeatFrames : 8);
         return Mathf.Max(1, config.idleFrames);
     }
 
@@ -7470,7 +7486,8 @@ public sealed class MingLuGame : MonoBehaviour
             level = army.level,
             exp = army.exp,
             morale = (army.faction == Faction.Player ? core.playerStartMorale : core.enemyStartMorale) + (army.faction == Faction.Player ? PassiveSkillSum(s => s.moraleBonus) : 0),
-            formation = RoleFormation(role)
+            formation = RoleFormation(role),
+            facing = army.faction == Faction.Player ? 1f : -1f
         };
         ApplySupplyToBattleUnit(unit, army);
         unit.morale = Mathf.Clamp(unit.morale, core.minMorale, core.maxMorale);
@@ -7716,6 +7733,7 @@ public sealed class MingLuGame : MonoBehaviour
             spriteImage.color = Color.white;
             spriteImage.preserveAspect = true;
             spriteImage.raycastTarget = false;
+            spriteRt.localScale = new Vector3(BattleUnitFacing(unit, null), 1f, 1f);
             battleUnitSprites[unit.id] = spriteImage;
         }
         else
@@ -8020,7 +8038,10 @@ public sealed class MingLuGame : MonoBehaviour
             selected.moved = true;
             selected.guarding = false;
             ConsumeBattleSupply(selected, "move");
-            StartBattleAnimation(selected.id, BattleAnimationKind.Move, HexScreen(fromQ, fromR), HexScreen(q, r), 0.55f);
+            Vector2 moveFrom = HexScreen(fromQ, fromR);
+            Vector2 moveTo = HexScreen(q, r);
+            selected.facing = BattleFacingFromTo(moveFrom, moveTo, selected.facing);
+            StartBattleAnimation(selected.id, BattleAnimationKind.Move, moveFrom, moveTo, 0.55f, selected.facing, true, BattleAnimationKind.Recover, 0.24f);
             UpdateObjectiveOwner();
             selectedUnitId = selected.id;
             SetBattleMessage(TF("battle.msg.moved_to", "{0}移动至第{1}行第{2}列，可继续攻击。", selected.name, r + 1, q + 1));
@@ -8112,8 +8133,9 @@ public sealed class MingLuGame : MonoBehaviour
         Vector2 attackerPos = HexScreen(attacker.q, attacker.r);
         Vector2 defenderPos = HexScreen(defender.q, defender.r);
         float direction = defenderPos.x >= attackerPos.x ? 1f : -1f;
-        StartBattleAnimation(attacker.id, BattleAnimationKind.Attack, attackerPos, attackerPos, 0.45f, direction);
-        StartBattleAnimation(defender.id, BattleAnimationKind.Hit, defenderPos, defenderPos, 0.55f, direction);
+        attacker.facing = direction;
+        defender.facing = -direction;
+        StartBattleAnimation(attacker.id, BattleAnimationKind.Attack, attackerPos, attackerPos, 0.45f, direction, true, BattleAnimationKind.Recover, 0.24f);
         defender.hp -= damage;
         BattleCoreConfig core = BattleCore();
         SetBattleMessage(TF("battle.msg.attack_damage", "{0}攻击{1}，造成{2}伤害。", attacker.name, defender.name, damage));
@@ -8122,6 +8144,7 @@ public sealed class MingLuGame : MonoBehaviour
         if (defender.hp <= 0)
         {
             defender.hp = 0;
+            StartBattleAnimation(defender.id, BattleAnimationKind.Defeat, defenderPos, defenderPos, 0.78f, direction);
             SetBattleMessage(TF("battle.msg.routed", "{0}溃散。", defender.name));
             attacker.morale = Mathf.Clamp(attacker.morale + 1, core.minMorale, core.maxMorale);
             GainBattleExp(attacker, core.battleExpKill);
@@ -8129,26 +8152,30 @@ public sealed class MingLuGame : MonoBehaviour
             UpdateObjectiveOwner();
             return TryFireBattleLabDefeatTrigger(attacker, defender);
         }
+        StartBattleAnimation(defender.id, BattleAnimationKind.Hit, defenderPos, defenderPos, 0.34f, direction, true, BattleAnimationKind.Recover, 0.32f);
 
         if (HexDistance(attacker.q, attacker.r, defender.q, defender.r) <= AttackRange(defender) && !defender.acted)
         {
             ConsumeBattleSupply(defender, "attack");
             defender.guarding = false;
             int counter = CalculateBattleDamage(defender, attacker, true);
-            StartBattleAnimation(defender.id, BattleAnimationKind.Attack, defenderPos, defenderPos, 0.42f, -direction);
-            StartBattleAnimation(attacker.id, BattleAnimationKind.Hit, attackerPos, attackerPos, 0.52f, -direction);
+            defender.facing = -direction;
+            attacker.facing = direction;
+            StartBattleAnimation(defender.id, BattleAnimationKind.Attack, defenderPos, defenderPos, 0.42f, -direction, true, BattleAnimationKind.Recover, 0.24f);
             attacker.hp -= counter;
             AddLog(TF("battle.msg.counter_damage", "{0}反击，造成{1}伤害。", defender.name, counter));
             AdjustMoraleAfterDamage(attacker);
             if (attacker.hp <= 0)
             {
                 attacker.hp = 0;
+                StartBattleAnimation(attacker.id, BattleAnimationKind.Defeat, attackerPos, attackerPos, 0.78f, -direction);
                 AddLog(TF("battle.msg.routed", "{0}溃散。", attacker.name));
                 defender.morale = Mathf.Clamp(defender.morale + 1, core.minMorale, core.maxMorale);
                 if (defender.faction == Faction.Player && attacker.faction != Faction.Player) player.enemiesDefeated += 1;
                 UpdateObjectiveOwner();
                 return TryFireBattleLabDefeatTrigger(defender, attacker);
             }
+            StartBattleAnimation(attacker.id, BattleAnimationKind.Hit, attackerPos, attackerPos, 0.34f, -direction, true, BattleAnimationKind.Recover, 0.32f);
         }
         UpdateObjectiveOwner();
         return false;
@@ -8549,7 +8576,9 @@ public sealed class MingLuGame : MonoBehaviour
         unit.q = q;
         unit.r = r;
         unit.guarding = false;
-        StartBattleAnimation(unit.id, BattleAnimationKind.Move, from, HexScreen(q, r), 0.55f);
+        Vector2 to = HexScreen(q, r);
+        unit.facing = BattleFacingFromTo(from, to, unit.facing);
+        StartBattleAnimation(unit.id, BattleAnimationKind.Move, from, to, 0.55f, unit.facing, true, BattleAnimationKind.Recover, 0.24f);
         UpdateObjectiveOwner();
         return true;
     }
@@ -9215,9 +9244,9 @@ public sealed class MingLuGame : MonoBehaviour
         return battleAnimations.Any(a => a.unitId == unitId);
     }
 
-    private void StartBattleAnimation(string unitId, BattleAnimationKind kind, Vector2 from, Vector2 to, float duration, float direction = 0f)
+    private void StartBattleAnimation(string unitId, BattleAnimationKind kind, Vector2 from, Vector2 to, float duration, float direction = 0f, bool hasNext = false, BattleAnimationKind nextKind = BattleAnimationKind.Recover, float nextDuration = 0f)
     {
-        battleAnimations.RemoveAll(a => a.unitId == unitId && a.kind == kind);
+        battleAnimations.RemoveAll(a => a.unitId == unitId);
         battleAnimations.Add(new BattleAnimation
         {
             unitId = unitId,
@@ -9225,8 +9254,24 @@ public sealed class MingLuGame : MonoBehaviour
             from = from,
             to = to,
             duration = duration,
-            direction = direction
+            direction = direction,
+            hasNext = hasNext,
+            nextKind = nextKind,
+            nextDuration = nextDuration
         });
+    }
+
+    private float BattleFacingFromTo(Vector2 from, Vector2 to, float fallback = 1f)
+    {
+        float dx = to.x - from.x;
+        if (Mathf.Abs(dx) > 0.5f) return dx >= 0f ? 1f : -1f;
+        return fallback >= 0f ? 1f : -1f;
+    }
+
+    private float BattleUnitFacing(BattleUnit unit, BattleAnimation anim)
+    {
+        float facing = unit != null && Mathf.Abs(unit.facing) > 0.01f ? unit.facing : 1f;
+        return facing >= 0f ? 1f : -1f;
     }
 
     private BattleAnimation BattleAnimationForUnit(string unitId)
@@ -9252,6 +9297,15 @@ public sealed class MingLuGame : MonoBehaviour
         {
             float pulse = Mathf.Sin(p * Mathf.PI);
             return anim.from + new Vector2(anim.direction * pulse * 9f, pulse * 4f);
+        }
+        if (anim.kind == BattleAnimationKind.Recover)
+        {
+            float settle = 1f - p;
+            return anim.from + new Vector2(-anim.direction * settle * 5f, Mathf.Sin(p * Mathf.PI) * -3f);
+        }
+        if (anim.kind == BattleAnimationKind.Defeat)
+        {
+            return anim.from + new Vector2(anim.direction * p * 8f, p * 10f);
         }
         return anim.from + new Vector2(Mathf.Sin(p * Mathf.PI * 3f) * 6f, 0);
     }
@@ -9287,6 +9341,17 @@ public sealed class MingLuGame : MonoBehaviour
                 flash = Mathf.Abs(Mathf.Sin(p * Mathf.PI * 3f));
                 scale = 1f - p * 0.12f;
             }
+            else if (anim != null && anim.kind == BattleAnimationKind.Recover)
+            {
+                scale = 0.95f + p * 0.05f;
+                angle = anim.direction * (1f - p) * 4f;
+            }
+            else if (anim != null && anim.kind == BattleAnimationKind.Defeat)
+            {
+                flash = Mathf.Max(0f, 1f - p * 1.5f);
+                scale = 1f - p * 0.16f;
+                angle = -anim.direction * p * 24f;
+            }
 
             pair.Value.anchoredPosition = UnitRenderPosition(unit);
             pair.Value.localScale = Vector3.one * scale;
@@ -9300,6 +9365,7 @@ public sealed class MingLuGame : MonoBehaviour
             {
                 Sprite sprite = LoadBattleUnitSprite(unit);
                 if (sprite != null) spriteImage.sprite = sprite;
+                spriteImage.rectTransform.localScale = new Vector3(BattleUnitFacing(unit, anim), 1f, 1f);
             }
         }
     }
@@ -9314,12 +9380,23 @@ public sealed class MingLuGame : MonoBehaviour
                 battleAnimations[i].elapsed += dt;
                 if (battleAnimations[i].elapsed >= battleAnimations[i].duration)
                 {
+                    BattleAnimation finished = battleAnimations[i];
                     battleAnimations.RemoveAt(i);
+                    StartNextBattleAnimation(finished);
                 }
             }
             PruneDefeatedBattleUnits();
         }
         RefreshBattleUnitViews();
+    }
+
+    private void StartNextBattleAnimation(BattleAnimation finished)
+    {
+        if (finished == null || !finished.hasNext) return;
+        BattleUnit unit = UnitById(finished.unitId);
+        if (unit == null || unit.hp <= 0) return;
+        Vector2 pos = HexScreen(unit.q, unit.r);
+        StartBattleAnimation(finished.unitId, finished.nextKind, pos, pos, Mathf.Max(0.05f, finished.nextDuration), finished.direction);
     }
 
     private void PruneDefeatedBattleUnits()

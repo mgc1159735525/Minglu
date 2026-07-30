@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-07-29T18:24:05",
-  "style": "single-frame painted tactical miniature sprites; full-frame raster output, masked Chinese topknot soldiers, detailed lamellar armor, no modular body-part assembly",
-  "animationPipeline": "single-frame-raster-sequence",
+  "generatedAt": "2026-07-30T13:00:32",
+  "style": "painted tactical miniature sprites animated from standing unit designs; visible left-right gait cycles, attack anticipation, impact recoil, and full-frame raster output",
+  "animationPipeline": "standing-design-driven-raster-sequence",
   "units": [
     {
       "id": "swordsmen_volunteers",
@@ -15,7 +15,9 @@
       "idleFrames": 4,
       "moveFrames": 6,
       "attackFrames": 6,
-      "hitFrames": 6
+      "hitFrames": 6,
+      "recoverFrames": 6,
+      "defeatFrames": 8
     },
     {
       "id": "matchlock_volunteers",
@@ -29,7 +31,9 @@
       "idleFrames": 4,
       "moveFrames": 6,
       "attackFrames": 6,
-      "hitFrames": 6
+      "hitFrames": 6,
+      "recoverFrames": 6,
+      "defeatFrames": 8
     },
     {
       "id": "militia_volunteers",
@@ -43,7 +47,9 @@
       "idleFrames": 4,
       "moveFrames": 6,
       "attackFrames": 6,
-      "hitFrames": 6
+      "hitFrames": 6,
+      "recoverFrames": 6,
+      "defeatFrames": 8
     },
     {
       "id": "outlaw_skirmishers",
@@ -57,7 +63,9 @@
       "idleFrames": 4,
       "moveFrames": 6,
       "attackFrames": 6,
-      "hitFrames": 6
+      "hitFrames": 6,
+      "recoverFrames": 6,
+      "defeatFrames": 8
     },
     {
       "id": "imperial_halberdiers",
@@ -71,7 +79,9 @@
       "idleFrames": 4,
       "moveFrames": 6,
       "attackFrames": 6,
-      "hitFrames": 6
+      "hitFrames": 6,
+      "recoverFrames": 6,
+      "defeatFrames": 8
     },
     {
       "id": "armored_iron_cavalry",
@@ -85,7 +95,9 @@
       "idleFrames": 4,
       "moveFrames": 6,
       "attackFrames": 6,
-      "hitFrames": 6
+      "hitFrames": 6,
+      "recoverFrames": 6,
+      "defeatFrames": 8
     },
     {
       "id": "steel_helmet_heavy_infantry",
@@ -99,7 +111,9 @@
       "idleFrames": 4,
       "moveFrames": 6,
       "attackFrames": 6,
-      "hitFrames": 6
+      "hitFrames": 6,
+      "recoverFrames": 6,
+      "defeatFrames": 8
     },
     {
       "id": "imperial_longbowmen",
@@ -113,7 +127,9 @@
       "idleFrames": 4,
       "moveFrames": 6,
       "attackFrames": 6,
-      "hitFrames": 6
+      "hitFrames": 6,
+      "recoverFrames": 6,
+      "defeatFrames": 8
     },
     {
       "id": "sword_guard_corps",
@@ -127,7 +143,9 @@
       "idleFrames": 4,
       "moveFrames": 6,
       "attackFrames": 6,
-      "hitFrames": 6
+      "hitFrames": 6,
+      "recoverFrames": 6,
+      "defeatFrames": 8
     },
     {
       "id": "imperial_axe_guard",
@@ -141,7 +159,9 @@
       "idleFrames": 4,
       "moveFrames": 6,
       "attackFrames": 6,
-      "hitFrames": 6
+      "hitFrames": 6,
+      "recoverFrames": 6,
+      "defeatFrames": 8
     },
     {
       "id": "vanguard_cavalry",
@@ -155,7 +175,9 @@
       "idleFrames": 4,
       "moveFrames": 6,
       "attackFrames": 6,
-      "hitFrames": 6
+      "hitFrames": 6,
+      "recoverFrames": 6,
+      "defeatFrames": 8
     },
     {
       "id": "solemn_guard_matchlocks",
@@ -169,7 +191,9 @@
       "idleFrames": 4,
       "moveFrames": 6,
       "attackFrames": 6,
-      "hitFrames": 6
+      "hitFrames": 6,
+      "recoverFrames": 6,
+      "defeatFrames": 8
     },
     {
       "id": "raiders",
@@ -183,7 +207,9 @@
       "idleFrames": 4,
       "moveFrames": 6,
       "attackFrames": 6,
-      "hitFrames": 6
+      "hitFrames": 6,
+      "recoverFrames": 6,
+      "defeatFrames": 8
     },
     {
       "id": "imperial_heavy_guard",
@@ -197,7 +223,9 @@
       "idleFrames": 4,
       "moveFrames": 6,
       "attackFrames": 6,
-      "hitFrames": 6
+      "hitFrames": 6,
+      "recoverFrames": 6,
+      "defeatFrames": 8
     },
     {
       "id": "warhammer_volunteers",
@@ -211,7 +239,9 @@
       "idleFrames": 4,
       "moveFrames": 6,
       "attackFrames": 6,
-      "hitFrames": 6
+      "hitFrames": 6,
+      "recoverFrames": 6,
+      "defeatFrames": 8
     },
     {
       "id": "imperial_shenji_artillery",
@@ -225,7 +255,9 @@
       "idleFrames": 4,
       "moveFrames": 6,
       "attackFrames": 6,
-      "hitFrames": 6
+      "hitFrames": 6,
+      "recoverFrames": 6,
+      "defeatFrames": 8
     },
     {
       "id": "zealot_believers",
@@ -239,7 +271,9 @@
       "idleFrames": 4,
       "moveFrames": 6,
       "attackFrames": 6,
-      "hitFrames": 6
+      "hitFrames": 6,
+      "recoverFrames": 6,
+      "defeatFrames": 8
     },
     {
       "id": "zealot_mob",
@@ -253,7 +287,9 @@
       "idleFrames": 4,
       "moveFrames": 6,
       "attackFrames": 6,
-      "hitFrames": 6
+      "hitFrames": 6,
+      "recoverFrames": 6,
+      "defeatFrames": 8
     },
     {
       "id": "leader_guard",
@@ -267,7 +303,9 @@
       "idleFrames": 4,
       "moveFrames": 6,
       "attackFrames": 6,
-      "hitFrames": 6
+      "hitFrames": 6,
+      "recoverFrames": 6,
+      "defeatFrames": 8
     },
     {
       "id": "elite_archers",
@@ -281,7 +319,9 @@
       "idleFrames": 4,
       "moveFrames": 6,
       "attackFrames": 6,
-      "hitFrames": 6
+      "hitFrames": 6,
+      "recoverFrames": 6,
+      "defeatFrames": 8
     },
     {
       "id": "bandits",
@@ -295,7 +335,9 @@
       "idleFrames": 4,
       "moveFrames": 6,
       "attackFrames": 6,
-      "hitFrames": 6
+      "hitFrames": 6,
+      "recoverFrames": 6,
+      "defeatFrames": 8
     },
     {
       "id": "great_axe_warriors",
@@ -309,7 +351,9 @@
       "idleFrames": 4,
       "moveFrames": 6,
       "attackFrames": 6,
-      "hitFrames": 6
+      "hitFrames": 6,
+      "recoverFrames": 6,
+      "defeatFrames": 8
     },
     {
       "id": "believer_elites",
@@ -323,7 +367,9 @@
       "idleFrames": 4,
       "moveFrames": 6,
       "attackFrames": 6,
-      "hitFrames": 6
+      "hitFrames": 6,
+      "recoverFrames": 6,
+      "defeatFrames": 8
     }
   ]
 }
