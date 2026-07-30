@@ -1,7 +1,12 @@
 {
-  "generatedAt": "2026-07-30T13:30:22",
-  "style": "painted tactical miniature sprites animated from standing unit designs; 12-frame alternating gait cycles, attack anticipation, impact recoil, recovery, defeat, and full-frame raster output",
-  "animationPipeline": "standing-design-driven-raster-sequence",
+  "generatedAt": "2026-07-30T14:29:02",
+  "style": "painted tactical miniature sprites; full-frame source sequences take priority, with standing-design fallback only for unfinished units",
+  "animationPipeline": "full-frame-source-first-raster-sequence",
+  "sourceLayouts": {
+    "animationStrips": "DataTables/battle_unit_sequence_sources/<unit_id>/<anim>.png",
+    "fullSheet": "DataTables/battle_unit_sequence_sources/<unit_id>.png with 12 columns and rows idle/move/attack/hit/recover/defeat",
+    "legacySheet": "4 rows x 6 columns accepted only for complete 6-frame idle rows"
+  },
   "units": [
     {
       "id": "swordsmen_volunteers",

@@ -19,8 +19,10 @@ SOURCE_SHEET_ROOT = PROJECT_ROOT / "DataTables" / "battle_unit_sequence_sources"
 
 SIZE = 256
 SCALE = 3
-SHEET_COLUMNS = 6
-SHEET_ROWS = ("idle", "move", "attack", "hit")
+LEGACY_SHEET_COLUMNS = 6
+LEGACY_SHEET_ROWS = ("idle", "move", "attack", "hit")
+FULL_SHEET_COLUMNS = 12
+FULL_SHEET_ROWS = ("idle", "move", "attack", "hit", "recover", "defeat")
 IDLE_FRAMES = 6
 MOVE_FRAMES = 12
 ATTACK_FRAMES = 8
@@ -36,8 +38,8 @@ FRAME_COUNTS = {
     "defeat": DEFEAT_FRAMES,
 }
 STYLE_LABEL = (
-    "painted tactical miniature sprites animated from standing unit designs; "
-    "12-frame alternating gait cycles, attack anticipation, impact recoil, recovery, defeat, and full-frame raster output"
+    "painted tactical miniature sprites; full-frame source sequences take priority, "
+    "with standing-design fallback only for unfinished units"
 )
 
 ROLE_DISPLAY = {
@@ -291,6 +293,18 @@ def source_sheet_path(unit_id):
     return SOURCE_SHEET_ROOT / f"{unit_id}.png"
 
 
+def source_anim_strip_path(unit_id, anim):
+    return SOURCE_SHEET_ROOT / unit_id / f"{anim}.png"
+
+
+def source_anim_layout_path(unit_id, anim):
+    return SOURCE_SHEET_ROOT / unit_id / f"{anim}.json"
+
+
+def source_layout_path(unit_id):
+    return SOURCE_SHEET_ROOT / f"{unit_id}.json"
+
+
 def remove_chroma_key(img):
     img = img.convert("RGBA")
     pixels = []
@@ -371,20 +385,102 @@ def remove_stray_source_components(img, anim):
     return result
 
 
-def source_sheet_frame(unit_id, anim, frame):
-    path = source_sheet_path(unit_id)
-    if not path.exists() or anim not in SHEET_ROWS:
-        return None
-    sheet = Image.open(path).convert("RGBA")
-    cell_w = sheet.width // SHEET_COLUMNS
-    cell_h = sheet.height // len(SHEET_ROWS)
-    row = SHEET_ROWS.index(anim)
-    col = frame % SHEET_COLUMNS
-    crop = sheet.crop((col * cell_w, row * cell_h, (col + 1) * cell_w, (row + 1) * cell_h))
+def normalize_source_frame(crop, anim):
     crop = remove_stray_source_components(remove_chroma_key(crop), anim)
     if crop.size != (SIZE, SIZE):
         crop = crop.resize((SIZE, SIZE), Image.Resampling.LANCZOS)
     return crop
+
+
+def proportional_crop(sheet, columns, rows, col, row):
+    left = round(sheet.width * col / columns)
+    top = round(sheet.height * row / rows)
+    right = round(sheet.width * (col + 1) / columns)
+    bottom = round(sheet.height * (row + 1) / rows)
+    return sheet.crop((left, top, right, bottom))
+
+
+def source_strip_frame(unit_id, anim, frame):
+    path = source_anim_strip_path(unit_id, anim)
+    if not path.exists():
+        return None
+    required = FRAME_COUNTS.get(anim, 0)
+    if frame >= required:
+        return None
+    sheet = Image.open(path).convert("RGBA")
+    layout = read_source_anim_layout(unit_id, anim) or {}
+    columns = int(layout.get("columns") or required)
+    rows = int(layout.get("rows") or 1)
+    if columns <= 0 or rows <= 0 or columns * rows < required:
+        return None
+    col = frame % columns
+    row = frame // columns
+    # Animation sources are full-frame painted poses, laid out either as one
+    # horizontal strip or as a declared grid such as 4x3 for richer move frames.
+    crop = proportional_crop(sheet, columns, rows, col, row)
+    return normalize_source_frame(crop, anim)
+
+
+def read_source_layout(unit_id):
+    path = source_layout_path(unit_id)
+    if not path.exists():
+        return None
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def read_source_anim_layout(unit_id, anim):
+    path = source_anim_layout_path(unit_id, anim)
+    if not path.exists():
+        return None
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def full_source_sheet_frame(unit_id, anim, frame, sheet, layout):
+    if layout:
+        rows = layout.get("rows") or list(FULL_SHEET_ROWS)
+        columns = int(layout.get("columns") or max(FRAME_COUNTS.values()))
+    else:
+        rows = list(FULL_SHEET_ROWS)
+        columns = FULL_SHEET_COLUMNS
+
+    if anim not in rows:
+        return None
+    required = FRAME_COUNTS.get(anim, 0)
+    if frame >= required or columns < required:
+        return None
+    row = rows.index(anim)
+    crop = proportional_crop(sheet, columns, len(rows), frame, row)
+    return normalize_source_frame(crop, anim)
+
+
+def legacy_source_sheet_frame(unit_id, anim, frame, sheet):
+    if anim not in LEGACY_SHEET_ROWS:
+        return None
+    required = FRAME_COUNTS.get(anim, 0)
+    # Old 4x6 sheets are accepted only for actions whose full frame count fits.
+    # This avoids fake animation caused by cycling the same six cells.
+    if required > LEGACY_SHEET_COLUMNS or frame >= required:
+        return None
+    row = LEGACY_SHEET_ROWS.index(anim)
+    crop = proportional_crop(sheet, LEGACY_SHEET_COLUMNS, len(LEGACY_SHEET_ROWS), frame, row)
+    return normalize_source_frame(crop, anim)
+
+
+def source_sheet_frame(unit_id, anim, frame):
+    strip = source_strip_frame(unit_id, anim, frame)
+    if strip is not None:
+        return strip
+
+    path = source_sheet_path(unit_id)
+    if not path.exists():
+        return None
+    sheet = Image.open(path).convert("RGBA")
+    layout = read_source_layout(unit_id)
+    if layout is not None:
+        return full_source_sheet_frame(unit_id, anim, frame, sheet, layout)
+    if sheet.width / max(1, sheet.height) >= 1.75:
+        return full_source_sheet_frame(unit_id, anim, frame, sheet, None)
+    return legacy_source_sheet_frame(unit_id, anim, frame, sheet)
 
 
 def design_path(unit_id):
@@ -1235,9 +1331,9 @@ def save_frames():
             stale.unlink()
         for anim, count in FRAME_COUNTS.items():
             for frame in range(count):
-                image = design_animation_frame(unit_id, role, anim, frame)
+                image = source_sheet_frame(unit_id, anim, frame)
                 if image is None:
-                    image = source_sheet_frame(unit_id, anim, frame)
+                    image = design_animation_frame(unit_id, role, anim, frame)
                 if image is None:
                     image = render_unit(unit_id, role, family, anim, frame)
                 image.save(unit_dir / f"{anim}_{frame}.png")
@@ -1266,7 +1362,12 @@ def save_frames():
             {
                 "generatedAt": datetime.now().isoformat(timespec="seconds"),
                 "style": STYLE_LABEL,
-                "animationPipeline": "standing-design-driven-raster-sequence",
+                "animationPipeline": "full-frame-source-first-raster-sequence",
+                "sourceLayouts": {
+                    "animationStrips": "DataTables/battle_unit_sequence_sources/<unit_id>/<anim>.png",
+                    "fullSheet": "DataTables/battle_unit_sequence_sources/<unit_id>.png with 12 columns and rows idle/move/attack/hit/recover/defeat",
+                    "legacySheet": "4 rows x 6 columns accepted only for complete 6-frame idle rows",
+                },
                 "units": manifest_units,
             },
             ensure_ascii=False,
