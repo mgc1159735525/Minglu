@@ -1,0 +1,18 @@
+﻿control_code,scope_type,scope_code,display_name,fill_hex,fill_alpha,enabled,notes
+MAP_DEFAULT,default,*,未单独配置的区域,#9B895F,108,1,默认兜底色
+COUNTRY_CAN,country,Canada,加拿大,#A6A15C,122,1,国家主色
+COUNTRY_USA,country,United States of America,美国,#91A36C,122,1,国家主色
+COUNTRY_MEX,country,Mexico,墨西哥,#B78555,126,1,国家主色
+COUNTRY_GRL,country,Greenland,格陵兰,#C4AD7C,118,1,国家主色
+COUNTRY_GTM,country,Guatemala,危地马拉,#A88F58,126,1,中美洲
+COUNTRY_BLZ,country,Belize,伯利兹,#77968A,126,1,中美洲
+COUNTRY_HND,country,Honduras,洪都拉斯,#849B69,126,1,中美洲
+COUNTRY_SLV,country,El Salvador,萨尔瓦多,#9A775E,126,1,中美洲
+COUNTRY_NIC,country,Nicaragua,尼加拉瓜,#7B9087,126,1,中美洲
+COUNTRY_CRI,country,Costa Rica,哥斯达黎加,#A27F65,126,1,中美洲
+COUNTRY_PAN,country,Panama,巴拿马,#8E9363,126,1,中美洲
+COUNTRY_CUB,country,Cuba,古巴,#A98258,126,1,加勒比
+COUNTRY_HTI,country,Haiti,海地,#8C6E68,126,1,加勒比
+COUNTRY_DOM,country,Dominican Republic,多米尼加,#7D9087,126,1,加勒比
+COUNTRY_JAM,country,Jamaica,牙买加,#8A9661,126,1,加勒比
+COUNTRY_BHS,country,The Bahamas,巴哈马,#79969A,126,1,加勒比

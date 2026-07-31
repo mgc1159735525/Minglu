@@ -1,0 +1,490 @@
+﻿id,country,name,name_zh,type,longitude,latitude,map_x,map_y
+AIA+99?,Anguilla,,,,-63.426200,18.598200,0.853586,0.840529
+AIA-5114,Anguilla,Blowing Point,鼓风角,District,-63.094300,18.188900,0.855661,0.845710
+AIA-5115,Anguilla,East End,东区,District,-62.985200,18.262200,0.856342,0.844782
+AIA-5116,Anguilla,George Hill,乔治山,District,-63.066000,18.208900,0.855837,0.845457
+AIA-5117,Anguilla,Island Harbour,维港岛,District,-63.002800,18.270500,0.856233,0.844677
+AIA-5118,Anguilla,North Hill,北山,District,-63.074000,18.224300,0.855787,0.845262
+AIA-5119,Anguilla,North Side,北区,District,-63.033000,18.260600,0.856044,0.844803
+AIA-5120,Anguilla,Sandy Ground,沙地,District,-63.081400,18.219200,0.855741,0.845327
+AIA-5121,Anguilla,Sandy Hill,桑迪山,District,-63.015100,18.230100,0.856156,0.845189
+AIA-5122,Anguilla,South Hill,南希尔,District,-63.088100,18.208300,0.855699,0.845465
+AIA-5123,Anguilla,Stoney Ground,斯托尼地,District,-63.036800,18.238700,0.856020,0.845080
+AIA-5124,Anguilla,The Farrington,法灵顿,District,-63.043900,18.217300,0.855976,0.845351
+AIA-5125,Anguilla,The Quarter,夸特,District,-63.040000,18.229900,0.856000,0.845191
+AIA-5126,Anguilla,The Valley,瓦利,District,-63.052000,18.232100,0.855925,0.845163
+AIA-5127,Anguilla,West End,西尾,District,-63.138400,18.186500,0.855385,0.845741
+ATG-5091,Antigua and Barbuda,Barbuda,巴布达岛,Dependency,-61.792000,17.615500,0.863800,0.852968
+ATG-5092,Antigua and Barbuda,Redonda,雷东达岛,Dependency,-62.346700,16.933500,0.860333,0.861601
+ATG-5093,Antigua and Barbuda,Saint George,圣乔治区,Parish,-61.780400,17.108400,0.863872,0.859387
+ATG-5098,Antigua and Barbuda,Saint John,圣约翰区,Parish,-61.823700,17.110100,0.863602,0.859366
+ATG-5097,Antigua and Barbuda,Saint Mary,圣玛丽区,Parish,-61.857000,17.036800,0.863394,0.860294
+ATG-5096,Antigua and Barbuda,Saint Paul,圣保罗区,Parish,-61.767100,17.035200,0.863956,0.860314
+ATG-5094,Antigua and Barbuda,Saint Peter,圣彼得区,Parish,-61.740400,17.093500,0.864123,0.859576
+ATG-5095,Antigua and Barbuda,Saint Philip,圣菲利普区,Parish,-61.702100,17.060100,0.864362,0.859999
+ABW-5150,Aruba,Aruba,阿鲁巴,,-69.968900,12.514700,0.812694,0.917535
+BRB-1989,Barbados,Christ Church,基督城教区,Parish,-59.538000,13.087300,0.877887,0.910287
+BRB-1990,Barbados,Saint Andrew,圣安德鲁区,Parish,-59.575900,13.255100,0.877651,0.908163
+BRB-1991,Barbados,Saint George,圣乔治教区,Parish,-59.547900,13.148900,0.877826,0.909508
+BRB-1992,Barbados,Saint James,聖詹姆斯教區,Parish,-59.625900,13.192000,0.877338,0.908962
+BRB-1993,Barbados,Saint John,圣约翰教区,Parish,-59.503900,13.179500,0.878101,0.909120
+BRB-1994,Barbados,Saint Joseph,聖約瑟夫區,Parish,-59.549500,13.211800,0.877816,0.908711
+BRB-1995,Barbados,Saint Lucy,圣露西教区,Parish,-59.615000,13.317700,0.877406,0.907371
+BRB-1996,Barbados,Saint Michael,圣迈克尔区,Parish,-59.604700,13.118000,0.877471,0.909899
+BRB-1997,Barbados,Saint Peter,聖彼得教區,Parish,-59.610900,13.267900,0.877432,0.908001
+BRB-1998,Barbados,Saint Philip,圣菲利普区,Parish,-59.470000,13.136800,0.878312,0.909661
+BRB-1999,Barbados,Saint Thomas,圣托马斯区,Parish,-59.589800,13.187700,0.877564,0.909016
+BLZ-1323,Belize,Belize,伯利兹区,District,-88.418900,17.536700,0.697382,0.853966
+BLZ-1324,Belize,Cayo,卡约区,District,-88.883300,16.990200,0.694479,0.860884
+BLZ-1325,Belize,Corozal,科罗萨尔区,District,-88.349200,18.166700,0.697817,0.845991
+BLZ-1326,Belize,Orange Walk,橘园区,District,-88.855200,17.712200,0.694655,0.851744
+BLZ-1355,Belize,Stann Creek,斯坦克里克区,District,-88.496300,16.809000,0.696898,0.863177
+BLZ-1356,Belize,Toledo,托莱多区,District,-88.811700,16.376100,0.694927,0.868657
+BMU-5134,Bermuda,City of Hamilton,汉密尔顿市,,-64.788400,32.293800,0.845073,0.667167
+BMU-5135,Bermuda,City of Saint George,圣乔治市,,-64.674200,32.374700,0.845786,0.666143
+BMU-5136,Bermuda,Devonshire,德文郡,,-64.756600,32.303300,0.845271,0.667047
+BMU-5137,Bermuda,Hamilton,哈密尔顿,,-64.719700,32.345400,0.845502,0.666514
+BMU-5138,Bermuda,Paget,佩吉特,,-64.781100,32.278400,0.845118,0.667362
+BMU-5139,Bermuda,Pembroke,彭布罗克,,-64.799700,32.299500,0.845002,0.667095
+BMU-5140,Bermuda,Saint George's,圣乔治,,-64.699800,32.364500,0.845626,0.666272
+BMU-5141,Bermuda,Sandys,桑迪斯,,-64.868700,32.298500,0.844571,0.667108
+BMU-5142,Bermuda,Smith's,史密斯,,-64.731900,32.314100,0.845426,0.666910
+BMU-5143,Bermuda,Southampton,南安普敦,,-64.837500,32.252400,0.844766,0.667691
+BMU-5144,Bermuda,Warwick,沃里克,,-64.804200,32.265800,0.844974,0.667522
+VGB+00?,British Virgin Islands,British Virgin Islands,英属维尔京群岛,,-64.585400,18.353600,0.846341,0.843625
+CAN-632,Canada,Alberta,阿尔伯塔省,Province,-115.000000,55.281600,0.531250,0.376182
+CAN-633,Canada,British Columbia,不列颠哥伦比亚,Province,-124.662000,54.694300,0.470862,0.383616
+CAN-630,Canada,Manitoba,曼尼托巴,Province,-97.382800,54.850000,0.641358,0.381646
+CAN-684,Canada,New Brunswick,新不伦瑞克,Province,-66.455800,46.582200,0.834651,0.486301
+CAN-686,Canada,Newfoundland and Labrador,纽芬兰-拉布拉多,Province,-56.216900,48.659800,0.898644,0.460003
+CAN-635,Canada,Northwest Territories,西北地区,Territory,-119.942000,64.083100,0.500362,0.264771
+CAN-685,Canada,Nova Scotia,新斯科舍,Province,-62.811300,45.229300,0.857429,0.503427
+CAN-634,Canada,Nunavut,努纳武特,Territory,-97.144300,64.385300,0.642848,0.260946
+CAN-682,Canada,Ontario,安大略省,Province,-84.794300,50.524400,0.720036,0.436400
+CAN-687,Canada,Prince Edward Island,爱德华王子岛,Province,-63.386200,46.341700,0.853836,0.489346
+CAN-683,Canada,Québec,魁北克,Province,-73.716800,52.259300,0.789270,0.414439
+CAN-631,Canada,Saskatchewan,萨斯喀彻温,Province,-105.682000,54.496500,0.589487,0.386120
+CAN-636,Canada,Yukon,育空,Territory,-135.700000,63.608800,0.401875,0.270775
+NLD-5149,Caribbean Netherlands,Bonaire,博奈尔,Special Municipality,-68.302900,12.231400,0.823107,0.921122
+CYM+00?,Cayman Islands,Cayman Islands,开曼群岛,,-81.259200,19.316700,0.742130,0.831434
+CLP+00?,Clipperton Island,Clipperton Island,克利珀顿岛,,-109.222000,10.297300,0.567363,0.945604
+COL-1314,Colombia,Antioquia,安蒂奥基亚省,Department,-75.507100,6.703660,0.778081,0.991093
+COL-1420,Colombia,Arauca,阿劳卡省,Intendancy,-70.891300,6.643070,0.806929,0.991860
+COL-1412,Colombia,Atlántico,大西洋省,Department,-74.994100,10.671200,0.781287,0.940871
+COL-1413,Colombia,Bolívar,玻利瓦尔省,Department,-74.180700,8.578230,0.786371,0.967364
+COL-1414,Colombia,Cesar,塞萨尔省,Department,-73.433900,9.848930,0.791038,0.951279
+COL-1316,Colombia,Córdoba,科尔多瓦,Department,-75.652200,8.438940,0.777174,0.969127
+COL-1318,Colombia,La Guajira,瓜希拉省,Department,-72.670200,11.424500,0.795811,0.931335
+COL-1416,Colombia,Magdalena,马格达莱纳省,Department,-74.347400,10.373100,0.785329,0.944644
+COL-1421,Colombia,Norte de Santander,北桑坦德省,Department,-72.817500,8.086000,0.794891,0.973595
+COL-1342,Colombia,San Andrés y Providencia,聖安德列斯-普羅維登西亞和聖卡塔利娜群島省,Department,-81.704900,12.542900,0.739344,0.917178
+COL-1317,Colombia,Santander,桑坦德省,Department,-73.498100,6.854020,0.790637,0.989190
+COL-1417,Colombia,Sucre,苏克雷省,Department,-75.131900,9.012360,0.780426,0.961869
+CRI-1333,Costa Rica,Alajuela,阿拉胡埃拉省,Province,-84.799500,10.752700,0.720003,0.939839
+CRI-1327,Costa Rica,Cartago,卡塔戈省,Province,-83.699100,9.784110,0.726881,0.952100
+CRI-1334,Costa Rica,Guanacaste,瓜纳卡斯特省,Province,-85.355200,10.333300,0.716530,0.945148
+CRI-1328,Costa Rica,Heredia,埃雷迪亚省,Province,-83.952700,10.462600,0.725296,0.943511
+CRI-1329,Costa Rica,Limón,利蒙省,Province,-83.148600,9.701800,0.730321,0.953142
+CRI-1330,Costa Rica,Puntarenas,蓬塔雷纳斯省,Province,-83.229400,8.934190,0.729816,0.962858
+CRI-1331,Costa Rica,San José,圣何塞省,Province,-84.010500,9.603690,0.724934,0.954384
+CUB-1429,Cuba,Artemisa,阿尔特米萨省,Province,-82.690300,22.854600,0.733186,0.786651
+CUB-1364,Cuba,Camagüey,卡马圭省,Province,-77.930400,21.367500,0.762935,0.805475
+CUB-1363,Cuba,Ciego de Ávila,谢戈德阿维拉省,Province,-78.638800,21.962600,0.758508,0.797942
+CUB-1319,Cuba,Cienfuegos,西恩富戈斯省,Province,-80.483100,22.325300,0.746981,0.793351
+CUB-1428,Cuba,Ciudad de la Habana,哈瓦那,Province,-82.307500,23.073700,0.735578,0.783877
+CUB-1366,Cuba,Granma,格拉玛省,Province,-76.838600,20.321200,0.769759,0.818719
+CUB-1365,Cuba,Guantánamo,关塔那摩省,Province,-74.811200,20.235800,0.782430,0.819800
+CUB-1367,Cuba,Holguín,奥尔金省,Province,-76.189200,20.808000,0.773817,0.812557
+CUB-1320,Cuba,Isla de la Juventud,青年岛,Special Municipality,-82.814800,21.675400,0.732408,0.801577
+CUB-1368,Cuba,Las Tunas,拉斯图纳斯省,Province,-77.072300,21.029900,0.768298,0.809748
+CUB-1430,Cuba,Matanzas,马坦萨斯省,Province,-81.186000,22.615200,0.742587,0.789681
+CUB-5489,Cuba,Mayabeque,玛雅贝克省,Province,-82.029600,22.876100,0.737315,0.786378
+CUB-1321,Cuba,Pinar del Río,比那尔德里奥省,Province,-83.674000,22.495200,0.727038,0.791200
+CUB-1322,Cuba,Sancti Spíritus,圣斯皮里图斯省,Province,-79.380400,21.961800,0.753872,0.797952
+CUB-1369,Cuba,Santiago de Cuba,圣地亚哥省,Province,-76.211700,20.195900,0.773677,0.820305
+CUB-1431,Cuba,Villa Clara,比亚克拉拉省,Province,-79.952700,22.601000,0.750296,0.789861
+CUW-5151,Curaçao,Curaçao,库拉索,,-68.955000,12.155800,0.819031,0.922078
+DMA-1432,Dominica,Saint Andrew,圣安德鲁区,Parish,-61.358900,15.537800,0.866507,0.879268
+DMA-1433,Dominica,Saint David,圣戴维堂区,Parish,-61.291900,15.395600,0.866926,0.881068
+DMA-1434,Dominica,Saint George,圣乔治堂区,Parish,-61.348900,15.300000,0.866569,0.882278
+DMA-1435,Dominica,Saint John,圣约翰堂区,Parish,-61.448300,15.576700,0.865948,0.878776
+DMA-1436,Dominica,Saint Joseph,圣约瑟夫堂区,Parish,-61.386300,15.435500,0.866336,0.880563
+DMA-1437,Dominica,Saint Luke,圣卢克堂区,Parish,-61.364400,15.248300,0.866473,0.882933
+DMA-1438,Dominica,Saint Mark,圣马克堂区,Parish,-61.361200,15.221700,0.866492,0.883270
+DMA-1439,Dominica,Saint Patrick,圣帕特里克堂区,Parish,-61.305200,15.276800,0.866843,0.882572
+DMA-1440,Dominica,Saint Paul,圣保罗堂区,Parish,-61.371700,15.352900,0.866427,0.881609
+DMA-1441,Dominica,Saint Peter,圣彼得堂区,Parish,-61.444800,15.498600,0.865970,0.879765
+DOM-1974,Dominican Republic,Azua,阿苏阿省,Province,-70.816900,18.598100,0.807394,0.840530
+DOM-1969,Dominican Republic,Bahoruco,巴奥鲁可省,Province,-71.307000,18.511600,0.804331,0.841625
+DOM-1970,Dominican Republic,Barahona,巴拉奥纳省,Province,-71.187200,18.167400,0.805080,0.845982
+DOM-1966,Dominican Republic,Dajabón,达哈翁省,Province,-71.595200,19.431900,0.802530,0.829976
+DOM-1985,Dominican Republic,Distrito Nacional,國家特區,National District,-69.937600,18.474600,0.812890,0.842094
+DOM-1979,Dominican Republic,Duarte,杜华德省,Province,-70.020200,19.198700,0.812374,0.832928
+DOM-1986,Dominican Republic,El Seybo,赛堡省,Province,-69.056800,18.764900,0.818395,0.838419
+DOM-1967,Dominican Republic,Espaillat,艾斯派亚省,Province,-70.353700,19.599800,0.810289,0.827851
+DOM-1980,Dominican Republic,Hato Mayor,阿托马约省,Province,-69.403000,18.981000,0.816231,0.835684
+DOM-1968,Dominican Republic,Hermanas,米拉贝姐妹省,Province,-70.352000,19.403000,0.810300,0.830342
+DOM-1971,Dominican Republic,Independencia,独立省,Province,-71.605700,18.375900,0.802464,0.843343
+DOM-1987,Dominican Republic,La Altagracia,圣母省,Province,-68.641300,18.608000,0.820992,0.840405
+DOM-1972,Dominican Republic,La Estrelleta,拉埃斯特雷莱塔,Province,-71.650000,19.037000,0.802188,0.834975
+DOM-1988,Dominican Republic,La Romana,罗马纳省,Province,-68.986900,18.522100,0.818832,0.841492
+DOM-1975,Dominican Republic,La Vega,拉维加省,Province,-70.683600,19.045300,0.808227,0.834870
+DOM-1982,Dominican Republic,María Trinidad Sánchez,玛丽亚·桑其斯省,Province,-69.993300,19.468200,0.812542,0.829516
+DOM-1976,Dominican Republic,Monseñor Nouel,主教·瑙黎省,Province,-70.408100,18.924200,0.809949,0.836403
+DOM-1964,Dominican Republic,Monte Cristi,基度山省,Province,-71.452700,19.730200,0.803421,0.826200
+DOM-1981,Dominican Republic,Monte Plata,银山省,Province,-69.816000,18.853300,0.813650,0.837300
+DOM-1973,Dominican Republic,Pedernales,佩德纳莱斯省,Province,-71.520100,17.939600,0.802999,0.848866
+DOM-1977,Dominican Republic,Peravia,佩拉维亚省,Province,-70.379900,18.359000,0.810126,0.843557
+DOM-1965,Dominican Republic,Puerto Plata,银港省,Province,-70.797200,19.742700,0.807517,0.826042
+DOM-1983,Dominican Republic,Samaná,山美纳省,Province,-69.475600,19.271700,0.815777,0.832004
+DOM-1984,Dominican Republic,San Cristóbal,圣克里斯多堡省,Province,-70.191400,18.512600,0.811304,0.841613
+DOM-1978,Dominican Republic,San José de Ocoa,圣荷西省,Province,-70.525000,18.636700,0.809219,0.840042
+DOM-1393,Dominican Republic,San Juan,圣胡安省,Province,-71.262200,18.894800,0.804611,0.836775
+DOM-1396,Dominican Republic,San Pedro de Macorís,圣彼德省,Province,-69.348400,18.479600,0.816573,0.842030
+DOM-1390,Dominican Republic,Santiago,圣地牙哥省,Province,-70.897400,19.263600,0.806891,0.832106
+DOM-1391,Dominican Republic,Santiago Rodríguez,圣地亚哥-罗里盖兹省,Province,-71.291900,19.362600,0.804426,0.830853
+DOM-1394,Dominican Republic,Santo Domingo,圣多明哥省,Province,-69.842700,18.566400,0.813483,0.840932
+DOM-1395,Dominican Republic,Sánchez Ramírez,桑切斯·拉米斯省,Province,-70.150000,19.010100,0.811563,0.835315
+DOM-1392,Dominican Republic,Valverde,巴韦德省,Province,-71.024200,19.574100,0.806099,0.828176
+SLV-1343,El Salvador,Ahuachapán,阿瓦查潘省,Department,-89.905700,13.865700,0.688089,0.900434
+SLV-1344,El Salvador,Cabañas,卡瓦尼亚斯省,Department,-88.732600,13.907900,0.695421,0.899900
+SLV-1357,El Salvador,Chalatenango,查拉特南戈省,Department,-89.059100,14.189500,0.693381,0.896335
+SLV-1345,El Salvador,Cuscatlán,库斯卡特兰省,Department,-89.005500,13.816600,0.693716,0.901056
+SLV-1346,El Salvador,La Libertad,拉利伯塔德省,Department,-89.359300,13.772700,0.691504,0.901611
+SLV-1347,El Salvador,La Paz,拉巴斯省,Department,-88.962800,13.487200,0.693983,0.905225
+SLV-1350,El Salvador,La Unión,拉乌尼翁省,Department,-87.930100,13.302000,0.700437,0.907570
+SLV-1351,El Salvador,Morazán,莫拉桑省,Department,-88.105500,13.773600,0.699341,0.901600
+SLV-1352,El Salvador,San Miguel,圣米格尔省,Department,-88.195300,13.488200,0.698779,0.905213
+SLV-1349,El Salvador,San Salvador,圣萨尔瓦多省,Department,-89.148800,13.713000,0.692820,0.902367
+SLV-1353,El Salvador,San Vicente,圣维森特省,Department,-88.691700,13.629100,0.695677,0.903429
+SLV-1358,El Salvador,Santa Ana,圣安娜省,Department,-89.501300,14.102400,0.690617,0.897438
+SLV-1348,El Salvador,Sonsonate,松索纳特省,Department,-89.693700,13.716500,0.689414,0.902323
+SLV-1354,El Salvador,Usulután,乌苏卢坦省,Department,-88.529300,13.410400,0.696692,0.906197
+FRA-4603,France,Guadeloupe,瓜德罗普,Overseas department,-61.682200,16.188100,0.864486,0.871037
+FRA-1442,France,Martinique,马提尼克,Overseas department,-61.064000,14.724500,0.868350,0.889563
+GRL-2740,Greenland,Kommune Kujalleq,库亚莱克,Lansdele,-44.296000,61.545100,0.973150,0.296897
+GRL-2739,Greenland,Kommuneqarfik Sermersooq,塞梅索克,Lansdele,-44.037000,64.059600,0.974769,0.265068
+GRL-2738,Greenland,Pituffik,圖勒,Lansdele,-68.361100,76.443200,0.822743,0.108314
+GRL-2743,Greenland,Qaasuitsup Kommunia,卡苏伊楚普,Lansdele,-49.331100,74.557300,0.941681,0.132186
+GRL-2741,Greenland,Qeqqata Kommunia,凯卡塔,Lansdele,-47.378200,66.548700,0.953886,0.233561
+GRD-5069,Grenada,Carriacou and Petite Martinique,卡里亚库和小马提尼克,Dependency,-61.446100,12.473300,0.865962,0.918059
+GRD-5070,Grenada,Saint Andrew,圣安德鲁区,Parish,-61.632900,12.122400,0.864794,0.922501
+GRD-5071,Grenada,Saint David,圣戴维区,Parish,-61.661700,12.055000,0.864614,0.923354
+GRD-5072,Grenada,Saint George,圣乔治区,Parish,-61.722600,12.068100,0.864234,0.923189
+GRD-5073,Grenada,Saint John,圣约翰区,Parish,-61.709400,12.144600,0.864316,0.922220
+GRD-5074,Grenada,Saint Mark,圣马克区,Parish,-61.674900,12.189000,0.864532,0.921658
+GRD-5075,Grenada,Saint Patrick,圣帕特里克区,Parish,-61.634200,12.214700,0.864786,0.921333
+GTM-1948,Guatemala,Alta Verapaz,上维拉帕斯省,Department,-90.107200,15.645500,0.686830,0.877905
+GTM-1942,Guatemala,Baja Verapaz,下维拉帕斯省,Department,-90.394600,15.076600,0.685034,0.885106
+GTM-1949,Guatemala,Chimaltenango,奇马尔特南戈省,Department,-90.885900,14.731300,0.681963,0.889477
+GTM-1960,Guatemala,Chiquimula,奇基穆拉省,Department,-89.439900,14.666800,0.691001,0.890294
+GTM-1956,Guatemala,El Progreso,普罗格雷索省,Department,-90.091100,14.903800,0.686931,0.887294
+GTM-1950,Guatemala,Escuintla,埃斯昆特拉省,Department,-91.024300,14.167400,0.681098,0.896615
+GTM-1951,Guatemala,Guatemala,瓜地马拉省,Department,-90.487200,14.600600,0.684455,0.891132
+GTM-1943,Guatemala,Huehuetenango,韦韦特南戈省,Department,-91.550400,15.636900,0.677810,0.878014
+GTM-1959,Guatemala,Izabal,伊萨瓦尔省,Department,-88.941400,15.524600,0.694116,0.879435
+GTM-1961,Guatemala,Jalapa,哈拉帕省,Department,-89.972700,14.625500,0.687671,0.890816
+GTM-1962,Guatemala,Jutiapa,胡蒂亚帕省,Department,-89.894600,14.238400,0.688159,0.895716
+GTM-1944,Guatemala,Petén,贝登省,Department,-90.032100,16.888000,0.687299,0.862177
+GTM-1945,Guatemala,Quezaltenango,克萨尔特南戈省,Department,-91.783100,14.726900,0.676356,0.889533
+GTM-3467,Guatemala,Quiché,基切省,Department,-90.881900,15.504900,0.681988,0.879685
+GTM-1946,Guatemala,Retalhuleu,雷塔卢莱乌省,Department,-91.836400,14.395700,0.676022,0.893725
+GTM-1953,Guatemala,Sacatepéquez,萨卡特佩克斯省,Department,-90.754500,14.613900,0.682784,0.890963
+GTM-1947,Guatemala,San Marcos,圣马科斯省,Department,-91.931100,15.031100,0.675431,0.885682
+GTM-1957,Guatemala,Santa Rosa,圣罗萨省,Department,-90.338900,14.165100,0.685382,0.896644
+GTM-1954,Guatemala,Sololá,索洛拉省,Department,-91.272700,14.737200,0.679546,0.889403
+GTM-1952,Guatemala,Suchitepéquez,苏奇特佩克斯省,Department,-91.380300,14.518200,0.678873,0.892175
+GTM-1955,Guatemala,Totonicapán,托托尼卡潘省,Department,-91.388400,15.047400,0.678823,0.885476
+GTM-1963,Guatemala,Zacapa,萨卡帕省,Department,-89.512700,15.032900,0.690546,0.885659
+GUY-675,Guyana,Barima-Waini,巴里马-瓦伊尼,Region,-59.750200,7.742330,0.876561,0.977945
+GUY-680,Guyana,Cuyuni-Mazaruni,库尤尼-马扎鲁尼区,Region,-58.820600,7.168810,0.882371,0.985205
+GUY-678,Guyana,Demerara-Mahaica,德梅拉拉-马海卡区,Region,-58.377300,6.541280,0.885142,0.993148
+GUY-677,Guyana,East Berbice-Corentyne,东伯比斯-科兰太因,Region,-58.094200,6.564150,0.886911,0.992859
+GUY-679,Guyana,Essequibo Islands-West Demerara,马海卡-伯比斯区,Region,-57.827700,6.237050,0.888577,0.996999
+GUY-676,Guyana,Pomeroon-Supenaam,波默伦-苏佩纳姆区,Region,-59.983800,6.183610,0.875101,0.997676
+HTI-1385,Haiti,Centre,中央省,Department,-72.002500,19.029000,0.799984,0.835076
+HTI-1359,Haiti,Grand'Anse,大湾省,Department,-74.127300,18.513700,0.786704,0.841599
+HTI-1384,Haiti,L'Artibonite,阿蒂博尼特省,Department,-72.508900,19.308900,0.796819,0.831533
+HTI-1360,Haiti,Nippes,尼普斯省,Department,-73.390900,18.429700,0.791307,0.842662
+HTI-1387,Haiti,Nord,北部省,Department,-72.327400,19.641200,0.797954,0.827327
+HTI-1386,Haiti,Nord-Est,东北省,Department,-71.908800,19.492900,0.800570,0.829204
+HTI-1361,Haiti,Nord-Ouest,西北省,Department,-73.016600,19.825700,0.793646,0.824991
+HTI-1388,Haiti,Ouest,西部省,Department,-72.239900,18.550100,0.798501,0.841138
+HTI-1362,Haiti,Sud,南部省,Department,-73.785500,18.292900,0.788841,0.844394
+HTI-1389,Haiti,Sud-Est,东南省,Department,-72.368300,18.294700,0.797698,0.844371
+HND-637,Honduras,Atlántida,阿特兰蒂达省,Department,-87.078300,15.634300,0.705761,0.878047
+HND-661,Honduras,Choluteca,乔卢特卡省,Department,-87.107400,13.258700,0.705579,0.908118
+HND-638,Honduras,Colón,科隆省,Department,-85.723600,15.778600,0.714227,0.876220
+HND-646,Honduras,Comayagua,科马亚瓜省,Department,-87.678000,14.657700,0.702013,0.890409
+HND-651,Honduras,Copán,科潘省,Department,-88.936200,14.890900,0.694149,0.887457
+HND-647,Honduras,Cortés,科尔特斯省,Department,-88.035900,15.533600,0.699776,0.879322
+HND-662,Honduras,El Paraíso,埃尔帕拉伊索省,Department,-86.559200,14.037000,0.709005,0.898266
+HND-639,Honduras,Francisco Morazán,弗朗西斯科-莫拉桑省,Department,-87.181500,14.347400,0.705116,0.894337
+HND-640,Honduras,Gracias a Dios,格拉西亚斯-阿迪奥斯省,Department,-84.370100,15.121900,0.722687,0.884533
+HND-648,Honduras,Intibucá,因蒂布卡省,Department,-88.175400,14.398100,0.698904,0.893695
+HND-641,Honduras,Islas de la Bahía,海湾群岛省,Department,-86.931900,16.104800,0.706676,0.872091
+HND-649,Honduras,La Paz,拉巴斯省,Department,-87.914400,14.138000,0.700535,0.896987
+HND-652,Honduras,Lempira,伦皮拉省,Department,-88.647800,14.440800,0.695951,0.893154
+HND-653,Honduras,Ocotepeque,奥科特佩克省,Department,-89.039900,14.524800,0.693501,0.892091
+HND-642,Honduras,Olancho,奥兰乔省,Department,-85.993700,14.805200,0.712539,0.888542
+HND-650,Honduras,Santa Bárbara,圣巴巴拉省,Department,-88.330000,15.052700,0.697938,0.885409
+HND-645,Honduras,Valle,山谷省,Department,-87.599200,13.575300,0.702505,0.904110
+HND-643,Honduras,Yoro,约罗省,Department,-87.206000,15.233000,0.704963,0.883127
+JAM-1370,Jamaica,Clarendon,克拉伦登区,Parish,-77.310900,17.994700,0.766807,0.848168
+JAM-1371,Jamaica,Hanover,汉诺威区,Parish,-78.133700,18.395300,0.761664,0.843097
+JAM-1377,Jamaica,Kingston,金斯敦区,Parish,-76.765300,17.979900,0.770217,0.848356
+JAM-1372,Jamaica,Manchester,曼彻斯特区,Parish,-77.499600,18.021900,0.765628,0.847824
+JAM-1378,Jamaica,Portland,波特兰区,Parish,-76.504100,18.117900,0.771849,0.846609
+JAM-1382,Jamaica,Saint Andrew,圣安德鲁区,Parish,-76.768500,18.022900,0.770197,0.847811
+JAM-1379,Jamaica,Saint Ann,圣安娜区,Parish,-77.243800,18.319400,0.767226,0.844058
+JAM-1380,Jamaica,Saint Catherine,圣凯瑟琳区,Parish,-77.029200,17.851800,0.768567,0.849977
+JAM-1373,Jamaica,Saint Elizabeth,圣伊丽莎白区,Parish,-77.764600,18.053700,0.763971,0.847422
+JAM-1374,Jamaica,Saint James,圣詹姆斯区,Parish,-77.871500,18.363700,0.763303,0.843497
+JAM-1381,Jamaica,Saint Mary,圣玛丽区,Parish,-76.885900,18.265500,0.769463,0.844741
+JAM-1383,Jamaica,Saint Thomas,圣托马斯区,Parish,-76.422600,17.951000,0.772359,0.848722
+JAM-1375,Jamaica,Trelawny,特里洛尼区,Parish,-77.616300,18.360000,0.764898,0.843544
+JAM-1376,Jamaica,Westmoreland,西摩兰区,Parish,-78.130300,18.267800,0.761686,0.844711
+MHL-4968,Marshall Islands,Railik Chain,拉利克礁链,,168.959000,7.595560,0.055994,0.979803
+MHL-4969,Marshall Islands,Ratak Chain,拉塔克礁链,,170.243000,9.459150,0.064019,0.956213
+MEX+99?,Mexico,,,,-89.663300,22.385800,0.689604,0.792585
+MEX-2717,Mexico,Aguascalientes,阿瓜斯卡连特斯州,State,-102.351000,22.037500,0.610306,0.796994
+MEX-2706,Mexico,Baja California,下加利福尼亚州,State,-115.209000,30.339900,0.529944,0.691900
+MEX-2707,Mexico,Baja California Sur,南下加利福尼亚州,State,-111.452000,25.065600,0.553425,0.758663
+MEX-2722,Mexico,Campeche,坎佩切州,State,-90.280700,18.662400,0.685746,0.839716
+MEX-2735,Mexico,Chiapas,恰帕斯州,State,-92.581000,16.527000,0.671369,0.866747
+MEX-2709,Mexico,Chihuahua,奇瓦瓦州,State,-106.232000,28.973000,0.586050,0.709203
+MEX-2708,Mexico,Coahuila,科阿韦拉州,State,-101.885000,27.447300,0.613219,0.728515
+MEX-2718,Mexico,Colima,科利马州,State,-103.915000,19.132500,0.600531,0.833766
+MEX-2727,Mexico,Distrito Federal,墨西哥城,Federal District,-99.136900,19.326600,0.630394,0.831309
+MEX-2710,Mexico,Durango,杜兰戈州,State,-104.808000,24.566000,0.594950,0.764987
+MEX-2728,Mexico,Guanajuato,瓜纳华托州,State,-100.904000,20.814100,0.619350,0.812480
+MEX-2729,Mexico,Guerrero,格雷罗州,State,-100.091000,17.760800,0.624431,0.851129
+MEX-2730,Mexico,Hidalgo,伊达尔戈州,State,-98.922100,20.535400,0.631737,0.816008
+MEX-2719,Mexico,Jalisco,哈利斯科州,State,-103.602000,20.302600,0.602488,0.818954
+MEX-2720,Mexico,Michoacán,米却肯州,State,-101.936000,19.245800,0.612900,0.832332
+MEX-2732,Mexico,Morelos,莫雷洛斯州,State,-99.078500,18.742000,0.630759,0.838709
+MEX-2731,Mexico,México,墨西哥州,State,-99.741600,19.327500,0.626615,0.831297
+MEX-2721,Mexico,Nayarit,纳亚里特州,State,-104.824000,21.793400,0.594850,0.800084
+MEX-2714,Mexico,Nuevo León,新莱昂州,State,-99.830700,25.617800,0.626058,0.751673
+MEX-2723,Mexico,Oaxaca,瓦哈卡州,State,-96.208700,16.940000,0.648696,0.861519
+MEX-2724,Mexico,Puebla,普埃布拉州,State,-97.888900,18.549000,0.638194,0.841152
+MEX-2733,Mexico,Querétaro,克雷塔罗州,State,-99.966300,20.739200,0.625211,0.813428
+MEX-2736,Mexico,Quintana Roo,金塔纳罗奥州,State,-88.344000,19.386100,0.697850,0.830556
+MEX-2715,Mexico,San Luis Potosí,圣路易斯波托西州,State,-100.324000,22.446500,0.622975,0.791816
+MEX-2711,Mexico,Sinaloa,锡那罗亚州,State,-108.001000,25.604100,0.574994,0.751847
+MEX-2712,Mexico,Sonora,索诺拉州,State,-110.485000,29.529300,0.559469,0.702161
+MEX-2725,Mexico,Tabasco,塔巴斯科州,State,-92.827400,18.125200,0.669829,0.846516
+MEX-2716,Mexico,Tamaulipas,塔毛利帕斯州,State,-98.519700,24.080800,0.634252,0.771129
+MEX-2726,Mexico,Tlaxcala,特拉斯卡拉州,State,-98.161000,19.395600,0.636494,0.830435
+MEX-2734,Mexico,Veracruz,韦拉克鲁斯州,State,-96.595300,19.092600,0.646279,0.834271
+MEX-2737,Mexico,Yucatán,尤卡坦州,State,-88.983600,20.663000,0.693852,0.814392
+MEX-2713,Mexico,Zacatecas,萨卡特卡斯州,State,-102.579000,23.378500,0.608881,0.780019
+MSR-5087,Montserrat,Saint Anthony,圣安东尼,Parish,-62.188600,16.704800,0.861321,0.864496
+MSR-5088,Montserrat,Saint Georges,圣乔治教区,Parish,-62.167100,16.744200,0.861456,0.863997
+MSR-5089,Montserrat,Saint Peter,圣彼得,Parish,-62.201700,16.776200,0.861239,0.863592
+NLD-5147,Netherlands,Saba,薩巴,Special Municipality,-63.237100,17.632500,0.854768,0.852753
+NLD-5148,Netherlands,St. Eustatius,圣尤斯特歇斯,Special Municipality,-62.971900,17.485200,0.856426,0.854618
+NIC-657,Nicaragua,Atlántico Norte,北加勒比海岸自治区,Autonomous Region,-84.150100,13.997000,0.724062,0.898772
+NIC-644,Nicaragua,Atlántico Sur,南加勒比海岸自治区,Autonomous Region,-84.214700,12.226500,0.723658,0.921184
+NIC-668,Nicaragua,Boaco,博阿科省,Department,-85.473400,12.524000,0.715791,0.917418
+NIC-654,Nicaragua,Carazo,卡拉索省,Department,-86.287400,11.769200,0.710704,0.926972
+NIC-663,Nicaragua,Chinandega,奇南德加省,Department,-87.170200,12.747500,0.705186,0.914589
+NIC-669,Nicaragua,Chontales,琼塔莱斯省,Department,-85.115600,12.029200,0.718028,0.923681
+NIC-664,Nicaragua,Estelí,埃斯特利省,Department,-86.407200,13.225000,0.709955,0.908544
+NIC-655,Nicaragua,Granada,格拉納達省,Department,-85.969800,11.873600,0.712689,0.925651
+NIC-656,Nicaragua,Jinotega,希诺特加省,Department,-85.541700,13.697500,0.715364,0.902563
+NIC-658,Nicaragua,León,萊昂省,Department,-86.718700,12.416800,0.708008,0.918775
+NIC-665,Nicaragua,Madriz,马德里斯省,Department,-86.412000,13.496300,0.709925,0.905110
+NIC-659,Nicaragua,Managua,马拿瓜省,Department,-86.249300,12.303500,0.710942,0.920209
+NIC-660,Nicaragua,Masaya,马萨亚省,Department,-86.122700,11.995900,0.711733,0.924103
+NIC-666,Nicaragua,Matagalpa,马塔加尔帕省,Department,-85.492600,13.024200,0.715671,0.911086
+NIC-667,Nicaragua,Nueva Segovia,新塞哥维亚省,Department,-86.258900,13.718300,0.710882,0.902300
+NIC-4800,Nicaragua,Rio San Juan,圣胡安河省,Department,-84.518400,11.169100,0.721760,0.934568
+NIC-24,Nicaragua,Rivas,里瓦斯省,Department,-85.763300,11.352400,0.713979,0.932248
+PAN-1958,Panama,Bocas del Toro,博卡斯德尔托罗省,Province,-82.659700,9.207390,0.733377,0.959400
+PAN-1332,Panama,Chiriquí,奇里基省,Province,-82.099200,8.308240,0.736880,0.970782
+PAN-1336,Panama,Coclé,科克莱省,Province,-80.431400,8.577080,0.747304,0.967379
+PAN-1337,Panama,Colón,科隆省,Province,-79.968300,9.170180,0.750198,0.959871
+PAN-1418,Panama,Darién,达连省,Province,-77.706700,7.901940,0.764333,0.975925
+PAN-3455,Panama,Emberá,安贝拉自治区,Indigenous Territory,-78.139600,7.860130,0.761628,0.976454
+PAN-1338,Panama,Herrera,埃雷拉省,Province,-80.661300,7.856320,0.745867,0.976502
+PAN-1419,Panama,Kuna Yala,雅拉库纳族自治区,Indigenous Territory,-78.327300,9.282690,0.760454,0.958447
+PAN-1339,Panama,Los Santos,洛斯桑托斯省,Province,-80.392700,7.584030,0.747546,0.979949
+PAN-3454,Panama,Ngöbe Buglé,恩戈贝布格勒自治区,Indigenous Territory,-81.755800,8.680000,0.739026,0.966076
+PAN-1340,Panama,Panama,巴拿马省,Province,-78.928300,9.086280,0.756698,0.960933
+PAN-1341,Panama,Veraguas,贝拉瓜斯省,Province,-81.144700,8.225530,0.742846,0.971829
+PRI-5260,Puerto Rico,Puerto Rico,波多黎各,,-66.444100,18.244800,0.834724,0.845003
+RUS-2321,Russia,Chukchi Autonomous Okrug,楚科奇自治区,Autonomous Province,170.516000,66.751700,0.065725,0.230991
+RUS-3468,Russia,Kamchatka,堪察加邊疆區,Region,160.187000,56.532500,0.001169,0.360348
+BLM-5113,Saint Barthelemy,Saint Barthélemy,圣巴泰勒米,,-62.828800,17.901700,0.857320,0.849346
+KNA-5099,Saint Kitts and Nevis,Christ Church Nichola Town,基督教会尼古拉镇区,Parish,-62.758200,17.364000,0.857761,0.856152
+KNA-5100,Saint Kitts and Nevis,Saint Anne Sandy Point,圣安娜沙角区,Parish,-62.836900,17.357400,0.857269,0.856235
+KNA-5101,Saint Kitts and Nevis,Saint George Basseterre,圣乔治巴塞特莱区,Parish,-62.686800,17.283600,0.858208,0.857170
+KNA-5102,Saint Kitts and Nevis,Saint George Gingerland,圣乔治金哲兰区,Parish,-62.557100,17.130100,0.859018,0.859113
+KNA-5103,Saint Kitts and Nevis,Saint James Windward,圣詹姆斯温沃德区,Parish,-62.571800,17.178200,0.858926,0.858504
+KNA-5104,Saint Kitts and Nevis,Saint John Capesterre,圣约翰卡皮斯特莱区,Parish,-62.796700,17.382000,0.857521,0.855924
+KNA-5105,Saint Kitts and Nevis,Saint John Figtree,圣约翰费格特里区,Parish,-62.594900,17.116200,0.858782,0.859289
+KNA-5106,Saint Kitts and Nevis,Saint Mary Cayon,圣玛丽卡永区,Parish,-62.728600,17.345900,0.857946,0.856381
+KNA-5107,Saint Kitts and Nevis,Saint Paul Capesterre,圣保罗卡皮斯特莱区,Parish,-62.833700,17.391100,0.857289,0.855809
+KNA-5108,Saint Kitts and Nevis,Saint Paul Charlestown,圣保罗查尔斯敦区,Parish,-62.616200,17.135000,0.858649,0.859051
+KNA-5109,Saint Kitts and Nevis,Saint Peter Basseterre,圣彼得巴塞特莱区,Parish,-62.706500,17.322100,0.858084,0.856682
+KNA-5110,Saint Kitts and Nevis,Saint Thomas Lowland,圣托马斯低地区,Parish,-62.606400,17.159700,0.858710,0.858738
+KNA-5111,Saint Kitts and Nevis,Saint Thomas Middle Island,圣托马斯米德艾兰区,Parish,-62.794300,17.327900,0.857536,0.856609
+KNA-5112,Saint Kitts and Nevis,Trinity Palmetto Point,特立尼提帕美托角区,Parish,-62.748300,17.307400,0.857823,0.856868
+LCA-5076,Saint Lucia,Anse-la-Raye,昂斯拉雷区,Quarter,-61.018900,13.935000,0.868632,0.899557
+LCA-5077,Saint Lucia,Castries,卡斯特里區,Quarter,-60.974900,14.000400,0.868907,0.898729
+LCA-5078,Saint Lucia,Choiseul,舒瓦瑟爾區,Quarter,-61.029600,13.791200,0.868565,0.901377
+LCA-5079,Saint Lucia,Dauphin,多芬區,Quarter,-60.906200,14.017600,0.869336,0.898511
+LCA-5080,Saint Lucia,Dennery,登内里区,Quarter,-60.905200,13.942500,0.869343,0.899462
+LCA-5081,Saint Lucia,Gros Islet,格罗斯伊斯勒区,Quarter,-60.944600,14.066400,0.869096,0.897894
+LCA-5082,Saint Lucia,Laborie,拉博列区,Quarter,-60.986700,13.767600,0.868833,0.901676
+LCA-5083,Saint Lucia,Micoud,米库区,Quarter,-60.918000,13.815900,0.869262,0.901065
+LCA-5084,Saint Lucia,Praslin,普拉兰区,Quarter,-60.918000,13.867400,0.869262,0.900413
+LCA-5085,Saint Lucia,Soufrière,苏弗里耶尔区,Quarter,-61.044700,13.854500,0.868471,0.900576
+LCA-5086,Saint Lucia,Vieux Fort,伯堡区,Quarter,-60.943800,13.776200,0.869101,0.901567
+MAF-5145,Saint Martin,St. Martin,法属圣马丁,,-63.078000,18.079900,0.855763,0.847090
+SPM-4867,Saint Pierre and Miquelon,Miquelon-Langlade,密克隆-朗格拉德,Commune,-56.341800,47.046100,0.897864,0.480429
+SPM-4866,Saint Pierre and Miquelon,Saint-Pierre,圣皮埃尔和密克隆,Commune,-56.191800,46.779500,0.898801,0.483804
+VCT-5063,Saint Vincent and the Grenadines,Charlotte,夏洛特区,Parish,-61.147500,13.282500,0.867828,0.907816
+VCT-5064,Saint Vincent and the Grenadines,Grenadines,格瑞那丁区,Parish,-61.229000,13.016100,0.867319,0.911189
+VCT-5065,Saint Vincent and the Grenadines,Saint Andrew,圣安德鲁区,Parish,-61.228700,13.197700,0.867321,0.908890
+VCT-5066,Saint Vincent and the Grenadines,Saint David,圣大卫区,Parish,-61.204000,13.314200,0.867475,0.907415
+VCT-5067,Saint Vincent and the Grenadines,Saint George,圣乔治区,Parish,-61.189900,13.169500,0.867563,0.909247
+VCT-5068,Saint Vincent and the Grenadines,Saint Patrick,圣派屈克区,Parish,-61.253400,13.231300,0.867166,0.908465
+SXM-5146,Sint Maarten,Sint Maarten,荷属圣马丁,,-63.067700,18.040100,0.855827,0.847594
+BHS-5036,The Bahamas,Acklins,阿克林岛,District,-74.002400,22.374500,0.787485,0.792728
+BHS-5018,The Bahamas,Berry Islands,贝里群岛,District,-77.852700,25.759100,0.763421,0.749885
+BHS-5039,The Bahamas,Bimini,北比米尼岛,District,-79.281100,25.707400,0.754493,0.750539
+BHS-5023,The Bahamas,Black Point,布莱克角,District,-76.362300,24.072000,0.772736,0.771241
+BHS-5030,The Bahamas,Cat Island,卡特岛,District,-75.389400,24.258300,0.778816,0.768882
+BHS-5015,The Bahamas,Central Abaco,中阿巴科,District,-77.117900,26.421500,0.768013,0.741500
+BHS-5020,The Bahamas,Central Andros,中安德罗斯,District,-77.935500,24.475700,0.762903,0.766130
+BHS-5028,The Bahamas,Central Eleuthera,中伊柳塞拉,District,-76.176000,25.158800,0.773900,0.757484
+BHS-5010,The Bahamas,City of Freeport,自由港,District,-78.625200,26.533900,0.758593,0.740077
+BHS-5035,The Bahamas,Crooked Island and Long Cay,克鲁克德岛,District,-74.240500,22.747200,0.785997,0.788010
+BHS-5012,The Bahamas,East Grand Bahama,东大巴哈马区,District,-78.215000,26.659600,0.761156,0.738486
+BHS-5024,The Bahamas,Exuma,埃克苏马,District,-75.906900,23.585500,0.775582,0.777399
+BHS-5026,The Bahamas,Harbour Island,哈勃岛,District,-76.764100,25.544300,0.770224,0.752604
+BHS-5038,The Bahamas,Inagua,那瓜岛,District,-73.360700,21.060000,0.791496,0.809367
+BHS-5033,The Bahamas,Long Island,长岛,District,-74.913200,23.037000,0.781792,0.784342
+BHS-5021,The Bahamas,Mangrove Cay,曼格罗夫岛,District,-77.801800,24.080600,0.763739,0.771132
+BHS-5037,The Bahamas,Mayaguana,马亚瓜纳岛,District,-73.029500,22.384900,0.793566,0.792596
+BHS-5017,The Bahamas,Moore's Island,摩尔岛,District,-77.552600,26.297300,0.765296,0.743072
+BHS-5009,The Bahamas,New Providence,新普罗维登斯岛,Capital,-77.435600,25.014900,0.766027,0.759305
+BHS-5014,The Bahamas,North Abaco,北阿巴科区,District,-77.635400,26.887300,0.764779,0.735604
+BHS-5019,The Bahamas,North Andros,北安德罗斯岛,District,-77.997600,24.827600,0.762515,0.761676
+BHS-5027,The Bahamas,North Eleuthera,北伊柳塞拉,District,-76.590000,25.438300,0.771312,0.753946
+BHS-5034,The Bahamas,Ragged Island,拉吉德岛,District,-75.741300,22.229600,0.776617,0.794562
+BHS-5032,The Bahamas,Rum Cay,拉姆岛,District,-74.840800,23.678700,0.782245,0.776219
+BHS-5031,The Bahamas,San Salvador,圣萨尔瓦多岛,District,-74.478500,24.051300,0.784509,0.771503
+BHS-5016,The Bahamas,South Abaco,南阿巴科区,District,-77.242100,26.017900,0.767237,0.746609
+BHS-5022,The Bahamas,South Andros,南安德罗斯,District,-77.604300,23.782200,0.764973,0.774909
+BHS-5029,The Bahamas,South Eleuthera,南伊柳塞拉,District,-76.196700,24.734400,0.773771,0.762856
+BHS-5025,The Bahamas,Spanish Wells,西班牙韦尔斯,District,-76.833400,25.523700,0.769791,0.752865
+BHS-5011,The Bahamas,West Grand Bahama,西大巴哈馬島區,District,-78.908500,26.638900,0.756822,0.738748
+TTO-53,Trinidad and Tobago,Arima,阿里马,City,-61.280400,10.628400,0.866998,0.941413
+TTO-63,Trinidad and Tobago,Chaguanas,查瓜纳斯,City,-61.413400,10.535900,0.866166,0.942584
+TTO-58,Trinidad and Tobago,Couva-Tabaquite-Talparo,库瓦-塔瓦基特-塔尔帕罗地区,Region,-61.342500,10.451900,0.866609,0.943647
+TTO-51,Trinidad and Tobago,Diego Martin,迭戈马丁地区,Region,-61.577800,10.712800,0.865139,0.940344
+TTO-50,Trinidad and Tobago,Eastern Tobago,多巴哥岛,Region,-60.600100,11.289900,0.871249,0.933039
+TTO-59,Trinidad and Tobago,Penal-Debe,皮纳尔-德贝郡,Region,-61.426900,10.145900,0.866082,0.947520
+TTO-60,Trinidad and Tobago,Point Fortin,波因特福廷,City,-61.668500,10.166900,0.864572,0.947254
+TTO-64,Trinidad and Tobago,Port of Spain,西班牙港,City,-61.520400,10.664700,0.865498,0.940953
+TTO-57,Trinidad and Tobago,Princes Town,王子镇地区,Region,-61.309600,10.203900,0.866815,0.946786
+TTO-55,Trinidad and Tobago,Rio Claro-Mayaro,马亚罗-里奥克拉罗区,Region,-61.102400,10.281400,0.868110,0.945805
+TTO-62,Trinidad and Tobago,San Fernando,圣费尔南多,City,-61.458900,10.277200,0.865882,0.945858
+TTO-56,Trinidad and Tobago,San Juan-Laventille,圣胡安-拉文蒂尔区,Region,-61.449800,10.613000,0.865939,0.941608
+TTO-54,Trinidad and Tobago,Sangre Grande,大桑格雷地区,Region,-61.127700,10.683800,0.867952,0.940711
+TTO-52,Trinidad and Tobago,Siparia,锡帕里亚郡,Region,-61.698700,10.118000,0.864383,0.947873
+TTO-61,Trinidad and Tobago,Tunapuna/Piarco,麦高耶,Region,-61.325400,10.690300,0.866716,0.940629
+TTO-5090,Trinidad and Tobago,Western Tobago,多巴哥岛,Region,-60.770900,11.195900,0.870182,0.934229
+TCA-5007,Turks and Caicos Islands,Grand Turk,大特克岛,,-71.137000,21.472500,0.805394,0.804146
+TCA-5003,Turks and Caicos Islands,Middle Caicos,中凯科斯岛,,-71.766900,21.819600,0.801457,0.799752
+TCA-5004,Turks and Caicos Islands,North Caicos,北凯科斯岛,,-71.929800,21.891600,0.800439,0.798841
+TCA-5005,Turks and Caicos Islands,Providenciales and West Caicos,普罗维登夏莱斯和西凯科斯群岛,,-72.286100,21.798700,0.798212,0.800016
+TCA-5008,Turks and Caicos Islands,Salt Cay,索尔特岛,,-71.207200,21.329500,0.804955,0.805956
+TCA-5006,Turks and Caicos Islands,South Caicos and East Caicos,南凯科斯和东凯科斯,,-71.478200,21.703400,0.803261,0.801223
+USG+00?,US Naval Base Guantanamo Bay,Guantanamo Bay USNB,关塔那摩湾美国海军基地,,-75.196400,19.934700,0.780022,0.823611
+UMI-5174,United States Minor Outlying Islands,Johnston Atoll,约翰斯顿环礁,,-169.538000,16.727300,0.190387,0.864211
+UMI-5176,United States Minor Outlying Islands,Midway Islands,中途岛,,-177.376000,28.206000,0.141400,0.718911
+UMI-5177,United States Minor Outlying Islands,Navassa Island,纳瓦萨岛,,-75.011000,18.404300,0.781181,0.842984
+UMI-5179,United States Minor Outlying Islands,Wake Atoll,威克岛,,166.643000,19.286300,0.041519,0.831819
+VIR-4870,United States Virgin Islands,Saint Croix,圣克洛伊岛,,-64.779800,17.735000,0.845126,0.851456
+VIR-4869,United States Virgin Islands,Saint John,圣约翰区,,-64.746100,18.342200,0.845337,0.843770
+VIR-4868,United States Virgin Islands,Saint Thomas,圣托马斯岛,,-64.926300,18.354300,0.844211,0.843616
+USA-3541,United States of America,Alabama,亚拉巴马州,State,-86.718400,32.855100,0.708010,0.660062
+USA-3563,United States of America,Alaska,阿拉斯加州,State,-151.604000,65.360900,0.302475,0.248596
+USA-3520,United States of America,Arizona,亚利桑那州,State,-111.935000,34.304600,0.550406,0.641714
+USA-3528,United States of America,Arkansas,阿肯色州,State,-92.142800,34.756300,0.674108,0.635996
+USA-3521,United States of America,California,加利福尼亚州,State,-119.591000,36.749600,0.502556,0.610765
+USA-3522,United States of America,Colorado,科罗拉多州,State,-105.543000,38.999800,0.590356,0.582281
+USA-3537,United States of America,Connecticut,康涅狄格州,State,-72.759400,41.648600,0.795254,0.548752
+USA-3555,United States of America,Delaware,特拉华州,State,-75.411200,38.865700,0.778680,0.583978
+USA-3556,United States of America,District of Columbia,华盛顿哥伦比亚特区,Federal District,-77.011300,38.892200,0.768679,0.583643
+USA-3542,United States of America,Florida,佛罗里达州,State,-81.622800,28.156800,0.739857,0.719534
+USA-3543,United States of America,Georgia,佐治亚州,State,-83.407800,32.854700,0.728701,0.660067
+USA-3517,United States of America,Hawaii,夏威夷州,State,-157.999000,21.491900,0.262506,0.803900
+USA-3518,United States of America,Idaho,爱达荷州,State,-114.133000,43.782500,0.536669,0.521741
+USA-3546,United States of America,Illinois,伊利诺伊州,State,-89.199100,39.946000,0.692506,0.570304
+USA-3547,United States of America,Indiana,印第安纳州,State,-86.139600,39.887400,0.711628,0.571046
+USA-3529,United States of America,Iowa,艾奥瓦州,State,-93.389100,42.042300,0.666318,0.543768
+USA-3530,United States of America,Kansas,堪萨斯州,State,-98.330900,38.500000,0.635432,0.588608
+USA-3548,United States of America,Kentucky,肯塔基州,State,-85.572900,37.399400,0.715169,0.602539
+USA-3535,United States of America,Louisiana,路易斯安那州,State,-91.999100,30.527400,0.675006,0.689527
+USA-3561,United States of America,Maine,缅因州,State,-69.197300,45.148000,0.817517,0.504456
+USA-3557,United States of America,Maryland,马里兰州,State,-77.045400,39.387400,0.768466,0.577375
+USA-3513,United States of America,Massachusetts,马萨诸塞州,State,-71.999300,42.373900,0.800004,0.539571
+USA-3562,United States of America,Michigan,密歇根州,State,-84.947900,43.434300,0.719076,0.526148
+USA-3514,United States of America,Minnesota,明尼苏达州,State,-93.364000,46.059200,0.666475,0.492922
+USA-3544,United States of America,Mississippi,密西西比州,State,-89.718900,32.865700,0.689257,0.659928
+USA-3531,United States of America,Missouri,密苏里州,State,-92.446000,38.548700,0.672212,0.587991
+USA-3515,United States of America,Montana,蒙大拿州,State,-110.044000,46.996500,0.562225,0.481057
+USA-3532,United States of America,Nebraska,內布拉斯加州,State,-99.685500,41.500200,0.626966,0.550630
+USA-3523,United States of America,Nevada,内华达州,State,-117.020000,39.429900,0.518625,0.576837
+USA-3538,United States of America,New Hampshire,新罕布什尔州,State,-71.630100,43.599300,0.802312,0.524059
+USA-3558,United States of America,New Jersey,新泽西州,State,-74.465300,40.044900,0.784592,0.569052
+USA-3524,United States of America,New Mexico,新墨西哥州,State,-106.024000,34.500200,0.587350,0.639238
+USA-3559,United States of America,New York,纽约州,State,-75.324200,43.198800,0.779224,0.529129
+USA-3549,United States of America,North Carolina,北卡罗来纳州,State,-78.866000,35.615200,0.757088,0.625124
+USA-3516,United States of America,North Dakota,北达科他州,State,-100.302000,47.467500,0.623112,0.475095
+USA-3550,United States of America,Ohio,俄亥俄州,State,-82.671900,40.092400,0.733301,0.568451
+USA-3533,United States of America,Oklahoma,俄克拉荷马州,State,-97.130900,35.452000,0.642932,0.627190
+USA-3525,United States of America,Oregon,俄勒冈州,State,-120.386000,43.833300,0.497588,0.521097
+USA-3560,United States of America,Pennsylvania,宾夕法尼亚州,State,-77.609400,40.860100,0.764941,0.558733
+USA-3539,United States of America,Rhode Island,罗得岛州,State,-71.508200,41.624200,0.803074,0.549061
+USA-3545,United States of America,South Carolina,南卡罗来纳州,State,-80.647100,33.857800,0.745956,0.647370
+USA-3534,United States of America,South Dakota,南达科他州,State,-100.255000,44.471100,0.623406,0.513024
+USA-3551,United States of America,Tennessee,田纳西州,State,-86.341500,35.751400,0.710366,0.623400
+USA-3536,United States of America,Texas,得克萨斯州,State,-98.760700,31.131000,0.632746,0.681886
+USA-3526,United States of America,Utah,犹他州,State,-111.544000,39.500700,0.552850,0.575941
+USA-3540,United States of America,Vermont,佛蒙特州,State,-72.731700,44.088600,0.795427,0.517866
+USA-3552,United States of America,Virginia,弗吉尼亚州,State,-78.243100,37.740300,0.760981,0.598224
+USA-3519,United States of America,Washington,华盛顿州,State,-120.361000,47.486500,0.497744,0.474854
+USA-3554,United States of America,West Virginia,西維吉尼亞州,State,-80.712800,38.642200,0.745545,0.586808
+USA-3553,United States of America,Wisconsin,威斯康星州,State,-89.583100,44.370900,0.690106,0.514292
+USA-3527,United States of America,Wyoming,怀俄明州,State,-107.552000,42.999900,0.577800,0.531647
+VEN+99?,Venezuela,,,,-63.638800,15.699000,0.852258,0.877228
+VEN-40,Venezuela,Anzoátegui,安索阿特吉州,State,-64.194900,9.055860,0.848782,0.961318
+VEN-25,Venezuela,Apure,阿普雷州,State,-68.550000,7.040500,0.821563,0.986829
+VEN-41,Venezuela,Aragua,阿拉瓜州,State,-67.325200,10.161800,0.829218,0.947319
+VEN-26,Venezuela,Barinas,巴里纳斯州,State,-69.979800,8.223790,0.812626,0.971851
+VEN-39,Venezuela,Bolívar,玻利瓦尔州,State,-63.862800,6.006080,0.850858,0.999923
+VEN-33,Venezuela,Carabobo,卡拉沃沃州,State,-67.974500,10.154800,0.825159,0.947408
+VEN-32,Venezuela,Cojedes,科赫德斯州,State,-68.373800,9.301820,0.822664,0.958205
+VEN-65,Venezuela,Delta Amacuro,阿马库罗三角洲州,State,-61.586300,8.789150,0.865086,0.964694
+VEN-44,Venezuela,Dependencias Federales,联邦属地,Federal Dependency,-65.306700,10.933700,0.841833,0.937548
+VEN-43,Venezuela,Distrito Capital,联邦区,Capital District,-66.964000,10.485700,0.831475,0.943219
+VEN-23,Venezuela,Falcón,法尔孔州,State,-69.760400,11.089700,0.813997,0.935573
+VEN-45,Venezuela,Guárico,瓜里科州,State,-66.479400,8.723700,0.834504,0.965523
+VEN-34,Venezuela,Lara,拉腊州,State,-69.805300,10.155200,0.813717,0.947403
+VEN-47,Venezuela,Miranda,米兰达州,State,-66.322900,10.261600,0.835482,0.946056
+VEN-46,Venezuela,Monagas,莫纳加斯州,State,-63.086900,9.503950,0.855707,0.955646
+VEN-27,Venezuela,Mérida,梅里达州,State,-71.239800,8.490980,0.804751,0.968469
+VEN-48,Venezuela,Nueva Esparta,新埃斯帕塔州,State,-63.968900,10.971900,0.850194,0.937065
+VEN-35,Venezuela,Portuguesa,波图格萨州,State,-69.377600,9.156250,0.816390,0.960047
+VEN-49,Venezuela,Sucre,苏克雷州,State,-63.354200,10.472900,0.854036,0.943381
+VEN-29,Venezuela,Trujillo,特鲁希略州,State,-70.551900,9.495080,0.809051,0.955758
+VEN-28,Venezuela,Táchira,塔奇拉州,State,-72.003900,7.857340,0.799976,0.976489
+VEN-42,Venezuela,Vargas,瓦尔加斯州,State,-66.856600,10.581800,0.832146,0.942003
+VEN-36,Venezuela,Yaracuy,亚拉奎州,State,-68.744700,10.346600,0.820346,0.944980
+VEN-31,Venezuela,Zulia,苏利亚州,State,-72.548200,9.584690,0.796574,0.954624

@@ -1164,7 +1164,6 @@ public sealed class MingLuGame : MonoBehaviour
     private readonly Dictionary<string, RectTransform> battleUnitViews = new Dictionary<string, RectTransform>();
     private readonly Dictionary<string, BattleUnitBadgeGraphic> battleUnitBadges = new Dictionary<string, BattleUnitBadgeGraphic>();
     private readonly Dictionary<string, Image> battleUnitSprites = new Dictionary<string, Image>();
-    private readonly Dictionary<string, Image> battleLabSpawnSprites = new Dictionary<string, Image>();
     private BattleLevelDesign battleLabDesign;
     private string battleLabBrush = "player";
     private string battleLabTab = "map";
@@ -1488,15 +1487,15 @@ public sealed class MingLuGame : MonoBehaviour
         {
             provinces = new List<Province>
             {
-                NewProvince("xinjing", "新京", Faction.Player, 80, 35, -330, 150),
-                NewProvince("linhai", "临海", Faction.Player, 62, 24, -125, 215),
-                NewProvince("hegu", "河谷", Faction.Player, 55, 18, -230, -25),
-                NewProvince("beiling", "北岭", Faction.Imperial, 58, 16, 40, 80),
-                NewProvince("songlin", "松林", Faction.Native, 48, 12, 235, 190),
-                NewProvince("shigu", "石谷", Faction.Reformist, 65, 20, 215, -35),
-                NewProvince("xigang", "西港", Faction.Foreign, 70, 28, 420, 70),
-                NewProvince("nanze", "南泽", Faction.Neutral, 44, 14, -5, -180),
-                NewProvince("hongyuan", "红原", Faction.Reformist, 52, 18, 385, -160)
+                NewProvince("xinjing", "天澜", Faction.Player, 80, 35, -330, 150),
+                NewProvince("linhai", "天岁", Faction.Player, 62, 24, -125, 215),
+                NewProvince("hegu", "羽州", Faction.Player, 55, 18, -230, -25),
+                NewProvince("beiling", "霁川", Faction.Imperial, 58, 16, 40, 80),
+                NewProvince("songlin", "星原", Faction.Native, 48, 12, 235, 190),
+                NewProvince("shigu", "月泽", Faction.Reformist, 65, 20, 215, -35),
+                NewProvince("xigang", "苍汐", Faction.Foreign, 70, 28, 420, 70),
+                NewProvince("nanze", "玄雾", Faction.Neutral, 44, 14, -5, -180),
+                NewProvince("hongyuan", "曜岭", Faction.Reformist, 52, 18, 385, -160)
             };
 
             Link("xinjing", "linhai");
@@ -2227,7 +2226,12 @@ public sealed class MingLuGame : MonoBehaviour
             ShowCharacterCreate();
         });
         AddButton(root, T("button.strategy", "进入战略地图"), new Vector2(-260, -25), new Vector2(280, 56), () => ShowStrategy());
-        AddButton(root, T("button.continue", "继续征途"), new Vector2(-260, -90), new Vector2(280, 56), LoadGame);
+        bool hasContinueSave = HasContinueSave();
+        string continueLabel = hasContinueSave
+            ? T("button.continue", "继续征途")
+            : T("button.continue_empty", "继续征途（暂无存档）");
+        Button continueButton = AddButton(root, continueLabel, new Vector2(-260, -90), new Vector2(280, 56), LoadGame);
+        continueButton.interactable = hasContinueSave;
         AddButton(root, T("button.credits", "开发团队"), new Vector2(-260, -155), new Vector2(280, 56), ShowCredits);
         AddButton(root, T("button.exit", "退出"), new Vector2(-260, -220), new Vector2(280, 56), () => Application.Quit(), new Color(0.45f, 0.18f, 0.18f));
     }
@@ -3226,7 +3230,8 @@ public sealed class MingLuGame : MonoBehaviour
 
     private void ReturnToMode(ScreenMode returnMode)
     {
-        if (returnMode == ScreenMode.CharacterCreate) ShowCharacterCreate();
+        if (returnMode == ScreenMode.Title) ShowTitle();
+        else if (returnMode == ScreenMode.CharacterCreate) ShowCharacterCreate();
         else
         if (returnMode == ScreenMode.BattleLab) ShowBattleLabEditor();
         else
@@ -3606,7 +3611,7 @@ public sealed class MingLuGame : MonoBehaviour
             })));
             options.Add(Tuple.Create(TF("save.manual_load", "读取手动槽 {0}", captured), (Action)(() =>
             {
-                LoadGameSlot("MANUAL_" + captured);
+                LoadGameSlot("MANUAL_" + captured, false, returnMode);
             })));
         }
         options.Add(Tuple.Create(T("save.new_game_plus", "开启新周目"), (Action)(() => StartNewGamePlus(returnMode))));
@@ -6285,7 +6290,6 @@ public sealed class MingLuGame : MonoBehaviour
         battleUnitViews.Clear();
         battleUnitBadges.Clear();
         battleUnitSprites.Clear();
-        battleLabSpawnSprites.Clear();
         RemoveBattleLabTempArmies();
         EnsureBattleLabDesign();
         battleTerrainOverride = battleLabDesign.terrainTiles;
@@ -6549,7 +6553,6 @@ public sealed class MingLuGame : MonoBehaviour
             spriteImage.color = Color.white;
             spriteImage.preserveAspect = true;
             spriteImage.raycastTarget = false;
-            battleLabSpawnSprites[BattleLabCellKey(spawn.q, spawn.r)] = spriteImage;
         }
 
         RectTransform labelBack = CreateRect("BattleLabUnitLabelBack", rt, new Vector2(0, -34), new Vector2(72, 18), new Color(0.04f, 0.03f, 0.025f, 0.66f));
@@ -6566,24 +6569,6 @@ public sealed class MingLuGame : MonoBehaviour
     private int BattleLabIdleFrame(CommonBattleUnitConfig config)
     {
         return 0;
-    }
-
-    private void RefreshBattleLabSpawnSprites()
-    {
-        if (mode != ScreenMode.BattleLab || battleLabSpawnSprites.Count == 0 || battleLabDesign == null) return;
-        foreach (KeyValuePair<string, Image> pair in battleLabSpawnSprites.ToList())
-        {
-            if (pair.Value == null)
-            {
-                battleLabSpawnSprites.Remove(pair.Key);
-                continue;
-            }
-
-            BattleUnitSpawnConfig spawn = battleLabDesign.spawns.FirstOrDefault(s => s != null && BattleLabCellKey(s.q, s.r) == pair.Key);
-            CommonBattleUnitConfig config = CommonUnitForSpawn(spawn);
-            Sprite sprite = LoadBattleUnitSprite(config, "idle", BattleLabIdleFrame(config));
-            if (sprite != null) pair.Value.sprite = sprite;
-        }
     }
 
     private void DrawBattleLabSidePanel(Transform parent)
@@ -9378,7 +9363,7 @@ public sealed class MingLuGame : MonoBehaviour
 
     private void UpdateBattleAnimations(float dt)
     {
-        if (battle == null) return;
+        if (battle == null || battleAnimations.Count == 0) return;
         if (battleAnimations.Count > 0)
         {
             for (int i = battleAnimations.Count - 1; i >= 0; i--)
@@ -9534,7 +9519,7 @@ public sealed class MingLuGame : MonoBehaviour
             armies = armies.Where(a => !IsBattleLabTempArmy(a)).ToList(),
             strategyTurn = strategyTurn,
             season = season,
-            mode = mode == ScreenMode.BattleLab ? ScreenMode.Strategy : mode,
+            mode = StableSaveMode(),
             log = string.Join("\n", logLines.ToArray()),
             currentMainEventId = currentMainEventId,
             completedStoryEvents = completedStoryEvents.ToList(),
@@ -9543,9 +9528,21 @@ public sealed class MingLuGame : MonoBehaviour
         return data;
     }
 
+    private ScreenMode StableSaveMode()
+    {
+        if (mode == ScreenMode.Academy) return ScreenMode.Academy;
+        if (mode == ScreenMode.StoryEvent && storyReturnMode == ScreenMode.Academy) return ScreenMode.Academy;
+        return ScreenMode.Strategy;
+    }
+
     private string SaveKeyForSlot(string slot)
     {
         return SaveKey + "_" + SafeText(slot, "MANUAL_1");
+    }
+
+    private bool HasContinueSave()
+    {
+        return PlayerPrefs.HasKey(SaveKey) || PlayerPrefs.HasKey(SaveKeyForSlot("MANUAL_1"));
     }
 
     private void SaveGameSlot(string slot, ScreenMode returnMode, bool showPanelAfter)
@@ -9564,32 +9561,55 @@ public sealed class MingLuGame : MonoBehaviour
 
     private void LoadGame()
     {
-        LoadGameSlot("MANUAL_1", true);
+        LoadGameSlot("MANUAL_1", true, ScreenMode.Title);
     }
 
-    private void LoadGameSlot(string slot, bool fallbackDefault = false)
+    private void LoadGameSlot(string slot, bool fallbackDefault = false, ScreenMode failureReturnMode = ScreenMode.Title)
     {
-        string raw = PlayerPrefs.GetString(SaveKeyForSlot(slot), "");
-        if (string.IsNullOrEmpty(raw) && fallbackDefault) raw = PlayerPrefs.GetString(SaveKey, "");
+        string raw = fallbackDefault ? PlayerPrefs.GetString(SaveKey, "") : "";
+        if (string.IsNullOrEmpty(raw)) raw = PlayerPrefs.GetString(SaveKeyForSlot(slot), "");
         if (string.IsNullOrEmpty(raw))
         {
-            AddLog(T("log.save_missing", "没有找到存档。"));
-            ShowTitle();
+            ShowLoadFailure(T("log.save_missing", "没有找到存档。"), failureReturnMode);
             return;
         }
-        SaveData data = JsonUtility.FromJson<SaveData>(raw);
-        player = data.player ?? new PlayerProfile();
+
+        SaveData data = null;
+        try
+        {
+            data = JsonUtility.FromJson<SaveData>(raw);
+        }
+        catch (Exception exception)
+        {
+            Debug.LogWarning("MingLu save data could not be parsed: " + exception.Message);
+        }
+        if (data == null || data.player == null)
+        {
+            ShowLoadFailure(T("save.invalid", "存档已损坏或版本不兼容，未覆盖当前进度。"), failureReturnMode);
+            return;
+        }
+
+        ScreenMode resumeMode = data.mode == ScreenMode.Academy ? ScreenMode.Academy : ScreenMode.Strategy;
+        player = data.player;
         EnsurePlayerRuntimeLists(player);
-        relationships = data.relationships ?? relationships;
+        relationships = (data.relationships ?? relationships).Where(rel => rel != null).ToList();
         foreach (Relationship rel in relationships)
         {
             if (string.IsNullOrEmpty(rel.circle)) rel.circle = rel.stance;
             if (rel.knownLevel <= 0) rel.knownLevel = RelationshipKnownLevel(rel.affection);
             if (rel.lastInteractionWeek <= 0) rel.lastInteractionWeek = CurrentCalendarWeek();
         }
-        stances = data.stances ?? stances;
-        provinces = data.provinces ?? provinces;
-        armies = data.armies ?? armies;
+        stances = (data.stances ?? stances).Where(stance => stance != null).ToList();
+        List<Province> loadedProvinces = data.provinces == null
+            ? new List<Province>()
+            : data.provinces.Where(province => province != null).ToList();
+        if (loadedProvinces.Count > 0) provinces = loadedProvinces;
+        foreach (Province province in provinces)
+        {
+            if (province.roads == null) province.roads = new List<string>();
+            if (province.armyId == null) province.armyId = "";
+        }
+        armies = data.armies == null ? armies : data.armies.Where(army => army != null).ToList();
         bool upgradedStrategyMap = false;
         if (StrategyMapNeedsConfigRefresh())
         {
@@ -9598,6 +9618,7 @@ public sealed class MingLuGame : MonoBehaviour
         }
         foreach (Army army in armies)
         {
+            if (army.provinceId == null) army.provinceId = "";
             if (army.maxSupply <= 0) army.maxSupply = DefaultArmyMaxSupply(army.faction);
             if (army.supply <= 0) army.supply = Mathf.Min(army.maxSupply, DefaultArmyMaxSupply(army.faction));
             if (string.IsNullOrEmpty(army.aiProfile)) army.aiProfile = DefaultAiProfileForFaction(army.faction);
@@ -9609,10 +9630,27 @@ public sealed class MingLuGame : MonoBehaviour
         completedStoryEvents.Clear();
         if (data.completedStoryEvents != null) completedStoryEvents.AddRange(data.completedStoryEvents.Where(id => !string.IsNullOrEmpty(id)));
         storyValues = data.storyValues ?? new List<StoryValue>();
+        selectedProvinceId = null;
+        selectedArmyId = null;
+        selectedUnitId = null;
+        battle = null;
         RefreshProgressionSystems(false);
-        AddLog(TF("log.load_success_slot", "系统：已读取 {0}。", slot));
+        string displaySlot = fallbackDefault ? T("save.latest", "最近存档") : slot;
+        AddLog(TF("log.load_success_slot", "系统：已读取 {0}。", displaySlot));
         if (upgradedStrategyMap) AddLog(T("log.strategy_map_upgraded", "系统：战略地图已升级为北美战区配置。"));
-        ShowStrategy();
+        if (resumeMode == ScreenMode.Academy) ShowAcademy();
+        else ShowStrategy();
+    }
+
+    private void ShowLoadFailure(string message, ScreenMode returnMode)
+    {
+        AddLog(message);
+        OpenSystemPopup(
+            T("save.load_failed_title", "读取失败"),
+            message,
+            new List<Tuple<string, Action>>(),
+            returnMode,
+            "library");
     }
 
     private bool StrategyMapNeedsConfigRefresh()
@@ -9624,7 +9662,9 @@ public sealed class MingLuGame : MonoBehaviour
     private void AutoSave(string slot)
     {
         SaveData data = CaptureSaveData();
-        PlayerPrefs.SetString(SaveKeyForSlot(slot), JsonUtility.ToJson(data));
+        string json = JsonUtility.ToJson(data);
+        PlayerPrefs.SetString(SaveKey, json);
+        PlayerPrefs.SetString(SaveKeyForSlot(slot), json);
         PlayerPrefs.SetString(SaveKeyForSlot(slot) + "_time", DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
         PlayerPrefs.Save();
     }
@@ -9655,10 +9695,6 @@ public sealed class MingLuGame : MonoBehaviour
         if (mode == ScreenMode.Battle)
         {
             UpdateBattleAnimations(Time.unscaledDeltaTime);
-        }
-        else if (mode == ScreenMode.BattleLab)
-        {
-            RefreshBattleLabSpawnSprites();
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {

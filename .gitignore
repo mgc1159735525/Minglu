@@ -16,6 +16,8 @@ Builds/
 # Local previews, backups, and generated inspection dumps
 .codex-table-previews/
 ArtBackups/
+Assets/ArtSource/StrategyMap/SourceData/
+Docs/Downloads.rar
 *.inspect.ndjson
 *.log
 *.err.log
