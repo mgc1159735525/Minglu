@@ -127,6 +127,11 @@
       "note": "界面文案"
     },
     {
+      "key": "button.continue_empty",
+      "value": "继续征途（暂无存档）",
+      "note": "界面文案"
+    },
+    {
       "key": "character_create.step_title",
       "value": "建立角色  {0}/6",
       "note": "模板文案"
@@ -1062,8 +1067,33 @@
       "note": "模板文案"
     },
     {
+      "key": "academy.section_profile",
+      "value": "学籍档案",
+      "note": "界面文案"
+    },
+    {
+      "key": "academy.profile_brief_clean",
+      "value": "{0}岁  {1}年级  第{2}周\n军衔：{3}    特性：{4}",
+      "note": "模板文案"
+    },
+    {
+      "key": "button.character",
+      "value": "角色",
+      "note": "界面文案"
+    },
+    {
       "key": "academy.section_schedule",
       "value": "本周安排",
+      "note": "界面文案"
+    },
+    {
+      "key": "academy.group_courses",
+      "value": "课程训练",
+      "note": "界面文案"
+    },
+    {
+      "key": "academy.group_weekend",
+      "value": "休整与社交",
       "note": "界面文案"
     },
     {
@@ -1092,6 +1122,36 @@
       "note": "界面文案"
     },
     {
+      "key": "academy.section_action_preview",
+      "value": "行动预览",
+      "note": "界面文案"
+    },
+    {
+      "key": "academy.preview_main_check",
+      "value": "主线检定",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.continue_main_story",
+      "value": "继续主线",
+      "note": "界面文案"
+    },
+    {
+      "key": "label.relationships",
+      "value": "同窗关系",
+      "note": "界面文案"
+    },
+    {
+      "key": "relationship.button_label_compact",
+      "value": "{0}  {1}  好感{2}",
+      "note": "模板文案"
+    },
+    {
+      "key": "relationship.more_button",
+      "value": "更多人物：角色档案",
+      "note": "界面文案"
+    },
+    {
       "key": "academy.section_events",
       "value": "事件入口",
       "note": "界面文案"
@@ -1099,11 +1159,6 @@
     {
       "key": "button.ideology",
       "value": "立场",
-      "note": "界面文案"
-    },
-    {
-      "key": "button.main_story",
-      "value": "主线",
       "note": "界面文案"
     },
     {
@@ -1172,6 +1227,11 @@
       "note": "模板文案"
     },
     {
+      "key": "academy.profile_brief",
+      "value": "{0}  {1}岁\n{2}  第{3}周\n{4}  战功{5}\n特性：{6}",
+      "note": "模板文案"
+    },
+    {
       "key": "button.map_tab",
       "value": "地图",
       "note": "界面文案"
@@ -1179,11 +1239,6 @@
     {
       "key": "button.formation",
       "value": "编队",
-      "note": "界面文案"
-    },
-    {
-      "key": "button.character",
-      "value": "角色",
       "note": "界面文案"
     },
     {
@@ -1207,19 +1262,14 @@
       "note": "界面文案"
     },
     {
-      "key": "label.relationships",
-      "value": "同窗关系",
+      "key": "relationship.panel_hint",
+      "value": "点击人物查看档案和邀约。",
       "note": "界面文案"
     },
     {
       "key": "relationship.button_label",
       "value": "{0}  {1}\n{2}  好感 {3}",
       "note": "模板文案"
-    },
-    {
-      "key": "relationship.more_hint",
-      "value": "更多人物可在角色档案中查看。",
-      "note": "界面文案"
     },
     {
       "key": "attribute_guide.body",
@@ -1592,11 +1642,6 @@
       "note": "模板文案"
     },
     {
-      "key": "button.continue_main_story",
-      "value": "继续主线",
-      "note": "界面文案"
-    },
-    {
       "key": "story_menu.unlocked_side",
       "value": "已解锁支线",
       "note": "界面文案"
@@ -1652,14 +1697,54 @@
       "note": "界面文案"
     },
     {
-      "key": "strategy.province_text",
-      "value": "省份：{0}\n势力：{1}\n城防：{2}\n收入：{3}\n驻军：{4}\n道路：{5}",
-      "note": "模板文案"
+      "key": "strategy.legend_title",
+      "value": "势力",
+      "note": "界面文案"
+    },
+    {
+      "key": "strategy.army_badge",
+      "value": "驻",
+      "note": "战略地图驻军简写"
+    },
+    {
+      "key": "strategy.city_summary_more",
+      "value": "{0} 等{1}城",
+      "note": "省份城市摘要"
+    },
+    {
+      "key": "strategy.city_roster_body",
+      "value": "{0}\n区域：{1}\n地形：{2}\n辖城（{3}座）：{4}",
+      "note": "省份城市名册弹窗"
+    },
+    {
+      "key": "strategy.city_roster_title",
+      "value": "{0} 城池名册",
+      "note": "省份城市名册标题"
+    },
+    {
+      "key": "strategy.province_text_v4",
+      "value": "主城：{0}\n辖城：{1}\n区域：{2}\n地形：{3}\n势力：{4}\n城防：{5}  收入：{6}\n驻军：{7}\n道路：{8}\n\n{9}",
+      "note": "战略地图省份详情"
+    },
+    {
+      "key": "strategy.no_province_desc",
+      "value": "暂无详细情报。",
+      "note": "界面文案"
+    },
+    {
+      "key": "strategy.section_theater",
+      "value": "北美战区",
+      "note": "界面文案"
     },
     {
       "key": "strategy.command_text",
       "value": "军衔：{0}  指挥上限：{1}\n{2}",
       "note": "模板文案"
+    },
+    {
+      "key": "button.city_roster",
+      "value": "名册",
+      "note": "查看省份城市名册按钮"
     },
     {
       "key": "strategy.army_text",
@@ -1675,6 +1760,11 @@
       "key": "strategy.army_extra_text_v2",
       "value": "补给：{0}\n战术：{1}\n情报：{2}",
       "note": "模板文案"
+    },
+    {
+      "key": "strategy.section_army",
+      "value": "军团行动",
+      "note": "界面文案"
     },
     {
       "key": "label.recent_news",
@@ -1762,14 +1852,174 @@
       "note": "界面文案"
     },
     {
+      "key": "battle_lab.default_author",
+      "value": "策划",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.default_description",
+      "value": "战棋测试关卡",
+      "note": "界面文案"
+    },
+    {
       "key": "battle.objective",
       "value": "据点",
       "note": "界面文案"
     },
     {
-      "key": "battle_lab.body",
-      "value": "当前工具：{0}\n地形：{1}\n兵种：{2}\n蓝方/红方：{3}/{4}\n据点：{5},{6}\n\n点击棋盘即可落子或修改格子。测试战斗不会写入正式战绩。",
+      "key": "battle_lab.editor_summary",
+      "value": "{0}\n{1} x {2}｜目标：{3}｜AI：{4}\n画笔：{5}｜地形：{6}｜兵种：{7}\n蓝/红：{8}/{9}｜触发器：{10}",
       "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.tab_map",
+      "value": "地图",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.tab_brush",
+      "value": "画笔",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.tab_trigger",
+      "value": "触发",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.tab_file",
+      "value": "文件",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.message_default",
+      "value": "建议：先保证双方至少各有1个单位，再测试。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.test",
+      "value": "开始测试",
+      "note": "界面文案"
+    },
+    {
+      "key": "button.back_strategy",
+      "value": "返回战略地图",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.map_section",
+      "value": "地图属性",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.name_label",
+      "value": "名称",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.name_placeholder",
+      "value": "关卡名",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.author_label",
+      "value": "作者",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.author_placeholder",
+      "value": "策划名",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.desc_label",
+      "value": "说明",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.desc_placeholder",
+      "value": "一句话说明目标",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.cols_minus",
+      "value": "列 -",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.cols_plus",
+      "value": "列 +",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.rows_minus",
+      "value": "行 -",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.rows_plus",
+      "value": "行 +",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.objective_type_button",
+      "value": "目标：{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.turn_limit_button",
+      "value": "回合：{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "common.unlimited",
+      "value": "不限",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.turn_minus",
+      "value": "回合 -",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.weather_button",
+      "value": "天气：{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.enemy_ai_button",
+      "value": "敌AI：{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.player_power_minus",
+      "value": "蓝军 -",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.player_power_plus",
+      "value": "蓝军 +",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.enemy_power_minus",
+      "value": "红军 -",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.enemy_power_plus",
+      "value": "红军 +",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.power_line",
+      "value": "测试兵力：蓝{0}/红{1}  攻击：蓝{2}/红{3}",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.brush_section",
+      "value": "画笔与对象",
+      "note": "界面文案"
     },
     {
       "key": "battle_lab.brush_terrain",
@@ -1797,6 +2047,11 @@
       "note": "界面文案"
     },
     {
+      "key": "battle_lab.brush_size",
+      "value": "尺寸 {0}",
+      "note": "模板文案"
+    },
+    {
       "key": "battle_lab.prev_terrain",
       "value": "上一地形",
       "note": "界面文案"
@@ -1817,13 +2072,78 @@
       "note": "界面文案"
     },
     {
-      "key": "battle_lab.message_default",
-      "value": "建议：先保证双方至少各有1个单位，再测试。",
+      "key": "battle_lab.fill_terrain",
+      "value": "填充当前地形",
       "note": "界面文案"
     },
     {
-      "key": "battle_lab.test",
-      "value": "开始测试",
+      "key": "battle_lab.mirror_terrain",
+      "value": "镜像地形",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.clear_units",
+      "value": "清空单位",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.clear_map",
+      "value": "清空地图",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.brush_hint",
+      "value": "当前：{0} / {1} / {2}\n地形和擦除支持尺寸画笔；单位、据点和触发器按单格放置。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.trigger_section",
+      "value": "触发器",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.brush_trigger_reach",
+      "value": "抵达剧情",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.brush_trigger_defeat",
+      "value": "击败剧情",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.trigger_story_button",
+      "value": "剧情：{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.trigger_action_button",
+      "value": "动作：{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.clear_triggers",
+      "value": "清空触发",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.no_triggers",
+      "value": "暂无触发器。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.trigger_list_row",
+      "value": "{0}. {1}({2},{3}) R{4} {5} -> {6}",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.trigger_hint",
+      "value": "触发器目前支持：抵达、击败、刷援军、加减士气、直接胜负。后续可继续扩成条件树。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.file_section",
+      "value": "文件与测试",
       "note": "界面文案"
     },
     {
@@ -1837,18 +2157,188 @@
       "note": "界面文案"
     },
     {
+      "key": "battle_lab.export_json",
+      "value": "导出JSON",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.import_json",
+      "value": "导入最新JSON",
+      "note": "界面文案"
+    },
+    {
       "key": "battle_lab.reset",
       "value": "重置",
       "note": "界面文案"
     },
     {
-      "key": "button.back_strategy",
-      "value": "返回战略地图",
+      "key": "battle_lab.open_export_folder",
+      "value": "导出目录",
       "note": "界面文案"
     },
     {
-      "key": "battle_lab.msg_terrain",
-      "value": "已设置地形：{0}。",
+      "key": "battle_lab.file_hint",
+      "value": "导出目录：\n{0}\n\n导出的 JSON 可以提交到 Git，用于团队共享关卡。运行包里会改用持久化目录。",
+      "note": "模板文案"
+    },
+    {
+      "key": "ai.default",
+      "value": "均衡型",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.turn_unlimited",
+      "value": "回合限制已关闭。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.turn_limited",
+      "value": "回合限制：{0} 回合。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.weather_rain",
+      "value": "雨",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.weather_fog",
+      "value": "雾",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.weather_night",
+      "value": "夜",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.weather_clear",
+      "value": "晴",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.weather_changed",
+      "value": "天气已改为：{0}。雨天削弱远程，雾天压低射程，夜战利于散兵。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.enemy_ai_changed",
+      "value": "敌方 AI 已切换为：{0}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.power_changed",
+      "value": "测试军力已调整：蓝{0}/红{1}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.brush_size_changed",
+      "value": "画笔尺寸：{0}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.filled",
+      "value": "全图已填充为：{0}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.mirrored",
+      "value": "已按左右镜像复制地形。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.units_cleared",
+      "value": "已清空所有蓝方和红方单位。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.map_cleared",
+      "value": "已清空地形、单位和触发器，并保留当前据点。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.action_spawn_enemy",
+      "value": "刷红方",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.action_spawn_player",
+      "value": "刷蓝方",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.action_morale_enemy",
+      "value": "红方士气",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.action_morale_player",
+      "value": "蓝方士气",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.action_victory",
+      "value": "直接胜利",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.action_defeat",
+      "value": "直接失败",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.action_none",
+      "value": "仅剧情",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.trigger_action_changed",
+      "value": "新触发器动作：{0}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.exported",
+      "value": "已导出关卡 JSON：{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.export_failed",
+      "value": "导出失败：{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.import_no_dir",
+      "value": "还没有导出目录：{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.import_no_file",
+      "value": "导出目录里没有可导入的关卡 JSON。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.import_bad_file",
+      "value": "关卡 JSON 读取失败。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.imported",
+      "value": "已导入最新关卡：{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.import_failed",
+      "value": "导入失败：{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.export_folder",
+      "value": "导出目录：{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.msg_terrain_brush",
+      "value": "已用 {0} 格画笔设置地形：{1}。",
       "note": "模板文案"
     },
     {
@@ -1867,8 +2357,33 @@
       "note": "界面文案"
     },
     {
-      "key": "battle_lab.msg_erase",
-      "value": "已擦除该格单位；无单位时会还原为平原。",
+      "key": "battle_lab.msg_trigger_reach",
+      "value": "已设置抵达剧情：{0}抵达第{1}行第{2}列时触发。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.msg_trigger_defeat",
+      "value": "已设置击败剧情：目标单位被击溃时触发。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.msg_erase_brush",
+      "value": "已用 {0} 格画笔擦除。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.triggers_cleared",
+      "value": "已清空本关所有剧情触发器。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.trigger_defeat_short",
+      "value": "击败",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.trigger_reach_short",
+      "value": "抵达",
       "note": "界面文案"
     },
     {
@@ -1880,6 +2395,76 @@
       "key": "battle_lab.player_unit_suffix",
       "value": "蓝方部队",
       "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.objective_reach",
+      "value": "抵达据点",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.objective_rout",
+      "value": "击溃敌军",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.objective_capture",
+      "value": "占据据点",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.objective_changed",
+      "value": "战争目标已改为：{0}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.trigger_title_reinforce",
+      "value": "援军信号",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.trigger_title_duel",
+      "value": "阵前交锋",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.trigger_title_route",
+      "value": "军心动摇",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.trigger_title_ambush",
+      "value": "战场变故",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.trigger_body_reinforce",
+      "value": "{actor}抵达指定区域，远处响起回应的号声，新的战机已经出现。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.trigger_body_duel",
+      "value": "{actor}与{target}的交锋打乱了敌军节奏，主将立刻下令调整战线。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.trigger_body_route",
+      "value": "{target}被击溃后，周围部队开始迟疑，战场主动权正在转移。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.trigger_body_ambush",
+      "value": "{actor}踏入关键区域，烟尘后传来急促军号，隐藏的剧情节点被触发。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.trigger_story_changed",
+      "value": "剧情模板已切换为：{0}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.map_resized",
+      "value": "地图已调整为 {0} x {1}。缩小地图会自动移除越界单位和触发器。",
+      "note": "模板文案"
     },
     {
       "key": "battle_lab.saved",
@@ -1957,6 +2542,31 @@
       "note": "界面文案"
     },
     {
+      "key": "battle.objective_panel_reach",
+      "value": "战争目标：抵达据点\n目标格：第{0}行第{1}列\n当前控制：{2}\n触发器：{3}\n{4}",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle.objective_panel_rout",
+      "value": "战争目标：击溃敌军\n剩余敌军：{0}\n据点格：第{1}行第{2}列\n触发器：{3}\n{4}",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle.objective_panel_lab_capture",
+      "value": "战争目标：占据据点\n当前控制：{0}\n我方进度：{1}/{2}  敌方进度：{3}/{4}\n{5}",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle.objective_panel",
+      "value": "中央据点：{0}\n我方据点进度：{1}/{2}\n敌方据点进度：{3}/{4}",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.battle_rule_line",
+      "value": "天气：{0}  回合限制：{1}",
+      "note": "模板文案"
+    },
+    {
       "key": "battle.objective_contested",
       "value": "争夺中",
       "note": "界面文案"
@@ -1970,11 +2580,6 @@
       "key": "battle.empty_hint",
       "value": "点击蓝方军团选择。\n绿色格：可移动。\n红色格：可攻击。\n拖动战场可移动视野。\n步兵均衡，骑兵克弓兵，弓兵射程远。",
       "note": "界面文案"
-    },
-    {
-      "key": "battle.objective_panel",
-      "value": "中央据点：{0}\n我方据点进度：{1}/{2}\n敌方据点进度：{3}/{4}",
-      "note": "模板文案"
     },
     {
       "key": "battle.unit_supply",
@@ -2257,6 +2862,66 @@
       "note": "模板文案"
     },
     {
+      "key": "battle_lab.trigger_log",
+      "value": "战场剧情：{0}",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.action_log_victory",
+      "value": "触发器动作：判定蓝方胜利。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.action_log_defeat",
+      "value": "触发器动作：判定蓝方失败。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.action_log_morale",
+      "value": "触发器动作：{0}士气 {1:+#;-#;0}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle.side_player",
+      "value": "蓝方",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle.side_enemy",
+      "value": "红方",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.action_log_spawn_failed",
+      "value": "触发器动作：没有空格可刷出援军。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.action_log_spawn",
+      "value": "触发器动作：{0}援军出现在第{1}行第{2}列。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.trigger_actor_default",
+      "value": "部队",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.trigger_target_default",
+      "value": "目标",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.reach_objective_win",
+      "value": "蓝方已抵达战争目标，测试胜利。",
+      "note": "界面文案"
+    },
+    {
+      "key": "battle_lab.turn_limit_defeat",
+      "value": "已超过 {0} 回合限制，测试失败。",
+      "note": "模板文案"
+    },
+    {
       "key": "battle_lab.test_victory",
       "value": "测试胜利。结果只用于验证关卡节奏，不会写入正式战绩。",
       "note": "界面文案"
@@ -2342,14 +3007,64 @@
       "note": "界面文案"
     },
     {
+      "key": "save.invalid",
+      "value": "存档已损坏或版本不兼容，未覆盖当前进度。",
+      "note": "界面文案"
+    },
+    {
+      "key": "save.latest",
+      "value": "最近存档",
+      "note": "界面文案"
+    },
+    {
       "key": "log.load_success_slot",
       "value": "系统：已读取 {0}。",
       "note": "模板文案"
     },
     {
+      "key": "log.strategy_map_upgraded",
+      "value": "系统：战略地图已升级为北美战区配置。",
+      "note": "旧存档战略地图自动升级日志"
+    },
+    {
+      "key": "save.load_failed_title",
+      "value": "读取失败",
+      "note": "界面文案"
+    },
+    {
       "key": "log.new_game_plus",
       "value": "第 {0} 周目开始，记忆回响已保留。",
       "note": "模板文案"
+    },
+    {
+      "key": "button.main_story",
+      "value": "主线",
+      "note": "界面文案"
+    },
+    {
+      "key": "relationship.more_hint",
+      "value": "更多人物可在角色档案中查看。",
+      "note": "界面文案"
+    },
+    {
+      "key": "strategy.province_text",
+      "value": "省份：{0}\n势力：{1}\n城防：{2}\n收入：{3}\n驻军：{4}\n道路：{5}",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.body",
+      "value": "当前工具：{0}\n地形：{1}\n兵种：{2}\n蓝方/红方：{3}/{4}\n据点：{5},{6}\n\n点击棋盘即可落子或修改格子。测试战斗不会写入正式战绩。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.msg_terrain",
+      "value": "已设置地形：{0}。",
+      "note": "模板文案"
+    },
+    {
+      "key": "battle_lab.msg_erase",
+      "value": "已擦除该格单位；无单位时会还原为平原。",
+      "note": "界面文案"
     },
     {
       "key": "character_create.selected",
@@ -2460,41 +3175,6 @@
       "key": "story.free_trigger",
       "value": "自由触发",
       "note": "界面文案"
-    },
-    {
-      "key": "strategy.province_text_v4",
-      "value": "主城：{0}\n辖城：{1}\n区域：{2}\n地形：{3}\n势力：{4}\n城防：{5}  收入：{6}\n驻军：{7}\n道路：{8}\n\n{9}",
-      "note": "战略地图省份详情"
-    },
-    {
-      "key": "strategy.city_summary_more",
-      "value": "{0} 等{1}城",
-      "note": "省份城市摘要"
-    },
-    {
-      "key": "strategy.city_roster_body",
-      "value": "{0}\n区域：{1}\n地形：{2}\n辖城（{3}座）：{4}",
-      "note": "省份城市名册弹窗"
-    },
-    {
-      "key": "strategy.city_roster_title",
-      "value": "{0} 城池名册",
-      "note": "省份城市名册标题"
-    },
-    {
-      "key": "button.city_roster",
-      "value": "名册",
-      "note": "查看省份城市名册按钮"
-    },
-    {
-      "key": "strategy.army_badge",
-      "value": "驻",
-      "note": "战略地图驻军简写"
-    },
-    {
-      "key": "log.strategy_map_upgraded",
-      "value": "系统：战略地图已升级为北美战区配置。",
-      "note": "旧存档战略地图自动升级日志"
     }
   ],
   "playerDefaults": {
@@ -3500,10 +4180,10 @@
   "provinces": [
     {
       "id": "beichenwan",
-      "name": "北辰湾",
-      "city": "北辰港",
+      "name": "天澜",
+      "city": "天澜",
       "cities": [
-        "北辰港",
+        "天澜",
         "冰门津",
         "望极城",
         "鹿角营",
@@ -3525,10 +4205,10 @@
     },
     {
       "id": "hanhebao",
-      "name": "寒河堡",
-      "city": "寒河堡",
+      "name": "天岁",
+      "city": "天岁",
       "cities": [
-        "寒河堡",
+        "天岁",
         "银鹿城",
         "雪松寨",
         "冰镜湖",
@@ -3549,10 +4229,10 @@
     },
     {
       "id": "xihaiwei",
-      "name": "西海卫",
-      "city": "西海卫",
+      "name": "羽州",
+      "city": "羽州",
       "cities": [
-        "西海卫",
+        "羽州",
         "青杉港",
         "温岚城",
         "雨湾寨",
@@ -3574,10 +4254,10 @@
     },
     {
       "id": "songwanpu",
-      "name": "松湾浦",
-      "city": "松湾浦",
+      "name": "霁川",
+      "city": "霁川",
       "cities": [
-        "松湾浦",
+        "霁川",
         "雨津城",
         "玉峡港",
         "桦帆镇",
@@ -3598,10 +4278,10 @@
     },
     {
       "id": "liuyunshan",
-      "name": "流云山",
-      "city": "流云城",
+      "name": "星原",
+      "city": "星原",
       "cities": [
-        "流云城",
+        "星原",
         "石虹关",
         "雪峰驿",
         "松骨寨",
@@ -3622,10 +4302,10 @@
     },
     {
       "id": "luojiguan",
-      "name": "落基关",
-      "city": "落基关",
+      "name": "月泽",
+      "city": "月泽",
       "cities": [
-        "落基关",
+        "月泽",
         "天脊堡",
         "青峡营",
         "石门寨",
@@ -3647,10 +4327,10 @@
     },
     {
       "id": "dashazhou",
-      "name": "大沙洲",
-      "city": "大沙洲",
+      "name": "苍汐",
+      "city": "苍汐",
       "cities": [
-        "大沙洲",
+        "苍汐",
         "盐湖城",
         "赤岩寨",
         "白砾堡",
@@ -3671,10 +4351,10 @@
     },
     {
       "id": "jinshaigang",
-      "name": "金沙港",
-      "city": "金沙港",
+      "name": "曜岭",
+      "city": "曜岭",
       "cities": [
-        "金沙港",
+        "曜岭",
         "金门湾",
         "临霞城",
         "海棠埠",
@@ -3696,10 +4376,10 @@
     },
     {
       "id": "nanlinggang",
-      "name": "南崖港",
-      "city": "南崖港",
+      "name": "玄雾",
+      "city": "玄雾",
       "cities": [
-        "南崖港",
+        "玄雾",
         "日落湾",
         "铜沙埠",
         "白石岬",
@@ -3719,10 +4399,10 @@
     },
     {
       "id": "yulongyuan",
-      "name": "玉龙原",
-      "city": "玉龙原",
+      "name": "霜岫",
+      "city": "霜岫",
       "cities": [
-        "玉龙原",
+        "霜岫",
         "仙掌城",
         "赤砂营",
         "月牙镇",
@@ -3743,10 +4423,10 @@
     },
     {
       "id": "yinshanzhen",
-      "name": "银山镇",
-      "city": "银山镇",
+      "name": "朔风",
+      "city": "朔风",
       "cities": [
-        "银山镇",
+        "朔风",
         "丹炉城",
         "铜岭关",
         "矿灯营",
@@ -3767,10 +4447,10 @@
     },
     {
       "id": "chilingyi",
-      "name": "赤岭驿",
-      "city": "赤岭驿",
+      "name": "雷泽",
+      "city": "雷泽",
       "cities": [
-        "赤岭驿",
+        "雷泽",
         "朱砂城",
         "羌笛镇",
         "火云寨",
@@ -3790,10 +4470,10 @@
     },
     {
       "id": "heishuiling",
-      "name": "黑水岭",
-      "city": "黑水岭",
+      "name": "青蘅",
+      "city": "青蘅",
       "cities": [
-        "黑水岭",
+        "青蘅",
         "玄冰城",
         "乌河渡",
         "鹿鸣镇",
@@ -3814,10 +4494,10 @@
     },
     {
       "id": "caohaiying",
-      "name": "草海营",
-      "city": "草海营",
+      "name": "苍曜",
+      "city": "苍曜",
       "cities": [
-        "草海营",
+        "苍曜",
         "青牧城",
         "风车镇",
         "鹿泉寨",
@@ -3838,10 +4518,10 @@
     },
     {
       "id": "huangyuantai",
-      "name": "黄原台",
-      "city": "黄原台",
+      "name": "汐风",
+      "city": "汐风",
       "cities": [
-        "黄原台",
+        "汐风",
         "千粟城",
         "麦风镇",
         "旷野驿",
@@ -3862,10 +4542,10 @@
     },
     {
       "id": "fengqiyuan",
-      "name": "风旗原",
-      "city": "风旗原",
+      "name": "瀚霜",
+      "city": "瀚霜",
       "cities": [
-        "风旗原",
+        "瀚霜",
         "赤土城",
         "鹿角镇",
         "平川驿",
@@ -3886,10 +4566,10 @@
     },
     {
       "id": "muchuanzhen",
-      "name": "牧川镇",
-      "city": "牧川镇",
+      "name": "沧星",
+      "city": "沧星",
       "cities": [
-        "牧川镇",
+        "沧星",
         "牛角城",
         "青湾渡",
         "三河寨",
@@ -3910,10 +4590,10 @@
     },
     {
       "id": "changhedu",
-      "name": "长河渡",
-      "city": "长河渡",
+      "name": "雁回",
+      "city": "雁回",
       "cities": [
-        "长河渡",
+        "雁回",
         "河灯城",
         "铁桥镇",
         "雾津关",
@@ -3934,10 +4614,10 @@
     },
     {
       "id": "mihekou",
-      "name": "密河口",
-      "city": "密河口",
+      "name": "龙烛",
+      "city": "龙烛",
       "cities": [
-        "密河口",
+        "龙烛",
         "芦花城",
         "百湾镇",
         "泥金渡",
@@ -3958,10 +4638,10 @@
     },
     {
       "id": "shihuaiying",
-      "name": "石淮营",
-      "city": "石淮营",
+      "name": "凤歌",
+      "city": "凤歌",
       "cities": [
-        "石淮营",
+        "凤歌",
         "黑榆城",
         "丘陵镇",
         "炉火寨",
@@ -3982,10 +4662,10 @@
     },
     {
       "id": "beihuaitai",
-      "name": "北槐台",
-      "city": "北槐台",
+      "name": "银澜",
+      "city": "银澜",
       "cities": [
-        "北槐台",
+        "银澜",
         "松麦城",
         "白湖津",
         "鹰落镇",
@@ -4006,10 +4686,10 @@
     },
     {
       "id": "wuhucheng",
-      "name": "五湖城",
-      "city": "五湖城",
+      "name": "晨星",
+      "city": "晨星",
       "cities": [
-        "五湖城",
+        "晨星",
         "晴波府",
         "蓝桥津",
         "苇港镇",
@@ -4031,10 +4711,10 @@
     },
     {
       "id": "tiehuwei",
-      "name": "铁湖卫",
-      "city": "铁湖卫",
+      "name": "岚月",
+      "city": "岚月",
       "cities": [
-        "铁湖卫",
+        "岚月",
         "铸浪城",
         "铜帆镇",
         "灰港驿",
@@ -4055,10 +4735,10 @@
     },
     {
       "id": "luoshuiying",
-      "name": "洛水营",
-      "city": "洛水营",
+      "name": "晴岚",
+      "city": "晴岚",
       "cities": [
-        "洛水营",
+        "晴岚",
         "白杨城",
         "河洛镇",
         "雾桥关",
@@ -4080,10 +4760,10 @@
     },
     {
       "id": "xueyuanbao",
-      "name": "雪原堡",
-      "city": "雪原堡",
+      "name": "黎光",
+      "city": "黎光",
       "cities": [
-        "雪原堡",
+        "黎光",
         "寒星城",
         "白鹿镇",
         "冰桥驿",
@@ -4104,10 +4784,10 @@
     },
     {
       "id": "shenghekou",
-      "name": "圣河口",
-      "city": "圣河口",
+      "name": "白鹿",
+      "city": "白鹿",
       "cities": [
-        "圣河口",
+        "白鹿",
         "白帆城",
         "钟楼镇",
         "雾港驿",
@@ -4129,10 +4809,10 @@
     },
     {
       "id": "baisongling",
-      "name": "白松岭",
-      "city": "白松岭",
+      "name": "霞羽",
+      "city": "霞羽",
       "cities": [
-        "白松岭",
+        "霞羽",
         "雾杉城",
         "灯塔镇",
         "寒湾寨",
@@ -4153,10 +4833,10 @@
     },
     {
       "id": "yunjinggang",
-      "name": "云津港",
-      "city": "云津港",
+      "name": "溪岚",
+      "city": "溪岚",
       "cities": [
-        "云津港",
+        "溪岚",
         "星帆城",
         "灰鲸镇",
         "雾湾驿",
@@ -4177,10 +4857,10 @@
     },
     {
       "id": "longmenbao",
-      "name": "龙门堡",
-      "city": "龙门堡",
+      "name": "云镜",
+      "city": "云镜",
       "cities": [
-        "龙门堡",
+        "云镜",
         "鹰门城",
         "铁峡镇",
         "鹿鸣驿",
@@ -4201,10 +4881,10 @@
     },
     {
       "id": "xinjing",
-      "name": "新京府",
-      "city": "新京",
+      "name": "星槎",
+      "city": "星槎",
       "cities": [
-        "新京",
+        "星槎",
         "太初城",
         "东辰坊",
         "玉带津",
@@ -4227,10 +4907,10 @@
     },
     {
       "id": "wanghaiguan",
-      "name": "望海关",
-      "city": "望海关",
+      "name": "鹤梦",
+      "city": "鹤梦",
       "cities": [
-        "望海关",
+        "鹤梦",
         "白帆港",
         "松涛城",
         "灯影镇",
@@ -4251,10 +4931,10 @@
     },
     {
       "id": "canghaiyi",
-      "name": "沧海驿",
-      "city": "沧海驿",
+      "name": "玉霄",
+      "city": "玉霄",
       "cities": [
-        "沧海驿",
+        "玉霄",
         "蓝港城",
         "潮门镇",
         "银沙寨",
@@ -4274,10 +4954,10 @@
     },
     {
       "id": "haimenwei",
-      "name": "海门卫",
-      "city": "海门卫",
+      "name": "风烛",
+      "city": "风烛",
       "cities": [
-        "海门卫",
+        "风烛",
         "望阙港",
         "白潮城",
         "归帆镇",
@@ -4298,10 +4978,10 @@
     },
     {
       "id": "qinglingguan",
-      "name": "青岭关",
-      "city": "青岭关",
+      "name": "归鹤",
+      "city": "归鹤",
       "cities": [
-        "青岭关",
+        "归鹤",
         "松烟城",
         "铜鼓镇",
         "云栈驿",
@@ -4322,10 +5002,10 @@
     },
     {
       "id": "yanzecheng",
-      "name": "烟泽城",
-      "city": "烟泽城",
+      "name": "晨霜",
+      "city": "晨霜",
       "cities": [
-        "烟泽城",
+        "晨霜",
         "鹭湾镇",
         "青藤港",
         "桂岭寨",
@@ -4346,10 +5026,10 @@
     },
     {
       "id": "suiyangfu",
-      "name": "绥阳府",
-      "city": "绥阳府",
+      "name": "绯雪",
+      "city": "绯雪",
       "cities": [
-        "绥阳府",
+        "绯雪",
         "潮阳城",
         "绿港镇",
         "橡林寨",
@@ -4370,10 +5050,10 @@
     },
     {
       "id": "nanwanfu",
-      "name": "南湾府",
-      "city": "南湾府",
+      "name": "霞照",
+      "city": "霞照",
       "cities": [
-        "南湾府",
+        "霞照",
         "棕榈港",
         "月港城",
         "鹤洲镇",

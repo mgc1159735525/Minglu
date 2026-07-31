@@ -789,7 +789,11 @@ function main() {
   writeCsv("politics_options", config.politicsOptions || [], ["id", "label", "stanceId", "stanceValue", "axisId", "axisValue"]);
   writeCsv("relationships", config.relationships || [], ["id", "name", "stance", "affection", "circle", "knownLevel", "lastInteractionWeek", "note"]);
   writeCsv("stances", config.stances || [], ["id", "name", "value"]);
-  writeCsv("provinces", config.provinces || [], ["id", "name", "owner", "defense", "income", "x", "y", "roads", "armyId"]);
+  const provinceRows = (config.provinces || []).map((province) => ({
+    ...province,
+    cities: Array.isArray(province.cities) ? province.cities.join(";") : (province.cities || "")
+  }));
+  writeCsv("provinces", provinceRows, ["id", "name", "city", "cities", "region", "terrain", "description", "owner", "defense", "income", "x", "y", "roads", "armyId"]);
   writeCsv("armies", config.armies || [], ["id", "name", "faction", "provinceId", "troops", "maxTroops", "move", "maxMove", "level", "exp", "attack", "supply", "maxSupply", "aiProfile", "intelLevel"]);
   writeCsv("battle_roles", config.battleRoles || [], ["id", "displayName", "symbol", "baseHp", "move", "range", "attackBonus", "formation"]);
   writeCsv("common_units", config.commonUnits || [], ["id", "name", "keyword", "role", "asset", "idleFrames", "moveFrames", "attackFrames", "hitFrames"]);

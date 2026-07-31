@@ -1578,7 +1578,7 @@ public sealed class MingLuGame : MonoBehaviour
     {
         return string.IsNullOrEmpty(value)
             ? new List<string>()
-            : value.Split(new[] { ';', '|' }, StringSplitOptions.RemoveEmptyEntries).Select(v => v.Trim()).Where(v => v.Length > 0).ToList();
+            : value.Split(new[] { ';', ',', '|' }, StringSplitOptions.RemoveEmptyEntries).Select(v => v.Trim()).Where(v => v.Length > 0).ToList();
     }
 
     private Faction ParseFaction(string value, Faction fallback)
@@ -1690,7 +1690,7 @@ public sealed class MingLuGame : MonoBehaviour
         if (sceneId == "library") return "Art/Scenes/scene_library";
         if (sceneId == "palace") return "Art/Scenes/scene_palace";
         if (sceneId == "council") return "Art/Scenes/scene_council";
-        if (sceneId == "strategy") return "Art/Scenes/scene_strategy";
+        if (sceneId == "strategy") return "Art/StrategyMap/north_america_city_regions";
         if (sceneId == "battlefield") return "Art/Scenes/scene_battlefield";
         if (sceneId == "frontier") return "Art/Scenes/scene_frontier";
         if (sceneId == "harbor") return "Art/Scenes/scene_harbor";
@@ -5974,7 +5974,7 @@ public sealed class MingLuGame : MonoBehaviour
 
     private void DrawStrategyMapTerrain(Transform map)
     {
-        RectTransform mapArt = CreateSpriteRect("NorthAmericaStrategyMap", map, Vector2.zero, new Vector2(806, 500), "Art/Scenes/scene_strategy", new Color(0.48f, 0.42f, 0.31f, 0.96f), false, false);
+        RectTransform mapArt = CreateSpriteRect("NorthAmericaStrategyMap", map, Vector2.zero, new Vector2(806, 500), "Art/StrategyMap/north_america_city_regions", new Color(0.48f, 0.42f, 0.31f, 0.96f), false, false);
         Image mapImage = mapArt.GetComponent<Image>();
         if (mapImage != null) mapImage.raycastTarget = false;
 
@@ -9616,6 +9616,10 @@ public sealed class MingLuGame : MonoBehaviour
             BuildStrategyMap();
             upgradedStrategyMap = true;
         }
+        else if (RefreshStrategyMapMetadataFromConfig())
+        {
+            upgradedStrategyMap = true;
+        }
         foreach (Army army in armies)
         {
             if (army.provinceId == null) army.provinceId = "";
@@ -9657,6 +9661,55 @@ public sealed class MingLuGame : MonoBehaviour
     {
         if (provinces == null || provinces.Count < 30) return true;
         return provinces.Any(p => p == null || p.cities == null || p.cities.Count < 5);
+    }
+
+    private bool RefreshStrategyMapMetadataFromConfig()
+    {
+        if (provinces == null || gameConfig == null || gameConfig.provinces == null) return false;
+
+        Dictionary<string, ProvinceConfig> configuredById = gameConfig.provinces
+            .Where(p => p != null && !string.IsNullOrEmpty(p.id))
+            .GroupBy(p => p.id)
+            .ToDictionary(group => group.Key, group => group.First());
+        bool refreshed = false;
+
+        foreach (Province province in provinces)
+        {
+            if (province == null || string.IsNullOrEmpty(province.id) || !configuredById.TryGetValue(province.id, out ProvinceConfig configured)) continue;
+
+            List<string> configuredCities = configured.cities == null
+                ? new List<string>()
+                : configured.cities.Where(cityName => !string.IsNullOrEmpty(cityName)).ToList();
+            List<string> configuredRoads = SplitConfigList(configured.roads);
+            string configuredCity = string.IsNullOrEmpty(configured.city) ? configured.name : configured.city;
+
+            bool provinceChanged =
+                province.name != configured.name ||
+                province.city != configuredCity ||
+                province.region != (configured.region ?? "") ||
+                province.terrain != (configured.terrain ?? "") ||
+                province.description != (configured.description ?? "") ||
+                !Mathf.Approximately(province.x, configured.x) ||
+                !Mathf.Approximately(province.y, configured.y) ||
+                province.cities == null ||
+                !province.cities.SequenceEqual(configuredCities) ||
+                province.roads == null ||
+                !province.roads.SequenceEqual(configuredRoads);
+
+            if (!provinceChanged) continue;
+            province.name = configured.name;
+            province.city = configuredCity;
+            province.cities = configuredCities;
+            province.region = configured.region ?? "";
+            province.terrain = configured.terrain ?? "";
+            province.description = configured.description ?? "";
+            province.x = configured.x;
+            province.y = configured.y;
+            province.roads = configuredRoads;
+            refreshed = true;
+        }
+
+        return refreshed;
     }
 
     private void AutoSave(string slot)

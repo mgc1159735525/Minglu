@@ -111,6 +111,56 @@ for (const row of ui.rows) {
   if (!String(row.value || "").trim()) issue(warnings, "blank_ui_text", `ui_texts.csv row ${row.__row} has blank value for "${row.key}"`);
 }
 
+const provinces = requireTable("provinces", ["id", "name", "city", "cities", "region", "terrain", "description", "owner", "defense", "income", "x", "y", "roads", "armyId"]);
+checkDuplicate("provinces", provinces, "id");
+const provinceIds = new Set(provinces.rows.map(row => String(row.id || "").trim()).filter(Boolean));
+const provinceNames = new Set();
+const provinceRoads = new Map();
+for (const row of provinces.rows) {
+  const id = String(row.id || "").trim();
+  const name = String(row.name || "").trim();
+  const city = String(row.city || "").trim();
+  const cityNames = String(row.cities || "").split(/[;|]/).map(value => value.trim()).filter(Boolean);
+  const roads = String(row.roads || "").split(/[;,|]/).map(value => value.trim()).filter(Boolean);
+  provinceRoads.set(id, roads);
+  if (!/^[\u3400-\u9fff]{2}$/.test(name)) issue(errors, "bad_province_name", `provinces.csv row ${row.__row} name "${name}" must be exactly two Chinese characters`);
+  if (provinceNames.has(name)) issue(errors, "duplicate_province_name", `provinces.csv row ${row.__row} duplicates province name "${name}"`);
+  provinceNames.add(name);
+  if (!city) issue(errors, "blank_province_city", `provinces.csv row ${row.__row} has no main city`);
+  if (cityNames.length < 5) issue(errors, "short_province_roster", `provinces.csv row ${row.__row} must contain at least five city names`);
+  if (!String(row.region || "").trim()) issue(errors, "blank_province_region", `provinces.csv row ${row.__row} has no region description`);
+  if (!String(row.terrain || "").trim()) issue(errors, "blank_province_terrain", `provinces.csv row ${row.__row} has no terrain description`);
+}
+for (const row of provinces.rows) {
+  const sourceId = String(row.id || "").trim();
+  const roads = provinceRoads.get(sourceId) || [];
+  for (const road of roads) {
+    if (!provinceIds.has(road)) issue(errors, "bad_province_road", `provinces.csv row ${row.__row} "${sourceId}" references missing road target "${road}"`);
+    if (road === sourceId) issue(errors, "self_province_road", `provinces.csv row ${row.__row} "${sourceId}" links to itself`);
+    if (provinceIds.has(road) && !(provinceRoads.get(road) || []).includes(sourceId)) issue(errors, "one_way_province_road", `provinces.csv road "${sourceId}" -> "${road}" is not reciprocal`);
+  }
+}
+if (provinceIds.size > 0) {
+  const visited = new Set();
+  const pending = [provinceIds.values().next().value];
+  while (pending.length > 0) {
+    const id = pending.shift();
+    if (visited.has(id)) continue;
+    visited.add(id);
+    for (const road of provinceRoads.get(id) || []) {
+      if (provinceIds.has(road) && !visited.has(road)) pending.push(road);
+    }
+  }
+  if (visited.size !== provinceIds.size) issue(errors, "disconnected_province_map", `provinces.csv road graph reaches ${visited.size}/${provinceIds.size} provinces`);
+}
+
+const armies = requireTable("armies", ["id", "provinceId"]);
+checkDuplicate("armies", armies, "id");
+for (const row of armies.rows) {
+  const provinceId = String(row.provinceId || "").trim();
+  if (!provinceIds.has(provinceId)) issue(errors, "bad_army_province", `armies.csv row ${row.__row} references missing province "${provinceId}"`);
+}
+
 const origins = requireTable("character_origins", ["id", "name", "talentPool"]);
 const memories = requireTable("creation_memories", ["id", "title", "optionAId", "optionAText", "optionATraitId", "optionBId", "optionBText", "optionBTraitId"]);
 const creationTalents = requireTable("creation_talents", ["id", "name", "originTags", "description"]);
@@ -238,6 +288,8 @@ const summary = {
   storyEvents: events.rows.length,
   storyChoices: choices.rows.length,
   narrativeFragments: fragments.rows.length,
+  provinces: provinces.rows.length,
+  armies: armies.rows.length,
   errors: errors.length,
   warnings: warnings.length,
 };

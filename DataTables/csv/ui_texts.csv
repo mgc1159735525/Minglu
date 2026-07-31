@@ -27,6 +27,7 @@ hud.stamina,体力,界面文案
 hud.merit,战功,界面文案
 hud.treasury,国库,界面文案
 button.settings_short,设置,界面文案
+button.continue_empty,继续征途（暂无存档）,界面文案
 character_create.step_title,建立角色  {0}/6,模板文案
 character_create.section_profile,身份,界面文案
 character_create.section_summary,确认,界面文案
@@ -279,15 +280,26 @@ relationship.detail_body,"朋友圈：{0}
 relationship.no_circle,未加入,界面文案
 relationship.option_invite,邀约,界面文案
 log.invite_one,你邀约了{0}，好感 +{1}。,模板文案
+academy.section_profile,学籍档案,界面文案
+academy.profile_brief_clean,"{0}岁  {1}年级  第{2}周
+军衔：{3}    特性：{4}",模板文案
+button.character,角色,界面文案
 academy.section_schedule,本周安排,界面文案
+academy.group_courses,课程训练,界面文案
+academy.group_weekend,休整与社交,界面文案
 button.rest,休息,界面文案
 button.study,自习,界面文案
 button.invite,邀约同窗,界面文案
 button.campus_activity,周末活动,界面文案
 label.log,日志：,界面文案
+academy.section_action_preview,行动预览,界面文案
+academy.preview_main_check,主线检定,界面文案
+button.continue_main_story,继续主线,界面文案
+label.relationships,同窗关系,界面文案
+relationship.button_label_compact,{0}  {1}  好感{2},模板文案
+relationship.more_button,更多人物：角色档案,界面文案
 academy.section_events,事件入口,界面文案
 button.ideology,立场,界面文案
-button.main_story,主线,界面文案
 goal.current_title,当前目标,界面文案
 goal.no_active,暂无明确目标。先翻阅剧情，或用一周安排补齐东渡密档线索。,界面文案
 goal.quest_progress,{0}：{1}  {2}/{3},模板文案
@@ -305,17 +317,19 @@ academy.summary,"姓名：{0}  年龄：{1}  {2}
 心情：{5}({6})  体力：{7}  战功：{8}
 军衔：{9}  国库：{10}
 特性：{11}",模板文案
+academy.profile_brief,"{0}  {1}岁
+{2}  第{3}周
+{4}  战功{5}
+特性：{6}",模板文案
 button.map_tab,地图,界面文案
 button.formation,编队,界面文案
-button.character,角色,界面文案
 button.skills,技能,界面文案
 button.quests,任务,界面文案
 button.diplomacy,外交,界面文案
 button.settings,设置,界面文案
-label.relationships,同窗关系,界面文案
+relationship.panel_hint,点击人物查看档案和邀约。,界面文案
 relationship.button_label,"{0}  {1}
 {2}  好感 {3}",模板文案
-relationship.more_hint,更多人物可在角色档案中查看。,界面文案
 attribute_guide.body,"步兵：提升步兵、长枪、重步等近战单位的伤害稳定性。
 骑兵：提升骑兵、重骑的冲击伤害和机动价值。
 炮兵：提升火枪、弓兵、火炮等远程单位的输出。
@@ -399,7 +413,6 @@ story_menu.main_ready,已满足，点击继续主线。,界面文案
 story_menu.summary,"当前主线：{0}
 推进条件：{1}
 支线会随主线、好感和任务进度开放。",模板文案
-button.continue_main_story,继续主线,界面文案
 story_menu.unlocked_side,已解锁支线,界面文案
 story_menu.no_side,支线不会一次性堆出来。先完成主线闸门、提高好感或完成任务。,界面文案
 character_archive.title,角色档案,界面文案
@@ -414,14 +427,29 @@ strategy.title,战略地图  {0}年  第{1}回合,模板文案
 button.academy_review,学院回顾,界面文案
 button.system,系统,界面文案
 button.end_turn,结束回合,界面文案
-strategy.province_text,"省份：{0}
-势力：{1}
-城防：{2}
-收入：{3}
-驻军：{4}
-道路：{5}",模板文案
+strategy.legend_title,势力,界面文案
+strategy.army_badge,驻,战略地图驻军简写
+strategy.city_summary_more,{0} 等{1}城,省份城市摘要
+strategy.city_roster_body,"{0}
+区域：{1}
+地形：{2}
+辖城（{3}座）：{4}",省份城市名册弹窗
+strategy.city_roster_title,{0} 城池名册,省份城市名册标题
+strategy.province_text_v4,"主城：{0}
+辖城：{1}
+区域：{2}
+地形：{3}
+势力：{4}
+城防：{5}  收入：{6}
+驻军：{7}
+道路：{8}
+
+{9}",战略地图省份详情
+strategy.no_province_desc,暂无详细情报。,界面文案
+strategy.section_theater,北美战区,界面文案
 strategy.command_text,"军衔：{0}  指挥上限：{1}
 {2}",模板文案
+button.city_roster,名册,查看省份城市名册按钮
 strategy.army_text,"军团：{0}
 兵力：{1}/{2}
 等级：{3}
@@ -434,6 +462,7 @@ strategy.no_army_hint,"点击有我方军团的省份可选择军团。
 strategy.army_extra_text_v2,"补给：{0}
 战术：{1}
 情报：{2}",模板文案
+strategy.section_army,军团行动,界面文案
 label.recent_news,最近消息：,界面文案
 mission.locked,军令：指挥权暂停 {0} 回合,模板文案
 mission.capture_enemy,军令：夺取相邻敌省,界面文案
@@ -456,36 +485,136 @@ log.no_local_army,这座省份没有可指挥的我方军团。,界面文案
 log.army_moved,{0}沿道路进驻{1}。,模板文案
 battle_lab.title,战棋工坊,界面文案
 battle_lab.default_name,工坊测试关,界面文案
+battle_lab.default_author,策划,界面文案
+battle_lab.default_description,战棋测试关卡,界面文案
 battle.objective,据点,界面文案
-battle_lab.body,"当前工具：{0}
-地形：{1}
-兵种：{2}
-蓝方/红方：{3}/{4}
-据点：{5},{6}
-
-点击棋盘即可落子或修改格子。测试战斗不会写入正式战绩。",模板文案
+battle_lab.editor_summary,"{0}
+{1} x {2}｜目标：{3}｜AI：{4}
+画笔：{5}｜地形：{6}｜兵种：{7}
+蓝/红：{8}/{9}｜触发器：{10}",模板文案
+battle_lab.tab_map,地图,界面文案
+battle_lab.tab_brush,画笔,界面文案
+battle_lab.tab_trigger,触发,界面文案
+battle_lab.tab_file,文件,界面文案
+battle_lab.message_default,建议：先保证双方至少各有1个单位，再测试。,界面文案
+battle_lab.test,开始测试,界面文案
+button.back_strategy,返回战略地图,界面文案
+battle_lab.map_section,地图属性,界面文案
+battle_lab.name_label,名称,界面文案
+battle_lab.name_placeholder,关卡名,界面文案
+battle_lab.author_label,作者,界面文案
+battle_lab.author_placeholder,策划名,界面文案
+battle_lab.desc_label,说明,界面文案
+battle_lab.desc_placeholder,一句话说明目标,界面文案
+battle_lab.cols_minus,列 -,界面文案
+battle_lab.cols_plus,列 +,界面文案
+battle_lab.rows_minus,行 -,界面文案
+battle_lab.rows_plus,行 +,界面文案
+battle_lab.objective_type_button,目标：{0},模板文案
+battle_lab.turn_limit_button,回合：{0},模板文案
+common.unlimited,不限,界面文案
+battle_lab.turn_minus,回合 -,界面文案
+battle_lab.weather_button,天气：{0},模板文案
+battle_lab.enemy_ai_button,敌AI：{0},模板文案
+battle_lab.player_power_minus,蓝军 -,界面文案
+battle_lab.player_power_plus,蓝军 +,界面文案
+battle_lab.enemy_power_minus,红军 -,界面文案
+battle_lab.enemy_power_plus,红军 +,界面文案
+battle_lab.power_line,测试兵力：蓝{0}/红{1}  攻击：蓝{2}/红{3},模板文案
+battle_lab.brush_section,画笔与对象,界面文案
 battle_lab.brush_terrain,地形,界面文案
 battle_lab.brush_player,蓝方,界面文案
 battle_lab.brush_enemy,红方,界面文案
 battle_lab.brush_objective,据点,界面文案
 battle_lab.brush_erase,擦除,界面文案
+battle_lab.brush_size,尺寸 {0},模板文案
 battle_lab.prev_terrain,上一地形,界面文案
 battle_lab.next_terrain,下一地形,界面文案
 battle_lab.prev_role,上一兵种,界面文案
 battle_lab.next_role,下一兵种,界面文案
-battle_lab.message_default,建议：先保证双方至少各有1个单位，再测试。,界面文案
-battle_lab.test,开始测试,界面文案
+battle_lab.fill_terrain,填充当前地形,界面文案
+battle_lab.mirror_terrain,镜像地形,界面文案
+battle_lab.clear_units,清空单位,界面文案
+battle_lab.clear_map,清空地图,界面文案
+battle_lab.brush_hint,"当前：{0} / {1} / {2}
+地形和擦除支持尺寸画笔；单位、据点和触发器按单格放置。",模板文案
+battle_lab.trigger_section,触发器,界面文案
+battle_lab.brush_trigger_reach,抵达剧情,界面文案
+battle_lab.brush_trigger_defeat,击败剧情,界面文案
+battle_lab.trigger_story_button,剧情：{0},模板文案
+battle_lab.trigger_action_button,动作：{0},模板文案
+battle_lab.clear_triggers,清空触发,界面文案
+battle_lab.no_triggers,暂无触发器。,界面文案
+battle_lab.trigger_list_row,"{0}. {1}({2},{3}) R{4} {5} -> {6}",模板文案
+battle_lab.trigger_hint,触发器目前支持：抵达、击败、刷援军、加减士气、直接胜负。后续可继续扩成条件树。,界面文案
+battle_lab.file_section,文件与测试,界面文案
 battle_lab.save,保存草稿,界面文案
 battle_lab.load,载入草稿,界面文案
+battle_lab.export_json,导出JSON,界面文案
+battle_lab.import_json,导入最新JSON,界面文案
 battle_lab.reset,重置,界面文案
-button.back_strategy,返回战略地图,界面文案
-battle_lab.msg_terrain,已设置地形：{0}。,模板文案
+battle_lab.open_export_folder,导出目录,界面文案
+battle_lab.file_hint,"导出目录：
+{0}
+
+导出的 JSON 可以提交到 Git，用于团队共享关卡。运行包里会改用持久化目录。",模板文案
+ai.default,均衡型,界面文案
+battle_lab.turn_unlimited,回合限制已关闭。,界面文案
+battle_lab.turn_limited,回合限制：{0} 回合。,模板文案
+battle_lab.weather_rain,雨,界面文案
+battle_lab.weather_fog,雾,界面文案
+battle_lab.weather_night,夜,界面文案
+battle_lab.weather_clear,晴,界面文案
+battle_lab.weather_changed,天气已改为：{0}。雨天削弱远程，雾天压低射程，夜战利于散兵。,模板文案
+battle_lab.enemy_ai_changed,敌方 AI 已切换为：{0}。,模板文案
+battle_lab.power_changed,测试军力已调整：蓝{0}/红{1}。,模板文案
+battle_lab.brush_size_changed,画笔尺寸：{0}。,模板文案
+battle_lab.filled,全图已填充为：{0}。,模板文案
+battle_lab.mirrored,已按左右镜像复制地形。,界面文案
+battle_lab.units_cleared,已清空所有蓝方和红方单位。,界面文案
+battle_lab.map_cleared,已清空地形、单位和触发器，并保留当前据点。,界面文案
+battle_lab.action_spawn_enemy,刷红方,界面文案
+battle_lab.action_spawn_player,刷蓝方,界面文案
+battle_lab.action_morale_enemy,红方士气,界面文案
+battle_lab.action_morale_player,蓝方士气,界面文案
+battle_lab.action_victory,直接胜利,界面文案
+battle_lab.action_defeat,直接失败,界面文案
+battle_lab.action_none,仅剧情,界面文案
+battle_lab.trigger_action_changed,新触发器动作：{0}。,模板文案
+battle_lab.exported,已导出关卡 JSON：{0},模板文案
+battle_lab.export_failed,导出失败：{0},模板文案
+battle_lab.import_no_dir,还没有导出目录：{0},模板文案
+battle_lab.import_no_file,导出目录里没有可导入的关卡 JSON。,界面文案
+battle_lab.import_bad_file,关卡 JSON 读取失败。,界面文案
+battle_lab.imported,已导入最新关卡：{0},模板文案
+battle_lab.import_failed,导入失败：{0},模板文案
+battle_lab.export_folder,导出目录：{0},模板文案
+battle_lab.msg_terrain_brush,已用 {0} 格画笔设置地形：{1}。,模板文案
 battle_lab.msg_player,已放置蓝方：{0}。,模板文案
 battle_lab.msg_enemy,已放置红方：{0}。,模板文案
 battle_lab.msg_objective,已移动中央据点。,界面文案
-battle_lab.msg_erase,已擦除该格单位；无单位时会还原为平原。,界面文案
+battle_lab.msg_trigger_reach,已设置抵达剧情：{0}抵达第{1}行第{2}列时触发。,模板文案
+battle_lab.msg_trigger_defeat,已设置击败剧情：目标单位被击溃时触发。,界面文案
+battle_lab.msg_erase_brush,已用 {0} 格画笔擦除。,模板文案
+battle_lab.triggers_cleared,已清空本关所有剧情触发器。,界面文案
+battle_lab.trigger_defeat_short,击败,界面文案
+battle_lab.trigger_reach_short,抵达,界面文案
 battle_lab.enemy_unit_suffix,红方部队,界面文案
 battle_lab.player_unit_suffix,蓝方部队,界面文案
+battle_lab.objective_reach,抵达据点,界面文案
+battle_lab.objective_rout,击溃敌军,界面文案
+battle_lab.objective_capture,占据据点,界面文案
+battle_lab.objective_changed,战争目标已改为：{0}。,模板文案
+battle_lab.trigger_title_reinforce,援军信号,界面文案
+battle_lab.trigger_title_duel,阵前交锋,界面文案
+battle_lab.trigger_title_route,军心动摇,界面文案
+battle_lab.trigger_title_ambush,战场变故,界面文案
+battle_lab.trigger_body_reinforce,{actor}抵达指定区域，远处响起回应的号声，新的战机已经出现。,界面文案
+battle_lab.trigger_body_duel,{actor}与{target}的交锋打乱了敌军节奏，主将立刻下令调整战线。,界面文案
+battle_lab.trigger_body_route,{target}被击溃后，周围部队开始迟疑，战场主动权正在转移。,界面文案
+battle_lab.trigger_body_ambush,{actor}踏入关键区域，烟尘后传来急促军号，隐藏的剧情节点被触发。,界面文案
+battle_lab.trigger_story_changed,剧情模板已切换为：{0}。,模板文案
+battle_lab.map_resized,地图已调整为 {0} x {1}。缩小地图会自动移除越界单位和触发器。,模板文案
 battle_lab.saved,关卡草稿已保存。,界面文案
 battle_lab.no_save,还没有保存过关卡草稿。,界面文案
 battle_lab.loaded,关卡草稿已载入。,界面文案
@@ -501,6 +630,24 @@ battle.title,边境军令：{0}  第{1}回合  当前：{2},模板文案
 battle.command_hint_select,选择蓝方单位，随后在棋盘上移动或攻击。,界面文案
 battle.command_hint_ready,绿色格可移动，红色格可攻击；右侧可防御或待命。,界面文案
 button.cancel_selection,取消选择,界面文案
+battle.objective_panel_reach,"战争目标：抵达据点
+目标格：第{0}行第{1}列
+当前控制：{2}
+触发器：{3}
+{4}",模板文案
+battle.objective_panel_rout,"战争目标：击溃敌军
+剩余敌军：{0}
+据点格：第{1}行第{2}列
+触发器：{3}
+{4}",模板文案
+battle.objective_panel_lab_capture,"战争目标：占据据点
+当前控制：{0}
+我方进度：{1}/{2}  敌方进度：{3}/{4}
+{5}",模板文案
+battle.objective_panel,"中央据点：{0}
+我方据点进度：{1}/{2}
+敌方据点进度：{3}/{4}",模板文案
+battle_lab.battle_rule_line,天气：{0}  回合限制：{1},模板文案
 battle.objective_contested,争夺中,界面文案
 battle.unit_text,"{0}
 兵种：{1}  编队：{2}
@@ -516,9 +663,6 @@ battle.empty_hint,"点击蓝方军团选择。
 红色格：可攻击。
 拖动战场可移动视野。
 步兵均衡，骑兵克弓兵，弓兵射程远。",界面文案
-battle.objective_panel,"中央据点：{0}
-我方据点进度：{1}/{2}
-敌方据点进度：{3}/{4}",模板文案
 battle.unit_supply,补给：{0},模板文案
 button.guard,防御,界面文案
 button.wait,待命,界面文案
@@ -587,6 +731,18 @@ battle.msg.enemy_retreat,{0}收缩阵线。,模板文案
 battle.msg.enemy_advance,{0}向我方推进。,模板文案
 battle.msg.enemy_guard,{0}固守阵地。,模板文案
 battle.msg.enemy_wait,{0}待命观察。,模板文案
+battle_lab.trigger_log,战场剧情：{0},模板文案
+battle_lab.action_log_victory,触发器动作：判定蓝方胜利。,界面文案
+battle_lab.action_log_defeat,触发器动作：判定蓝方失败。,界面文案
+battle_lab.action_log_morale,触发器动作：{0}士气 {1:+#;-#;0}。,模板文案
+battle.side_player,蓝方,界面文案
+battle.side_enemy,红方,界面文案
+battle_lab.action_log_spawn_failed,触发器动作：没有空格可刷出援军。,界面文案
+battle_lab.action_log_spawn,触发器动作：{0}援军出现在第{1}行第{2}列。,模板文案
+battle_lab.trigger_actor_default,部队,界面文案
+battle_lab.trigger_target_default,目标,界面文案
+battle_lab.reach_objective_win,蓝方已抵达战争目标，测试胜利。,界面文案
+battle_lab.turn_limit_defeat,已超过 {0} 回合限制，测试失败。,模板文案
 battle_lab.test_victory,测试胜利。结果只用于验证关卡节奏，不会写入正式战绩。,界面文案
 battle_lab.test_defeat,测试失败。关卡可以继续调整后重测。,界面文案
 battle.msg.victory_capture,战斗胜利，{0}归入我方。,模板文案
@@ -604,8 +760,29 @@ log.player_objective_hold,我方正在巩固中央据点：{0}/{1}。,模板文�
 log.enemy_objective_hold,敌方正在巩固中央据点：{0}/{1}。,模板文案
 log.save_success_slot,系统：已保存到 {0}。,模板文案
 log.save_missing,没有找到存档。,界面文案
+save.invalid,存档已损坏或版本不兼容，未覆盖当前进度。,界面文案
+save.latest,最近存档,界面文案
 log.load_success_slot,系统：已读取 {0}。,模板文案
+log.strategy_map_upgraded,系统：战略地图已升级为北美战区配置。,旧存档战略地图自动升级日志
+save.load_failed_title,读取失败,界面文案
 log.new_game_plus,第 {0} 周目开始，记忆回响已保留。,模板文案
+button.main_story,主线,界面文案
+relationship.more_hint,更多人物可在角色档案中查看。,界面文案
+strategy.province_text,"省份：{0}
+势力：{1}
+城防：{2}
+收入：{3}
+驻军：{4}
+道路：{5}",模板文案
+battle_lab.body,"当前工具：{0}
+地形：{1}
+兵种：{2}
+蓝方/红方：{3}/{4}
+据点：{5},{6}
+
+点击棋盘即可落子或修改格子。测试战斗不会写入正式战绩。",模板文案
+battle_lab.msg_terrain,已设置地形：{0}。,模板文案
+battle_lab.msg_erase,已擦除该格单位；无单位时会还原为平原。,界面文案
 character_create.selected,"已选：{0}
 {1}",模板文案
 button.clear_selection,清空选择,界面文案

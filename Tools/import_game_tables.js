@@ -139,7 +139,15 @@ function main() {
   config.politicsOptions = castRows(readCsv("politics_options"), ["stanceValue", "axisValue"]) || config.politicsOptions || [];
   config.relationships = castRows(readCsv("relationships"), ["affection", "knownLevel", "lastInteractionWeek"]) || config.relationships || [];
   config.stances = castRows(readCsv("stances"), ["value"]) || config.stances || [];
-  config.provinces = castRows(readCsv("provinces"), ["defense", "income", "x", "y"]) || config.provinces || [];
+  const provinceRows = castRows(readCsv("provinces"), ["defense", "income", "x", "y"]);
+  if (provinceRows) {
+    config.provinces = provinceRows.map((province) => ({
+      ...province,
+      cities: String(province.cities || "").split(/[;|]/).map((cityName) => cityName.trim()).filter(Boolean)
+    }));
+  } else {
+    config.provinces = config.provinces || [];
+  }
   config.armies = castRows(readCsv("armies"), ["troops", "maxTroops", "move", "maxMove", "level", "exp", "attack", "supply", "maxSupply", "intelLevel"]) || config.armies || [];
   config.battleRoles = castRows(readCsv("battle_roles"), ["baseHp", "move", "range", "attackBonus", "formation"]) || config.battleRoles || [];
   config.commonUnits = castRows(readCsv("common_units"), ["idleFrames", "moveFrames", "attackFrames", "hitFrames"]) || config.commonUnits || [];
