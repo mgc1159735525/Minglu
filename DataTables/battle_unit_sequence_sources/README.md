@@ -1,61 +1,61 @@
 # 战棋单位整帧序列规范
 
-这里存放战棋单位的“完整绘制帧”源图。生成器会优先读取这里的源图，再输出到：
+这里存放战棋单位的完整绘制帧源图。生成器优先读取这里的源图，再输出到：
 
 `Assets/Resources/Art/BattleUnits/<unit_id>/<anim>_<frame>.png`
 
-## 推荐格式
+## 美术基准
 
-每个单位一个文件夹，每个动作一张横向动作条：
+单位服装必须是“拿破仑时期军装融合明朝中国元素”。
+
+- 拿破仑时期元素：短军装外套、立领、肩章、斜挎皮带、弹药盒、军靴、军团色边饰、火枪/炮兵装备结构。
+- 明朝中国元素：发髻或中式军帽、甲片、护心镜、云肩或护臂、中式腰封、团纹、龙纹/云纹/火纹装饰。
+- 义勇军：蓝、黑、红为主，偏地方新军。
+- 禁军：红、金、黑为主，偏正规精锐。
+- 贼徒：破旧军装残件、旧皮带、破斗篷和布甲混搭。
+- 信徒：红褐、金、黑，带护符、经幡、仪式纹样，但仍保留同时代军装轮廓。
+
+不得画成纯明代武将、纯欧洲拿破仑兵、奇幻怪物或现代军服。
+
+## 推荐源图格式
+
+AI 生成或手绘生产时，推荐每个动作单独一张图：
 
 ```text
 DataTables/battle_unit_sequence_sources/
   swordsmen_volunteers/
-    idle.png     6 帧
-    move.png     12 帧
-    attack.png   8 帧
-    hit.png      8 帧
-    recover.png  8 帧
-    defeat.png   10 帧
+    idle.png     6 帧，建议 3 列 x 2 行
+    move.png     12 帧，建议 4 列 x 3 行
+    attack.png   8 帧，建议 4 列 x 2 行
+    hit.png      8 帧，建议 4 列 x 2 行
+    recover.png  8 帧，建议 4 列 x 2 行
+    defeat.png   10 帧，建议 5 列 x 2 行
 ```
 
-每一格都要是一张完整小立绘，不要拆头、躯干、胳膊、腿再拼。
+每一格都必须是一张完整小立绘，不要拆头、躯干、胳膊、腿再拼。
 
-如果单行动作条太挤，可以改成网格。例如移动 12 帧推荐 4 列 3 行：
+## 动作要求
+
+- 待机：轻微呼吸和重心变化，落点是常规架势。
+- 移动：必须表现左右腿交替，并至少有两帧过脚/并脚重叠姿势。
+- 攻击：包含预备、发力、命中、收招。
+- 受击：包含冲击、后仰、踉跄、失衡结束。
+- 回复：从攻击或受击后的失衡状态自然回到常规待机架势。
+- 消灭：从失衡、跪倒、倒地到最终倒地轮廓，不要突然消失。
+
+## 导入命令
+
+导入动作源图并重新生成游戏资源：
 
 ```powershell
 python Tools\import_battle_unit_sequence_sheet.py --sheet D:\art\swordsmen_move_grid.png --unit swordsmen_volunteers --anim move --columns 4 --rows 3
 ```
 
-工具会写入同名 JSON，切帧顺序为从左到右、从上到下。
-
-## 绘制要求
-
-- 角色朝向、头部、躯干、脚步方向必须一致。
-- 移动帧要表现左右腿交替：触地、抬腿、过渡、另一腿触地。
-- 攻击帧要包含预备、发力、命中、收招。
-- 受击帧要包含冲击、后仰、稳定。
-- 回复帧要从受击或行动后自然回到待机。
-- 被消灭帧要从失衡、倒下到消失或倒地结束。
-- 背景使用纯色绿幕 `#00ff00`，角色内部不要使用同色。
-- 不要文字、水印、边框、编号。
-
-## 一键导入
-
-导入某个动作条并重新生成游戏资源：
+如果需要连续导入多个动作，可以先加 `--no-regenerate`，全部源图放好后再运行：
 
 ```powershell
-python Tools\import_battle_unit_sequence_sheet.py --sheet D:\art\swordsmen_move.png --unit swordsmen_volunteers --anim move
+python Tools\generate_battle_unit_sprites.py
+python Tools\audit_battle_unit_art.py
 ```
 
-导入完整大表并重新生成游戏资源：
-
-```powershell
-python Tools\import_battle_unit_sequence_sheet.py --sheet D:\art\swordsmen_full.png --unit swordsmen_volunteers
-```
-
-完整大表默认为 12 列 6 行，行顺序：
-
-`idle / move / attack / hit / recover / defeat`
-
-旧的 4 行 6 列表只会读取完整的 6 帧待机，不再把 6 帧循环成 12 帧移动。
+完整 12 列 x 6 行大表只允许给人工严格对齐的源文件使用，不推荐用 AI 一次生成整单位大表，因为容易切出空帧或半截角色。

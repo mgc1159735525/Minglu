@@ -1,0 +1,208 @@
+{
+  "styleName": "Napoleonic-Ming painted tactical miniatures",
+  "globalRequirements": [
+    "Every frame is a complete painted full-body unit frame, not a separated limb composite.",
+    "Costume language must combine Napoleonic-era military tailoring with Ming-dynasty Chinese details.",
+    "All units keep a Chinese topknot or Chinese military headwear unless their role explicitly needs a helmet.",
+    "Frames use a flat #00ff00 chroma-key background, no text, no watermark, no frame numbers.",
+    "Move animations must include contact, down, passing/overlap, lift, opposite contact, and return poses.",
+    "Attack animations must include guard, wind-up, strike, impact/follow-through, and post-attack stance.",
+    "Hit animations must include impact, recoil, stagger, and unstable end pose.",
+    "Recover animations must visibly return from off-balance/post-action pose to normal guard stance.",
+    "Defeat animations must show loss of balance, kneel or collapse, fall, and final defeated silhouette."
+  ],
+  "animationFrameCounts": {
+    "idle": 6,
+    "move": 12,
+    "attack": 8,
+    "hit": 8,
+    "recover": 8,
+    "defeat": 10
+  },
+  "units": [
+    {
+      "id": "swordsmen_volunteers",
+      "name": "剑士队",
+      "family": "义勇军",
+      "role": "步兵",
+      "weapon": "curved saber and round shield",
+      "costume": "blue Napoleonic short coat, red Ming-style sash, lamellar shoulder guards, round shield with cloud motif"
+    },
+    {
+      "id": "matchlock_volunteers",
+      "name": "火绳枪队",
+      "family": "义勇军",
+      "role": "火枪",
+      "weapon": "matchlock musket",
+      "costume": "blue volunteer infantry coat, crossed ammunition straps, Ming bracers and red waist sash"
+    },
+    {
+      "id": "militia_volunteers",
+      "name": "民兵团",
+      "family": "义勇军",
+      "role": "散兵",
+      "weapon": "short musket and side blade",
+      "costume": "worn blue-gray militia coat mixed with cloth armor, simple topknot and patched leggings"
+    },
+    {
+      "id": "outlaw_skirmishers",
+      "name": "亡徒军",
+      "family": "贼徒",
+      "role": "散兵",
+      "weapon": "curved knife and looted pistol or short gun",
+      "costume": "ragged Napoleonic coat remnants, Chinese cloth armor scraps, dirty belts and stolen gear"
+    },
+    {
+      "id": "imperial_halberdiers",
+      "name": "禁卫长戟队",
+      "family": "禁军",
+      "role": "重枪",
+      "weapon": "long halberd",
+      "costume": "red imperial coat with gold epaulettes, Ming helmet crest, lamellar skirt and formal guard sash"
+    },
+    {
+      "id": "armored_iron_cavalry",
+      "name": "具装铁骑军",
+      "family": "禁军",
+      "role": "重骑",
+      "weapon": "cavalry saber and banner lance",
+      "costume": "armored horseman with red Napoleonic cuirassier coat, Ming armor plates and ornate saddle cloth"
+    },
+    {
+      "id": "steel_helmet_heavy_infantry",
+      "name": "钢盔军",
+      "family": "义勇军",
+      "role": "重步",
+      "weapon": "straight saber and tower shield",
+      "costume": "dark blue heavy infantry coat, steel helmet with Chinese crest, reinforced Ming-style shield"
+    },
+    {
+      "id": "imperial_longbowmen",
+      "name": "禁军长弓兵",
+      "family": "禁军",
+      "role": "重弓",
+      "weapon": "longbow",
+      "costume": "red guard coat, gold trim, Ming archer bracers, ceremonial shoulder cape"
+    },
+    {
+      "id": "sword_guard_corps",
+      "name": "剑卫军团",
+      "family": "义勇军",
+      "role": "步兵",
+      "weapon": "straight sword and rectangular shield",
+      "costume": "blue elite line-infantry coat, gold piping, Ming shield ornaments and topknot"
+    },
+    {
+      "id": "imperial_axe_guard",
+      "name": "禁军斧卫",
+      "family": "禁军",
+      "role": "重猛",
+      "weapon": "large crescent axe",
+      "costume": "red heavy guard coat, gold epaulettes, Ming lamellar sleeves and helmet plume"
+    },
+    {
+      "id": "vanguard_cavalry",
+      "name": "先锋骑军",
+      "family": "义勇军",
+      "role": "骑兵",
+      "weapon": "light cavalry saber",
+      "costume": "blue light cavalry jacket, braided Napoleonic cords, Chinese saddle blanket and hair knot"
+    },
+    {
+      "id": "solemn_guard_matchlocks",
+      "name": "肃卫火枪队",
+      "family": "义勇军",
+      "role": "火枪",
+      "weapon": "matchlock musket",
+      "costume": "disciplined blue guard coat, red cuffs, ammunition straps, Ming wrist guards"
+    },
+    {
+      "id": "raiders",
+      "name": "掠杀军",
+      "family": "贼徒",
+      "role": "散兵",
+      "weapon": "dao blade and looted carbine",
+      "costume": "ragged brown looter coat, mismatched Napoleonic straps, patched Chinese brigand armor"
+    },
+    {
+      "id": "imperial_heavy_guard",
+      "name": "重甲禁卫军",
+      "family": "禁军",
+      "role": "重步",
+      "weapon": "heavy saber and large shield",
+      "costume": "red and black imperial coat, gold epaulettes, Ming chest mirror, ornate guard shield"
+    },
+    {
+      "id": "warhammer_volunteers",
+      "name": "重锤军",
+      "family": "义勇军",
+      "role": "重猛",
+      "weapon": "two-handed warhammer",
+      "costume": "blue shock-troop coat, leather cross belts, Ming shoulder armor and red waist sash"
+    },
+    {
+      "id": "imperial_shenji_artillery",
+      "name": "禁军神机队",
+      "family": "禁军",
+      "role": "重器",
+      "weapon": "field cannon and crewman",
+      "costume": "red imperial artillery coat, black boots, gold trim, Ming artillery badge and helmet"
+    },
+    {
+      "id": "zealot_believers",
+      "name": "狂热信众",
+      "family": "信徒",
+      "role": "散兵",
+      "weapon": "spear, talisman and short blade",
+      "costume": "red-brown devotional coat over Napoleonic cut, talisman cords, Chinese ritual cloth armor"
+    },
+    {
+      "id": "zealot_mob",
+      "name": "狂热暴徒",
+      "family": "信徒",
+      "role": "猛士",
+      "weapon": "heavy cleaver or axe",
+      "costume": "torn red devotional military coat, exposed arms, Ming ritual sash and rough armor scraps"
+    },
+    {
+      "id": "leader_guard",
+      "name": "领袖卫队",
+      "family": "信徒",
+      "role": "重步",
+      "weapon": "saber and ornate shield",
+      "costume": "red-black elite devotional guard coat, gold trim, Ming ceremonial armor and talisman shield"
+    },
+    {
+      "id": "elite_archers",
+      "name": "精锐弓兵队",
+      "family": "义勇军",
+      "role": "弓兵",
+      "weapon": "recurve bow",
+      "costume": "blue archer coat, Napoleonic cuffs, Ming quiver, bracers and red sash"
+    },
+    {
+      "id": "bandits",
+      "name": "土匪",
+      "family": "贼徒",
+      "role": "散兵",
+      "weapon": "dagger and crude firearm",
+      "costume": "brown ragged coat, stolen belts, rough Chinese headwrap and cloth armor scraps"
+    },
+    {
+      "id": "great_axe_warriors",
+      "name": "巨斧军",
+      "family": "义勇军",
+      "role": "猛士",
+      "weapon": "great axe",
+      "costume": "blue shock infantry coat, rolled sleeves, Ming scale guards and red sash"
+    },
+    {
+      "id": "believer_elites",
+      "name": "信徒精锐",
+      "family": "信徒",
+      "role": "步兵",
+      "weapon": "saber and shield",
+      "costume": "disciplined red devotional coat, gold religious trim, Ming guard armor and ritual sash"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-30T14:29:02",
+  "generatedAt": "2026-07-31T15:00:47",
   "style": "painted tactical miniature sprites; full-frame source sequences take priority, with standing-design fallback only for unfinished units",
   "animationPipeline": "full-frame-source-first-raster-sequence",
   "sourceLayouts": {

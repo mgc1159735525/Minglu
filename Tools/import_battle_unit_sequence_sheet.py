@@ -66,6 +66,16 @@ def main():
                 )
         else:
             target = SOURCE_SHEET_ROOT / f"{unit_id}.png"
+            if args.columns or args.rows:
+                layout = {
+                    "columns": args.columns or 12,
+                    "rows": ["idle", "move", "attack", "hit", "recover", "defeat"],
+                    "note": "Full-frame painted unit sheet. Rows are actions; columns are frames read left-to-right.",
+                }
+                (SOURCE_SHEET_ROOT / f"{unit_id}.json").write_text(
+                    json.dumps(layout, ensure_ascii=False, indent=2) + "\n",
+                    encoding="utf-8",
+                )
         shutil.copy2(sheet, target)
         print(f"Imported source sheet: {target}")
 

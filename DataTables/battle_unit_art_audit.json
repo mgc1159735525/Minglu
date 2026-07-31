@@ -1,0 +1,780 @@
+[
+  {
+    "id": "swordsmen_volunteers",
+    "name": "剑士队",
+    "runtimeFramesComplete": true,
+    "runtimeFrameProblems": [],
+    "paintedSourceActions": [
+      "idle",
+      "move",
+      "attack",
+      "hit",
+      "recover",
+      "defeat"
+    ],
+    "missingPaintedSourceActions": [],
+    "frameCounts": {
+      "idle": 6,
+      "move": 12,
+      "attack": 8,
+      "hit": 8,
+      "recover": 8,
+      "defeat": 10
+    }
+  },
+  {
+    "id": "matchlock_volunteers",
+    "name": "火绳枪队",
+    "runtimeFramesComplete": true,
+    "runtimeFrameProblems": [],
+    "paintedSourceActions": [
+      "idle",
+      "move",
+      "attack",
+      "hit",
+      "recover",
+      "defeat"
+    ],
+    "missingPaintedSourceActions": [],
+    "frameCounts": {
+      "idle": 6,
+      "move": 12,
+      "attack": 8,
+      "hit": 8,
+      "recover": 8,
+      "defeat": 10
+    }
+  },
+  {
+    "id": "militia_volunteers",
+    "name": "民兵团",
+    "runtimeFramesComplete": true,
+    "runtimeFrameProblems": [],
+    "paintedSourceActions": [
+      "idle",
+      "move",
+      "attack",
+      "hit",
+      "recover",
+      "defeat"
+    ],
+    "missingPaintedSourceActions": [],
+    "frameCounts": {
+      "idle": 6,
+      "move": 12,
+      "attack": 8,
+      "hit": 8,
+      "recover": 8,
+      "defeat": 10
+    }
+  },
+  {
+    "id": "outlaw_skirmishers",
+    "name": "亡徒军",
+    "runtimeFramesComplete": true,
+    "runtimeFrameProblems": [],
+    "paintedSourceActions": [
+      "idle",
+      "move",
+      "attack",
+      "hit",
+      "recover",
+      "defeat"
+    ],
+    "missingPaintedSourceActions": [],
+    "frameCounts": {
+      "idle": 6,
+      "move": 12,
+      "attack": 8,
+      "hit": 8,
+      "recover": 8,
+      "defeat": 10
+    }
+  },
+  {
+    "id": "imperial_halberdiers",
+    "name": "禁卫长戟队",
+    "runtimeFramesComplete": true,
+    "runtimeFrameProblems": [
+      "attack_5: touches canvas edge (32, 0, 243, 249)",
+      "defeat_3: touches canvas edge (0, 36, 230, 249)",
+      "defeat_4: touches canvas edge (0, 52, 233, 250)",
+      "defeat_5: touches canvas edge (0, 69, 231, 249)",
+      "defeat_6: touches canvas edge (0, 85, 223, 249)",
+      "defeat_7: touches canvas edge (0, 91, 215, 249)",
+      "defeat_8: touches canvas edge (0, 94, 208, 249)",
+      "defeat_9: touches canvas edge (0, 92, 203, 249)"
+    ],
+    "paintedSourceActions": [],
+    "missingPaintedSourceActions": [
+      "idle",
+      "move",
+      "attack",
+      "hit",
+      "recover",
+      "defeat"
+    ],
+    "frameCounts": {
+      "idle": 6,
+      "move": 12,
+      "attack": 8,
+      "hit": 8,
+      "recover": 8,
+      "defeat": 10
+    }
+  },
+  {
+    "id": "armored_iron_cavalry",
+    "name": "具装铁骑军",
+    "runtimeFramesComplete": true,
+    "runtimeFrameProblems": [
+      "attack_4: touches canvas edge (36, 0, 248, 249)",
+      "attack_5: touches canvas edge (33, 0, 248, 249)",
+      "defeat_3: touches canvas edge (0, 34, 227, 256)",
+      "defeat_4: touches canvas edge (0, 54, 232, 256)",
+      "defeat_5: touches canvas edge (0, 79, 231, 256)",
+      "defeat_6: touches canvas edge (0, 83, 224, 256)",
+      "defeat_7: touches canvas edge (0, 83, 216, 250)",
+      "defeat_8: touches canvas edge (0, 83, 215, 249)",
+      "defeat_9: touches canvas edge (0, 83, 215, 249)"
+    ],
+    "paintedSourceActions": [],
+    "missingPaintedSourceActions": [
+      "idle",
+      "move",
+      "attack",
+      "hit",
+      "recover",
+      "defeat"
+    ],
+    "frameCounts": {
+      "idle": 6,
+      "move": 12,
+      "attack": 8,
+      "hit": 8,
+      "recover": 8,
+      "defeat": 10
+    }
+  },
+  {
+    "id": "steel_helmet_heavy_infantry",
+    "name": "钢盔军",
+    "runtimeFramesComplete": true,
+    "runtimeFrameProblems": [
+      "defeat_3: touches canvas edge (0, 33, 199, 251)",
+      "defeat_4: touches canvas edge (0, 51, 199, 254)",
+      "defeat_5: touches canvas edge (0, 57, 199, 254)",
+      "defeat_6: touches canvas edge (0, 65, 199, 250)",
+      "defeat_7: touches canvas edge (0, 73, 199, 249)",
+      "defeat_8: touches canvas edge (0, 79, 199, 249)",
+      "defeat_9: touches canvas edge (0, 79, 199, 249)"
+    ],
+    "paintedSourceActions": [],
+    "missingPaintedSourceActions": [
+      "idle",
+      "move",
+      "attack",
+      "hit",
+      "recover",
+      "defeat"
+    ],
+    "frameCounts": {
+      "idle": 6,
+      "move": 12,
+      "attack": 8,
+      "hit": 8,
+      "recover": 8,
+      "defeat": 10
+    }
+  },
+  {
+    "id": "imperial_longbowmen",
+    "name": "禁军长弓兵",
+    "runtimeFramesComplete": true,
+    "runtimeFrameProblems": [
+      "defeat_3: touches canvas edge (0, 39, 206, 251)",
+      "defeat_4: touches canvas edge (0, 55, 200, 254)",
+      "defeat_5: touches canvas edge (0, 67, 200, 251)",
+      "defeat_6: touches canvas edge (0, 75, 200, 249)",
+      "defeat_7: touches canvas edge (0, 83, 200, 249)",
+      "defeat_8: touches canvas edge (0, 89, 200, 249)",
+      "defeat_9: touches canvas edge (0, 93, 200, 249)"
+    ],
+    "paintedSourceActions": [],
+    "missingPaintedSourceActions": [
+      "idle",
+      "move",
+      "attack",
+      "hit",
+      "recover",
+      "defeat"
+    ],
+    "frameCounts": {
+      "idle": 6,
+      "move": 12,
+      "attack": 8,
+      "hit": 8,
+      "recover": 8,
+      "defeat": 10
+    }
+  },
+  {
+    "id": "sword_guard_corps",
+    "name": "剑卫军团",
+    "runtimeFramesComplete": true,
+    "runtimeFrameProblems": [
+      "move_11: touches canvas edge (0, 9, 253, 249)",
+      "attack_2: touches canvas edge (9, 9, 256, 249)",
+      "attack_3: touches canvas edge (18, 7, 256, 249)",
+      "attack_4: touches canvas edge (15, 8, 256, 249)",
+      "attack_5: touches canvas edge (12, 9, 256, 249)",
+      "attack_6: touches canvas edge (16, 10, 256, 249)",
+      "attack_7: touches canvas edge (19, 10, 256, 249)",
+      "hit_2: touches canvas edge (0, 10, 218, 249)",
+      "hit_3: touches canvas edge (0, 11, 210, 249)",
+      "hit_4: touches canvas edge (0, 10, 218, 249)",
+      "recover_0: touches canvas edge (0, 11, 218, 249)",
+      "defeat_2: touches canvas edge (0, 16, 208, 249)",
+      "defeat_3: touches canvas edge (0, 25, 187, 249)",
+      "defeat_4: touches canvas edge (0, 28, 187, 249)",
+      "defeat_5: touches canvas edge (0, 31, 187, 256)",
+      "defeat_6: touches canvas edge (0, 39, 191, 256)",
+      "defeat_7: touches canvas edge (0, 48, 194, 256)",
+      "defeat_8: touches canvas edge (0, 54, 194, 253)",
+      "defeat_9: touches canvas edge (0, 59, 193, 250)"
+    ],
+    "paintedSourceActions": [],
+    "missingPaintedSourceActions": [
+      "idle",
+      "move",
+      "attack",
+      "hit",
+      "recover",
+      "defeat"
+    ],
+    "frameCounts": {
+      "idle": 6,
+      "move": 12,
+      "attack": 8,
+      "hit": 8,
+      "recover": 8,
+      "defeat": 10
+    }
+  },
+  {
+    "id": "imperial_axe_guard",
+    "name": "禁军斧卫",
+    "runtimeFramesComplete": true,
+    "runtimeFrameProblems": [
+      "defeat_3: touches canvas edge (0, 28, 230, 249)",
+      "defeat_4: touches canvas edge (0, 46, 230, 251)",
+      "defeat_5: touches canvas edge (0, 64, 226, 249)",
+      "defeat_6: touches canvas edge (0, 73, 217, 249)",
+      "defeat_7: touches canvas edge (0, 80, 207, 249)",
+      "defeat_8: touches canvas edge (0, 84, 201, 249)",
+      "defeat_9: touches canvas edge (0, 84, 196, 249)"
+    ],
+    "paintedSourceActions": [],
+    "missingPaintedSourceActions": [
+      "idle",
+      "move",
+      "attack",
+      "hit",
+      "recover",
+      "defeat"
+    ],
+    "frameCounts": {
+      "idle": 6,
+      "move": 12,
+      "attack": 8,
+      "hit": 8,
+      "recover": 8,
+      "defeat": 10
+    }
+  },
+  {
+    "id": "vanguard_cavalry",
+    "name": "先锋骑军",
+    "runtimeFramesComplete": true,
+    "runtimeFrameProblems": [
+      "attack_2: touches canvas edge (14, 2, 256, 249)",
+      "attack_3: touches canvas edge (26, 7, 256, 249)",
+      "attack_4: touches canvas edge (26, 6, 256, 249)",
+      "attack_5: touches canvas edge (25, 6, 256, 249)",
+      "attack_6: touches canvas edge (26, 9, 256, 249)",
+      "attack_7: touches canvas edge (25, 10, 256, 249)",
+      "hit_3: touches canvas edge (9, 2, 234, 256)",
+      "defeat_2: touches canvas edge (14, 6, 236, 256)",
+      "defeat_3: touches canvas edge (0, 8, 237, 256)",
+      "defeat_4: touches canvas edge (0, 17, 234, 256)",
+      "defeat_5: touches canvas edge (0, 32, 232, 256)",
+      "defeat_6: touches canvas edge (0, 51, 232, 256)",
+      "defeat_7: touches canvas edge (0, 68, 232, 256)",
+      "defeat_8: touches canvas edge (0, 69, 232, 256)",
+      "defeat_9: touches canvas edge (0, 71, 232, 255)"
+    ],
+    "paintedSourceActions": [],
+    "missingPaintedSourceActions": [
+      "idle",
+      "move",
+      "attack",
+      "hit",
+      "recover",
+      "defeat"
+    ],
+    "frameCounts": {
+      "idle": 6,
+      "move": 12,
+      "attack": 8,
+      "hit": 8,
+      "recover": 8,
+      "defeat": 10
+    }
+  },
+  {
+    "id": "solemn_guard_matchlocks",
+    "name": "肃卫火枪队",
+    "runtimeFramesComplete": true,
+    "runtimeFrameProblems": [
+      "defeat_3: touches canvas edge (0, 26, 214, 249)",
+      "defeat_4: touches canvas edge (0, 43, 204, 250)",
+      "defeat_5: touches canvas edge (0, 63, 194, 249)",
+      "defeat_6: touches canvas edge (0, 78, 194, 249)",
+      "defeat_7: touches canvas edge (0, 84, 194, 249)",
+      "defeat_8: touches canvas edge (0, 88, 194, 249)",
+      "defeat_9: touches canvas edge (0, 85, 194, 249)"
+    ],
+    "paintedSourceActions": [],
+    "missingPaintedSourceActions": [
+      "idle",
+      "move",
+      "attack",
+      "hit",
+      "recover",
+      "defeat"
+    ],
+    "frameCounts": {
+      "idle": 6,
+      "move": 12,
+      "attack": 8,
+      "hit": 8,
+      "recover": 8,
+      "defeat": 10
+    }
+  },
+  {
+    "id": "raiders",
+    "name": "掠杀军",
+    "runtimeFramesComplete": true,
+    "runtimeFrameProblems": [
+      "move_0: touches canvas edge (0, 12, 246, 249)",
+      "move_1: touches canvas edge (0, 10, 246, 249)",
+      "move_10: touches canvas edge (0, 11, 248, 249)",
+      "move_11: touches canvas edge (0, 10, 246, 249)",
+      "attack_5: touches canvas edge (4, 18, 256, 249)",
+      "attack_6: touches canvas edge (8, 14, 256, 249)",
+      "attack_7: touches canvas edge (12, 11, 256, 249)",
+      "hit_2: touches canvas edge (0, 10, 243, 249)",
+      "hit_3: touches canvas edge (0, 11, 243, 249)",
+      "hit_4: touches canvas edge (0, 10, 243, 249)",
+      "hit_5: touches canvas edge (0, 10, 243, 249)",
+      "recover_0: touches canvas edge (0, 11, 245, 249)",
+      "recover_1: touches canvas edge (0, 11, 245, 249)",
+      "recover_2: touches canvas edge (0, 10, 244, 249)",
+      "defeat_1: touches canvas edge (0, 12, 244, 249)",
+      "defeat_2: touches canvas edge (0, 15, 244, 249)",
+      "defeat_3: touches canvas edge (0, 23, 242, 250)",
+      "defeat_4: touches canvas edge (0, 37, 234, 252)",
+      "defeat_5: touches canvas edge (0, 55, 221, 249)",
+      "defeat_6: touches canvas edge (0, 57, 205, 249)",
+      "defeat_7: touches canvas edge (0, 60, 198, 249)",
+      "defeat_8: touches canvas edge (0, 64, 198, 249)",
+      "defeat_9: touches canvas edge (0, 67, 198, 249)"
+    ],
+    "paintedSourceActions": [],
+    "missingPaintedSourceActions": [
+      "idle",
+      "move",
+      "attack",
+      "hit",
+      "recover",
+      "defeat"
+    ],
+    "frameCounts": {
+      "idle": 6,
+      "move": 12,
+      "attack": 8,
+      "hit": 8,
+      "recover": 8,
+      "defeat": 10
+    }
+  },
+  {
+    "id": "imperial_heavy_guard",
+    "name": "重甲禁卫军",
+    "runtimeFramesComplete": true,
+    "runtimeFrameProblems": [
+      "defeat_3: touches canvas edge (0, 39, 218, 256)",
+      "defeat_4: touches canvas edge (0, 56, 218, 256)",
+      "defeat_5: touches canvas edge (0, 63, 218, 256)",
+      "defeat_6: touches canvas edge (0, 72, 218, 256)",
+      "defeat_7: touches canvas edge (0, 80, 218, 250)",
+      "defeat_8: touches canvas edge (0, 86, 218, 249)",
+      "defeat_9: touches canvas edge (0, 88, 218, 249)"
+    ],
+    "paintedSourceActions": [],
+    "missingPaintedSourceActions": [
+      "idle",
+      "move",
+      "attack",
+      "hit",
+      "recover",
+      "defeat"
+    ],
+    "frameCounts": {
+      "idle": 6,
+      "move": 12,
+      "attack": 8,
+      "hit": 8,
+      "recover": 8,
+      "defeat": 10
+    }
+  },
+  {
+    "id": "warhammer_volunteers",
+    "name": "重锤军",
+    "runtimeFramesComplete": true,
+    "runtimeFrameProblems": [
+      "attack_2: touches canvas edge (30, 7, 256, 249)",
+      "attack_3: touches canvas edge (29, 9, 256, 249)",
+      "attack_4: touches canvas edge (24, 14, 256, 249)",
+      "attack_5: touches canvas edge (21, 17, 256, 249)",
+      "attack_6: touches canvas edge (26, 13, 256, 249)",
+      "attack_7: touches canvas edge (30, 11, 256, 249)",
+      "hit_3: touches canvas edge (0, 12, 224, 249)",
+      "defeat_3: touches canvas edge (0, 27, 226, 256)",
+      "defeat_4: touches canvas edge (0, 43, 224, 256)",
+      "defeat_5: touches canvas edge (0, 63, 217, 256)",
+      "defeat_6: touches canvas edge (0, 69, 212, 252)",
+      "defeat_7: touches canvas edge (0, 76, 212, 249)",
+      "defeat_8: touches canvas edge (0, 81, 212, 249)",
+      "defeat_9: touches canvas edge (0, 82, 212, 249)"
+    ],
+    "paintedSourceActions": [],
+    "missingPaintedSourceActions": [
+      "idle",
+      "move",
+      "attack",
+      "hit",
+      "recover",
+      "defeat"
+    ],
+    "frameCounts": {
+      "idle": 6,
+      "move": 12,
+      "attack": 8,
+      "hit": 8,
+      "recover": 8,
+      "defeat": 10
+    }
+  },
+  {
+    "id": "imperial_shenji_artillery",
+    "name": "禁军神机队",
+    "runtimeFramesComplete": true,
+    "runtimeFrameProblems": [
+      "move_0: touches canvas edge (0, 36, 256, 249)",
+      "move_1: touches canvas edge (0, 34, 256, 249)",
+      "move_10: touches canvas edge (0, 37, 256, 249)",
+      "move_11: touches canvas edge (0, 35, 256, 249)",
+      "attack_3: touches canvas edge (10, 32, 256, 249)",
+      "attack_4: touches canvas edge (6, 28, 256, 249)",
+      "attack_5: touches canvas edge (3, 27, 256, 249)",
+      "attack_6: touches canvas edge (7, 33, 256, 249)",
+      "attack_7: touches canvas edge (11, 37, 256, 249)",
+      "hit_2: touches canvas edge (0, 47, 242, 252)",
+      "hit_3: touches canvas edge (0, 53, 242, 256)",
+      "hit_4: touches canvas edge (0, 47, 242, 253)",
+      "hit_5: touches canvas edge (0, 42, 242, 249)",
+      "recover_0: touches canvas edge (0, 49, 242, 255)",
+      "recover_1: touches canvas edge (0, 46, 242, 252)",
+      "recover_2: touches canvas edge (0, 43, 242, 249)",
+      "defeat_1: touches canvas edge (0, 46, 242, 249)",
+      "defeat_2: touches canvas edge (0, 55, 242, 256)",
+      "defeat_3: touches canvas edge (0, 55, 242, 256)",
+      "defeat_4: touches canvas edge (0, 61, 242, 256)",
+      "defeat_5: touches canvas edge (0, 67, 242, 256)",
+      "defeat_6: touches canvas edge (0, 69, 242, 256)",
+      "defeat_7: touches canvas edge (0, 70, 242, 256)",
+      "defeat_8: touches canvas edge (0, 72, 242, 256)",
+      "defeat_9: touches canvas edge (6, 74, 242, 256)"
+    ],
+    "paintedSourceActions": [],
+    "missingPaintedSourceActions": [
+      "idle",
+      "move",
+      "attack",
+      "hit",
+      "recover",
+      "defeat"
+    ],
+    "frameCounts": {
+      "idle": 6,
+      "move": 12,
+      "attack": 8,
+      "hit": 8,
+      "recover": 8,
+      "defeat": 10
+    }
+  },
+  {
+    "id": "zealot_believers",
+    "name": "狂热信众",
+    "runtimeFramesComplete": true,
+    "runtimeFrameProblems": [
+      "move_0: touches canvas edge (0, 15, 246, 249)",
+      "move_10: touches canvas edge (0, 14, 248, 249)",
+      "move_11: touches canvas edge (0, 13, 247, 249)",
+      "attack_4: touches canvas edge (8, 17, 256, 249)",
+      "attack_5: touches canvas edge (5, 12, 256, 249)",
+      "attack_6: touches canvas edge (9, 17, 256, 249)",
+      "attack_7: touches canvas edge (12, 14, 256, 249)",
+      "hit_2: touches canvas edge (0, 12, 246, 249)",
+      "hit_3: touches canvas edge (0, 12, 248, 249)",
+      "hit_4: touches canvas edge (0, 12, 246, 249)",
+      "recover_0: touches canvas edge (0, 13, 248, 249)",
+      "recover_1: touches canvas edge (0, 13, 248, 249)",
+      "recover_2: touches canvas edge (0, 13, 247, 249)",
+      "defeat_2: touches canvas edge (0, 17, 249, 249)",
+      "defeat_3: touches canvas edge (0, 21, 250, 251)",
+      "defeat_4: touches canvas edge (0, 20, 245, 254)",
+      "defeat_5: touches canvas edge (0, 25, 234, 251)",
+      "defeat_6: touches canvas edge (0, 34, 219, 249)",
+      "defeat_7: touches canvas edge (0, 42, 205, 249)",
+      "defeat_8: touches canvas edge (0, 48, 201, 249)",
+      "defeat_9: touches canvas edge (0, 52, 201, 249)"
+    ],
+    "paintedSourceActions": [],
+    "missingPaintedSourceActions": [
+      "idle",
+      "move",
+      "attack",
+      "hit",
+      "recover",
+      "defeat"
+    ],
+    "frameCounts": {
+      "idle": 6,
+      "move": 12,
+      "attack": 8,
+      "hit": 8,
+      "recover": 8,
+      "defeat": 10
+    }
+  },
+  {
+    "id": "zealot_mob",
+    "name": "狂热暴徒",
+    "runtimeFramesComplete": true,
+    "runtimeFrameProblems": [
+      "attack_2: touches canvas edge (29, 14, 256, 249)",
+      "attack_3: touches canvas edge (28, 7, 256, 249)",
+      "attack_4: touches canvas edge (23, 4, 256, 249)",
+      "attack_5: touches canvas edge (20, 3, 256, 249)",
+      "attack_6: touches canvas edge (25, 8, 256, 249)",
+      "attack_7: touches canvas edge (29, 11, 256, 249)",
+      "hit_3: touches canvas edge (0, 23, 227, 251)",
+      "defeat_3: touches canvas edge (0, 41, 227, 256)",
+      "defeat_4: touches canvas edge (0, 57, 227, 256)",
+      "defeat_5: touches canvas edge (0, 69, 227, 256)",
+      "defeat_6: touches canvas edge (0, 77, 227, 256)",
+      "defeat_7: touches canvas edge (0, 82, 227, 256)",
+      "defeat_8: touches canvas edge (0, 83, 227, 251)",
+      "defeat_9: touches canvas edge (0, 81, 227, 249)"
+    ],
+    "paintedSourceActions": [],
+    "missingPaintedSourceActions": [
+      "idle",
+      "move",
+      "attack",
+      "hit",
+      "recover",
+      "defeat"
+    ],
+    "frameCounts": {
+      "idle": 6,
+      "move": 12,
+      "attack": 8,
+      "hit": 8,
+      "recover": 8,
+      "defeat": 10
+    }
+  },
+  {
+    "id": "leader_guard",
+    "name": "领袖卫队",
+    "runtimeFramesComplete": true,
+    "runtimeFrameProblems": [
+      "defeat_3: touches canvas edge (0, 32, 210, 254)",
+      "defeat_4: touches canvas edge (0, 48, 208, 256)",
+      "defeat_5: touches canvas edge (0, 51, 208, 256)",
+      "defeat_6: touches canvas edge (0, 58, 208, 249)",
+      "defeat_7: touches canvas edge (0, 66, 208, 249)",
+      "defeat_8: touches canvas edge (0, 72, 208, 249)",
+      "defeat_9: touches canvas edge (0, 76, 208, 249)"
+    ],
+    "paintedSourceActions": [],
+    "missingPaintedSourceActions": [
+      "idle",
+      "move",
+      "attack",
+      "hit",
+      "recover",
+      "defeat"
+    ],
+    "frameCounts": {
+      "idle": 6,
+      "move": 12,
+      "attack": 8,
+      "hit": 8,
+      "recover": 8,
+      "defeat": 10
+    }
+  },
+  {
+    "id": "elite_archers",
+    "name": "精锐弓兵队",
+    "runtimeFramesComplete": true,
+    "runtimeFrameProblems": [
+      "defeat_3: touches canvas edge (0, 39, 210, 251)",
+      "defeat_4: touches canvas edge (0, 51, 202, 255)",
+      "defeat_5: touches canvas edge (0, 57, 207, 251)",
+      "defeat_6: touches canvas edge (0, 64, 207, 249)",
+      "defeat_7: touches canvas edge (0, 72, 203, 249)",
+      "defeat_8: touches canvas edge (0, 78, 200, 249)",
+      "defeat_9: touches canvas edge (0, 82, 200, 249)"
+    ],
+    "paintedSourceActions": [],
+    "missingPaintedSourceActions": [
+      "idle",
+      "move",
+      "attack",
+      "hit",
+      "recover",
+      "defeat"
+    ],
+    "frameCounts": {
+      "idle": 6,
+      "move": 12,
+      "attack": 8,
+      "hit": 8,
+      "recover": 8,
+      "defeat": 10
+    }
+  },
+  {
+    "id": "bandits",
+    "name": "土匪",
+    "runtimeFramesComplete": true,
+    "runtimeFrameProblems": [
+      "hit_3: touches canvas edge (0, 16, 227, 251)",
+      "defeat_3: touches canvas edge (0, 33, 227, 256)",
+      "defeat_4: touches canvas edge (0, 52, 227, 256)",
+      "defeat_5: touches canvas edge (0, 72, 227, 256)",
+      "defeat_6: touches canvas edge (0, 77, 227, 256)",
+      "defeat_7: touches canvas edge (0, 82, 227, 256)",
+      "defeat_8: touches canvas edge (0, 83, 227, 251)",
+      "defeat_9: touches canvas edge (0, 81, 227, 249)"
+    ],
+    "paintedSourceActions": [],
+    "missingPaintedSourceActions": [
+      "idle",
+      "move",
+      "attack",
+      "hit",
+      "recover",
+      "defeat"
+    ],
+    "frameCounts": {
+      "idle": 6,
+      "move": 12,
+      "attack": 8,
+      "hit": 8,
+      "recover": 8,
+      "defeat": 10
+    }
+  },
+  {
+    "id": "great_axe_warriors",
+    "name": "巨斧军",
+    "runtimeFramesComplete": true,
+    "runtimeFrameProblems": [
+      "attack_2: touches canvas edge (23, 7, 256, 249)",
+      "attack_3: touches canvas edge (22, 8, 256, 249)",
+      "attack_4: touches canvas edge (17, 12, 256, 249)",
+      "attack_5: touches canvas edge (14, 15, 256, 249)",
+      "attack_6: touches canvas edge (19, 12, 256, 249)",
+      "attack_7: touches canvas edge (23, 10, 256, 249)",
+      "hit_2: touches canvas edge (0, 12, 232, 249)",
+      "hit_3: touches canvas edge (0, 15, 231, 249)",
+      "hit_4: touches canvas edge (0, 13, 232, 249)",
+      "recover_0: touches canvas edge (0, 13, 233, 249)",
+      "defeat_2: touches canvas edge (0, 20, 232, 249)",
+      "defeat_3: touches canvas edge (0, 32, 229, 253)",
+      "defeat_4: touches canvas edge (0, 52, 219, 256)",
+      "defeat_5: touches canvas edge (0, 66, 207, 254)",
+      "defeat_6: touches canvas edge (0, 75, 207, 249)",
+      "defeat_7: touches canvas edge (0, 83, 207, 249)",
+      "defeat_8: touches canvas edge (0, 78, 207, 249)",
+      "defeat_9: touches canvas edge (0, 75, 207, 249)"
+    ],
+    "paintedSourceActions": [],
+    "missingPaintedSourceActions": [
+      "idle",
+      "move",
+      "attack",
+      "hit",
+      "recover",
+      "defeat"
+    ],
+    "frameCounts": {
+      "idle": 6,
+      "move": 12,
+      "attack": 8,
+      "hit": 8,
+      "recover": 8,
+      "defeat": 10
+    }
+  },
+  {
+    "id": "believer_elites",
+    "name": "信徒精锐",
+    "runtimeFramesComplete": true,
+    "runtimeFrameProblems": [
+      "defeat_3: touches canvas edge (0, 34, 209, 255)",
+      "defeat_4: touches canvas edge (0, 51, 209, 256)",
+      "defeat_5: touches canvas edge (0, 55, 209, 256)",
+      "defeat_6: touches canvas edge (0, 62, 209, 250)",
+      "defeat_7: touches canvas edge (0, 69, 209, 249)",
+      "defeat_8: touches canvas edge (0, 75, 209, 249)",
+      "defeat_9: touches canvas edge (0, 79, 209, 249)"
+    ],
+    "paintedSourceActions": [],
+    "missingPaintedSourceActions": [
+      "idle",
+      "move",
+      "attack",
+      "hit",
+      "recover",
+      "defeat"
+    ],
+    "frameCounts": {
+      "idle": 6,
+      "move": 12,
+      "attack": 8,
+      "hit": 8,
+      "recover": 8,
+      "defeat": 10
+    }
+  }
+]

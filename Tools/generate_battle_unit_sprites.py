@@ -386,10 +386,27 @@ def remove_stray_source_components(img, anim):
 
 
 def normalize_source_frame(crop, anim):
-    crop = remove_stray_source_components(remove_chroma_key(crop), anim)
-    if crop.size != (SIZE, SIZE):
-        crop = crop.resize((SIZE, SIZE), Image.Resampling.LANCZOS)
-    return crop
+    art = remove_stray_source_components(remove_chroma_key(crop), anim)
+    bbox = art.getchannel("A").getbbox()
+    if bbox is None:
+        return Image.new("RGBA", (SIZE, SIZE), (0, 0, 0, 0))
+    art = art.crop(bbox)
+    max_w = SIZE - 24
+    max_h = SIZE - 18
+    if anim == "defeat":
+        max_w = SIZE - 14
+        max_h = SIZE - 20
+    scale = min(max_w / art.width, max_h / art.height)
+    resized = art.resize((max(1, round(art.width * scale)), max(1, round(art.height * scale))), Image.Resampling.LANCZOS)
+    canvas = Image.new("RGBA", (SIZE, SIZE), (0, 0, 0, 0))
+    x = (SIZE - resized.width) // 2
+    y = SIZE - resized.height - 8
+    if anim in ("attack", "hit", "recover"):
+        y = max(6, (SIZE - resized.height) // 2 + 5)
+    if anim == "defeat":
+        y = SIZE - resized.height - 10
+    canvas.alpha_composite(resized, (x, y))
+    return canvas
 
 
 def proportional_crop(sheet, columns, rows, col, row):
