@@ -1436,15 +1436,15 @@ public sealed class MingLuGame : MonoBehaviour
         {
             provinces = new List<Province>
             {
-                NewProvince("xinjing", "新京", Faction.Player, 80, 35, -330, 150),
-                NewProvince("linhai", "临海", Faction.Player, 62, 24, -125, 215),
-                NewProvince("hegu", "河谷", Faction.Player, 55, 18, -230, -25),
-                NewProvince("beiling", "北岭", Faction.Imperial, 58, 16, 40, 80),
-                NewProvince("songlin", "松林", Faction.Native, 48, 12, 235, 190),
-                NewProvince("shigu", "石谷", Faction.Reformist, 65, 20, 215, -35),
-                NewProvince("xigang", "西港", Faction.Foreign, 70, 28, 420, 70),
-                NewProvince("nanze", "南泽", Faction.Neutral, 44, 14, -5, -180),
-                NewProvince("hongyuan", "红原", Faction.Reformist, 52, 18, 385, -160)
+                NewProvince("xinjing", "天澜", Faction.Player, 80, 35, -330, 150),
+                NewProvince("linhai", "天岁", Faction.Player, 62, 24, -125, 215),
+                NewProvince("hegu", "羽州", Faction.Player, 55, 18, -230, -25),
+                NewProvince("beiling", "霁川", Faction.Imperial, 58, 16, 40, 80),
+                NewProvince("songlin", "星原", Faction.Native, 48, 12, 235, 190),
+                NewProvince("shigu", "月泽", Faction.Reformist, 65, 20, 215, -35),
+                NewProvince("xigang", "苍汐", Faction.Foreign, 70, 28, 420, 70),
+                NewProvince("nanze", "玄雾", Faction.Neutral, 44, 14, -5, -180),
+                NewProvince("hongyuan", "曜岭", Faction.Reformist, 52, 18, 385, -160)
             };
 
             Link("xinjing", "linhai");

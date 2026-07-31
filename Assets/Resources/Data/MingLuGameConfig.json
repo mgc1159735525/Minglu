@@ -68,7 +68,7 @@
     },
     {
       "key": "credits.body",
-      "value": "《明路》Unity 原型\n设计来源：明路第一版文档\n实现：运行时 UI / 学院养成 / 战略地图 / 六边形战棋\n素材：项目内可配置美术资源。",
+      "value": "《明路》Unity 原型\r\n设计来源：明路第一版文档\r\n实现：运行时 UI / 学院养成 / 战略地图 / 六边形战棋\r\n素材：项目内可配置美术资源。",
       "note": "制作组文案"
     },
     {
@@ -168,7 +168,7 @@
     },
     {
       "key": "character_create.profile_card",
-      "value": "{0}\n新京军事学院预备生\n特性会影响战斗、社交与养成。",
+      "value": "{0}\r\n新京军事学院预备生\r\n特性会影响战斗、社交与养成。",
       "note": "模板文案"
     },
     {
@@ -563,7 +563,7 @@
     },
     {
       "key": "skill.body",
-      "value": "被动槽位：{0}/{1}\n已装备：{2}\n\n已解锁：\n{3}",
+      "value": "被动槽位：{0}/{1}\r\n已装备：{2}\r\n\r\n已解锁：\r\n{3}",
       "note": "模板文案"
     },
     {
@@ -608,12 +608,12 @@
     },
     {
       "key": "quest.line",
-      "value": "· [{0}] {1}  {2}/{3}\n  {4}",
+      "value": "· [{0}] {1}  {2}/{3}\r\n  {4}",
       "note": "模板文案"
     },
     {
       "key": "quest.body",
-      "value": "任务追踪\n{0}\n\n已完成：{1}",
+      "value": "任务追踪\r\n{0}\r\n\r\n已完成：{1}",
       "note": "模板文案"
     },
     {
@@ -638,7 +638,7 @@
     },
     {
       "key": "achievement.body",
-      "value": "成就点：{0}\n已解锁：{1}/{2}\n当前称号：{3}\n\n成就：\n{4}\n\n可用称号：{5}",
+      "value": "成就点：{0}\r\n已解锁：{1}/{2}\r\n当前称号：{3}\r\n\r\n成就：\r\n{4}\r\n\r\n可用称号：{5}",
       "note": "模板文案"
     },
     {
@@ -653,7 +653,7 @@
     },
     {
       "key": "intel.body",
-      "value": "情报值：{0}  间谍网络：{1}\n训练等级会提高行动成功率；失败会损失心情或国库。\n\n敌情摘要：\n{2}",
+      "value": "情报值：{0}  间谍网络：{1}\r\n训练等级会提高行动成功率；失败会损失心情或国库。\r\n\r\n敌情摘要：\r\n{2}",
       "note": "模板文案"
     },
     {
@@ -708,7 +708,7 @@
     },
     {
       "key": "save.body",
-      "value": "多槽位存档\n自动存档：每周推进、战斗开始、战斗结算时写入。\n当前周目：{0}\n成就点：{1}\n已解锁结局：{2}\n\n选择槽位进行保存或读取。",
+      "value": "多槽位存档\r\n自动存档：每周推进、战斗开始、战斗结算时写入。\r\n当前周目：{0}\r\n成就点：{1}\r\n已解锁结局：{2}\r\n\r\n选择槽位进行保存或读取。",
       "note": "模板文案"
     },
     {
@@ -733,7 +733,7 @@
     },
     {
       "key": "system.body",
-      "value": "系统\n当前界面：{0}\n自动存档：每周、剧情、战斗关键节点\n手动槽：3 个\n\n存档读档、标题界面和成就称号都收在这里。",
+      "value": "系统\r\n当前界面：{0}\r\n自动存档：每周、剧情、战斗关键节点\r\n手动槽：3 个\r\n\r\n存档读档、标题界面和成就称号都收在这里。",
       "note": "模板文案"
     },
     {
@@ -798,7 +798,7 @@
     },
     {
       "key": "formation.body",
-      "value": "直属军团\n{0}\n\n常见单位\n{1}\n\n军团数值来自战略军团表，棋子序列帧来自常见单位表。",
+      "value": "直属军团\r\n{0}\r\n\r\n常见单位\r\n{1}\r\n\r\n军团数值来自战略军团表，棋子序列帧来自常见单位表。",
       "note": "模板文案"
     },
     {
@@ -818,7 +818,7 @@
     },
     {
       "key": "character_status.body",
-      "value": "{0}\n\n属性等级\n{1}\n\n心态与性格\n心情：{2}（{3}）  体力：{4}\n特性：{5}\n\n立场\n{6}",
+      "value": "{0}\r\n\r\n属性等级\r\n{1}\r\n\r\n心态与性格\r\n心情：{2}（{3}）  体力：{4}\r\n特性：{5}\r\n\r\n立场\r\n{6}",
       "note": "模板文案"
     },
     {
@@ -878,7 +878,7 @@
     },
     {
       "key": "diplomacy.body",
-      "value": "派系倾向\n{0}\n\n警觉\n{1}\n\n意识形态\n{2}",
+      "value": "派系倾向\r\n{0}\r\n\r\n警觉\r\n{1}\r\n\r\n意识形态\r\n{2}",
       "note": "模板文案"
     },
     {
@@ -968,7 +968,7 @@
     },
     {
       "key": "newspaper.article_body",
-      "value": "{0}\n\n立场倾向：{1}\n\n{2}",
+      "value": "{0}\r\n\r\n立场倾向：{1}\r\n\r\n{2}",
       "note": "模板文案"
     },
     {
@@ -1043,7 +1043,7 @@
     },
     {
       "key": "relationship.detail_body",
-      "value": "朋友圈：{0}\n立场：{1}\n好感：{2}（{3}）\n\n{4}\n\n{5}",
+      "value": "朋友圈：{0}\r\n立场：{1}\r\n好感：{2}（{3}）\r\n\r\n{4}\r\n\r\n{5}",
       "note": "模板文案"
     },
     {
@@ -1168,7 +1168,7 @@
     },
     {
       "key": "academy.summary",
-      "value": "姓名：{0}  年龄：{1}  {2}\n{3}  称号：{4}\n心情：{5}({6})  体力：{7}  战功：{8}\n军衔：{9}  国库：{10}\n特性：{11}",
+      "value": "姓名：{0}  年龄：{1}  {2}\r\n{3}  称号：{4}\r\n心情：{5}({6})  体力：{7}  战功：{8}\r\n军衔：{9}  国库：{10}\r\n特性：{11}",
       "note": "模板文案"
     },
     {
@@ -1213,7 +1213,7 @@
     },
     {
       "key": "relationship.button_label",
-      "value": "{0}  {1}\n{2}  好感 {3}",
+      "value": "{0}  {1}\r\n{2}  好感 {3}",
       "note": "模板文案"
     },
     {
@@ -1223,7 +1223,7 @@
     },
     {
       "key": "attribute_guide.body",
-      "value": "步兵：提升步兵、长枪、重步等近战单位的伤害稳定性。\n骑兵：提升骑兵、重骑的冲击伤害和机动价值。\n炮兵：提升火枪、弓兵、火炮等远程单位的输出。\n管理：影响国库、任务处理和学院评价。\n后勤：影响补给恢复、行军续航和缺补给惩罚。\n训练：影响情报行动成功率与综合战斗准备。",
+      "value": "步兵：提升步兵、长枪、重步等近战单位的伤害稳定性。\r\n骑兵：提升骑兵、重骑的冲击伤害和机动价值。\r\n炮兵：提升火枪、弓兵、火炮等远程单位的输出。\r\n管理：影响国库、任务处理和学院评价。\r\n后勤：影响补给恢复、行军续航和缺补给惩罚。\r\n训练：影响情报行动成功率与综合战斗准备。",
       "note": "界面文案"
     },
     {
@@ -1408,7 +1408,7 @@
     },
     {
       "key": "story.locked_body",
-      "value": "触发条件：{0}\n\n先完成对应的养成、情报、任务或战棋目标，再回来推进。",
+      "value": "触发条件：{0}\r\n\r\n先完成对应的养成、情报、任务或战棋目标，再回来推进。",
       "note": "模板文案"
     },
     {
@@ -1588,7 +1588,7 @@
     },
     {
       "key": "story_menu.summary",
-      "value": "当前主线：{0}\n推进条件：{1}\n支线会随主线、好感和任务进度开放。",
+      "value": "当前主线：{0}\r\n推进条件：{1}\r\n支线会随主线、好感和任务进度开放。",
       "note": "模板文案"
     },
     {
@@ -1618,7 +1618,7 @@
     },
     {
       "key": "character_archive.card",
-      "value": "{0}｜{1}\n{2}\n性格：{3}\n{4}",
+      "value": "{0}｜{1}\r\n{2}\r\n性格：{3}\r\n{4}",
       "note": "模板文案"
     },
     {
@@ -1653,27 +1653,27 @@
     },
     {
       "key": "strategy.province_text",
-      "value": "省份：{0}\n势力：{1}\n城防：{2}\n收入：{3}\n驻军：{4}\n道路：{5}",
+      "value": "省份：{0}\r\n势力：{1}\r\n城防：{2}\r\n收入：{3}\r\n驻军：{4}\r\n道路：{5}",
       "note": "模板文案"
     },
     {
       "key": "strategy.command_text",
-      "value": "军衔：{0}  指挥上限：{1}\n{2}",
+      "value": "军衔：{0}  指挥上限：{1}\r\n{2}",
       "note": "模板文案"
     },
     {
       "key": "strategy.army_text",
-      "value": "军团：{0}\n兵力：{1}/{2}\n等级：{3}\n经验：{4}\n攻击：{5}\n行军力：{6}/{7}",
+      "value": "军团：{0}\r\n兵力：{1}/{2}\r\n等级：{3}\r\n经验：{4}\r\n攻击：{5}\r\n行军力：{6}/{7}",
       "note": "模板文案"
     },
     {
       "key": "strategy.no_army_hint",
-      "value": "点击有我方军团的省份可选择军团。\n点击相邻己方省份行军。\n点击相邻敌方省份发起六边形战棋。",
+      "value": "点击有我方军团的省份可选择军团。\r\n点击相邻己方省份行军。\r\n点击相邻敌方省份发起六边形战棋。",
       "note": "界面文案"
     },
     {
       "key": "strategy.army_extra_text_v2",
-      "value": "补给：{0}\n战术：{1}\n情报：{2}",
+      "value": "补给：{0}\r\n战术：{1}\r\n情报：{2}",
       "note": "模板文案"
     },
     {
@@ -1708,7 +1708,7 @@
     },
     {
       "key": "mission.body",
-      "value": "当前军衔：{0}\n可指挥直属部队：{1}\n\n{2}\n\n攻占敌方据点会获得战功。未达成命令或战败时，会短暂失去直接指挥权。",
+      "value": "当前军衔：{0}\r\n可指挥直属部队：{1}\r\n\r\n{2}\r\n\r\n攻占敌方据点会获得战功。未达成命令或战败时，会短暂失去直接指挥权。",
       "note": "模板文案"
     },
     {
@@ -1768,7 +1768,7 @@
     },
     {
       "key": "battle_lab.body",
-      "value": "当前工具：{0}\n地形：{1}\n兵种：{2}\n蓝方/红方：{3}/{4}\n据点：{5},{6}\n\n点击棋盘即可落子或修改格子。测试战斗不会写入正式战绩。",
+      "value": "当前工具：{0}\r\n地形：{1}\r\n兵种：{2}\r\n蓝方/红方：{3}/{4}\r\n据点：{5},{6}\r\n\r\n点击棋盘即可落子或修改格子。测试战斗不会写入正式战绩。",
       "note": "模板文案"
     },
     {
@@ -1963,17 +1963,17 @@
     },
     {
       "key": "battle.unit_text",
-      "value": "{0}\n兵种：{1}  编队：{2}\n兵力：{3}/{4}\n等级：{5}\n经验：{6}\n攻击：{7}\n士气：{8}\n移动：{9}  射程：{10}\n状态：{11}",
+      "value": "{0}\r\n兵种：{1}  编队：{2}\r\n兵力：{3}/{4}\r\n等级：{5}\r\n经验：{6}\r\n攻击：{7}\r\n士气：{8}\r\n移动：{9}  射程：{10}\r\n状态：{11}",
       "note": "模板文案"
     },
     {
       "key": "battle.empty_hint",
-      "value": "点击蓝方军团选择。\n绿色格：可移动。\n红色格：可攻击。\n拖动战场可移动视野。\n步兵均衡，骑兵克弓兵，弓兵射程远。",
+      "value": "点击蓝方军团选择。\r\n绿色格：可移动。\r\n红色格：可攻击。\r\n拖动战场可移动视野。\r\n步兵均衡，骑兵克弓兵，弓兵射程远。",
       "note": "界面文案"
     },
     {
       "key": "battle.objective_panel",
-      "value": "中央据点：{0}\n我方据点进度：{1}/{2}\n敌方据点进度：{3}/{4}",
+      "value": "中央据点：{0}\r\n我方据点进度：{1}/{2}\r\n敌方据点进度：{3}/{4}",
       "note": "模板文案"
     },
     {
@@ -1993,7 +1993,7 @@
     },
     {
       "key": "battle.log_panel",
-      "value": "军令：\n{0}\n\n战场日志：\n{1}",
+      "value": "军令：\r\n{0}\r\n\r\n战场日志：\r\n{1}",
       "note": "模板文案"
     },
     {
@@ -2138,17 +2138,17 @@
     },
     {
       "key": "battle.attack_confirm_body",
-      "value": "{0}\n-> {1}\n\n预计伤害：{2}{3}\n地形：{4}  抗性：{5}%\n士气：{6} / {7}",
+      "value": "{0}\r\n-> {1}\r\n\r\n预计伤害：{2}{3}\r\n地形：{4}  抗性：{5}%\r\n士气：{6} / {7}",
       "note": "模板文案"
     },
     {
       "key": "battle.counter_preview",
-      "value": "\n预计反击：{0}",
+      "value": "\r\n预计反击：{0}",
       "note": "模板文案"
     },
     {
       "key": "battle.no_counter",
-      "value": "\n目标无法反击",
+      "value": "\r\n目标无法反击",
       "note": "界面文案"
     },
     {
@@ -2178,7 +2178,7 @@
     },
     {
       "key": "battle.damage_breakdown",
-      "value": "影响：兵种克制 {0:+#;-#;0} / 熟练 +{1} / 士气 {2:+#;-#;0} / 敌等级 -{3} / 地形减伤 {4}%\n{5}",
+      "value": "影响：兵种克制 {0:+#;-#;0} / 熟练 +{1} / 士气 {2:+#;-#;0} / 敌等级 -{3} / 地形减伤 {4}%\r\n{5}",
       "note": "模板文案"
     },
     {
@@ -2353,7 +2353,7 @@
     },
     {
       "key": "character_create.selected",
-      "value": "已选：{0}\n{1}",
+      "value": "已选：{0}\r\n{1}",
       "note": "模板文案"
     },
     {
@@ -2428,7 +2428,7 @@
     },
     {
       "key": "strategy.army_extra_text",
-      "value": "补给：{0}\n战术：{1}\n情报：{2}",
+      "value": "补给：{0}\r\n战术：{1}\r\n情报：{2}",
       "note": "模板文案"
     },
     {
@@ -2453,7 +2453,7 @@
     },
     {
       "key": "story.side_text",
-      "value": "类型：{0}\n触发：{1}\n进度：{2}/{3}\n已完成主线：{4}\n当前主线：{5}\n\n提示：剧情选项会改变立场与人物好感。",
+      "value": "类型：{0}\r\n触发：{1}\r\n进度：{2}/{3}\r\n已完成主线：{4}\r\n当前主线：{5}\r\n\r\n提示：剧情选项会改变立场与人物好感。",
       "note": "模板文案"
     },
     {
@@ -3465,7 +3465,7 @@
   "provinces": [
     {
       "id": "xinjing",
-      "name": "新京",
+      "name": "天澜",
       "owner": "Player",
       "defense": 72,
       "income": 20,
@@ -3476,7 +3476,7 @@
     },
     {
       "id": "linhai",
-      "name": "临海",
+      "name": "天岁",
       "owner": "Player",
       "defense": 55,
       "income": 14,
@@ -3487,7 +3487,7 @@
     },
     {
       "id": "hegu",
-      "name": "河谷",
+      "name": "羽州",
       "owner": "Player",
       "defense": 48,
       "income": 11,
@@ -3498,7 +3498,7 @@
     },
     {
       "id": "beiling",
-      "name": "北岭",
+      "name": "霁川",
       "owner": "Imperial",
       "defense": 62,
       "income": 13,
@@ -3509,7 +3509,7 @@
     },
     {
       "id": "songlin",
-      "name": "松林",
+      "name": "星原",
       "owner": "Native",
       "defense": 44,
       "income": 9,
@@ -3520,7 +3520,7 @@
     },
     {
       "id": "shigu",
-      "name": "石谷",
+      "name": "月泽",
       "owner": "Reformist",
       "defense": 58,
       "income": 12,
@@ -3531,7 +3531,7 @@
     },
     {
       "id": "xigang",
-      "name": "西港",
+      "name": "苍汐",
       "owner": "Foreign",
       "defense": 68,
       "income": 18,
@@ -3542,7 +3542,7 @@
     },
     {
       "id": "hongyuan",
-      "name": "红原",
+      "name": "曜岭",
       "owner": "Neutral",
       "defense": 40,
       "income": 8,
@@ -3553,7 +3553,7 @@
     },
     {
       "id": "nanze",
-      "name": "南泽",
+      "name": "玄雾",
       "owner": "Player",
       "defense": 50,
       "income": 10,
@@ -5123,9 +5123,16 @@
   ],
   "quests": [
     {
+      "id": "main_01",
+      "type": "主线",
+      "name": "第一周整训",
+      "description": "完成任意课程。剧情不再自动往前推，先让角色在养成中拿到第一份训练记录。",
+      "unlockKind": "always",
       "unlockTarget": "",
       "unlockValue": 0,
+      "targetKind": "anyCourseExp",
       "targetId": "",
+      "targetValue": 25,
       "rewardMerit": 8,
       "rewardTreasury": 20,
       "rewardExpTarget": "trainingExp",
@@ -5133,19 +5140,19 @@
       "rewardAffectionTarget": "",
       "rewardAffection": 0,
       "rewardAchievement": "A01",
-      "nextQuestId": "main_02",
-      "id": "main_01",
-      "type": "主线",
-      "name": "第一周整训",
-      "description": "完成任意课程。剧情不再自动往前推，先让角色在养成中拿到第一份训练记录。",
-      "unlockKind": "always",
-      "targetKind": "anyCourseExp",
-      "targetValue": 25
+      "nextQuestId": "main_02"
     },
     {
+      "id": "main_02",
+      "type": "主线",
+      "name": "训练搭档",
+      "description": "任意同窗好感达到30。战棋前需要可靠搭档，日常社交会直接打开后续剧情。",
+      "unlockKind": "quest",
       "unlockTarget": "main_01",
       "unlockValue": 1,
+      "targetKind": "anyRelationship",
       "targetId": "",
+      "targetValue": 30,
       "rewardMerit": 8,
       "rewardTreasury": 10,
       "rewardExpTarget": "managementExp",
@@ -5153,19 +5160,19 @@
       "rewardAffectionTarget": "",
       "rewardAffection": 0,
       "rewardAchievement": "",
-      "nextQuestId": "main_03",
-      "id": "main_02",
-      "type": "主线",
-      "name": "训练搭档",
-      "description": "任意同窗好感达到30。战棋前需要可靠搭档，日常社交会直接打开后续剧情。",
-      "unlockKind": "quest",
-      "targetKind": "anyRelationship",
-      "targetValue": 30
+      "nextQuestId": "main_03"
     },
     {
+      "id": "main_03",
+      "type": "主线",
+      "name": "兵棋资格",
+      "description": "任意课程达到2级。课程等级代表角色能读懂阵型、补给和兵种克制。",
+      "unlockKind": "quest",
       "unlockTarget": "main_02",
       "unlockValue": 1,
+      "targetKind": "anyCourseLevel",
       "targetId": "",
+      "targetValue": 2,
       "rewardMerit": 12,
       "rewardTreasury": 18,
       "rewardExpTarget": "trainingExp",
@@ -5173,19 +5180,19 @@
       "rewardAffectionTarget": "",
       "rewardAffection": 0,
       "rewardAchievement": "",
-      "nextQuestId": "main_04",
-      "id": "main_03",
-      "type": "主线",
-      "name": "兵棋资格",
-      "description": "任意课程达到2级。课程等级代表角色能读懂阵型、补给和兵种克制。",
-      "unlockKind": "quest",
-      "targetKind": "anyCourseLevel",
-      "targetValue": 2
+      "nextQuestId": "main_04"
     },
     {
+      "id": "main_04",
+      "type": "主线",
+      "name": "战前侦察",
+      "description": "情报值达到20。侦察结果会解释敌军配置，也决定剧情里哪些风险会提前暴露。",
+      "unlockKind": "quest",
       "unlockTarget": "main_03",
       "unlockValue": 1,
+      "targetKind": "intelligence",
       "targetId": "",
+      "targetValue": 20,
       "rewardMerit": 10,
       "rewardTreasury": 12,
       "rewardExpTarget": "logisticsExp",
@@ -5193,19 +5200,19 @@
       "rewardAffectionTarget": "",
       "rewardAffection": 0,
       "rewardAchievement": "",
-      "nextQuestId": "main_05",
-      "id": "main_04",
-      "type": "主线",
-      "name": "战前侦察",
-      "description": "情报值达到20。侦察结果会解释敌军配置，也决定剧情里哪些风险会提前暴露。",
-      "unlockKind": "quest",
-      "targetKind": "intelligence",
-      "targetValue": 20
+      "nextQuestId": "main_05"
     },
     {
+      "id": "main_05",
+      "type": "主线",
+      "name": "情报网成形",
+      "description": "情报网达到2级。后续主线会把战棋、派系压力和日常消息串在一起。",
+      "unlockKind": "quest",
       "unlockTarget": "main_04",
       "unlockValue": 1,
+      "targetKind": "spyNetwork",
       "targetId": "",
+      "targetValue": 2,
       "rewardMerit": 12,
       "rewardTreasury": 16,
       "rewardExpTarget": "logisticsExp",
@@ -5213,19 +5220,19 @@
       "rewardAffectionTarget": "",
       "rewardAffection": 0,
       "rewardAchievement": "I01",
-      "nextQuestId": "main_06",
-      "id": "main_05",
-      "type": "主线",
-      "name": "情报网成形",
-      "description": "情报网达到2级。后续主线会把战棋、派系压力和日常消息串在一起。",
-      "unlockKind": "quest",
-      "targetKind": "spyNetwork",
-      "targetValue": 2
+      "nextQuestId": "main_06"
     },
     {
+      "id": "main_06",
+      "type": "主线",
+      "name": "首次军演胜利",
+      "description": "赢得一场战棋战斗。主线只承认玩家在棋盘上打出来的结果。",
+      "unlockKind": "quest",
       "unlockTarget": "main_05",
       "unlockValue": 1,
+      "targetKind": "battleWins",
       "targetId": "",
+      "targetValue": 1,
       "rewardMerit": 20,
       "rewardTreasury": 30,
       "rewardExpTarget": "managementExp",
@@ -5233,19 +5240,19 @@
       "rewardAffectionTarget": "",
       "rewardAffection": 0,
       "rewardAchievement": "B01",
-      "nextQuestId": "main_07",
-      "id": "main_06",
-      "type": "主线",
-      "name": "首次军演胜利",
-      "description": "赢得一场战棋战斗。主线只承认玩家在棋盘上打出来的结果。",
-      "unlockKind": "quest",
-      "targetKind": "battleWins",
-      "targetValue": 1
+      "nextQuestId": "main_07"
     },
     {
+      "id": "main_07",
+      "type": "主线",
+      "name": "连续出阵",
+      "description": "累计完成2场战棋。胜败都会留下战报，但胜利会让后续评价更高。",
+      "unlockKind": "quest",
       "unlockTarget": "main_06",
       "unlockValue": 1,
+      "targetKind": "battlesFought",
       "targetId": "",
+      "targetValue": 2,
       "rewardMerit": 16,
       "rewardTreasury": 24,
       "rewardExpTarget": "infantryExp",
@@ -5253,19 +5260,19 @@
       "rewardAffectionTarget": "",
       "rewardAffection": 0,
       "rewardAchievement": "",
-      "nextQuestId": "main_08",
-      "id": "main_07",
-      "type": "主线",
-      "name": "连续出阵",
-      "description": "累计完成2场战棋。胜败都会留下战报，但胜利会让后续评价更高。",
-      "unlockKind": "quest",
-      "targetKind": "battlesFought",
-      "targetValue": 2
+      "nextQuestId": "main_08"
     },
     {
+      "id": "main_08",
+      "type": "主线",
+      "name": "毕业前整备",
+      "description": "情报值达到45。终盘前先把敌情、补给和同盟线收束清楚。",
+      "unlockKind": "quest",
       "unlockTarget": "main_07",
       "unlockValue": 1,
+      "targetKind": "intelligence",
       "targetId": "",
+      "targetValue": 45,
       "rewardMerit": 20,
       "rewardTreasury": 30,
       "rewardExpTarget": "logisticsExp",
@@ -5273,19 +5280,19 @@
       "rewardAffectionTarget": "",
       "rewardAffection": 0,
       "rewardAchievement": "",
-      "nextQuestId": "",
-      "id": "main_08",
-      "type": "主线",
-      "name": "毕业前整备",
-      "description": "情报值达到45。终盘前先把敌情、补给和同盟线收束清楚。",
-      "unlockKind": "quest",
-      "targetKind": "intelligence",
-      "targetValue": 45
+      "nextQuestId": ""
     },
     {
+      "id": "rel_zhao_01",
+      "type": "角色支线",
+      "name": "枪阵搭档",
+      "description": "与赵伯衡好感达到45。他会在步兵与重步阵型上给出额外战棋建议。",
+      "unlockKind": "story",
       "unlockTarget": "EV006",
       "unlockValue": 1,
+      "targetKind": "relationship",
       "targetId": "zhao",
+      "targetValue": 45,
       "rewardMerit": 10,
       "rewardTreasury": 0,
       "rewardExpTarget": "infantryExp",
@@ -5293,19 +5300,19 @@
       "rewardAffectionTarget": "zhao",
       "rewardAffection": 8,
       "rewardAchievement": "",
-      "nextQuestId": "",
-      "id": "rel_zhao_01",
-      "type": "角色支线",
-      "name": "枪阵搭档",
-      "description": "与赵伯衡好感达到45。他会在步兵与重步阵型上给出额外战棋建议。",
-      "unlockKind": "story",
-      "targetKind": "relationship",
-      "targetValue": 45
+      "nextQuestId": ""
     },
     {
+      "id": "rel_lin_01",
+      "type": "角色支线",
+      "name": "军政记录员",
+      "description": "与林素心好感达到45。她会帮你把课程、任务和战报整理成可用情报。",
+      "unlockKind": "story",
       "unlockTarget": "EV009",
       "unlockValue": 1,
+      "targetKind": "relationship",
       "targetId": "lin",
+      "targetValue": 45,
       "rewardMerit": 8,
       "rewardTreasury": 6,
       "rewardExpTarget": "managementExp",
@@ -5313,19 +5320,19 @@
       "rewardAffectionTarget": "lin",
       "rewardAffection": 8,
       "rewardAchievement": "",
-      "nextQuestId": "",
-      "id": "rel_lin_01",
-      "type": "角色支线",
-      "name": "军政记录员",
-      "description": "与林素心好感达到45。她会帮你把课程、任务和战报整理成可用情报。",
-      "unlockKind": "story",
-      "targetKind": "relationship",
-      "targetValue": 45
+      "nextQuestId": ""
     },
     {
+      "id": "rel_yierde_01",
+      "type": "角色支线",
+      "name": "边地向导",
+      "description": "与伊尔德好感达到45。边地路线会影响战略地图上的侦察与行军判断。",
+      "unlockKind": "story",
       "unlockTarget": "EV008",
       "unlockValue": 1,
+      "targetKind": "relationship",
       "targetId": "yierde",
+      "targetValue": 45,
       "rewardMerit": 8,
       "rewardTreasury": 0,
       "rewardExpTarget": "cavalryExp",
@@ -5333,19 +5340,19 @@
       "rewardAffectionTarget": "yierde",
       "rewardAffection": 8,
       "rewardAchievement": "",
-      "nextQuestId": "",
-      "id": "rel_yierde_01",
-      "type": "角色支线",
-      "name": "边地向导",
-      "description": "与伊尔德好感达到45。边地路线会影响战略地图上的侦察与行军判断。",
-      "unlockKind": "story",
-      "targetKind": "relationship",
-      "targetValue": 45
+      "nextQuestId": ""
     },
     {
+      "id": "rel_chen_01",
+      "type": "角色支线",
+      "name": "军法边界",
+      "description": "与陈敬之好感达到45。他会提醒你哪些战术胜利会引发派系反弹。",
+      "unlockKind": "story",
       "unlockTarget": "EV008",
       "unlockValue": 1,
+      "targetKind": "relationship",
       "targetId": "chen",
+      "targetValue": 45,
       "rewardMerit": 8,
       "rewardTreasury": 8,
       "rewardExpTarget": "managementExp",
@@ -5353,19 +5360,19 @@
       "rewardAffectionTarget": "chen",
       "rewardAffection": 8,
       "rewardAchievement": "",
-      "nextQuestId": "",
-      "id": "rel_chen_01",
-      "type": "角色支线",
-      "name": "军法边界",
-      "description": "与陈敬之好感达到45。他会提醒你哪些战术胜利会引发派系反弹。",
-      "unlockKind": "story",
-      "targetKind": "relationship",
-      "targetValue": 45
+      "nextQuestId": ""
     },
     {
+      "id": "rel_li_01",
+      "type": "角色支线",
+      "name": "炮算校准",
+      "description": "与李婉清好感达到45。炮兵与重器单位的伤害预判会更可靠。",
+      "unlockKind": "story",
       "unlockTarget": "EV031",
       "unlockValue": 1,
+      "targetKind": "relationship",
       "targetId": "li",
+      "targetValue": 45,
       "rewardMerit": 10,
       "rewardTreasury": 0,
       "rewardExpTarget": "artilleryExp",
@@ -5373,19 +5380,19 @@
       "rewardAffectionTarget": "li",
       "rewardAffection": 8,
       "rewardAchievement": "",
-      "nextQuestId": "",
-      "id": "rel_li_01",
-      "type": "角色支线",
-      "name": "炮算校准",
-      "description": "与李婉清好感达到45。炮兵与重器单位的伤害预判会更可靠。",
-      "unlockKind": "story",
-      "targetKind": "relationship",
-      "targetValue": 45
+      "nextQuestId": ""
     },
     {
+      "id": "intel_scout_01",
+      "type": "情报",
+      "name": "战前耳目",
+      "description": "情报网达到2级。情报任务服务战棋，帮助玩家看清敌军和补给。",
+      "unlockKind": "quest",
       "unlockTarget": "main_04",
       "unlockValue": 1,
+      "targetKind": "spyNetwork",
       "targetId": "",
+      "targetValue": 2,
       "rewardMerit": 8,
       "rewardTreasury": 0,
       "rewardExpTarget": "logisticsExp",
@@ -5393,19 +5400,19 @@
       "rewardAffectionTarget": "",
       "rewardAffection": 0,
       "rewardAchievement": "",
-      "nextQuestId": "",
-      "id": "intel_scout_01",
-      "type": "情报",
-      "name": "战前耳目",
-      "description": "情报网达到2级。情报任务服务战棋，帮助玩家看清敌军和补给。",
-      "unlockKind": "quest",
-      "targetKind": "spyNetwork",
-      "targetValue": 2
+      "nextQuestId": ""
     },
     {
+      "id": "faction_liberal_01",
+      "type": "派系任务",
+      "name": "议会观察",
+      "description": "自由派立场达到40。派系任务只在玩家日常选择已经形成倾向后出现。",
+      "unlockKind": "story",
       "unlockTarget": "EV014",
       "unlockValue": 1,
+      "targetKind": "stance",
       "targetId": "liberal",
+      "targetValue": 40,
       "rewardMerit": 12,
       "rewardTreasury": 8,
       "rewardExpTarget": "managementExp",
@@ -5413,19 +5420,19 @@
       "rewardAffectionTarget": "",
       "rewardAffection": 0,
       "rewardAchievement": "",
-      "nextQuestId": "",
-      "id": "faction_liberal_01",
-      "type": "派系任务",
-      "name": "议会观察",
-      "description": "自由派立场达到40。派系任务只在玩家日常选择已经形成倾向后出现。",
-      "unlockKind": "story",
-      "targetKind": "stance",
-      "targetValue": 40
+      "nextQuestId": ""
     },
     {
+      "id": "daily_drill",
+      "type": "日常",
+      "name": "晨练操典",
+      "description": "训练进度达到50。日常任务不推主线，只给玩家稳定成长目标。",
+      "unlockKind": "always",
       "unlockTarget": "",
       "unlockValue": 0,
+      "targetKind": "trainingExp",
       "targetId": "",
+      "targetValue": 50,
       "rewardMerit": 6,
       "rewardTreasury": 0,
       "rewardExpTarget": "infantryExp",
@@ -5433,14 +5440,7 @@
       "rewardAffectionTarget": "",
       "rewardAffection": 0,
       "rewardAchievement": "",
-      "nextQuestId": "",
-      "id": "daily_drill",
-      "type": "日常",
-      "name": "晨练操典",
-      "description": "训练进度达到50。日常任务不推主线，只给玩家稳定成长目标。",
-      "unlockKind": "always",
-      "targetKind": "trainingExp",
-      "targetValue": 50
+      "nextQuestId": ""
     }
   ],
   "achievements": [
